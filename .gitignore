@@ -1,2 +1,4 @@
 venv/*
 dry-route/backend/__pycache__/*
+
+dry-route/.credenciales.md
