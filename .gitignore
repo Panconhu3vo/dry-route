@@ -1,4 +1,11 @@
-venv/*
-dry-route/backend/__pycache__/*
+venv/
+.venv/
+__pycache__/
+*.pyc
 
+# Base de datos local: cada integrante genera la suya con `python manage.py migrate`
+db.sqlite3
+
+# Secretos
+.env
 dry-route/.credenciales.md

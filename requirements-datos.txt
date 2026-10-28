@@ -1,0 +1,4 @@
+# Solo para REGENERAR los archivos de dry-route/data/ desde OpenStreetMap.
+# No hace falta para correr la app: el resto del equipo instala solo requirements.txt.
+-r requirements.txt
+osmnx==2.1.1
