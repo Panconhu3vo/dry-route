@@ -42,14 +42,14 @@ Los datos (grafo de calles, pasos bajo nivel y puntos de evacuación) ya vienen 
 
 ## Documentación
 
-| Archivo | Contenido |
-|---|---|
-| [CLAUDE.md](CLAUDE.md) | Contexto para Claude Code (y resumen general para el equipo) |
-| [docs/TAREAS.md](docs/TAREAS.md) | Tareas y plazos hasta el Entregable III |
-| [docs/API.md](docs/API.md) | Contrato entre frontend y backend |
-| [docs/DECISIONES.md](docs/DECISIONES.md) | Decisiones técnicas y sus razones |
-| [docs/DISENO.md](docs/DISENO.md) | Guía visual |
-| [docs/CONTEXTO.md](docs/CONTEXTO.md) | Problema, historias de usuario, modelo ER y riesgos |
+| Archivo                                  | Contenido                                                    |
+| ---------------------------------------- | ------------------------------------------------------------ |
+| [CLAUDE.md](CLAUDE.md)                   | Contexto para Claude Code (y resumen general para el equipo) |
+| [docs/TAREAS.md](docs/TAREAS.md)         | Tareas y plazos hasta el Entregable III                      |
+| [docs/API.md](docs/API.md)               | Contrato entre frontend y backend                            |
+| [docs/DECISIONES.md](docs/DECISIONES.md) | Decisiones técnicas y sus razones                            |
+| [docs/DISENO.md](docs/DISENO.md)         | Guía visual                                                  |
+| [docs/CONTEXTO.md](docs/CONTEXTO.md)     | Problema, historias de usuario, modelo ER y riesgos          |
 
 ## Cómo trabajamos con Git
 
