@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block contenido %}
+<header class="encabezado">
+  <h1>Dry Routes</h1>
+</header>
+
+<main class="contenido">
+  <!-- Los id de esta página son el contrato con entrada.js y resultado.js (docs/API.md): no cambiarlos -->
+  <div id="mapa" aria-label="Mapa de la zona con puntos anegados"></div>
+
+  <section id="panel">
+    <p id="aviso" role="note">
+      <strong>Ruta referencial.</strong> Sigue las indicaciones de las autoridades.
+      Emergencias: 131 SAMU · 132 Bomberos · 133 Carabineros.
+    </p>
+
+    <form id="form-ruta">
+      <div class="campo">
+        <label for="input-origen">Origen</label>
+        <input id="input-origen" type="text" autocomplete="off"
+               placeholder="Dirección o clic en el mapa">
+      </div>
+      <button id="btn-gps" type="button" class="boton boton-secundario">Usar mi ubicación</button>
+
+      <div class="campo">
+        <label for="input-destino">Destino</label>
+        <input id="input-destino" type="text" autocomplete="off"
+               placeholder="Dirección o clic en el mapa">
+      </div>
+
+      <!-- Parte deshabilitado: entrada.js lo habilita cuando hay origen y destino -->
+      <button id="btn-calcular" type="button" class="boton boton-principal" disabled>Calcular ruta</button>
+    </form>
+
+    <!-- resultado.js llena este contenedor y lo muestra; aria-live anuncia el resultado a lectores de pantalla -->
+    <div id="resultado" aria-live="polite" hidden></div>
+  </section>
+</main>
+{% endblock %}
+
+{% block scripts %}
+<!-- El orden importa: mapa.js crea DryRoute.mapa, que los otros dos usan -->
+<script src="{% static 'js/mapa.js' %}"></script>       <!-- Gonzalo -->
+<script src="{% static 'js/resultado.js' %}"></script>  <!-- Yusu -->
+<script src="{% static 'js/entrada.js' %}"></script>    <!-- Cristóbal -->
+{% endblock %}
