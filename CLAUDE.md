@@ -72,11 +72,19 @@ python manage.py check             # correr antes de cada commit
 
 ## Cómo debe trabajar Claude en este repo
 
+**Si alguien se presenta ("Soy <nombre>…") o pide ayuda con su tarea, lee [docs/TAREAS-POR-INTEGRANTE.md](docs/TAREAS-POR-INTEGRANTE.md) y sigue su protocolo al pie de la letra.** Lo esencial:
+
+- **Claude nunca hace `git commit`, `git push`, `git merge` ni `git rebase`, y nunca trabaja sobre `main`.** Crea la rama de la tarea, hace los cambios y propone el mensaje de commit. La persona hace el commit y sube la rama (si no sabe, Claude le explica cómo hacerlo con *Control de código fuente* de VS Code). **Juan Yañez combina las ramas en `main`.**
+- **Preguntas en lenguaje simple.** Ante un cambio importante (archivos de otro integrante, contrato de API, dependencias, settings, modelos, borrar archivos o salirse de la tarea), Claude no lo hace: le pide a la persona que **consulte a Juan Yañez y espere sus indicaciones**.
+- **Siempre se mantiene un archivo de explicación** en `explicaciones/` (no se sube), escrito para alguien que no sabe Django.
+
+Además:
+
 1. **El equipo tiene que entender el código.** En el video deben explicar 15 a 30 líneas y al menos una decisión técnica. Prefiere código simple y explícito, y nombres en español del dominio (`punto_anegado`, `calcular_ruta`). Nada de abstracciones, clases ni patrones que no se hayan pedido.
 2. **Explica lo que haces** en español, en términos de Django (modelo, vista, URL, plantilla), en 2 o 3 frases al terminar cada cambio. No supongas que conocen el framework.
 3. **Cambios pequeños, dentro de la tarea pedida.** No toques archivos de otro responsable (ver la tabla del equipo) salvo que la tarea lo requiera; en ese caso, avísalo.
 4. **Respeta el contrato de [docs/API.md](docs/API.md).** El front y el back dependen de él.
-5. **Nunca trabajes directo en `main`.** Usa una rama por tarea (`feat/t3-mapa-base`, `fix/...`) y un PR revisado por otra persona (R4). Mensajes de commit al estilo del repo: `feat(rutas): agrega endpoint de ruta`, `docs(readme): ...`.
+5. **Nunca trabajes directo en `main`.** Usa una rama por tarea (los nombres están en TAREAS-POR-INTEGRANTE.md); Juan combina las ramas (R4). Mensajes de commit al estilo del repo: `feat(rutas): agrega endpoint de ruta`, `docs(readme): ...`.
 6. **Verifica antes de decir "listo":** `python manage.py check`, las pruebas, y abrir la página si el cambio es visual.
 7. Comentarios y textos de interfaz en español. Comenta el *por qué*, no el *qué*.
 8. La interfaz siempre muestra el aviso: *"Ruta referencial. Sigue las indicaciones de las autoridades."* (R5).

@@ -1,6 +1,7 @@
 # Tareas hasta el Entregable III (viernes 30 de octubre, 23:55)
 
-Plan corto y realista para **dos días**. Cada tarea es un Issue, una rama y un PR revisado por otra persona.
+Plan corto y realista para **dos días**. Cada tarea es un Issue y una rama; Juan combina las ramas en `main`.
+Para trabajar en tu tarea con Claude, revisa [TAREAS-POR-INTEGRANTE.md](TAREAS-POR-INTEGRANTE.md).
 Los horarios son el **plazo máximo**. Si a alguien no le va a alcanzar, avisa en el grupo **antes** del plazo para reasignar (R7).
 
 ## Línea de tiempo

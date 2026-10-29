@@ -6,6 +6,9 @@ __pycache__/
 # Base de datos local: cada integrante genera la suya con `python manage.py migrate`
 db.sqlite3
 
+# Explicaciones personales de cada tarea (material de estudio, no se sube)
+explicaciones/
+
 # Secretos
 .env
 dry-route/.credenciales.md

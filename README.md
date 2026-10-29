@@ -46,6 +46,7 @@ Los datos (grafo de calles, pasos bajo nivel y puntos de evacuación) ya vienen 
 | ---------------------------------------- | ------------------------------------------------------------ |
 | [CLAUDE.md](CLAUDE.md)                   | Contexto para Claude Code (y resumen general para el equipo) |
 | [docs/TAREAS.md](docs/TAREAS.md)         | Tareas y plazos hasta el Entregable III                      |
+| [docs/TAREAS-POR-INTEGRANTE.md](docs/TAREAS-POR-INTEGRANTE.md) | Qué le toca a cada uno y cómo trabajar con Claude |
 | [docs/API.md](docs/API.md)               | Contrato entre frontend y backend                            |
 | [docs/DECISIONES.md](docs/DECISIONES.md) | Decisiones técnicas y sus razones                            |
 | [docs/DISENO.md](docs/DISENO.md)         | Guía visual                                                  |
@@ -53,11 +54,11 @@ Los datos (grafo de calles, pasos bajo nivel y puntos de evacuación) ya vienen 
 
 ## Cómo trabajamos con Git
 
-1. Actualiza main: `git checkout main` y `git pull`.
-2. Crea tu rama: `git checkout -b feat/t3-mapa-base`.
-3. Haz commits pequeños: `git commit -m "feat(mapa): dibuja puntos anegados"`.
-4. Sube la rama con `git push -u origin feat/t3-mapa-base` y abre un **Pull Request**.
-5. **Otra persona** revisa el PR y lo une a `main`. Nadie sube cambios directo a `main`.
+Abre Claude Code y escribe: *"Soy &lt;tu nombre&gt;, revisa el archivo de tareas y ayúdame a realizar mi tarea"*. El detalle está en [docs/TAREAS-POR-INTEGRANTE.md](docs/TAREAS-POR-INTEGRANTE.md).
+
+1. Claude crea la rama de tu tarea (por ejemplo `feat/t3-mapa-base`) y hace los cambios contigo. **Claude no hace commits ni sube nada.**
+2. **Tú** haces el commit y subes la rama desde *Control de código fuente* en VS Code.
+3. Le avisas a **Juan**, que revisa y combina la rama en `main`. Nadie sube cambios directo a `main`.
 
 ## Fuentes
 

@@ -51,9 +51,10 @@ Fecha de este registro: 28 de octubre de 2026.
 - **Por qué:** es gratis, no requiere key, y su política de uso exige un máximo de 1 consulta por segundo y prohíbe el autocompletado.
 - **Plan B:** el clic en el mapa siempre funciona, aunque Nominatim falle.
 
-## D8. Git: rama por tarea y Pull Request revisado
+## D8. Git: rama por tarea; Juan combina
 
-- Ramas `feat/tN-descripcion` o `fix/descripcion`. Cada PR lo revisa otra persona antes de unirlo a `main` (R4).
+- Ramas `feat/tN-descripcion` o `fix/descripcion`. Cada integrante hace su commit y sube su rama; **Juan Yañez revisa y combina en `main`** (R4).
+- Claude Code **no hace commits ni push**: así cada integrante sabe exactamente qué sube (ver [TAREAS-POR-INTEGRANTE.md](TAREAS-POR-INTEGRANTE.md)).
 - `db.sqlite3` **no se versiona**: cada integrante genera la suya con `migrate` y `cargar_datos`.
 
 ## D9. GPS fuera de la zona
