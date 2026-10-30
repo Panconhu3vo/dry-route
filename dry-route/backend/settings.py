@@ -119,6 +119,11 @@ STATIC_URL = 'static/'
 # La carpeta static/ está a nivel de proyecto (no dentro de una app), así que hay que indicarla
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
+# Los servidores de mapas de OpenStreetMap bloquean (403 "Access blocked") las peticiones sin Referer.
+# El valor por defecto de Django ('same-origin') no lo envía a otros sitios; este envía solo el origen
+# (ej. http://127.0.0.1:8000), nunca la ruta completa.
+SECURE_REFERRER_POLICY = 'strict-origin-when-cross-origin'
+
 
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
