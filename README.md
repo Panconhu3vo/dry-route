@@ -25,7 +25,7 @@ pip install -r requirements.txt
 
 cd dry-route
 python manage.py migrate
-python manage.py cargar_datos        # carga los puntos anegados y de evacuación (disponible desde la tarea T2)
+python manage.py cargar_datos        # carga los puntos anegados y de evacuación
 python manage.py createsuperuser     # para entrar al admin y simular anegamientos
 python manage.py runserver
 ```

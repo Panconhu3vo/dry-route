@@ -43,10 +43,10 @@ Dependencias permitidas: las de `requirements.txt` (y OSMnx solo en `requirement
 ```
 dry-route/                  ← raíz del repo (aquí están README, CLAUDE.md, requirements*.txt)
 ├── docs/                   ← contexto, decisiones, contrato de API, diseño, tareas
-├── scripts/generar_datos.py   (por crear) OSM → dry-route/data/*.json
+├── scripts/generar_datos.py   OSM → dry-route/data/*.json
 └── dry-route/              ← proyecto Django (aquí está manage.py)
     ├── backend/            ← settings.py, urls.py (configuración del proyecto)
-    ├── rutas/              ← (por crear) models, admin, views, urls, ruteo.py, tests.py,
+    ├── rutas/              ← models, admin, views, urls, ruteo.py, tests.py,
     │                          management/commands/cargar_datos.py
     ├── templates/          ← base.html, rutas/mapa.html
     ├── static/             ← css/app.css, js/mapa.js, js/entrada.js, js/resultado.js
@@ -64,7 +64,7 @@ venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 cd dry-route
 python manage.py migrate
-python manage.py cargar_datos      # cuando exista (tarea T2)
+python manage.py cargar_datos      # carga los puntos a la base de datos
 python manage.py runserver         # http://127.0.0.1:8000
 python manage.py test rutas        # pruebas
 python manage.py check             # correr antes de cada commit

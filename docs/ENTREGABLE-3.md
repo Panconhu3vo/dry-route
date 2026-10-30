@@ -29,9 +29,9 @@ Desde el navegador, una persona usuaria debe poder:
 
 | Componente | Estado | Qué funciona y qué falta |
 |---|---|---|
-| Entrada de información | *completar en T7* | Búsqueda de direcciones (Nominatim), GPS y clic en el mapa. |
-| Procesamiento | *completar en T7* | Grafo OSM y NetworkX con bloqueo de 100 m alrededor de los anegados activos. |
-| Presentación del resultado | *completar en T7* | Ruta dibujada y tarjeta; caso sin ruta con punto de evacuación. |
+| Entrada de información | Funciona | Búsqueda de direcciones (Nominatim), GPS y clic en el mapa. |
+| Procesamiento | Funciona | Grafo OSM y NetworkX (Dijkstra) que bloquea los tramos a menos de 100 m de los anegados activos. Responde en ~40 ms. Falta: recalcular durante el trayecto. |
+| Presentación del resultado | Funciona | Ruta dibujada y tarjeta; caso sin ruta con punto de evacuación. |
 
 ## Casos de prueba
 
@@ -39,10 +39,10 @@ Las coordenadas exactas se fijan cuando T1 genera los datos (Vicente y Juan las 
 
 | Elemento | Caso 1 · Escenario principal: ruta segura | Caso 2 · Alternativo: sin ruta segura |
 |---|---|---|
-| Condición previa (admin) | Activo: paso bajo nivel **Gran Avenida / Departamental** | Activo: paso bajo nivel en la zona de **Lo Espejo** |
-| Datos de entrada | Origen: Gran Avenida al norte de Departamental (`__, __`). Destino: Gran Avenida al sur (`__, __`). | Origen: `__, __`. Destino: a menos de 100 m del paso activo (`__, __`). |
-| Resultado esperado | `estado = "segura"`; la ruta **no pasa** a menos de 100 m del paso activo (toma una calle paralela); "Evita 1 punto anegado". | `estado = "sin_ruta"`; mensaje "No hay ruta segura a tu destino"; ruta al punto de evacuación más cercano, resaltado. |
-| Resultado observado | *completar en T7* | *completar en T7* |
+| Condición previa (admin) | Activo: **Paso bajo nivel Avenida Departamental / Gran Avenida José Miguel Carrera** | Activo: **Paso bajo nivel Cerro Negro / Avenida Américo Vespucio** |
+| Datos de entrada | Por Av. Departamental de oeste a este. Origen `-33.502460, -70.658334`; destino `-33.505348, -70.647249`. | Origen `-33.525000, -70.650000`; destino en el paso anegado `-33.540228, -70.650958`. |
+| Resultado esperado | `estado = "segura"`; ningún tramo de la ruta pasa a menos de 100 m del paso activo; "Evita 1 punto anegado". | `estado = "sin_ruta"`; mensaje "No hay ruta segura a tu destino"; ruta al punto de evacuación más cercano, resaltado. |
+| Resultado observado | Ruta segura de 1,4 km y 6 min que rodea el paso; "Evita 1 punto anegado". *(confirmar en el navegador)* | "No hay ruta segura a tu destino"; ruta de 396 m y 2 min al punto de evacuación Chilean Eagles College. *(confirmar en el navegador)* |
 | ¿Coinciden? | | |
 
 Ambos casos salen del diagrama de flujo del E2: la rama "Sí" y la rama "No" de *¿Existe una ruta de evacuación segura al destino?*
@@ -55,7 +55,7 @@ Ambos casos salen del diagrama de flujo del E2: la rama "Sí" y la rama "No" de 
 | 0:30 – 1:00 | Terminal con `runserver`; en el admin se marca el anegado activo (escenario simulado). | |
 | 1:00 – 2:15 | **Caso 1** en el navegador: entrada → clic en Calcular → ruta que esquiva el paso. | |
 | 2:15 – 3:15 | **Caso 2**: destino junto a un paso anegado → sin ruta → punto de evacuación. | |
-| 3:15 – 4:30 | **Código:** `calcular_ruta` en `rutas/ruteo.py` (15 a 30 líneas). Qué hace, la decisión técnica (bloquear nodos a menos de 100 m y Dijkstra con NetworkX, en vez de Google, que no permite evitar puntos; ver DECISIONES D2 y D5) y cómo se usó la IA para entenderlo y verificarlo. | Juan o Vicente |
+| 3:15 – 4:30 | **Código:** `calcular_ruta` en `rutas/ruteo.py`, líneas 78 a 103 (pasos 1 y 2). Qué hace, la decisión técnica (bloquear nodos a menos de 100 m y Dijkstra con NetworkX, en vez de Google, que no permite evitar puntos; ver DECISIONES D2 y D5) y cómo se usó la IA para entenderlo y verificarlo. | Juan o Vicente |
 | 4:30 – 5:00 | Qué falta y los próximos pasos (F2 o F3). | |
 
 Si algo falla durante la grabación, la pauta pide **mostrar el comportamiento y explicarlo**, no ocultarlo.
