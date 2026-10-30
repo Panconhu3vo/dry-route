@@ -1,0 +1,201 @@
+/* Estilos de Dry Routes. Los valores vienen de docs/DISENO.md.
+   Se escribe primero para celular (mobile-first) y al final se ajusta para escritorio. */
+
+/* ---------- Tokens: colores y medidas que usa toda la app ---------- */
+:root {
+  --fondo:          #F4F7FA;
+  --superficie:     #FFFFFF;
+  --texto:          #14212B;
+  --texto-suave:    #51616E;
+  --borde:          #D3DCE3;
+
+  --agua:           #0B63C4;  /* acción principal, ubicación del usuario */
+  --ruta:           #1E9E5A;  /* línea de la ruta segura y bandera de destino (no usar para texto) */
+  --ruta-texto:     #146B3E;  /* texto "Ruta segura" */
+  --peligro:        #C8322A;  /* anegado activo, "No hay ruta segura" */
+  --alerta-fondo:   #FFF1D6;  /* fondo del aviso; texto en --texto */
+  --alerta-borde:   #E08A00;
+  --inactivo:       #8D9AA5;  /* punto de riesgo sin anegamiento */
+
+  --radio:          12px;
+  --sombra:         0 2px 12px rgb(20 33 43 / 0.12);
+  --fuente:         "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* ---------- Base ---------- */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: var(--fuente);
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+/* Foco siempre visible: quien navega con teclado tiene que saber dónde está */
+:focus-visible {
+  outline: 3px solid var(--agua);
+  outline-offset: 2px;
+}
+
+/* ---------- Encabezado ---------- */
+.encabezado {
+  padding: 8px 16px;
+  background: var(--superficie);
+  border-bottom: 1px solid var(--borde);
+}
+
+.encabezado h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* ---------- Layout celular: mapa arriba y panel abajo (bottom sheet) ---------- */
+.contenido {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0; /* sin esto, el panel no puede hacer scroll dentro de un flex */
+}
+
+#mapa {
+  flex: 1;
+  min-height: 0;
+}
+
+#panel {
+  /* El mapa es la pantalla: el panel ocupa como máximo el 40% del alto y hace scroll si no cabe */
+  max-height: 40vh;
+  overflow-y: auto;
+  padding: 16px;
+  background: var(--superficie);
+  border-radius: var(--radio) var(--radio) 0 0;
+  box-shadow: var(--sombra);
+  /* Sube un poco sobre el mapa para que se vea como una hoja; z-index sobre los controles de Leaflet */
+  margin-top: calc(-1 * var(--radio));
+  position: relative;
+  z-index: 1000;
+}
+
+/* El panel se monta sobre el borde inferior del mapa: subimos los controles de abajo
+   para que la atribución de OpenStreetMap (obligatoria) no quede tapada */
+.leaflet-bottom {
+  bottom: var(--radio);
+}
+
+/* ---------- Aviso permanente ---------- */
+#aviso {
+  margin: 0 0 16px;
+  padding: 8px 12px;
+  background: var(--alerta-fondo);
+  border: 2px solid var(--alerta-borde);
+  border-radius: var(--radio);
+  font-size: 14px;
+}
+
+/* ---------- Formulario ---------- */
+#form-ruta {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.campo label {
+  font-weight: 700;
+}
+
+.campo input {
+  min-height: 48px;
+  padding: 0 12px;
+  border: 2px solid var(--borde);
+  border-radius: var(--radio);
+  font: inherit;
+  color: var(--texto);
+  background: var(--superficie);
+}
+
+.campo input::placeholder {
+  color: var(--texto-suave);
+}
+
+/* ---------- Botones (mínimo 48 px de alto, para el dedo mojado) ---------- */
+.boton {
+  min-height: 48px;
+  padding: 0 16px;
+  border: 2px solid var(--agua);
+  border-radius: var(--radio);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.boton-principal {
+  background: var(--agua);
+  color: var(--superficie);
+}
+
+.boton-secundario {
+  background: var(--superficie);
+  color: var(--agua);
+}
+
+.boton:disabled {
+  background: var(--borde);
+  border-color: var(--borde);
+  color: var(--texto-suave);
+  cursor: not-allowed;
+}
+
+/* ---------- Íconos del mapa ---------- */
+/* Punto de evacuación: cuadrado verde con cruz o casa (forma + color + popup, nunca solo color) */
+.icono-evacuacion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ruta);
+  color: var(--superficie);
+  border: 2px solid var(--superficie);
+  border-radius: 6px;
+  box-shadow: var(--sombra);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1;
+}
+
+/* ---------- Escritorio (768 px o más): panel a la izquierda de 380 px ---------- */
+@media (min-width: 768px) {
+  .contenido {
+    flex-direction: row;
+  }
+
+  #panel {
+    order: -1; /* en el HTML va después del mapa; aquí lo pasamos a la izquierda */
+    width: 380px;
+    max-height: none;
+    margin-top: 0;
+    border-radius: 0;
+    border-right: 1px solid var(--borde);
+  }
+
+  .leaflet-bottom {
+    bottom: 0;
+  }
+}
