@@ -94,7 +94,7 @@ function mostrarTarjeta(tarjeta, conBotonNuevaRuta) {
   cajaResultado.hidden = false;
 }
 
-// r es la respuesta 200 de /api/ruta/, con estado "segura" o "sin_ruta".
+// r es la respuesta 200 de /api/ruta/, con estado "segura", "sin_ruta" o "en_peligro".
 DryRoute.mostrarResultado = function (r) {
   DryRoute.limpiarResultado(); // borra una ruta anterior, si había
   const tarjeta = document.createElement("div");
@@ -107,7 +107,9 @@ DryRoute.mostrarResultado = function (r) {
     tarjeta.appendChild(crear("p", "tarjeta-detalle", textoPuntosEvitados(r.puntos_evitados.length)));
   } else {
     tarjeta.className = "tarjeta tarjeta-sin-ruta";
-    tarjeta.appendChild(crearTitulo("⚠", "No hay ruta segura a tu destino"));
+    // "en_peligro": el origen está en una zona anegada y la prioridad es salir, no llegar al destino
+    const titulo = r.estado === "en_peligro" ? "Estás en una zona de peligro" : "No hay ruta segura a tu destino";
+    tarjeta.appendChild(crearTitulo("⚠", titulo));
     // El mensaje lo escribe el servidor: explica qué pasó (por ejemplo, que no hay punto alcanzable).
     tarjeta.appendChild(crear("p", "tarjeta-detalle", r.mensaje));
     if (r.punto_evacuacion) {
@@ -124,7 +126,7 @@ DryRoute.mostrarResultado = function (r) {
   if (r.ruta.length > 0) {
     dibujarRuta(r.ruta);
   }
-  if (r.estado === "sin_ruta" && r.punto_evacuacion) {
+  if (r.estado !== "segura" && r.punto_evacuacion) {
     encuadre.extend([r.punto_evacuacion.lat, r.punto_evacuacion.lon]);
   }
   if (encuadre.isValid()) {
@@ -132,7 +134,7 @@ DryRoute.mostrarResultado = function (r) {
     DryRoute.mapa.fitBounds(encuadre, { padding: [40, 40], maxZoom: 17 });
   }
   // Va después de fitBounds para que el popup se abra ya en el encuadre final.
-  if (r.estado === "sin_ruta" && r.punto_evacuacion) {
+  if (r.estado !== "segura" && r.punto_evacuacion) {
     resaltarPuntoEvacuacion(r.punto_evacuacion);
   }
 

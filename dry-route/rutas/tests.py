@@ -2,7 +2,7 @@ from django.core.management import call_command
 from django.test import TestCase
 
 from .models import PuntoAnegado
-from .ruteo import RADIO_BLOQUEO_M, distancia_a_tramo_m
+from .ruteo import RADIO_BLOQUEO_M, distancia_a_tramo_m, distancia_m
 
 # Los dos casos de prueba del Entregable III (docs/ENTREGABLE-3.md)
 PASO_DEPARTAMENTAL = "way/451437804"  # Paso bajo nivel Avenida Departamental / Gran Avenida
@@ -44,6 +44,17 @@ class CasosDePrueba(TestCase):
         self.assertEqual(respuesta["estado"], "sin_ruta")
         self.assertIsNotNone(respuesta["punto_evacuacion"])
         self.assertGreater(len(respuesta["ruta"]), 1)
+
+    def test_origen_en_zona_anegada_guia_al_punto_de_evacuacion_seguro(self):
+        paso = self.activar(PASO_DEPARTAMENTAL)
+        # El usuario está parado en el paso anegado: aunque pida ir lejos, primero hay que salir
+        respuesta = self.pedir_ruta(f"{paso.lat},{paso.lon}", "-33.505348,-70.647249").json()
+
+        self.assertEqual(respuesta["estado"], "en_peligro")
+        self.assertGreater(len(respuesta["ruta"]), 1)
+        evacuacion = respuesta["punto_evacuacion"]
+        # El punto elegido nunca está dentro de la zona anegada
+        self.assertGreaterEqual(distancia_m(evacuacion["lat"], evacuacion["lon"], paso.lat, paso.lon), RADIO_BLOQUEO_M)
 
     def test_sin_anegados_la_ruta_es_segura_y_no_evita_nada(self):
         respuesta = self.pedir_ruta("-33.502460,-70.658334", "-33.505348,-70.647249").json()

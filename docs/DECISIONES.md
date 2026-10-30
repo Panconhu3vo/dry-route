@@ -38,6 +38,8 @@ Fecha de este registro: 28 de octubre de 2026.
 - Un **tramo de calle** (arista) queda **bloqueado** si pasa a menos de `RADIO_BLOQUEO_M = 100` metros de un punto anegado activo. Se miden tramos y no esquinas porque un paso bajo nivel es un tramo largo (~300 m): sus esquinas quedan lejos del punto aunque el tramo pase justo por él (lo detectó la prueba del caso 1).
 - **Hay ruta segura** si existe un camino desde el origen al destino que no usa tramos bloqueados.
 - **No hay ruta segura** si el destino está a menos de 100 m de un anegado activo o si los bloqueos lo dejan desconectado. En ese caso se busca el punto de evacuación alcanzable más cercano al origen y se entrega la ruta hacia él.
+- **Origen en zona anegada** (a menos de 100 m de un anegado activo): se ignora el destino y se guía al punto de evacuación más cercano (`estado = "en_peligro"`). Para salir se permite cruzar tramos con agua, pero cada metro ahí cuesta `PENALIZACION_ZONA_ANEGADA = 20` veces más, así Dijkstra elige la salida con menos agua.
+- Nunca se elige un punto de evacuación que esté a menos de 100 m de un anegado activo.
 - Los tramos que salen del origen nunca se bloquean: si el usuario está dentro de una zona anegada, igual tiene que poder salir.
 - **Tiempo estimado:** distancia dividida por 15 km/h (velocidad urbana en contingencia; coincide con el prototipo: 4,2 km en 18 min).
 

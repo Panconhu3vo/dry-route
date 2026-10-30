@@ -55,7 +55,7 @@ Ambos casos salen del diagrama de flujo del E2: la rama "Sí" y la rama "No" de 
 | 0:30 – 1:00 | Terminal con `runserver`; en el admin se marca el anegado activo (escenario simulado). | |
 | 1:00 – 2:15 | **Caso 1** en el navegador: entrada → clic en Calcular → ruta que esquiva el paso. | |
 | 2:15 – 3:15 | **Caso 2**: destino junto a un paso anegado → sin ruta → punto de evacuación. | |
-| 3:15 – 4:30 | **Código:** `calcular_ruta` en `rutas/ruteo.py`, líneas 78 a 103 (pasos 1 y 2). Qué hace, la decisión técnica (bloquear nodos a menos de 100 m y Dijkstra con NetworkX, en vez de Google, que no permite evitar puntos; ver DECISIONES D2 y D5) y cómo se usó la IA para entenderlo y verificarlo. | Juan o Vicente |
+| 3:15 – 4:30 | **Código:** `calcular_ruta` en `rutas/ruteo.py`, desde el comentario `# 1. Bloquear` hasta el `pass` (líneas 90 a 119 con la mejora "origen en peligro"; 84 a 103 sin ella). Qué hace, la decisión técnica (bloquear nodos a menos de 100 m y Dijkstra con NetworkX, en vez de Google, que no permite evitar puntos; ver DECISIONES D2 y D5) y cómo se usó la IA para entenderlo y verificarlo. | Juan o Vicente |
 | 4:30 – 5:00 | Qué falta y los próximos pasos (F2 o F3). | |
 
 Si algo falla durante la grabación, la pauta pide **mostrar el comportamiento y explicarlo**, no ocultarlo.

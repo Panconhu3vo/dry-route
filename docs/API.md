@@ -88,6 +88,10 @@ Calcula la ruta segura. Ejemplo: `/api/ruta/?origen=-33.4950,-70.6540&destino=-3
 }
 ```
 
+### Respuesta 200: el origen está en una zona anegada
+
+Si el origen está a menos de 100 m de un anegado activo, **se ignora el destino**: lo primero es salir. Misma forma que `sin_ruta`, con `"estado": "en_peligro"`, `"mensaje": "Estás en una zona anegada. Sal por esta ruta al punto de evacuación más cercano."` y `ruta` hacia `punto_evacuacion`. El front muestra el título *"Estás en una zona de peligro"*.
+
 Si tampoco hay ningún punto de evacuación alcanzable: `estado = "sin_ruta"`, `ruta = []`, `punto_evacuacion = null` y un `mensaje` que lo explica.
 
 ### Respuesta 400: error de entrada

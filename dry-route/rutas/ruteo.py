@@ -15,6 +15,8 @@ from django.conf import settings
 ZONA = {"norte": -33.490, "sur": -33.545, "oeste": -70.680, "este": -70.635}  # igual que scripts/generar_datos.py
 RADIO_BLOQUEO_M = 100
 VELOCIDAD_KMH = 15  # velocidad urbana en contingencia (coincide con el prototipo del E2)
+# Si estás dentro de una zona anegada, la ruta puede cruzar agua para salir, pero cada metro ahí "cuesta" 20 veces más
+PENALIZACION_ZONA_ANEGADA = 20
 
 
 @cache
@@ -75,6 +77,10 @@ def esta_en_zona(lat, lon):
     return ZONA["sur"] <= lat <= ZONA["norte"] and ZONA["oeste"] <= lon <= ZONA["este"]
 
 
+def cerca_de_anegado(lat, lon, anegados_activos):
+    return any(distancia_m(lat, lon, p.lat, p.lon) < RADIO_BLOQUEO_M for p in anegados_activos)
+
+
 def calcular_ruta(origen, destino, anegados_activos, puntos_evacuacion):
     """origen y destino son (lat, lon). Devuelve un dict con la forma de GET /api/ruta/ (docs/API.md)."""
     grafo = cargar_grafo()
@@ -87,13 +93,23 @@ def calcular_ruta(origen, destino, anegados_activos, puntos_evacuacion):
     bloqueados = {t for t in set().union(*bloqueados_por_punto.values()) if nodo_origen not in t}
     grafo_seguro = nx.subgraph_view(grafo, filter_edge=lambda u, v: frozenset((u, v)) not in bloqueados)
 
-    # Si el destino mismo está en la zona anegada, no existe una ruta segura hasta él
-    destino_anegado = any(
-        distancia_m(destino[0], destino[1], p.lat, p.lon) < RADIO_BLOQUEO_M for p in anegados_activos
-    )
+    # Nunca se guía a un punto de evacuación que esté dentro de una zona anegada
+    evacuacion_segura = [p for p in puntos_evacuacion if not cerca_de_anegado(p.lat, p.lon, anegados_activos)]
 
-    # 2. Camino más corto (Dijkstra) en el grafo sin los tramos bloqueados.
-    if not destino_anegado:
+    # 2. Si el origen está en una zona anegada, salir es lo primero: se ignora el destino y se guía al
+    #    punto de evacuación más cercano. Para salir se puede cruzar el agua, pero penalizada.
+    if cerca_de_anegado(*origen, anegados_activos):
+        tramos_con_agua = set().union(*bloqueados_por_punto.values())
+
+        def costo(u, v, datos):
+            return datos["largo"] * (PENALIZACION_ZONA_ANEGADA if frozenset((u, v)) in tramos_con_agua else 1)
+
+        return ir_a_evacuacion("en_peligro", "Estás en una zona anegada. Sal por esta ruta al punto de evacuación más cercano.",
+                               grafo, nodo_origen, evacuacion_segura, costo)
+
+    # 3. Camino más corto (Dijkstra) en el grafo sin los tramos bloqueados.
+    #    Si el destino mismo está en la zona anegada, no existe una ruta segura hasta él.
+    if not cerca_de_anegado(*destino, anegados_activos):
         try:
             camino = nx.shortest_path(grafo_seguro, nodo_origen, nodo_destino, weight="largo")
             camino_normal = nx.shortest_path(grafo, nodo_origen, nodo_destino, weight="largo")
@@ -102,15 +118,20 @@ def calcular_ruta(origen, destino, anegados_activos, puntos_evacuacion):
         except nx.NetworkXNoPath:
             pass  # los bloqueos dejaron al destino aislado: seguimos con el punto de evacuación
 
-    # 3. Sin ruta segura: el punto de evacuación alcanzable más cercano (por calles, no en línea recta).
-    distancias, caminos = nx.single_source_dijkstra(grafo_seguro, nodo_origen, weight="largo")
+    # 4. Sin ruta segura al destino: el punto de evacuación más cercano, solo por tramos sin agua.
+    return ir_a_evacuacion("sin_ruta", "No hay una ruta segura a tu destino. Te guiamos al punto de evacuación más cercano.",
+                           grafo_seguro, nodo_origen, evacuacion_segura, "largo")
+
+
+def ir_a_evacuacion(estado, mensaje, grafo, nodo_origen, puntos_evacuacion, peso):
+    """Ruta al punto de evacuación alcanzable más cercano, medido por calles (no en línea recta)."""
+    distancias, caminos = nx.single_source_dijkstra(grafo, nodo_origen, weight=peso)
     alcanzables = [p for p in puntos_evacuacion if nodo_mas_cercano(p.lat, p.lon) in distancias]
     if not alcanzables:
-        return armar_respuesta("sin_ruta", "No hay una ruta segura ni un punto de evacuación alcanzable. "
-                               "Busca un lugar alto y llama al 133.", grafo_seguro, [], [], None)
+        return armar_respuesta(estado, "No hay un punto de evacuación alcanzable. Busca un lugar alto y llama al 133.",
+                               grafo, [], [], None)
     elegido = min(alcanzables, key=lambda p: distancias[nodo_mas_cercano(p.lat, p.lon)])
-    return armar_respuesta("sin_ruta", "No hay una ruta segura a tu destino. Te guiamos al punto de evacuación más cercano.",
-                           grafo_seguro, caminos[nodo_mas_cercano(elegido.lat, elegido.lon)], [], elegido)
+    return armar_respuesta(estado, mensaje, grafo, caminos[nodo_mas_cercano(elegido.lat, elegido.lon)], [], elegido)
 
 
 def armar_respuesta(estado, mensaje, grafo, camino, evitados, punto_evacuacion):
