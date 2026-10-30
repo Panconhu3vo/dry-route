@@ -97,18 +97,48 @@ function dibujarPuntos(datos) {
   }
 
   for (const punto of datos.evacuacion) {
-    // Cruz para salud, casa para el resto: así se distinguen sin depender solo del color.
-    const esSalud = punto.tipo === "hospital" || punto.tipo === "clinica";
-    const icono = L.divIcon({
-      className: "icono-evacuacion",
-      html: esSalud ? "+" : "⌂",
-      iconSize: [26, 26]
-    });
-    L.marker([punto.lat, punto.lon], { icon: icono, title: punto.nombre })
-      .bindPopup(textoPopup(NOMBRE_TIPO[punto.tipo] || "Punto de evacuación", punto.nombre))
-      .addTo(DryRoute.mapa);
+    const popup = textoPopup(NOMBRE_TIPO[punto.tipo] || "Punto de evacuación", punto.nombre);
+    if (punto.tipo === "colegio" || punto.tipo === "punto_encuentro") {
+      // Son la gran mayoría (más de 200): como íconos taparían el mapa, van como puntos verdes pequeños
+      L.circleMarker([punto.lat, punto.lon], {
+        radius: 4,
+        color: color("--superficie"),
+        weight: 1,
+        fillColor: color("--ruta"),
+        fillOpacity: 1
+      }).bindPopup(popup).addTo(capaColegios);
+    } else {
+      // Cruz para salud, casa para el resto: así se distinguen sin depender solo del color.
+      const esSalud = punto.tipo === "hospital" || punto.tipo === "clinica";
+      const icono = L.divIcon({
+        className: "icono-evacuacion",
+        html: esSalud ? "+" : "⌂",
+        iconSize: [24, 24]
+      });
+      L.marker([punto.lat, punto.lon], { icon: icono, title: punto.nombre }).bindPopup(popup).addTo(capaServicios);
+    }
+  }
+  mostrarSegunZoom();
+}
+
+// Los puntos de evacuación se muestran solo al acercarse: con el mapa alejado serían una mancha verde.
+// (El punto elegido como resultado lo dibuja resultado.js en su propia capa, así que siempre se ve.)
+const capaServicios = L.layerGroup();  // salud, bomberos, Carabineros
+const capaColegios = L.layerGroup();   // colegios y puntos de encuentro
+const ZOOM_SERVICIOS = 14;
+const ZOOM_COLEGIOS = 16;
+
+function mostrarSegunZoom() {
+  const zoom = DryRoute.mapa.getZoom();
+  for (const [capa, zoomMinimo] of [[capaServicios, ZOOM_SERVICIOS], [capaColegios, ZOOM_COLEGIOS]]) {
+    if (zoom >= zoomMinimo) {
+      capa.addTo(DryRoute.mapa);
+    } else {
+      capa.remove();
+    }
   }
 }
+DryRoute.mapa.on("zoomend", mostrarSegunZoom);
 
 // Pide los puntos al servidor. Si el endpoint aún no existe o falla, usa los de ejemplo
 // para que el front se pueda probar sin esperar al backend.

@@ -3,7 +3,15 @@
 
 {% block contenido %}
 <header class="encabezado">
-  <h1>Dry Routes</h1>
+  <!-- Gota con una ruta adentro: el agua y el camino seguro, que es lo que hace la app -->
+  <svg class="logo" viewBox="0 0 32 32" aria-hidden="true">
+    <path d="M16 2C16 2 5 14.5 5 21a11 11 0 0 0 22 0C27 14.5 16 2 16 2Z" fill="var(--agua)"/>
+    <path d="M11 24c3-1 2-6 5-7s3-3 5-5" fill="none" stroke="var(--superficie)" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="0.1 4.5"/>
+  </svg>
+  <div>
+    <h1>Dry Routes</h1>
+    <p class="lema">Rutas de evacuación que evitan calles anegadas</p>
+  </div>
 </header>
 
 <main class="contenido">
@@ -17,6 +25,7 @@
     </p>
 
     <form id="form-ruta">
+      <p class="pista">Haz clic en el mapa: primero tu origen y luego tu destino. También puedes escribir una dirección y presionar Enter.</p>
       <div class="campo">
         <label for="input-origen">Origen</label>
         <input id="input-origen" type="text" autocomplete="off"
@@ -36,6 +45,18 @@
 
     <!-- resultado.js llena este contenedor y lo muestra; aria-live anuncia el resultado a lectores de pantalla -->
     <div id="resultado" aria-live="polite" hidden></div>
+
+    <!-- Leyenda: los mismos símbolos que dibujan mapa.js y resultado.js -->
+    <section class="leyenda" aria-label="Leyenda del mapa">
+      <h2>Leyenda</h2>
+      <ul>
+        <li><span class="simbolo simbolo-anegado"></span> Paso bajo nivel anegado (la ruta lo evita)</li>
+        <li><span class="simbolo simbolo-riesgo"></span> Paso bajo nivel sin agua</li>
+        <li><span class="simbolo simbolo-ruta"></span> Ruta segura</li>
+        <li><span class="simbolo icono-evacuacion">+</span> Salud · <span class="simbolo icono-evacuacion">⌂</span> Bomberos o Carabineros</li>
+        <li><span class="simbolo simbolo-colegio"></span> Colegio (punto de evacuación, visible al acercarse)</li>
+      </ul>
+    </section>
   </section>
 </main>
 {% endblock %}

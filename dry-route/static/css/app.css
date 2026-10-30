@@ -51,9 +51,24 @@ body {
 
 /* ---------- Encabezado ---------- */
 .encabezado {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   padding: 8px 16px;
   background: var(--superficie);
   border-bottom: 1px solid var(--borde);
+}
+
+.logo {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.lema {
+  margin: 0;
+  font-size: 14px;
+  color: var(--texto-suave);
 }
 
 .encabezado h1 {
@@ -212,7 +227,7 @@ body {
 
 .tarjeta-datos {
   margin: 0;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
 }
 
@@ -237,6 +252,84 @@ body {
 .tarjeta-sin-ruta .tarjeta-titulo,
 .tarjeta-error .tarjeta-titulo {
   color: var(--peligro);
+}
+
+/* ---------- Pista de uso y leyenda ---------- */
+.pista {
+  margin: 0;
+  font-size: 14px;
+  color: var(--texto-suave);
+}
+
+.leyenda {
+  margin-top: 20px;
+  padding-top: 12px;
+  border-top: 1px solid var(--borde);
+  font-size: 14px;
+}
+
+.leyenda h2 {
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.leyenda ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.leyenda li {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Muestras de la leyenda: copian el aspecto de lo que se dibuja en el mapa */
+.simbolo {
+  display: inline-flex;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+}
+
+.simbolo-anegado {
+  border-radius: 50%;
+  border: 2px solid var(--peligro);
+  background: rgb(200 50 42 / 0.35);
+}
+
+.simbolo-riesgo {
+  width: 10px;
+  height: 10px;
+  margin: 0 4px;
+  border-radius: 50%;
+  background: var(--inactivo);
+}
+
+.simbolo-ruta {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--ruta);
+}
+
+.simbolo-colegio {
+  width: 10px;
+  height: 10px;
+  margin: 0 4px;
+  border-radius: 50%;
+  border: 1px solid var(--superficie);
+  background: var(--ruta);
+}
+
+.leyenda .icono-evacuacion {
+  font-size: 13px;
+  box-shadow: none;
 }
 
 /* ---------- Escritorio (768 px o más): panel a la izquierda de 380 px ---------- */
