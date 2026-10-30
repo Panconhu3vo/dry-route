@@ -3,6 +3,9 @@ venv/
 __pycache__/
 *.pyc
 
+# Caché de descargas de OSMnx (scripts/generar_datos.py)
+cache/
+
 # Base de datos local: cada integrante genera la suya con `python manage.py migrate`
 db.sqlite3
 

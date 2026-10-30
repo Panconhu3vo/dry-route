@@ -1,0 +1,30 @@
+[
+  {
+    "osm_id": "way/451437804",
+    "nombre": "Paso bajo nivel Avenida Departamental / Gran Avenida José Miguel Carrera",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.503581,
+    "lon": -70.654867
+  },
+  {
+    "osm_id": "way/39324407",
+    "nombre": "Paso bajo nivel Avenida Departamental / Avenida Santa Rosa",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.507118,
+    "lon": -70.63851
+  },
+  {
+    "osm_id": "way/32441059",
+    "nombre": "Paso bajo nivel Almirante Latorre / Avenida Américo Vespucio",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.541358,
+    "lon": -70.642957
+  },
+  {
+    "osm_id": "way/39259025",
+    "nombre": "Paso bajo nivel Cerro Negro / Avenida Américo Vespucio",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.540228,
+    "lon": -70.650958
+  }
+]
