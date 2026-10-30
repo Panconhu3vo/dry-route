@@ -42,23 +42,14 @@ Los datos (grafo de calles, pasos bajo nivel y puntos de evacuación) ya vienen 
 
 ## Documentación
 
-| Archivo                                  | Contenido                                                    |
-| ---------------------------------------- | ------------------------------------------------------------ |
-| [CLAUDE.md](CLAUDE.md)                   | Contexto para Claude Code (y resumen general para el equipo) |
-| [docs/TAREAS.md](docs/TAREAS.md)         | Tareas y plazos hasta el Entregable III                      |
-| [docs/TAREAS-POR-INTEGRANTE.md](docs/TAREAS-POR-INTEGRANTE.md) | Qué le toca a cada uno y cómo trabajar con Claude |
-| [docs/API.md](docs/API.md)               | Contrato entre frontend y backend                            |
-| [docs/DECISIONES.md](docs/DECISIONES.md) | Decisiones técnicas y sus razones                            |
-| [docs/DISENO.md](docs/DISENO.md)         | Guía visual                                                  |
-| [docs/CONTEXTO.md](docs/CONTEXTO.md)     | Problema, historias de usuario, modelo ER y riesgos          |
-
-## Cómo trabajamos con Git
-
-Abre Claude Code y escribe: *"Soy &lt;tu nombre&gt;, revisa el archivo de tareas y ayúdame a realizar mi tarea"*. El detalle está en [docs/TAREAS-POR-INTEGRANTE.md](docs/TAREAS-POR-INTEGRANTE.md).
-
-1. Claude crea la rama de tu tarea (por ejemplo `feat/t3-mapa-base`) y hace los cambios contigo. **Claude no hace commits ni sube nada.**
-2. **Tú** haces el commit y subes la rama desde *Control de código fuente* en VS Code.
-3. Le avisas a **Juan**, que revisa y combina la rama en `main`. Nadie sube cambios directo a `main`.
+| Archivo                                                        | Contenido                                           |
+| -------------------------------------------------------------- | --------------------------------------------------- |
+| [docs/TAREAS.md](docs/TAREAS.md)                               | Tareas y plazos hasta el Entregable III             |
+| [docs/TAREAS-POR-INTEGRANTE.md](docs/TAREAS-POR-INTEGRANTE.md) | Qué le toca a cada uno y cómo trabajar con Claude   |
+| [docs/API.md](docs/API.md)                                     | Contrato entre frontend y backend                   |
+| [docs/DECISIONES.md](docs/DECISIONES.md)                       | Decisiones técnicas y sus razones                   |
+| [docs/DISENO.md](docs/DISENO.md)                               | Guía visual                                         |
+| [docs/CONTEXTO.md](docs/CONTEXTO.md)                           | Problema, historias de usuario, modelo ER y riesgos |
 
 ## Fuentes
 
