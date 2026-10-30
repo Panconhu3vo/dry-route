@@ -37,7 +37,7 @@ Crear `scripts/generar_datos.py` (usa `requirements-datos.txt`), que escribe en 
 
 ### T2 · App `rutas`: modelos, admin, carga de datos y `/api/puntos/` — *Juan* — jue 29, 13:00
 - [ ] `python manage.py startapp rutas` y registrarla en `INSTALLED_APPS`.
-- [ ] Modelos `PuntoAnegado` (`nombre`, `tipo`, `lat`, `lon`, `activo`, `fuente`, `osm_id`) y `PuntoEvacuacion` (`nombre`, `tipo`, `lat`, `lon`, `osm_id`).
+- [ ] Modelos `PuntoAnegado` (`nombre`, `tipo`, `lat`, `lon`, `activo`, `fuente`, `osm_id`) y `PuntoEvacuacion` (`nombre`, `tipo`, `lat`, `lon`, `osm_id`). **`osm_id` es texto** (`"way/123"`): `CharField(unique=True)` (DECISIONES D4).
 - [ ] Admin con `list_editable = ["activo"]` y filtro por `activo`, para simular el escenario con un clic.
 - [ ] Comando `python manage.py cargar_datos`, que lee los JSON de `data/` y se puede correr varias veces sin duplicar (`update_or_create` por `osm_id`).
 - [ ] Vista `GET /` que renderiza `rutas/mapa.html`, y `GET /api/puntos/` según [API.md](API.md).
@@ -65,7 +65,7 @@ Crear `scripts/generar_datos.py` (usa `requirements-datos.txt`), que escribe en 
 - [ ] Probado con **los dos JSON de ejemplo** de [API.md](API.md) antes de que exista el endpoint.
 
 ### T6 · Algoritmo de ruta segura y `/api/ruta/` — *Juan + Vicente (en pareja)* — jue 29, 23:00
-- [ ] `rutas/ruteo.py`: carga `grafo.json` una sola vez, busca el nodo más cercano a un punto, bloquea los nodos a menos de 100 m de los anegados activos y calcula la ruta con `nx.shortest_path(weight="largo")`. Si no hay ruta, va al punto de evacuación alcanzable más cercano (reglas en DECISIONES D5).
+- [ ] `rutas/ruteo.py`: carga `grafo.json` una sola vez **como grafo no dirigido (`nx.Graph`)**, busca el nodo más cercano a un punto, bloquea los nodos a menos de 100 m de los anegados activos y calcula la ruta con `nx.shortest_path(weight="largo")`. Si no hay ruta, va al punto de evacuación alcanzable más cercano (reglas en DECISIONES D5).
 - [ ] La vista `/api/ruta/` valida los parámetros y la zona, y responde **exactamente** como en [API.md](API.md).
 - [ ] `rutas/tests.py` con los **2 casos de prueba** de [ENTREGABLE-3.md](ENTREGABLE-3.md), pasando con `python manage.py test rutas`.
 - [ ] `calcular_ruta` queda en unas 30 líneas legibles: es el fragmento que se explica en el video.

@@ -16,6 +16,7 @@ Fecha de este registro: 28 de octubre de 2026.
   - *OpenRouteService:* sí permite evitar polígonos, pero el procesamiento quedaría fuera de nuestra app y sería difícil de explicar en el video.
   - *OSMnx en tiempo de ejecución:* necesita internet, es lento y obliga a los 5 integrantes a instalar geopandas.
 - **Por qué:** coincide con la mitigación de R3 (NetworkX y una sola zona primero), funciona sin internet durante la demo y el algoritmo cabe en unas 30 líneas que el equipo puede explicar.
+- **Grafo no dirigido (decisión de Vicente en T1):** en `grafo.json` cada calle aparece **una sola vez y sin sentido de tránsito**, porque la ruta es referencial. El archivo pesa menos y el cálculo es más simple. En T6 se carga como `nx.Graph()`, no `nx.DiGraph()`.
 - **Formato elegido:** JSON propio en lugar de GraphML. GraphML guarda todo como texto y obliga a convertir tipos, mientras que el JSON se lee directo y cualquiera puede abrirlo.
 
 ## D3. Zona: eje Gran Avenida, de Departamental a Lo Espejo
@@ -29,6 +30,7 @@ Fecha de este registro: 28 de octubre de 2026.
 - **Puntos de riesgo:** las aristas del mismo grafo con `tunnel=yes` o `layer<0` (pasos bajo nivel). Se toma el punto medio de cada una. Según Senapred, citado por El Dínamo (23/10/2026), el 41% de los puntos críticos del Gran Santiago son anegamientos de caminos o pasos a desnivel.
 - **Puntos de evacuación:** elementos de OSM con `amenity` = `hospital`, `clinic`, `fire_station`, `police` o `school`, más `emergency=assembly_point`.
 - **Estado "anegado ahora":** como no tenemos sensores (R5), para la demo se **simula un escenario**: en el admin de Django se marca `activo=True` en los puntos que están anegados. Esto es coherente con la prueba por escenarios simulados que comprometimos en R5.
+- **`osm_id` es texto (decisión de Vicente en T1):** viene como `"way/123"` o `"node/456"`, porque en OpenStreetMap dos elementos de distinto tipo pueden tener el mismo número. En los modelos debe ser `CharField(unique=True)`, no un número.
 - **CONDOR:** no encontramos una descarga pública (solo listados en la prensa). Si se consigue más adelante, se carga con el mismo comando `cargar_datos`.
 
 ## D5. Regla de "ruta segura"

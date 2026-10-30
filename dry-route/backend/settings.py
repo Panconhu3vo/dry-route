@@ -116,6 +116,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+# La carpeta static/ está a nivel de proyecto (no dentro de una app), así que hay que indicarla
+STATICFILES_DIRS = [BASE_DIR / 'static']
+
 
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration

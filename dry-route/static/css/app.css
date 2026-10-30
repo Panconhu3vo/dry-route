@@ -180,6 +180,65 @@ body {
   line-height: 1;
 }
 
+/* Punto de evacuación elegido como resultado (resultado.js): más grande y con halo, para que se distinga */
+.icono-evacuacion-resaltado {
+  font-size: 22px;
+  border-width: 3px;
+  box-shadow: 0 0 0 6px rgb(30 158 90 / 0.35), var(--sombra);
+}
+
+/* ---------- Tarjeta de resultado (resultado.js) ---------- */
+/* El estado se comunica con borde de color + ícono + texto, nunca solo con color (docs/DISENO.md) */
+.tarjeta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  background: var(--superficie);
+  border: 2px solid var(--borde);
+  border-left-width: 8px;
+  border-radius: var(--radio);
+}
+
+.tarjeta-titulo {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.tarjeta-icono {
+  font-size: 24px;
+}
+
+.tarjeta-datos {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.tarjeta-detalle {
+  margin: 0;
+  color: var(--texto-suave);
+}
+
+.tarjeta-segura {
+  border-color: var(--ruta);
+}
+
+.tarjeta-segura .tarjeta-titulo {
+  color: var(--ruta-texto);
+}
+
+.tarjeta-sin-ruta,
+.tarjeta-error {
+  border-color: var(--peligro);
+}
+
+.tarjeta-sin-ruta .tarjeta-titulo,
+.tarjeta-error .tarjeta-titulo {
+  color: var(--peligro);
+}
+
 /* ---------- Escritorio (768 px o más): panel a la izquierda de 380 px ---------- */
 @media (min-width: 768px) {
   .contenido {
