@@ -7,7 +7,7 @@ a menos de 100 m de un punto anegado activo y buscamos el camino más corto en l
 
 import json
 import math
-from functools import cache
+from functools import cache, lru_cache
 
 import networkx as nx
 from django.conf import settings
@@ -41,7 +41,9 @@ def distancia_m(lat1, lon1, lat2, lon2):
     return 2 * radio_tierra * math.asin(math.sqrt(a))
 
 
-@cache
+# Con límite: las coordenadas vienen del usuario, y sin tope cada consulta distinta quedaría en memoria
+# para siempre (alguien podría llenar la memoria del servidor pidiendo miles de rutas distintas).
+@lru_cache(maxsize=1000)
 def nodo_mas_cercano(lat, lon):
     grafo = cargar_grafo()
     return min(grafo.nodes, key=lambda n: distancia_m(lat, lon, grafo.nodes[n]["lat"], grafo.nodes[n]["lon"]))
