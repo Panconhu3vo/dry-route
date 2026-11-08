@@ -50,6 +50,31 @@ Devuelve los puntos que se dibujan al abrir el mapa y los límites de la zona cu
 - `anegados[].activo`: `true` significa anegado **ahora** (se dibuja en rojo y la ruta lo evita); `false` significa punto de riesgo sin anegamiento (gris, la ruta puede pasar).
 - `evacuacion[].tipo`: `hospital` | `clinica` | `bomberos` | `carabineros` | `colegio` | `punto_encuentro`.
 
+**Claves nuevas para el reporte colaborativo** (se agregan a las anteriores):
+
+```json
+{
+  "anegados": [
+    {
+      "id": 9,
+      "nombre": "Reporte ciudadano: calle anegada",
+      "tipo": "anegamiento",
+      "activo": true,
+      "fuente": "Reportes ciudadanos",
+      "confirmaciones": 2,
+      "lat": -33.5101,
+      "lon": -70.6566
+    }
+  ],
+  "reportes_pendientes": [
+    { "id": 12, "tipo": "arbol_caido", "descripcion": "Árbol sobre la calzada", "lat": -33.5150, "lon": -70.6580, "fecha_hora": "2026-11-11T18:30:00-03:00", "confirmaciones": 1, "requeridas": 2 }
+  ]
+}
+```
+
+- `anegados[].fuente`: `"OpenStreetMap"` o `"Reportes ciudadanos"`. `anegados[].confirmaciones` es `0` si el punto no tiene reportes.
+- `reportes_pendientes`: reportes vigentes que aún no se confirman. **No bloquean rutas.**
+
 ---
 
 ## `GET /api/ruta/?origen=LAT,LON&destino=LAT,LON`
@@ -112,6 +137,43 @@ Campos:
 
 ---
 
+## `POST /api/reportes/`
+
+Crea un reporte. El cuerpo va en JSON y hay que enviar el encabezado `X-CSRFToken` con el valor de la cookie `csrftoken`. La vista `/` entrega esa cookie.
+
+```json
+{ "tipo": "anegamiento", "descripcion": "Agua hasta la vereda", "lat": -33.5101, "lon": -70.6566 }
+```
+
+`tipo`: `anegamiento` | `calle_cortada` | `arbol_caido` | `puente_cortado`. `descripcion` es opcional (máximo 200 caracteres).
+
+### Respuesta 201: reporte recibido, falta confirmar
+
+```json
+{ "id": 12, "estado": "pendiente", "confirmaciones": 1, "requeridas": 2, "punto_id": null, "mensaje": "Reporte recibido. Falta que otra persona confirme este lugar." }
+```
+
+### Respuesta 201: reporte confirmado
+
+```json
+{ "id": 13, "estado": "confirmado", "confirmaciones": 2, "requeridas": 2, "punto_id": 9, "mensaje": "Reporte confirmado. Las rutas ya evitan este lugar." }
+```
+
+### Respuesta 400: error de entrada
+
+```json
+{ "error": "ya_reportado", "mensaje": "Ya reportaste este lugar. Falta que otra persona lo confirme." }
+```
+
+| `error` | Cuándo |
+|---|---|
+| `parametros_invalidos` | Falta un campo, o la descripción es demasiado larga |
+| `tipo_invalido` | `tipo` no es uno de los cuatro permitidos |
+| `fuera_de_zona` | El punto cae fuera de `zona` |
+| `ya_reportado` | La misma persona (sesión) ya reportó ese lugar en las últimas 6 horas |
+
+---
+
 ## Contrato interno del frontend
 
 Los tres archivos JS comparten **un solo objeto global**: `window.DryRoute`. Se cargan en este orden al final de `mapa.html`:
@@ -120,6 +182,7 @@ Los tres archivos JS comparten **un solo objeto global**: `window.DryRoute`. Se 
 <script src="{% static 'js/mapa.js' %}"></script>       <!-- Gonzalo -->
 <script src="{% static 'js/resultado.js' %}"></script>  <!-- Yusu -->
 <script src="{% static 'js/entrada.js' %}"></script>    <!-- Cristóbal -->
+<script src="{% static 'js/reporte.js' %}"></script>    <!-- Cristóbal -->
 ```
 
 | Archivo | Define | Usa |
@@ -140,3 +203,19 @@ IDs del HTML (los crea Gonzalo en `mapa.html`; los demás solo los usan):
 | `btn-calcular` | botón "Calcular ruta" |
 | `resultado` | contenedor de la tarjeta de resultado |
 | `aviso` | aviso permanente "Ruta referencial…" |
+| `btn-reportar` | botón "Reportar un problema" (fuera de `form-ruta`) |
+| `form-reporte` | formulario de reporte, oculto al inicio |
+| `select-tipo-reporte` | lista de tipos de reporte |
+| `input-descripcion-reporte` | descripción opcional |
+| `btn-enviar-reporte` | enviar el reporte |
+| `btn-cancelar-reporte` | cerrar el formulario |
+| `reporte-mensaje` | mensajes del reporte (`aria-live="polite"`) |
+
+Funciones nuevas para el reporte colaborativo:
+
+| Archivo | Define | Usa |
+|---|---|---|
+| `mapa.js` | `DryRoute.recargarPuntos()`: vuelve a pedir `/api/puntos/`, redibuja y devuelve los datos | Llama a `DryRoute.alRecargarPuntos(datos)` si existe |
+| `entrada.js` | `DryRoute.calcularRuta()`: repite el cálculo con el origen y destino actuales | `mostrarResultado`, `mostrarError` |
+| `reporte.js` | `DryRoute.modoReporte` (`true` mientras se elige el lugar; `entrada.js` ignora esos clics) | `recargarPuntos` |
+| `resultado.js` | `DryRoute.alRecargarPuntos(datos)`: si cambiaron los anegados activos y hay ruta, recalcula y avisa | `calcularRuta` |

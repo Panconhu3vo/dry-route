@@ -1,95 +1,154 @@
-# Tareas hasta el Entregable III (viernes 30 de octubre, 23:55)
+# Plan hasta la entrega final (antes del lunes 16 de noviembre)
 
-Plan corto y realista para **dos días**. Cada tarea es un Issue y una rama; Juan combina las ramas en `main`.
-Para trabajar en tu tarea con Claude, revisa [TAREAS-POR-INTEGRANTE.md](TAREAS-POR-INTEGRANTE.md).
-Los horarios son el **plazo máximo**. Si a alguien no le va a alcanzar, avisa en el grupo **antes** del plazo para reasignar (R7).
+**Meta del equipo: dejar todo terminado y subido el domingo 15.** La pauta pide subir al Aula, hasta el **16 de noviembre**, el video de respaldo y el archivo de la presentación. La presentación en vivo es en clases, entre el 16 y el 30 de noviembre, en la fecha que informe el profesor. Pauta resumida y guion: [ENTREGA-FINAL.md](ENTREGA-FINAL.md).
 
-## Línea de tiempo
+Trabajamos igual que en el Entregable III: cada tarea es una rama, Claude no hace commits y Juan combina en `main`. Para pedirle ayuda a Claude: [TAREAS-POR-INTEGRANTE.md](TAREAS-POR-INTEGRANTE.md).
 
-```
-Mié 28 noche   T0 todos: entorno funcionando
-Jue 29 ─13:00  T1 Vicente: datos OSM          T2 Juan: app rutas + /api/puntos/
-       ─18:00  T3 Gonzalo: mapa + layout      T4 Cristóbal: entrada      T5 Yusu: resultado   (con datos falsos del API.md)
-       ─23:00  T6 Juan + Vicente: ruteo + /api/ruta/ + pruebas
-Vie 30 ─14:00  T7 todos: integración en main + correr los 2 casos
-       ─20:00  T8 video grabado y subido
-       ─23:00  T9 documento E3 completo y README final   →  entrega antes de las 23:55
-```
+**Tres reglas nuevas, aprendidas en el Entregable III:**
 
-Dependencias: T6 necesita T1 y T2. Los integrantes de front (T3, T4, T5) **no esperan al backend**: usan los JSON de ejemplo de [API.md](API.md) y se conectan al endpoint real en T7.
+1. **Chequeo diario a las 21:00 en el grupo:** cada uno escribe qué terminó y si algo lo bloquea. Toma 2 minutos.
+2. **Cada tarea tiene un respaldo.** Si llega el plazo y no hay rama ni aviso, Juan le pasa la tarea al respaldo esa misma noche.
+3. **El código se congela el viernes 13 a las 23:00.** Después solo se arreglan errores que impidan la demo, con el visto bueno de Juan.
 
----
+## Calendario día a día
 
-### T0 · Entorno funcionando en los 5 computadores — *Todos* — mié 28, 23:59
-Es el hito H2 del E1, que quedó pendiente.
-- [ ] `git pull`, crear el venv, `pip install -r requirements.txt`, `python manage.py migrate` y `python manage.py runserver` (ver README).
-- [ ] Abrir http://127.0.0.1:8000/admin/ y ver la pantalla de login de Django.
-- [ ] Comentar en el Issue con una captura. Si algo falla, pegar el error **completo**.
+| Día | Juan | Vicente | Gonzalo | Cristóbal | Yusu | Al cerrar el día |
+|---|---|---|---|---|---|---|
+| **Dom 8** | Combina este plan en `main` y dirige la reunión de 20 min | Reunión; `git pull`; lee su sección | Reunión; `git pull`; lee su sección | Reunión; `git pull`; lee su sección | Reunión; `git pull`; lee su sección | Los 5 con `main` actualizado y su tarea clara |
+| **Lun 9** | **T10** Modelo `Reporte` y admin (14:00); combina T10 y T11 | Empieza **T12** apenas T10 esté en `main` | **T11** Panel de reporte en la página (22:00) | Empieza **T13** con la respuesta de ejemplo de API.md | Empieza **T15** con datos de ejemplo | `Reporte` en la base de datos y panel visible en la página |
+| **Mar 10** | Combina; apoya a Vicente; empieza **T16** | **T12** API de reportes y regla de 2 (20:00) | **T14** Dibujar reportes y recargar puntos (22:00) | **T13** Formulario de reporte (22:00) | Sigue **T15** | Se puede enviar un reporte desde el navegador y verlo en el mapa |
+| **Mié 11** | **T16** Vencimiento y `preparar_demo` (14:00); dirige **T17** (23:00) | **T17**: prueba los escenarios y anota errores | **T17**: conecta y corrige su parte | **T17**: conecta y corrige su parte | **T15** Recálculo (14:00); **T17** | **Las 2 funcionalidades integradas en `main`** |
+| **Jue 12** | **T18** dicta la sesión de traspaso (20:00); **T20** | **T19** organiza las pruebas con usuarios | **T22** diapositivas; consigue 1 usuario | **T23** guion; consigue 1 usuario | **T22** diapositivas; consigue 1 usuario | Todos entienden el proyecto completo |
+| **Vie 13** | **T20** Correcciones (23:00) y **congela el código** | **T19** (18:00); **T21** diagrama ER (23:00) | **T22** primera versión (23:00); arregla lo que le toque | **T23** guion y preguntas (23:00); arregla lo que le toque | **T22** primera versión (23:00); arregla lo que le toque | **Código congelado**; diapositivas y guion en primera versión |
+| **Sáb 14** | **T24** Ensayo 1 (16:00) | **T24** | **T24**; ajusta diapositivas | **T24**; ajusta guion | **T24**; **T25** video de respaldo (22:00) | Video grabado y subido; presentación ajustada |
+| **Dom 15** | **T26** Ensayo 2 y simulacro de defensa (18:00); verifica T27 | **T26** | **T26** | **T26**; **T27** sube al Aula (23:00) | **T26** | **Todo subido al Aula** |
+| **Lun 16** | Margen | Margen | Margen | Margen | Margen | Enlace del video probado en incógnito. Sin cambios de código |
 
-### T1 · Datos desde OpenStreetMap — *Vicente* — jue 29, 13:00
-Crear `scripts/generar_datos.py` (usa `requirements-datos.txt`), que escribe en `dry-route/data/`:
-- [ ] `grafo.json`: `{"nodos": {"<id>": [lat, lon]}, "aristas": [["<id_u>", "<id_v>", largo_m, "nombre calle"]]}`, con red `drive` en la zona definida en DECISIONES D3.
-- [ ] `puntos_anegados.json`: `[{"osm_id", "nombre", "tipo": "paso_bajo_nivel", "lat", "lon"}]`, a partir de las aristas con `tunnel=yes` o `layer<0`.
-- [ ] `puntos_evacuacion.json`: `[{"osm_id", "nombre", "tipo", "lat", "lon"}]` (los tipos están en API.md).
-- [ ] Verificar que aparezcan los pasos bajo nivel de **Gran Avenida/Departamental** y de la zona de **Lo Espejo**. Si no, ajustar el área y anotarlo.
-- [ ] `grafo.json` pesa menos de 10 MB. Los 3 archivos se suben al repo.
-- [ ] El script tiene comentarios que explican cada paso (Vicente lo tiene que poder explicar).
+## Dependencias
 
-### T2 · App `rutas`: modelos, admin, carga de datos y `/api/puntos/` — *Juan* — jue 29, 13:00
-- [ ] `python manage.py startapp rutas` y registrarla en `INSTALLED_APPS`.
-- [ ] Modelos `PuntoAnegado` (`nombre`, `tipo`, `lat`, `lon`, `activo`, `fuente`, `osm_id`) y `PuntoEvacuacion` (`nombre`, `tipo`, `lat`, `lon`, `osm_id`). **`osm_id` es texto** (`"way/123"`): `CharField(unique=True)` (DECISIONES D4).
-- [ ] Admin con `list_editable = ["activo"]` y filtro por `activo`, para simular el escenario con un clic.
-- [ ] Comando `python manage.py cargar_datos`, que lee los JSON de `data/` y se puede correr varias veces sin duplicar (`update_or_create` por `osm_id`).
-- [ ] Vista `GET /` que renderiza `rutas/mapa.html`, y `GET /api/puntos/` según [API.md](API.md).
-- [ ] Crear un superusuario de demo y dejar el comando documentado en el README.
-
-### T3 · Plantilla base, layout y mapa — *Gonzalo* — jue 29, 18:00
-- [ ] `templates/base.html` (fuente Atkinson Hyperlegible y Leaflet 1.9.4 desde un CDN) y `templates/rutas/mapa.html` con **todos los IDs** de [API.md](API.md#contrato-interno-del-frontend).
-- [ ] `static/css/app.css` con los tokens de [DISENO.md](DISENO.md); layout móvil (bottom sheet) y de escritorio (panel de 380 px).
-- [ ] `static/js/mapa.js`: crea `DryRoute.mapa` centrado en la zona, guarda `DryRoute.zona`, carga `/api/puntos/` (o el JSON de ejemplo) y dibuja los anegados activos e inactivos y los de evacuación según DISENO.md.
-- [ ] Aviso permanente "Ruta referencial…" en `#aviso`. Atribución de OSM visible.
-
-### T4 · Panel de entrada: origen y destino — *Cristóbal* — jue 29, 18:00
-`static/js/entrada.js`:
-- [ ] El botón **Usar mi ubicación** (`navigator.geolocation`) fija el origen. Si cae fuera de `DryRoute.zona`, muestra el mensaje de DECISIONES D9.
-- [ ] Búsqueda con **Nominatim** al presionar Buscar o Enter (no mientras se escribe), con `countrycodes=cl`, `viewbox` de la zona y `bounded=1`. Muestra hasta 5 resultados para elegir.
-- [ ] Clic en el mapa: el primer clic fija el origen y el segundo el destino. Los marcadores se pueden mover arrastrándolos.
-- [ ] **Calcular ruta** queda habilitado solo con origen y destino. Hace `fetch('/api/ruta/?origen=..&destino=..')` y llama a `DryRoute.mostrarResultado(json)` o, si hay un error 400, a `DryRoute.mostrarError(json.mensaje)`.
-
-### T5 · Presentación del resultado — *Yusu* — jue 29, 18:00
-`static/js/resultado.js`:
-- [ ] `DryRoute.mostrarResultado(r)`: dibuja `r.ruta` (estilo de DISENO.md), ajusta el mapa a la ruta y muestra la tarjeta.
-  - `estado = "segura"`: "Ruta segura · X km · Y min · Evita N puntos anegados".
-  - `estado = "sin_ruta"`: "No hay ruta segura a tu destino" más el punto de evacuación resaltado y la ruta hacia él.
-- [ ] `DryRoute.mostrarError(mensaje)` y `DryRoute.limpiarResultado()`, con el botón **Nueva ruta**.
-- [ ] Probado con **los dos JSON de ejemplo** de [API.md](API.md) antes de que exista el endpoint.
-
-### T6 · Algoritmo de ruta segura y `/api/ruta/` — *Juan + Vicente (en pareja)* — jue 29, 23:00
-- [ ] `rutas/ruteo.py`: carga `grafo.json` una sola vez **como grafo no dirigido (`nx.Graph`)**, busca el nodo más cercano a un punto, bloquea los nodos a menos de 100 m de los anegados activos y calcula la ruta con `nx.shortest_path(weight="largo")`. Si no hay ruta, va al punto de evacuación alcanzable más cercano (reglas en DECISIONES D5).
-- [ ] La vista `/api/ruta/` valida los parámetros y la zona, y responde **exactamente** como en [API.md](API.md).
-- [ ] `rutas/tests.py` con los **2 casos de prueba** de [ENTREGABLE-3.md](ENTREGABLE-3.md), pasando con `python manage.py test rutas`.
-- [ ] `calcular_ruta` queda en unas 30 líneas legibles: es el fragmento que se explica en el video.
-
-### T7 · Integración y ejecución de los casos — *Juan coordina, todos* — vie 30, 14:00
-- [ ] Unir todos los PR a `main`; quitar los datos falsos del front.
-- [ ] Desde un clon limpio: seguir el README de principio a fin y comprobar que funciona.
-- [ ] Ejecutar en el navegador los 2 casos y anotar el *resultado observado* en ENTREGABLE-3.md, con capturas.
-- [ ] Corregir solo los bugs que impiden los casos. Lo cosmético queda para después.
-
-### T8 · Video de demostración (máx. 5 min) — *Yusu (graba); Juan o Vicente (explican el código)* — vie 30, 20:00
-- [ ] Seguir el guion de [ENTREGABLE-3.md](ENTREGABLE-3.md#guion-del-video-5-min).
-- [ ] Subirlo con un enlace **accesible para el equipo docente** (probarlo en una ventana de incógnito).
-
-### T9 · Documento del Entregable III y README — *Cristóbal + Gonzalo* — vie 30, 23:00
-- [ ] Completar las tablas del documento (componentes, casos, estado, plan y riesgos) a partir de [ENTREGABLE-3.md](ENTREGABLE-3.md).
-- [ ] Revisar que el README tenga dependencias, pasos de ejecución y datos de prueba (lo exige la pauta).
-- [ ] Enlaces del video y del repo; **entregar antes de las 23:55**.
+- **T12** necesita **T10**. **T13** necesita los `id` de **T11**, y **T15** necesita `DryRoute.calcularRuta` de **T13**.
+- El front **no espera al backend**: usa las respuestas de ejemplo de [API.md](API.md) y se conecta a lo real en T17.
 
 ---
 
-## Después del viernes (no empezar antes)
+## Segunda funcionalidad: reporte colaborativo
 
-- F2 Reporte colaborativo o F3 Alertas (con MeteoPrecisa): el equipo prioriza una para la entrega final.
-- Pruebas con 5 usuarios (R5).
-- Sesión de traspaso de Django y tutorial oficial antes del 2 de noviembre (R2).
-- Guardar `Consulta` y `Ruta` en la base de datos (persistencia, alineada con el ER del E2).
+### T10 · Modelo `Reporte` y admin — *Juan* (respaldo: Vicente) — lun 9, 14:00
+
+- [ ] Modelo `Reporte` con los campos de [DECISIONES.md](DECISIONES.md) D11, y migración.
+- [ ] Admin de reportes: lista con tipo, estado, fecha y punto; filtro por estado; acción **Descartar**.
+- [ ] `PuntoAnegado.tipo` admite también los tipos de reporte.
+- [ ] La vista `mapa` entrega la cookie CSRF (`@ensure_csrf_cookie`), necesaria para que el navegador pueda enviar reportes.
+
+### T11 · Panel de reporte en la página — *Gonzalo* (respaldo: Yusu) — lun 9, 22:00
+
+- [ ] En `mapa.html`, todos los `id` nuevos de [API.md](API.md#contrato-interno-del-frontend). El botón `btn-reportar` queda **fuera** de `form-ruta`, para poder reportar con una ruta en pantalla.
+- [ ] Cargar `reporte.js` después de `entrada.js`, más `css/reporte.css` y `css/avisos.css` (de Cristóbal y Yusu; así cada uno es dueño de sus estilos y no se repite lo que faltó en el E3).
+- [ ] En `app.css`: `[hidden] { display: none !important; }`, para que `hidden` funcione también en los formularios.
+
+### T12 · API de reportes y regla de 2 reportes — *Vicente* (respaldo: Juan) — mar 10, 20:00
+
+- [ ] `rutas/reportes.py` con la regla de D11, en funciones cortas que puedas explicar.
+- [ ] `POST /api/reportes/` y las nuevas claves de `GET /api/puntos/`, **exactamente** como en [API.md](API.md).
+- [ ] `rutas/tests.py` con estas pruebas:
+  - 1 reporte **no** bloquea rutas.
+  - 2 reportes de **personas distintas** a menos de 100 m activan un punto, y la ruta lo evita.
+  - 2 reportes de la **misma sesión** no cuentan.
+  - Un reporte cerca de un paso bajo nivel activa ese paso; no crea otro punto.
+  - Tipo inválido y punto fuera de la zona devuelven 400.
+
+### T13 · Formulario de reporte — *Cristóbal* (respaldo: Gonzalo) — mar 10, 22:00
+
+`static/js/reporte.js` y `static/css/reporte.css`:
+
+- [ ] **Reportar un problema** abre el formulario: oculta `form-ruta` y `resultado`, y al cerrar los deja como estaban.
+- [ ] Mientras se reporta, el clic en el mapa marca el lugar y no cambia el origen ni el destino (`DryRoute.modoReporte`, respetado en `entrada.js`).
+- [ ] Elegir tipo, descripción opcional y **Enviar** (habilitado solo con un lugar marcado). Envía con `X-CSRFToken`, leído de la cookie `csrftoken`.
+- [ ] Muestra `mensaje` en `reporte-mensaje`, incluidos los errores 400, y llama a `DryRoute.recargarPuntos()`.
+- [ ] En `entrada.js`: separar el cálculo en `DryRoute.calcularRuta()`, para que Yusu pueda recalcular.
+- [ ] Nombres globales únicos en `reporte.js`: si se repite uno de otro archivo, el navegador descarta el archivo completo.
+
+### T14 · Dibujar reportes y recargar puntos — *Gonzalo* (respaldo: Yusu) — mar 10, 22:00
+
+`static/js/mapa.js`:
+
+- [ ] `DryRoute.recargarPuntos()`: vuelve a pedir `/api/puntos/`, redibuja sin duplicar marcadores y llama a `DryRoute.alRecargarPuntos(datos)` si existe.
+- [ ] `reportes_pendientes` en ámbar con popup "1 de 2 confirmaciones". Nunca solo color: usar también forma o ícono ([DISENO.md](DISENO.md)).
+- [ ] Los anegados con `fuente = "Reportes ciudadanos"` llevan popup con el tipo y las confirmaciones.
+- [ ] Leyenda actualizada.
+
+### T15 · Confirmación y recálculo de la ruta — *Yusu* (respaldo: Cristóbal) — mié 11, 14:00
+
+`static/js/resultado.js` y `static/css/avisos.css`. Corresponde a la pantalla 5 del prototipo:
+
+- [ ] `DryRoute.alRecargarPuntos(datos)`: si cambiaron los anegados activos y hay una ruta en pantalla, recalcula con `DryRoute.calcularRuta()`.
+- [ ] Aviso visible: *"Nuevo reporte en la zona. Ruta recalculada."*
+- [ ] Revisar cada 15 segundos con `DryRoute.recargarPuntos()`, para que otra ventana vea los cambios sin recargar. **Si no alcanza, esto es lo primero que se recorta:** queda el recálculo al enviar un reporte.
+
+### T16 · Vencimiento, descartados y `preparar_demo` — *Juan* (respaldo: Vicente) — mié 11, 14:00
+
+- [ ] Un punto activado por reportes se desactiva cuando no le quedan reportes vigentes (vencidos a las 6 horas o descartados). No afecta a los puntos activados a mano.
+- [ ] Comando `python manage.py preparar_demo`: borra reportes y puntos creados por reportes, desactiva todo y activa el paso Departamental / Gran Avenida.
+- [ ] Pruebas de vencimiento y de descartar.
+
+### T17 · Integración y limpieza — *Juan coordina, todos* — mié 11, 23:00
+
+- [ ] Combinar todo en `main` y hacer el recorrido completo desde un clon limpio siguiendo el README.
+- [ ] Quitar los datos de ejemplo de `mapa.js`: hoy, si falla `/api/puntos/`, muestra puntos falsos sin avisar. Debe mostrar un error.
+- [ ] README con la segunda funcionalidad y `preparar_demo`.
+- [ ] `CLAUDE.md` y [CONTEXTO.md](CONTEXTO.md) alineados con lo implementado.
+
+## Calidad y comprensión
+
+### T18 · Sesión de traspaso — *Juan dicta, todos* — jue 12, 20:00 (1 hora)
+
+Pendiente desde R2, y la pauta exige que **todos** entiendan la aplicación. Se recorre una consulta completa (navegador → URL → vista → modelo → respuesta) y se revisan los archivos de `explicaciones/`.
+
+### T19 · Pruebas con 5 usuarios — *Vicente organiza; cada uno consigue 1 persona* — vie 13, 18:00
+
+Compromiso de R5, nunca realizado.
+
+- [ ] Cada persona prueba dos tareas: calcular una ruta y reportar un problema.
+- [ ] Anotar, sin datos personales: si lo logró, dónde se confundió y qué sugiere.
+- [ ] Resumen en [ENTREGA-FINAL.md](ENTREGA-FINAL.md), con la lista de errores para T20.
+
+### T20 · Correcciones y congelar — *Juan asigna* — vie 13, 23:00
+
+- [ ] Solo errores y problemas de uso encontrados en T17 y T19. Nada de funciones nuevas.
+- [ ] `python manage.py test rutas` en verde. **Código congelado.**
+
+## Presentación
+
+### T21 · Diagrama ER actualizado — *Vicente* — vie 13, 23:00
+
+Debe reflejar lo implementado y explicar un cambio respecto del E2. Ver [ENTREGA-FINAL.md](ENTREGA-FINAL.md).
+
+### T22 · Diapositivas — *Yusu + Gonzalo* — primera versión vie 13, 23:00; final sáb 14
+
+Pitch de **máximo 5 diapositivas**, más las de apoyo del relato técnico. PDF o PowerPoint.
+
+### T23 · Guion y banco de preguntas — *Cristóbal* — vie 13, 23:00
+
+Guion de los 13 minutos, con **todos** interviniendo, y banco de preguntas por tema.
+
+### T24 · Ensayo 1 — *todos* — sáb 14, 16:00
+
+Cronometrado, con `preparar_demo`, en el computador y con la conexión que se usará en clases.
+
+### T25 · Video de respaldo — *Yusu* — sáb 14, 22:00
+
+Máximo **3 minutos**: funcionalidad corazón y reporte colaborativo. Probar el enlace en incógnito.
+
+### T26 · Ensayo 2 y simulacro de defensa — *todos* — dom 15, 18:00
+
+Completo, cronometrado y con 3 minutos de preguntas cruzadas. Cada integrante responde al menos una pregunta sobre una parte que **no** hizo.
+
+### T27 · Subir al Aula — *Cristóbal; Juan verifica* — dom 15, 23:00
+
+Enlace del video y archivo de la presentación. El lunes 16 queda solo como margen.
+
+---
+
+## Fuera de la entrega final
+
+Alertas vigentes con MeteoPrecisa (F3), buses en tiempo real, despliegue público, login, notificaciones y guardar `Consulta` y `Ruta` en la base de datos.

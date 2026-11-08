@@ -41,6 +41,8 @@ Si una palabra técnica es inevitable, la explica en la misma frase.
 - Borrar o mover archivos.
 - Ir en contra de una decisión de [DECISIONES.md](DECISIONES.md) o hacer algo fuera de la tarea.
 
+**Excepción:** lo que aparece en "Tus archivos" dentro de la sección de la persona ya está autorizado para su tarea, aunque sea un modelo o una URL.
+
 Mientras espera, Claude puede seguir con otras partes de la tarea que no dependan de esa respuesta.
 
 **Cambios normales** (dentro de la tarea y de sus propios archivos): Claude pregunta lo necesario en simple y avanza.
@@ -80,7 +82,7 @@ Pasos exactos para verlo funcionar.
 
 ## Uso de IA
 Qué le pedimos a Claude, qué aceptamos, cambiamos o rechazamos y por qué
-(esto va al documento del Entregable III: pásalo al grupo).
+(esto va a la tabla de Uso de IA de ENTREGA-FINAL.md: pásalo al grupo).
 ```
 
 Escríbelo para alguien que **no sabe Django**: frases cortas, sin dar nada por sabido.
@@ -113,59 +115,71 @@ Igual aplica el protocolo de Git: Claude no hace commits; tú combinas las ramas
 
 | Orden | Tarea | Rama | Plazo |
 |---|---|---|---|
-| 1 | **T0** Entorno funcionando (verificar que los 5 lo logren) | — | mié 28, 23:59 |
-| 2 | **T2** App `rutas`: modelos, admin, `cargar_datos`, vista `/` y `/api/puntos/` | `feat/t2-app-rutas` | jue 29, 13:00 |
-| 3 | **T6** Algoritmo de ruta y `/api/ruta/` (en pareja con Vicente) | `feat/t6-ruteo` | jue 29, 23:00 |
-| 4 | **T7** Combinar todas las ramas, ejecutar los 2 casos y corregir | `fix/...` según el caso | vie 30, 14:00 |
+| 1 | **T10** Modelo `Reporte` y admin | `feat/t10-modelo-reporte` | lun 9, 14:00 |
+| 2 | **T16** Vencimiento, descartados y `preparar_demo` | `feat/t16-vencimiento-demo` | mié 11, 14:00 |
+| 3 | **T17** Integración y limpieza (coordinas) | `fix/t17-integracion` | mié 11, 23:00 |
+| 4 | **T18** Sesión de traspaso (la dictas) | — | jue 12, 20:00 |
+| 5 | **T20** Correcciones y congelar el código | `fix/...` según el caso | vie 13, 23:00 |
 
-- **Tus archivos:** `dry-route/rutas/` (salvo `ruteo.py`, que compartes con Vicente), `dry-route/backend/`.
-- **Depende de:** T2 puede partir con un JSON falso pequeño mientras Vicente termina T1.
-- **Nota:** al hacer `startapp` y crear los modelos se modifica `settings.py`; en tu caso no hace falta consultar a nadie.
+- **Tus archivos:** `dry-route/rutas/` (`models.py`, `admin.py`, `migrations/`, la vista `mapa` de `views.py`, comandos), `dry-route/backend/`.
+- **Eres respaldo de:** T12. Además, cada noche revisas el chequeo de las 21:00 y reasignas lo atrasado.
+- **En la presentación:** caso de prueba y dificultad significativa.
 
 ## Vicente Zapata — Backend
 
 | Orden | Tarea | Rama | Plazo |
 |---|---|---|---|
-| 1 | **T0** Entorno funcionando | — | mié 28, 23:59 |
-| 2 | **T1** Datos desde OpenStreetMap (`scripts/generar_datos.py`) | `feat/t1-datos-osm` | jue 29, 13:00 |
-| 3 | **T6** Algoritmo de ruta y `/api/ruta/` (en pareja con Juan) | `feat/t6-ruteo` | jue 29, 23:00 |
+| 1 | **T12** API de reportes y regla de 2 reportes | `feat/t12-api-reportes` | mar 10, 20:00 |
+| 2 | **T19** Pruebas con 5 usuarios (organizas) | `docs/t19-pruebas-usuarios` | vie 13, 18:00 |
+| 3 | **T21** Diagrama ER actualizado | `docs/t21-diagrama-er` | vie 13, 23:00 |
 
-- **Tus archivos:** `scripts/generar_datos.py`, `dry-route/data/`, `dry-route/rutas/ruteo.py` (compartido con Juan).
-- **Para T1:** instala `pip install -r requirements-datos.txt` (incluye OSMnx). Revisa la zona en [DECISIONES.md](DECISIONES.md) (D3 y D4).
-- **Ojo:** probablemente explicarás el algoritmo en el video (T8). Pide que el archivo de explicación de T6 sea muy detallado.
+- **Tus archivos:** `dry-route/rutas/reportes.py` (nuevo), `dry-route/rutas/tests.py`, `dry-route/rutas/urls.py`, y en `views.py` la vista de reportes y `api_puntos`. También `docs/img/`.
+- **Depende de:** T12 necesita el modelo de T10 (lunes a las 14:00). Mientras tanto, lee [DECISIONES.md](DECISIONES.md) D11 y [API.md](API.md).
+- **Eres respaldo de:** T10 y T16.
+- **En la presentación:** diagrama ER y un cambio de diseño justificado.
 
 ## Gonzalo Vega — Frontend
 
 | Orden | Tarea | Rama | Plazo |
 |---|---|---|---|
-| 1 | **T0** Entorno funcionando | — | mié 28, 23:59 |
-| 2 | **T3** Plantilla base, layout y mapa Leaflet | `feat/t3-mapa-base` | jue 29, 18:00 |
-| 3 | **T9** Documento del Entregable III y README (con Cristóbal) | `docs/t9-readme` | vie 30, 23:00 |
+| 1 | **T11** Panel de reporte en la página | `feat/t11-panel-reporte` | lun 9, 22:00 |
+| 2 | **T14** Dibujar reportes y recargar puntos | `feat/t14-dibujar-reportes` | mar 10, 22:00 |
+| 3 | **T22** Diapositivas (con Yusu) | — | vie 13, 23:00 |
 
-- **Tus archivos:** `dry-route/templates/base.html`, `dry-route/templates/rutas/mapa.html`, `dry-route/static/css/app.css`, `dry-route/static/js/mapa.js`.
-- **Depende de:** la vista `/` es de Juan (T2). Mientras no exista, abre el HTML con datos de ejemplo o pídele a Claude una forma simple de verlo, **sin tocar los archivos de Juan**.
-- **Importante:** tú creas los `id` del HTML que usan Cristóbal y Yusu. Respeta exactamente la lista de [API.md](API.md#contrato-interno-del-frontend). Guía visual: [DISENO.md](DISENO.md).
+- **Tus archivos:** `dry-route/templates/`, `dry-route/static/css/app.css`, `dry-route/static/js/mapa.js`.
+- **Importante:** T11 va primero porque Cristóbal y Yusu usan esos `id`. Respeta la lista de [API.md](API.md#contrato-interno-del-frontend).
+- **Eres respaldo de:** T13.
+- **En la presentación:** demo de la funcionalidad corazón.
 
 ## Cristóbal Vargas — Frontend
 
 | Orden | Tarea | Rama | Plazo |
 |---|---|---|---|
-| 1 | **T0** Entorno funcionando | — | mié 28, 23:59 |
-| 2 | **T4** Panel de entrada: búsqueda de direcciones, GPS y clic en el mapa | `feat/t4-entrada` | jue 29, 18:00 |
-| 3 | **T9** Documento del Entregable III y README (con Gonzalo) | `docs/t9-readme` | vie 30, 23:00 |
+| 1 | **T13** Formulario de reporte | `feat/t13-formulario-reporte` | mar 10, 22:00 |
+| 2 | **T23** Guion y banco de preguntas | `docs/t23-guion` | vie 13, 23:00 |
+| 3 | **T27** Subir video y presentación al Aula | — | dom 15, 23:00 |
 
-- **Tus archivos:** `dry-route/static/js/entrada.js`.
-- **Depende de:** el mapa y los `id` del HTML son de Gonzalo (T3). Mientras no estén, Claude puede prepararte una página de prueba **dentro de `explicaciones/`** (no se sube) para que avances.
-- **Reglas de Nominatim:** buscar solo al presionar el botón, no mientras se escribe ([DECISIONES.md](DECISIONES.md) D7).
+- **Tus archivos:** `dry-route/static/js/reporte.js` (nuevo), `dry-route/static/js/entrada.js`, `dry-route/static/css/reporte.css` (nuevo), `docs/ENTREGA-FINAL.md`.
+- **Depende de:** los `id` de T11 (lunes a las 22:00). Mientras tanto, usa las respuestas de ejemplo de [API.md](API.md).
+- **Eres respaldo de:** T15.
+- **En la presentación:** pitch.
 
 ## Yusu Zhan — Frontend
 
 | Orden | Tarea | Rama | Plazo |
 |---|---|---|---|
-| 1 | **T0** Entorno funcionando | — | mié 28, 23:59 |
-| 2 | **T5** Presentación del resultado: ruta, tarjeta, caso sin ruta | `feat/t5-resultado` | jue 29, 18:00 |
-| 3 | **T8** Grabar y subir el video (máximo 5 min) | — | vie 30, 20:00 |
+| 1 | **T15** Confirmación y recálculo de la ruta | `feat/t15-recalculo` | mié 11, 14:00 |
+| 2 | **T22** Diapositivas (con Gonzalo) | — | vie 13, 23:00 |
+| 3 | **T25** Video de respaldo (máximo 3 minutos) | — | sáb 14, 22:00 |
 
-- **Tus archivos:** `dry-route/static/js/resultado.js` (y los estilos de la tarjeta de resultado, coordinando con Gonzalo, que es dueño de `app.css`).
-- **Depende de:** el endpoint de ruta es de Juan y Vicente (T6). Trabaja con **los dos JSON de ejemplo** de [API.md](API.md) hasta que exista.
-- **Para T8:** sigue el guion de [ENTREGABLE-3.md](ENTREGABLE-3.md#guion-del-video-5-min) y prueba el enlace en una ventana de incógnito.
+- **Tus archivos:** `dry-route/static/js/resultado.js`, `dry-route/static/css/avisos.css` (nuevo).
+- **Depende de:** `DryRoute.calcularRuta` de T13. Mientras no exista, prueba con una función de ejemplo.
+- **Eres respaldo de:** T11 y T14.
+- **En la presentación:** demo del reporte colaborativo y la persistencia.
+
+## Todos
+
+- Lunes a miércoles: chequeo a las 21:00 en el grupo.
+- **Jue 12, 20:00:** sesión de traspaso (T18).
+- **Sáb 14, 16:00:** ensayo 1 (T24). **Dom 15, 18:00:** ensayo 2 y simulacro de defensa (T26).
+- Cada uno consigue **1 persona** para las pruebas de T19 y estudia su archivo de `explicaciones/`.

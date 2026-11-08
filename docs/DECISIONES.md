@@ -65,3 +65,28 @@ Fecha de este registro: 28 de octubre de 2026.
 
 - `navigator.geolocation` funciona en `localhost`. Pero si la ubicación real del usuario está fuera de la zona del grafo, el backend responde con un error 400 (`fuera_de_zona`) y el front muestra: *"Tu ubicación está fuera de la zona cubierta. Marca tu origen en el mapa."*
 - **Para el video:** el origen se marca con clic o con búsqueda, no con GPS.
+
+## D10. Segunda funcionalidad: reporte colaborativo
+
+- **Decisión:** la entrega final incluye la funcionalidad corazón y el reporte colaborativo (F2). Las alertas (F3) quedan fuera.
+- **Por qué:** la pauta exige una segunda funcionalidad con persistencia o API. El reporte guarda datos propios y cambia las rutas. MeteoPrecisa obligaría a levantar otro servicio en la demo, y su lista de alertas venía vacía al revisarla.
+
+## D11. Un lugar se confirma con 2 reportes de personas distintas
+
+- **Modelo `Reporte`:** `tipo`, `descripcion`, `lat`, `lon`, `fecha_hora`, `estado_verificacion` (`pendiente`, `confirmado`, `descartado`), `sesion` (clave de sesión de Django) y `punto` (`ForeignKey` a `PuntoAnegado`, nulo mientras esté pendiente). Es la relación "un punto se actualiza con varios reportes" del ER del E2.
+- **Regla:** un reporte queda pendiente y **no bloquea rutas**. Si existe otro reporte **vigente, de otra sesión y a menos de 100 m**, ambos se confirman y se activa un `PuntoAnegado`.
+- **Punto activado:** si ya hay un `PuntoAnegado` a menos de 100 m, se activa ese. Si no, se crea uno con `osm_id = "reporte/<id>"` y `fuente = "Reportes ciudadanos"`. Así **`ruteo.py` no cambia**: ya evita todo `PuntoAnegado` activo.
+- **Vigencia:** 6 horas desde el reporte (`HORAS_VIGENCIA_REPORTE`). Los reportes descartados desde el admin no cuentan. Un punto activado por reportes se desactiva cuando no le quedan reportes vigentes.
+- **Sin login:** se distingue a las personas por la sesión del navegador. La misma sesión no puede confirmar su propio reporte.
+- **Limitación conocida:** alguien puede abrir otra sesión y confirmar solo. Se acepta en un prototipo sin registro. La mitigan el aviso "ruta referencial", el vencimiento y la opción de descartar desde el admin.
+
+## D12. Qué se guarda en la base de datos
+
+- **Se guardan:** `PuntoAnegado`, `PuntoEvacuacion` y `Reporte`.
+- **No se guardan:** `Consulta` y `Ruta` (se calculan en cada petición) ni `Vía` (son las aristas de `grafo.json`).
+- **Por qué:** la app se usa sin registro y lo que necesita persistir para otras personas son los reportes. Este cambio respecto del ER del E2 se explica en la presentación.
+
+## D13. La entrega final corre en localhost
+
+- La pauta no exige publicar la app en internet. El tiempo se destina a la segunda funcionalidad, las pruebas y la defensa.
+

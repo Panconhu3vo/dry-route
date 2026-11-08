@@ -26,9 +26,9 @@ Las personas que viven o se desplazan por ciudades de Chile expuestas a lluvias 
 
 | # | Funcionalidad | HdU | Estado del plan |
 |---|---|---|---|
-| 1* | **Ruta de evacuación segura.** Origen y destino → ruta que evita puntos anegados; si no existe, el punto de evacuación más cercano. Sin registro. | 1, 4 | **Entregable III (30 oct)** |
-| 2 | Reporte colaborativo de anegamientos, calles cortadas, árboles o puentes; afecta las rutas. | 2 | Después del E3 |
-| 3 | Alertas vigentes y puntos críticos en el mapa, con su nivel de riesgo. | 3 | Después del E3 (fuente: MeteoPrecisa / SENAPRED) |
+| 1* | **Ruta de evacuación segura.** Origen y destino → ruta que evita puntos anegados; si no existe, el punto de evacuación más cercano. Sin registro. | 1, 4 | **Implementada** |
+| 2 | Reporte colaborativo de anegamientos, calles cortadas, árboles o puentes; afecta las rutas. | 2 | **Entrega final: en desarrollo** (segunda funcionalidad) |
+| 3 | Alertas vigentes y puntos críticos en el mapa, con su nivel de riesgo. | 3 | Fuera de la entrega final (DECISIONES D10) |
 
 Para la entrega final se exige la funcionalidad corazón más **una segunda funcionalidad priorizada**, con persistencia, conexión a una API pública u otra característica aprobada.
 
@@ -43,7 +43,8 @@ Entidades: Consulta, Ruta de evacuación, Vía, Punto anegado, Reporte y Alerta.
 - `PuntoEvacuacion` → modelo Django nuevo. No estaba en el ER, pero lo exige el caso "sin ruta segura".
 - `Vía` → son las aristas del grafo en `data/grafo.json`; no se guardan en la base de datos.
 - `Consulta` y `Ruta` → se calculan en cada petición y no se guardan. El E3 no exige persistencia; se pueden agregar después.
-- `Reporte` y `Alerta` → corresponden a F2 y F3, después del viernes.
+- `Reporte` → se implementa en la entrega final; dos reportes de personas distintas activan un `PuntoAnegado` (DECISIONES D11).
+- `Alerta` → no se implementa (F3 fuera de la entrega final).
 
 Esta diferencia con el E2 hay que explicarla en el documento del E3 ("cambios respecto al Entregable II").
 
