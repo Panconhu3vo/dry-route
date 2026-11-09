@@ -1,10 +1,13 @@
 from django.http import JsonResponse
 from django.shortcuts import render
+from django.views.decorators.csrf import ensure_csrf_cookie
 
 from .models import PuntoAnegado, PuntoEvacuacion
 from .ruteo import ZONA, calcular_ruta, esta_en_zona
 
 
+# Sin esta cookie, Django rechazaría el POST con el que el navegador envía un reporte
+@ensure_csrf_cookie
 def mapa(request):
     return render(request, "rutas/mapa.html")
 
