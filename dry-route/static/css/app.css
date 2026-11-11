@@ -43,6 +43,11 @@ body {
   line-height: 1.4;
 }
 
+/* Sin esto, una regla como "display: flex" le gana al atributo hidden y el elemento no se esconde */
+[hidden] {
+  display: none !important;
+}
+
 /* Foco siempre visible: quien navega con teclado tiene que saber dónde está */
 :focus-visible {
   outline: 3px solid var(--agua);
@@ -177,6 +182,19 @@ body {
   border-color: var(--borde);
   color: var(--texto-suave);
   cursor: not-allowed;
+}
+
+/* ---------- Panel de reporte ---------- */
+/* El resto del formulario lo estiliza reporte.css (Cristóbal); aquí solo su lugar en el panel */
+.boton-reportar {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.titulo-reporte {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
 }
 
 /* ---------- Íconos del mapa ---------- */
