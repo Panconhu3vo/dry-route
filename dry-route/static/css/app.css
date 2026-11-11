@@ -213,6 +213,21 @@ body {
   line-height: 1;
 }
 
+/* Reporte sin confirmar (mapa.js): triángulo ámbar con "!", como una señal de advertencia.
+   clip-path recorta el cuadrado del ícono en forma de triángulo. */
+.icono-reporte-pendiente {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 2px;
+  background: var(--alerta-borde);
+  color: var(--texto);
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1;
+}
+
 /* Punto de evacuación elegido como resultado (resultado.js): más grande y con halo, para que se distinga */
 .icono-evacuacion-resaltado {
   font-size: 22px;
@@ -343,6 +358,12 @@ body {
   border-radius: 50%;
   border: 1px solid var(--superficie);
   background: var(--ruta);
+}
+
+.leyenda .icono-reporte-pendiente {
+  width: 20px;
+  font-size: 12px;
+  padding-bottom: 1px;
 }
 
 .leyenda .icono-evacuacion {
