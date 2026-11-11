@@ -1,6 +1,7 @@
 # Pruebas con usuarios (T19)
 
 Guía para que los 5 integrantes hagan la prueba **de la misma forma**. Responsable: Vicente. Plazo: vie 13, 18:00.
+Versión corta para tener abierta durante la prueba: [PASO-A-PASO-PRUEBAS.md](PASO-A-PASO-PRUEBAS.md).
 
 **Objetivo:** saber si una persona que nunca vio Dry Routes puede, **sin ayuda**, calcular una ruta segura y reportar un problema. Lo que encontremos alimenta las correcciones de T20 (Juan).
 
