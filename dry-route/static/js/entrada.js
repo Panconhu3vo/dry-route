@@ -123,6 +123,10 @@ function crearMarcador(cual, lat, lon) {
 // ---------- Clic en el mapa ----------
 // Primer clic: origen. Segundo clic: destino. Si ya están los dos, el clic cambia el destino.
 DryRoute.mapa.on("click", function (evento) {
+  // Mientras se llena un reporte, el clic marca el lugar del problema (reporte.js), no el origen ni el destino.
+  if (DryRoute.modoReporte) {
+    return;
+  }
   const lat = evento.latlng.lat;
   const lon = evento.latlng.lng;
   if (!estaEnZona(lat, lon)) {
@@ -285,7 +289,12 @@ function coordenadaComoTexto(punto) {
   return punto.lat.toFixed(6) + "," + punto.lon.toFixed(6);
 }
 
-botonCalcular.addEventListener("click", function () {
+// Es una función de DryRoute (y no solo lo que hace el botón) para que resultado.js pueda
+// recalcular la ruta cuando llega un reporte nuevo, sin que la persona tenga que apretar nada (T15).
+DryRoute.calcularRuta = function () {
+  if (DryRoute.origen === null || DryRoute.destino === null) {
+    return;
+  }
   const url = "/api/ruta/?origen=" + coordenadaComoTexto(DryRoute.origen) +
               "&destino=" + coordenadaComoTexto(DryRoute.destino);
   ocultarMensaje();
@@ -313,4 +322,6 @@ botonCalcular.addEventListener("click", function () {
       botonCalcular.textContent = "Calcular ruta";
       actualizarBotonCalcular();
     });
-});
+};
+
+botonCalcular.addEventListener("click", DryRoute.calcularRuta);
