@@ -1,0 +1,68 @@
+/* Estilos del formulario de reporte (T13, Cristóbal). Lo usa reporte.js.
+   Los colores y medidas son los tokens de app.css (docs/DISENO.md), para que se vea igual que el resto. */
+
+#form-reporte {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Sin esta regla, el display: flex de arriba le gana al atributo hidden y el formulario nunca se escondería */
+#form-reporte[hidden] {
+  display: none;
+}
+
+/* Mientras se reporta, el panel muestra solo el formulario de reporte: una cosa a la vez (docs/DISENO.md).
+   !important porque resultado.js cambia el display de estos elementos directamente en el HTML. */
+#panel.reportando #form-ruta,
+#panel.reportando #resultado,
+#panel.reportando #btn-reportar {
+  display: none !important;
+}
+
+/* La lista de tipos y la descripción, iguales a los campos de origen y destino (.campo input en app.css) */
+#select-tipo-reporte,
+#input-descripcion-reporte {
+  min-height: 48px;
+  padding: 8px 12px;
+  border: 2px solid var(--borde);
+  border-radius: var(--radio);
+  font: inherit;
+  color: var(--texto);
+  background: var(--superficie);
+}
+
+#input-descripcion-reporte::placeholder {
+  color: var(--texto-suave);
+}
+
+/* ---------- Mensajes (reporte.js pone data-tipo) ---------- */
+#reporte-mensaje {
+  margin: 0;
+}
+
+#reporte-mensaje[data-tipo="exito"] {
+  color: var(--ruta-texto);
+  font-weight: 700;
+}
+
+#reporte-mensaje[data-tipo="error"] {
+  color: var(--peligro);
+  font-weight: 700;
+}
+
+/* ---------- Marcador del lugar del problema ---------- */
+/* Círculo ámbar con "!": distinto del círculo azul (origen) y de la bandera verde (destino) */
+.icono-lugar-reporte {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--alerta-borde);
+  color: var(--texto);
+  border: 3px solid var(--superficie);
+  border-radius: 50%;
+  box-shadow: var(--sombra);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1;
+}
