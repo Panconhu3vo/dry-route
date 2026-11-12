@@ -43,6 +43,11 @@ body {
   line-height: 1.4;
 }
 
+/* Sin esto, una regla como "display: flex" le gana al atributo hidden y el elemento no se esconde */
+[hidden] {
+  display: none !important;
+}
+
 /* Foco siempre visible: quien navega con teclado tiene que saber dónde está */
 :focus-visible {
   outline: 3px solid var(--agua);
@@ -179,6 +184,19 @@ body {
   cursor: not-allowed;
 }
 
+/* ---------- Panel de reporte ---------- */
+/* El resto del formulario lo estiliza reporte.css (Cristóbal); aquí solo su lugar en el panel */
+.boton-reportar {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.titulo-reporte {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
 /* ---------- Íconos del mapa ---------- */
 /* Punto de evacuación: cuadrado verde con cruz o casa (forma + color + popup, nunca solo color) */
 .icono-evacuacion {
@@ -190,6 +208,21 @@ body {
   border: 2px solid var(--superficie);
   border-radius: 6px;
   box-shadow: var(--sombra);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1;
+}
+
+/* Reporte sin confirmar (mapa.js): triángulo ámbar con "!", como una señal de advertencia.
+   clip-path recorta el cuadrado del ícono en forma de triángulo. */
+.icono-reporte-pendiente {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 2px;
+  background: var(--alerta-borde);
+  color: var(--texto);
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
   font-weight: 700;
   font-size: 16px;
   line-height: 1;
@@ -325,6 +358,12 @@ body {
   border-radius: 50%;
   border: 1px solid var(--superficie);
   background: var(--ruta);
+}
+
+.leyenda .icono-reporte-pendiente {
+  width: 20px;
+  font-size: 12px;
+  padding-bottom: 1px;
 }
 
 .leyenda .icono-evacuacion {

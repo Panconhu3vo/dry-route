@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block estilos %}
+<!-- Cada integrante es dueño de sus estilos: así no chocamos todos en app.css -->
+<link rel="stylesheet" href="{% static 'css/reporte.css' %}">  <!-- Cristóbal -->
+<link rel="stylesheet" href="{% static 'css/avisos.css' %}">   <!-- Yusu -->
+{% endblock %}
+
 {% block contenido %}
 <header class="encabezado">
   <!-- Gota con una ruta adentro: el agua y el camino seguro, que es lo que hace la app -->
@@ -46,11 +52,40 @@
     <!-- resultado.js llena este contenedor y lo muestra; aria-live anuncia el resultado a lectores de pantalla -->
     <div id="resultado" aria-live="polite" hidden></div>
 
+    <!-- Fuera de form-ruta a propósito: así se puede reportar aunque haya una ruta en pantalla -->
+    <button id="btn-reportar" type="button" class="boton boton-secundario boton-reportar">Reportar un problema</button>
+
+    <!-- Oculto al inicio: reporte.js lo muestra al presionar "Reportar un problema" -->
+    <form id="form-reporte" hidden>
+      <h2 class="titulo-reporte">Reportar un problema</h2>
+      <div class="campo">
+        <label for="select-tipo-reporte">¿Qué pasa?</label>
+        <!-- Los value son los tipos que acepta POST /api/reportes/ (docs/API.md) -->
+        <select id="select-tipo-reporte">
+          <option value="anegamiento">Calle anegada</option>
+          <option value="calle_cortada">Calle cortada</option>
+          <option value="arbol_caido">Árbol caído</option>
+          <option value="puente_cortado">Puente cortado</option>
+        </select>
+      </div>
+      <div class="campo">
+        <label for="input-descripcion-reporte">Descripción (opcional)</label>
+        <input id="input-descripcion-reporte" type="text" autocomplete="off"
+               placeholder="Ej.: agua hasta la vereda">
+      </div>
+      <!-- aria-live: los lectores de pantalla leen en voz alta cada mensaje nuevo -->
+      <p id="reporte-mensaje" aria-live="polite"></p>
+      <!-- Parte deshabilitado: reporte.js lo habilita cuando se marca el lugar en el mapa -->
+      <button id="btn-enviar-reporte" type="button" class="boton boton-principal" disabled>Enviar reporte</button>
+      <button id="btn-cancelar-reporte" type="button" class="boton boton-secundario">Cancelar</button>
+    </form>
+
     <!-- Leyenda: los mismos símbolos que dibujan mapa.js y resultado.js -->
     <section class="leyenda" aria-label="Leyenda del mapa">
       <h2>Leyenda</h2>
       <ul>
-        <li><span class="simbolo simbolo-anegado"></span> Paso bajo nivel anegado (la ruta lo evita)</li>
+        <li><span class="simbolo simbolo-anegado"></span> Anegado ahora (la ruta lo evita)</li>
+        <li><span class="simbolo icono-reporte-pendiente">!</span> Reporte sin confirmar (la ruta aún no lo evita)</li>
         <li><span class="simbolo simbolo-riesgo"></span> Paso bajo nivel sin agua</li>
         <li><span class="simbolo simbolo-ruta"></span> Ruta segura</li>
         <li><span class="simbolo icono-evacuacion">+</span> Salud · <span class="simbolo icono-evacuacion">⌂</span> Bomberos o Carabineros</li>
@@ -62,8 +97,9 @@
 {% endblock %}
 
 {% block scripts %}
-<!-- El orden importa: mapa.js crea DryRoute.mapa, que los otros dos usan -->
+<!-- El orden importa: mapa.js crea DryRoute.mapa, que los demás usan, y reporte.js usa funciones de entrada.js -->
 <script src="{% static 'js/mapa.js' %}"></script>       <!-- Gonzalo -->
 <script src="{% static 'js/resultado.js' %}"></script>  <!-- Yusu -->
 <script src="{% static 'js/entrada.js' %}"></script>    <!-- Cristóbal -->
+<script src="{% static 'js/reporte.js' %}"></script>    <!-- Cristóbal -->
 {% endblock %}
