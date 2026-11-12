@@ -44,8 +44,8 @@ Los datos (grafo de calles, pasos bajo nivel y puntos de evacuación) ya vienen 
 
 | Archivo                                                        | Contenido                                           |
 | -------------------------------------------------------------- | --------------------------------------------------- |
-| [docs/TAREAS.md](docs/TAREAS.md) | Plan día a día hasta la entrega final |
-| [docs/ENTREGA-FINAL.md](docs/ENTREGA-FINAL.md) | Pauta, guion de la demo y banco de preguntas |
+| [docs/TAREAS.md](docs/TAREAS.md)                               | Plan día a día hasta la entrega final               |
+| [docs/ENTREGA-FINAL.md](docs/ENTREGA-FINAL.md)                 | Pauta, guion de la demo y banco de preguntas        |
 | [docs/TAREAS-POR-INTEGRANTE.md](docs/TAREAS-POR-INTEGRANTE.md) | Qué le toca a cada uno y cómo trabajar con Claude   |
 | [docs/API.md](docs/API.md)                                     | Contrato entre frontend y backend                   |
 | [docs/DECISIONES.md](docs/DECISIONES.md)                       | Decisiones técnicas y sus razones                   |

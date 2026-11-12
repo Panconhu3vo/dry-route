@@ -77,6 +77,7 @@ Fecha de este registro: 28 de octubre de 2026.
 - **Regla:** un reporte queda pendiente y **no bloquea rutas**. Si existe otro reporte **vigente, de otra sesión y a menos de 100 m**, ambos se confirman y se activa un `PuntoAnegado`.
 - **Punto activado:** si ya hay un `PuntoAnegado` a menos de 100 m, se activa ese. Si no, se crea uno con `osm_id = "reporte/<id>"` y `fuente = "Reportes ciudadanos"`. Así **`ruteo.py` no cambia**: ya evita todo `PuntoAnegado` activo.
 - **Vigencia:** 6 horas desde el reporte (`HORAS_VIGENCIA_REPORTE`). Los reportes descartados desde el admin no cuentan. Un punto activado por reportes se desactiva cuando no le quedan reportes vigentes.
+- **Lo encendido a mano no vence:** `PuntoAnegado.activado_por_reportes` se marca solo cuando los reportes encienden un punto que estaba apagado, y solo esos puntos vencen. Si alguien cambia "anegado ahora" en el admin, la marca se quita. El vencimiento lo revisa `desactivar_puntos_vencidos()` al inicio de `/api/puntos/` y `/api/ruta/`, y también la acción Descartar, así que no hace falta un proceso aparte.
 - **Sin login:** se distingue a las personas por la sesión del navegador. La misma sesión no puede confirmar su propio reporte.
 - **Limitación conocida:** alguien puede abrir otra sesión y confirmar solo. Se acepta en un prototipo sin registro. La mitigan el aviso "ruta referencial", el vencimiento y la opción de descartar desde el admin.
 

@@ -1,7 +1,13 @@
+from datetime import timedelta
+from io import StringIO
+
+from django.contrib.auth import get_user_model
 from django.core.management import call_command
 from django.test import Client, TestCase
+from django.utils import timezone
 
 from .models import PuntoAnegado, Reporte
+from .reportes import HORAS_VIGENCIA_REPORTE
 from .ruteo import RADIO_BLOQUEO_M, distancia_a_tramo_m, distancia_m
 
 # Los dos casos de prueba del Entregable III (docs/ENTREGABLE-3.md)
@@ -164,3 +170,91 @@ class ReporteColaborativo(TestCase):
         respuesta = self.client.post("/api/reportes/", {"tipo": "anegamiento"}, content_type="application/json")
         self.assertEqual(respuesta.status_code, 400)
         self.assertEqual(respuesta.json()["error"], "parametros_invalidos")
+
+
+class VencimientoYDemo(TestCase):
+    """T16: los puntos que encendieron los reportes se apagan solos; lo encendido a mano no (DECISIONES D11)."""
+
+    @classmethod
+    def setUpTestData(cls):
+        call_command("cargar_datos", verbosity=0)
+
+    def confirmar_lugar(self, lugar=LUGAR_EN_LA_RUTA, lugar_2=LUGAR_A_25_M):
+        """Dos personas distintas reportan el mismo lugar. Devuelve el punto que se encendió."""
+        for sitio in (lugar, lugar_2):
+            respuesta = Client().post("/api/reportes/", {"tipo": "anegamiento", "lat": sitio[0], "lon": sitio[1]},
+                                      content_type="application/json")
+        return PuntoAnegado.objects.get(id=respuesta.json()["punto_id"])
+
+    def activo_segun_api(self, punto):
+        anegados = self.client.get("/api/puntos/").json()["anegados"]
+        return next(p["activo"] for p in anegados if p["id"] == punto.id)
+
+    def envejecer(self, reportes):
+        reportes.update(fecha_hora=timezone.now() - timedelta(hours=HORAS_VIGENCIA_REPORTE + 1))
+
+    def entrar_al_admin(self):
+        self.client.force_login(get_user_model().objects.create_superuser("admin", "admin@example.com", "x"))
+
+    def test_el_punto_se_apaga_cuando_vencen_sus_reportes(self):
+        punto = self.confirmar_lugar()
+        self.assertTrue(self.activo_segun_api(punto))
+
+        self.envejecer(punto.reportes.all())
+
+        self.assertFalse(self.activo_segun_api(punto))
+        ruta = self.client.get("/api/ruta/", {"origen": ORIGEN, "destino": DESTINO}).json()
+        self.assertEqual(ruta["puntos_evitados"], [])
+
+    def test_descartar_los_dos_reportes_en_el_admin_apaga_el_punto_altiro(self):
+        punto = self.confirmar_lugar()
+        self.entrar_al_admin()
+
+        ids = list(punto.reportes.values_list("id", flat=True))
+        self.client.post("/admin/rutas/reporte/", {"action": "descartar", "_selected_action": ids})
+
+        punto.refresh_from_db()
+        self.assertFalse(punto.activo)
+
+    def test_con_un_reporte_vigente_el_punto_sigue_encendido(self):
+        punto = self.confirmar_lugar()
+        Reporte.objects.filter(id=punto.reportes.first().id).update(estado_verificacion="descartado")
+
+        self.assertTrue(self.activo_segun_api(punto))
+
+    def test_un_punto_encendido_a_mano_no_vence(self):
+        paso = PuntoAnegado.objects.get(osm_id=PASO_DEPARTAMENTAL)
+        paso.activo = True
+        paso.save()
+        # Dos personas lo reportan y sus reportes quedan unidos al paso...
+        self.confirmar_lugar((paso.lat + 0.0003, paso.lon), (paso.lat, paso.lon + 0.0003))
+        self.envejecer(paso.reportes.all())
+
+        # ...pero al vencer no lo apagan, porque lo encendió una persona en el admin
+        self.assertTrue(self.activo_segun_api(paso))
+
+    def test_cambiar_anegado_ahora_a_mano_quita_la_marca_de_reportes(self):
+        punto = self.confirmar_lugar()
+        self.assertTrue(punto.activado_por_reportes)
+        self.entrar_al_admin()
+
+        # Formulario del admin sin la casilla "anegado ahora": la persona lo apaga a mano
+        self.client.post(f"/admin/rutas/puntoanegado/{punto.id}/change/", {
+            "osm_id": punto.osm_id, "nombre": punto.nombre, "tipo": punto.tipo,
+            "lat": punto.lat, "lon": punto.lon, "fuente": punto.fuente,
+        })
+
+        punto.refresh_from_db()
+        self.assertFalse(punto.activo)
+        self.assertFalse(punto.activado_por_reportes)
+
+    def test_preparar_demo_deja_solo_el_paso_departamental_anegado(self):
+        self.confirmar_lugar()  # crea un punto a partir de reportes
+        PuntoAnegado.objects.filter(osm_id=PASO_CERRO_NEGRO).update(activo=True)
+
+        call_command("preparar_demo", stdout=StringIO())
+
+        self.assertEqual(Reporte.objects.count(), 0)
+        self.assertFalse(PuntoAnegado.objects.filter(fuente="Reportes ciudadanos").exists())
+        activos = list(PuntoAnegado.objects.filter(activo=True).values_list("osm_id", flat=True))
+        self.assertEqual(activos, [PASO_DEPARTAMENTAL])

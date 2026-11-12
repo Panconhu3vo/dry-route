@@ -18,8 +18,8 @@ Desde el navegador, una persona usuaria debe poder:
 
 ## Checklist de entrega
 
-- [ ] La funcionalidad corazón funciona de punta a punta en localhost.
-- [ ] Los 2 casos de prueba se ejecutaron y su resultado observado quedó anotado.
+- [x] La funcionalidad corazón funciona de punta a punta en localhost.
+- [x] Los 2 casos de prueba se ejecutaron y su resultado observado quedó anotado.
 - [ ] El video dura 5 minutos o menos, y su enlace se probó en una ventana de incógnito.
 - [ ] El documento está completo, **sin las instrucciones de la pauta** y con los títulos intactos.
 - [ ] El README permite que alguien externo ejecute la app desde cero.
@@ -27,36 +27,36 @@ Desde el navegador, una persona usuaria debe poder:
 
 ## Componentes (tabla del documento)
 
-| Componente | Estado | Qué funciona y qué falta |
-|---|---|---|
-| Entrada de información | Funciona | Búsqueda de direcciones (Nominatim), GPS y clic en el mapa. |
-| Procesamiento | Funciona | Grafo OSM y NetworkX (Dijkstra) que bloquea los tramos a menos de 100 m de los anegados activos. Responde en ~40 ms. Falta: recalcular durante el trayecto. |
-| Presentación del resultado | Funciona | Ruta dibujada y tarjeta; caso sin ruta con punto de evacuación. |
+| Componente                 | Estado   | Qué funciona y qué falta                                                                                                                                    |
+| -------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Entrada de información     | Funciona | Búsqueda de direcciones (Nominatim), GPS y clic en el mapa.                                                                                                 |
+| Procesamiento              | Funciona | Grafo OSM y NetworkX (Dijkstra) que bloquea los tramos a menos de 100 m de los anegados activos. Responde en ~40 ms. Falta: recalcular durante el trayecto. |
+| Presentación del resultado | Funciona | Ruta dibujada y tarjeta; caso sin ruta con punto de evacuación.                                                                                             |
 
 ## Casos de prueba
 
 Las coordenadas exactas se fijan cuando T1 genera los datos (Vicente y Juan las anotan aquí). Ambos casos quedan también como pruebas automáticas en `rutas/tests.py`.
 
-| Elemento | Caso 1 · Escenario principal: ruta segura | Caso 2 · Alternativo: sin ruta segura |
-|---|---|---|
-| Condición previa (admin) | Activo: **Paso bajo nivel Avenida Departamental / Gran Avenida José Miguel Carrera** | Activo: **Paso bajo nivel Cerro Negro / Avenida Américo Vespucio** |
-| Datos de entrada | Por Av. Departamental de oeste a este. Origen `-33.502460, -70.658334`; destino `-33.505348, -70.647249`. | Origen `-33.525000, -70.650000`; destino en el paso anegado `-33.540228, -70.650958`. |
-| Resultado esperado | `estado = "segura"`; ningún tramo de la ruta pasa a menos de 100 m del paso activo; "Evita 1 punto anegado". | `estado = "sin_ruta"`; mensaje "No hay ruta segura a tu destino"; ruta al punto de evacuación más cercano, resaltado. |
-| Resultado observado | Ruta segura de 1,4 km y 6 min que rodea el paso; "Evita 1 punto anegado". *(confirmar en el navegador)* | "No hay ruta segura a tu destino"; ruta de 396 m y 2 min al punto de evacuación Chilean Eagles College. *(confirmar en el navegador)* |
-| ¿Coinciden? | | |
+| Elemento                 | Caso 1 · Escenario principal: ruta segura                                                                    | Caso 2 · Alternativo: sin ruta segura                                                                                                 |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------- |
+| Condición previa (admin) | Activo: **Paso bajo nivel Avenida Departamental / Gran Avenida José Miguel Carrera**                         | Activo: **Paso bajo nivel Cerro Negro / Avenida Américo Vespucio**                                                                    |
+| Datos de entrada         | Por Av. Departamental de oeste a este. Origen `-33.502460, -70.658334`; destino `-33.505348, -70.647249`.    | Origen `-33.525000, -70.650000`; destino en el paso anegado `-33.540228, -70.650958`.                                                 |
+| Resultado esperado       | `estado = "segura"`; ningún tramo de la ruta pasa a menos de 100 m del paso activo; "Evita 1 punto anegado". | `estado = "sin_ruta"`; mensaje "No hay ruta segura a tu destino"; ruta al punto de evacuación más cercano, resaltado.                 |
+| Resultado observado      | Ruta segura de 1,4 km y 6 min que rodea el paso; "Evita 1 punto anegado". _(confirmar en el navegador)_      | "No hay ruta segura a tu destino"; ruta de 396 m y 2 min al punto de evacuación Chilean Eagles College. _(confirmar en el navegador)_ |
+| ¿Coinciden?              |                                                                                                              |                                                                                                                                       |
 
-Ambos casos salen del diagrama de flujo del E2: la rama "Sí" y la rama "No" de *¿Existe una ruta de evacuación segura al destino?*
+Ambos casos salen del diagrama de flujo del E2: la rama "Sí" y la rama "No" de _¿Existe una ruta de evacuación segura al destino?_
 
 ## Guion del video (5 min)
 
-| Tiempo | Qué se muestra | Quién habla |
-|---|---|---|
-| 0:00 – 0:30 | Problema en una frase y qué hace Dry Routes. | *definir* |
-| 0:30 – 1:00 | Terminal con `runserver`; en el admin se marca el anegado activo (escenario simulado). | |
-| 1:00 – 2:15 | **Caso 1** en el navegador: entrada → clic en Calcular → ruta que esquiva el paso. | |
-| 2:15 – 3:15 | **Caso 2**: destino junto a un paso anegado → sin ruta → punto de evacuación. | |
+| Tiempo      | Qué se muestra                                                                                                                                                                                                                                                                                                                                                                                  | Quién habla    |
+| ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- |
+| 0:00 – 0:30 | Problema en una frase y qué hace Dry Routes.                                                                                                                                                                                                                                                                                                                                                    | _definir_      |
+| 0:30 – 1:00 | Terminal con `runserver`; en el admin se marca el anegado activo (escenario simulado).                                                                                                                                                                                                                                                                                                          |                |
+| 1:00 – 2:15 | **Caso 1** en el navegador: entrada → clic en Calcular → ruta que esquiva el paso.                                                                                                                                                                                                                                                                                                              |                |
+| 2:15 – 3:15 | **Caso 2**: destino junto a un paso anegado → sin ruta → punto de evacuación.                                                                                                                                                                                                                                                                                                                   |                |
 | 3:15 – 4:30 | **Código:** `calcular_ruta` en `rutas/ruteo.py`, desde el comentario `# 1. Bloquear` hasta el `pass` (líneas 90 a 119 con la mejora "origen en peligro"; 84 a 103 sin ella). Qué hace, la decisión técnica (bloquear nodos a menos de 100 m y Dijkstra con NetworkX, en vez de Google, que no permite evitar puntos; ver DECISIONES D2 y D5) y cómo se usó la IA para entenderlo y verificarlo. | Juan o Vicente |
-| 4:30 – 5:00 | Qué falta y los próximos pasos (F2 o F3). | |
+| 4:30 – 5:00 | Qué falta y los próximos pasos (F2 o F3).                                                                                                                                                                                                                                                                                                                                                       |                |
 
 Si algo falla durante la grabación, la pauta pide **mostrar el comportamiento y explicarlo**, no ocultarlo.
 
@@ -66,12 +66,12 @@ La pauta pide explicar cómo usaron Copilot u otra IA para **comprender, verific
 Que cada integrante anote aquí **una** situación concreta mientras trabaja (con 2 líneas basta):
 
 | Integrante | Qué le pedimos a la IA | Qué aceptamos, cambiamos o rechazamos y por qué |
-|---|---|---|
-| Juan | | |
-| Vicente | | |
-| Gonzalo | | |
-| Cristóbal | | |
-| Yusu | | |
+| ---------- | ---------------------- | ----------------------------------------------- |
+| Juan       |                        |                                                 |
+| Vicente    |                        |                                                 |
+| Gonzalo    |                        |                                                 |
+| Cristóbal  |                        |                                                 |
+| Yusu       |                        |                                                 |
 
 ## Cambios respecto del Entregable II (para el documento)
 

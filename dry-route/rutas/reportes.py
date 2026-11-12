@@ -68,6 +68,8 @@ def registrar_reporte(tipo, descripcion, lat, lon, sesion):
         return reporte  # queda pendiente: un solo reporte no bloquea rutas
 
     punto = punto_para(reporte, otros)
+    if not punto.activo:
+        punto.activado_por_reportes = True  # lo encienden los reportes: se apagará cuando venzan
     punto.activo = True
     punto.save()
     for r in [reporte, *otros]:
@@ -75,6 +77,16 @@ def registrar_reporte(tipo, descripcion, lat, lon, sesion):
         r.punto = punto
         r.save()
     return reporte
+
+
+def desactivar_puntos_vencidos():
+    """Apaga los puntos que encendieron los reportes si ya no les queda ninguno vigente
+    (todos vencieron a las 6 horas o fueron descartados). Devuelve cuántos apagó.
+    Se llama al inicio de cada consulta, así no hace falta un proceso aparte que revise la hora."""
+    con_reportes_vigentes = reportes_vigentes().filter(punto__isnull=False).values("punto")
+    return (PuntoAnegado.objects.filter(activo=True, activado_por_reportes=True)
+            .exclude(id__in=con_reportes_vigentes)
+            .update(activo=False, activado_por_reportes=False))
 
 
 def confirmaciones_por_punto():

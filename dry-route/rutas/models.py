@@ -13,6 +13,8 @@ class PuntoAnegado(models.Model):
     # Sin sensores, el anegamiento se simula marcando esta casilla en el admin (DECISIONES D4)
     activo = models.BooleanField("anegado ahora", default=False)
     fuente = models.CharField(max_length=50, default="OpenStreetMap")
+    # True si lo encendieron dos reportes: se apaga solo cuando vencen. Lo encendido a mano nunca vence (D11)
+    activado_por_reportes = models.BooleanField("activado por reportes", default=False)
 
     class Meta:
         verbose_name = "punto anegado"

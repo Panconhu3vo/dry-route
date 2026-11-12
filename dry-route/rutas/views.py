@@ -6,8 +6,8 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.decorators.http import require_POST
 
 from .models import PuntoAnegado, PuntoEvacuacion, Reporte
-from .reportes import (REPORTES_REQUERIDOS, confirmaciones_por_punto, registrar_reporte, reportes_pendientes,
-                       ya_reporto)
+from .reportes import (REPORTES_REQUERIDOS, confirmaciones_por_punto, desactivar_puntos_vencidos, registrar_reporte,
+                       reportes_pendientes, ya_reporto)
 from .ruteo import ZONA, calcular_ruta, esta_en_zona
 
 
@@ -19,6 +19,7 @@ def mapa(request):
 
 def api_puntos(request):
     """GET /api/puntos/: los puntos que el mapa dibuja al abrirse (docs/API.md)."""
+    desactivar_puntos_vencidos()
     confirmaciones = confirmaciones_por_punto()
     anegados = list(PuntoAnegado.objects.values("id", "nombre", "tipo", "activo", "fuente", "lat", "lon"))
     for punto in anegados:
@@ -52,6 +53,7 @@ def api_ruta(request):
                              "mensaje": "El origen o el destino está fuera de la zona cubierta. Marca un punto dentro del área."},
                             status=400)
 
+    desactivar_puntos_vencidos()  # para no evitar un lugar cuyos reportes ya vencieron
     resultado = calcular_ruta(origen, destino,
                               anegados_activos=list(PuntoAnegado.objects.filter(activo=True)),
                               puntos_evacuacion=list(PuntoEvacuacion.objects.all()))
