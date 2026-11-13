@@ -41,7 +41,7 @@ Reparto propuesto; el equipo lo confirma en T23.
 | 0:20 | Marcar origen y destino a ambos lados del paso; **Calcular ruta** | Ruta que lo rodea y "Evita 1 punto anegado" |
 | 1:20 | **Nueva ruta** con destino dentro del círculo rojo | "No hay ruta segura" y ruta al punto de evacuación |
 | 1:50 | Calcular una ruta y, en la ventana normal, reportar una calle anegada sobre ella | Marcador ámbar "1 de 2". **La ruta no cambia** |
-| 2:20 | En la ventana de incógnito (otra persona), reportar el mismo lugar | Queda confirmado. La primera ventana avisa "Ruta recalculada" |
+| 2:20 | En la ventana de incógnito (otra persona), reportar el mismo lugar | Queda confirmado. Volver a la primera ventana: **en hasta 15 segundos** avisa "Ruta recalculada" y la ruta rodea el lugar. Mientras tanto, explicar la regla de las 2 personas |
 | 3:00 | Abrir el admin; luego `Ctrl + C`, `runserver` y recargar | Los 2 reportes guardados y el punto sigue en el mapa |
 | 3:40 | Cierre: qué recibe la persona usuaria | Ruta segura y aviso "referencial" |
 

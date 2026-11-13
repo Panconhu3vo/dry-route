@@ -77,13 +77,13 @@ Trabajamos igual que en el Entregable III: cada tarea es una rama, Claude no hac
 - [ ] Los anegados con `fuente = "Reportes ciudadanos"` llevan popup con el tipo y las confirmaciones.
 - [ ] Leyenda actualizada.
 
-### T15 · Confirmación y recálculo de la ruta — *Yusu* (respaldo: Cristóbal) — mié 11, 14:00
+### T15 · Confirmación y recálculo de la ruta — *Yusu* (respaldo: Cristóbal) — mié 11, 14:00 · **la hizo Juan el vie 13**
 
 `static/js/resultado.js` y `static/css/avisos.css`. Corresponde a la pantalla 5 del prototipo:
 
-- [ ] `DryRoute.alRecargarPuntos(datos)`: si cambiaron los anegados activos y hay una ruta en pantalla, recalcula con `DryRoute.calcularRuta()`.
-- [ ] Aviso visible: *"Nuevo reporte en la zona. Ruta recalculada."*
-- [ ] Revisar cada 15 segundos con `DryRoute.recargarPuntos()`, para que otra ventana vea los cambios sin recargar. **Si no alcanza, esto es lo primero que se recorta:** queda el recálculo al enviar un reporte.
+- [x] `DryRoute.alRecargarPuntos(datos)`: si cambiaron los anegados activos y hay una ruta en pantalla, recalcula con `DryRoute.calcularRuta()`.
+- [x] Aviso visible: *"↻ Cambiaron los puntos anegados de la zona. Ruta recalculada."* El texto es más general que el planeado porque el cambio también puede venir del admin o de un reporte que venció.
+- [x] Revisar cada 15 segundos con `DryRoute.recargarPuntos()`, para que otra ventana vea los cambios sin recargar. `mapa.js` no redibuja si nada cambió (así no se cierra un popup abierto) y avisa también en la carga inicial.
 
 ### T16 · Vencimiento, descartados y `preparar_demo` — *Juan* (respaldo: Vicente) — mié 11, 14:00
 

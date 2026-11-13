@@ -120,6 +120,14 @@ DryRoute.mostrarResultado = function (r) {
     }
   }
 
+  // Si esta ruta viene de un recálculo automático (T15), se avisa arriba de la tarjeta
+  if (avisoRecalculoPendiente) {
+    const aviso = crear("p", "aviso-recalculo", "↻ Cambiaron los puntos anegados de la zona. Ruta recalculada.");
+    aviso.setAttribute("role", "status");
+    tarjeta.prepend(aviso);
+    avisoRecalculoPendiente = false;
+  }
+
   // El encuadre incluye la ruta y, si hay, el punto de evacuación: así ambos quedan a la vista.
   const encuadre = L.latLngBounds(r.ruta);
   // Con "sin_ruta" la ruta puede venir vacía si no hay ningún punto alcanzable.
@@ -140,12 +148,15 @@ DryRoute.mostrarResultado = function (r) {
 
   mostrarFormulario(false);
   mostrarTarjeta(tarjeta, true);
+  hayRutaEnPantalla = true;
 };
 
 // Para errores (respuesta 400, sin conexión, dirección no encontrada) el formulario sigue visible:
 // la persona tiene que corregir el origen o el destino, así que no le escondemos los campos.
 DryRoute.mostrarError = function (mensaje) {
   capaResultado.clearLayers();
+  hayRutaEnPantalla = false;
+  avisoRecalculoPendiente = false;
   mostrarFormulario(true);
   const tarjeta = document.createElement("div");
   tarjeta.className = "tarjeta tarjeta-error";
@@ -164,4 +175,40 @@ DryRoute.limpiarResultado = function () {
   cajaResultado.replaceChildren();
   cajaResultado.hidden = true;
   mostrarFormulario(true);
+  hayRutaEnPantalla = false;
 };
+
+// ---------- Recálculo automático (T15, pantalla 5 del prototipo) ----------
+// Si cambian los puntos anegados (otra persona confirmó un reporte, alguien activó un punto en el admin
+// o un reporte venció) y hay una ruta en pantalla, la ruta se recalcula sola y se avisa.
+const SEGUNDOS_ENTRE_REVISIONES = 15;
+let firmaAnegados = null;          // ids de los anegados activos la última vez, como texto: "3,9,15"
+let hayRutaEnPantalla = false;
+let avisoRecalculoPendiente = false;
+
+function firmaDeAnegados(datos) {
+  return datos.anegados.filter(function (p) { return p.activo; })
+    .map(function (p) { return p.id; })
+    .sort(function (a, b) { return a - b; })
+    .join(",");
+}
+
+// mapa.js la llama cada vez que trae los puntos del servidor (al abrir la página y en cada revisión).
+DryRoute.alRecargarPuntos = function (datos) {
+  const firma = firmaDeAnegados(datos);
+  // La primera vez solo se anota cómo estaba la zona: todavía no hay con qué comparar
+  const cambio = firmaAnegados !== null && firma !== firmaAnegados;
+  firmaAnegados = firma;
+  if (cambio && hayRutaEnPantalla && DryRoute.calcularRuta) {
+    avisoRecalculoPendiente = true;
+    DryRoute.calcularRuta();
+  }
+};
+
+// Cada 15 segundos se vuelven a pedir los puntos, para que esta ventana se entere de lo que reportan otras
+// personas. Si la pestaña está escondida no se pregunta: nadie está mirando el mapa.
+setInterval(function () {
+  if (!document.hidden) {
+    DryRoute.recargarPuntos();
+  }
+}, SEGUNDOS_ENTRE_REVISIONES * 1000);

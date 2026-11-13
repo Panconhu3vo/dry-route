@@ -211,20 +211,35 @@ function pedirPuntos() {
 
 // Al abrir la página: si el endpoint aún no existe o falla, usa los de ejemplo
 // para que el front se pueda probar sin esperar al backend.
+// Lo último que llegó del servidor, como texto: si en una revisión llega lo mismo no se redibuja,
+// así no se cierra cada 15 segundos el popup que la persona tenga abierto (T15).
+let ultimosPuntos = "";
+
 pedirPuntos()
   .catch(function (error) {
     console.warn("No se pudo cargar /api/puntos/, se usan datos de ejemplo.", error);
     return PUNTOS_DE_EJEMPLO;
   })
-  .then(dibujarPuntos);
+  .then(function (datos) {
+    ultimosPuntos = JSON.stringify(datos);
+    dibujarPuntos(datos);
+    // resultado.js anota cómo está la zona al abrir: así detecta un cambio desde la primera revisión
+    if (DryRoute.alRecargarPuntos) {
+      DryRoute.alRecargarPuntos(datos);
+    }
+  });
 
-// Después de enviar un reporte (reporte.js), vuelve a pedir los puntos y redibuja.
+// Vuelve a pedir los puntos: lo usan reporte.js (después de enviar un reporte) y resultado.js (cada 15 s).
 // Si cambió algo, resultado.js recalcula la ruta en DryRoute.alRecargarPuntos(datos).
 // Aquí no usamos los datos de ejemplo: si falla, es mejor dejar el mapa como estaba que mostrar datos falsos.
 DryRoute.recargarPuntos = function () {
   return pedirPuntos()
     .then(function (datos) {
-      dibujarPuntos(datos);
+      const texto = JSON.stringify(datos);
+      if (texto !== ultimosPuntos) {
+        ultimosPuntos = texto;
+        dibujarPuntos(datos);
+      }
       if (DryRoute.alRecargarPuntos) {
         DryRoute.alRecargarPuntos(datos);
       }

@@ -1,0 +1,15 @@
+/* Avisos de resultado.js (T15, Yusu). Usa los tokens de app.css (docs/DISENO.md). */
+
+/* "Ruta recalculada": aparece arriba de la tarjeta cuando la ruta cambió sola porque cambiaron los
+   puntos anegados. Mismo estilo que el aviso permanente (#aviso), para que se lea como una advertencia;
+   el símbolo ↻ va en el texto para no depender solo del color. */
+.aviso-recalculo {
+  margin: 0;
+  padding: 8px 12px;
+  background: var(--alerta-fondo);
+  border: 2px solid var(--alerta-borde);
+  border-radius: var(--radio);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--texto);
+}
