@@ -120,6 +120,7 @@ Igual aplica el protocolo de Git: Claude no hace commits; tú combinas las ramas
 | 3 | **T17** Integración y limpieza (coordinas) | `fix/t17-integracion` | mié 11, 23:00 |
 | 4 | **T18** Sesión de traspaso (la dictas) | — | jue 12, 20:00 |
 | 5 | **T20** Correcciones y congelar el código | `fix/...` según el caso | vie 13, 23:00 |
+| 6 | **T28** Ampliar la cobertura: sector sur y luego todo Santiago | `feat/t28-ampliar-cobertura` | vie 13, 14:00 (sur) y 18:00 (Santiago) |
 
 - **Tus archivos:** `dry-route/rutas/` (`models.py`, `admin.py`, `migrations/`, la vista `mapa` de `views.py`, comandos), `dry-route/backend/`.
 - **Eres respaldo de:** T12. Además, cada noche revisas el chequeo de las 21:00 y reasignas lo atrasado.

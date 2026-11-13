@@ -19,10 +19,16 @@ Fecha de este registro: 28 de octubre de 2026.
 - **Grafo no dirigido (decisión de Vicente en T1):** en `grafo.json` cada calle aparece **una sola vez y sin sentido de tránsito**, porque la ruta es referencial. El archivo pesa menos y el cálculo es más simple. En T6 se carga como `nx.Graph()`, no `nx.DiGraph()`.
 - **Formato elegido:** JSON propio en lugar de GraphML. GraphML guarda todo como texto y obliga a convertir tipos, mientras que el JSON se lee directo y cualquiera puede abrirlo.
 
-## D3. Zona: eje Gran Avenida, de Departamental a Lo Espejo
+## D3. Zona: sector sur de Santiago (ampliable a todo Santiago)
 
-- **Decisión:** el grafo cubre aproximadamente el rectángulo norte −33.490, sur −33.545, oeste −70.680, este −70.635 (San Miguel, La Cisterna y Lo Espejo). **Vicente verifica los límites en el mapa al generar los datos.**
-- **Por qué:** los pasos bajo nivel de Gran Avenida, Departamental y Lo Espejo son los que citamos en el E1 y en R5. Una zona acotada mantiene el grafo pequeño y el cálculo rápido (R3).
+- **Evolución:** el E3 cubrió el eje Gran Avenida, unos 25 km² (R3: probar primero en una zona acotada). Para la entrega final se amplía por fases (T28). Primero el **sector sur** (San Miguel, San Joaquín, PAC, La Cisterna, Lo Espejo, La Granja, San Ramón y El Bosque; unos 150 km²). Después **todo el Gran Santiago** (unos 830 km²), que se combina solo si cumple las metas de rendimiento.
+- **Dónde está:** las zonas posibles están en `ZONAS`, dentro de `scripts/generar_datos.py`. Se elige al correr `python scripts/generar_datos.py sur` (o `demo`, o `santiago`), que escribe `data/zona.json`. La app lee la zona de ese archivo y no está escrita a mano en ningún otro lugar.
+- **Para que escale:**
+  - La esquina más cercana se busca en una cuadrícula de celdas de unos 500 m, no comparando contra todas.
+  - Antes de medir la distancia exacta a un tramo, se descarta con un rectángulo.
+  - Los tramos cercanos a cada punto anegado se guardan en memoria, porque las calles no cambian.
+  - Se verificó que estas tres técnicas dan resultados idénticos al cálculo completo.
+- **Metas:** una ruta en menos de 1 s y el caso sin ruta en menos de 2 s. Medido en el sector sur: rutas de 16 a 300 ms; caso sin ruta, 1,0 s la primera vez y 0,3 s después.
 - **Red:** `network_type="drive"` (calles vehiculares). Es más pequeña y los pasos bajo nivel son vehiculares.
 
 ## D4. Datos desde OpenStreetMap, sin trabajo manual

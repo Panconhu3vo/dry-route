@@ -38,7 +38,7 @@ Abre http://127.0.0.1:8000.
 2. Vuelve a http://127.0.0.1:8000, elige el origen y el destino (con búsqueda o con un clic en el mapa) y presiona **Calcular ruta**.
 3. Los casos de prueba del Entregable III están en [docs/ENTREGABLE-3.md](docs/ENTREGABLE-3.md).
 
-Los datos (grafo de calles, pasos bajo nivel y puntos de evacuación) ya vienen en `dry-route/data/`, extraídos de © OpenStreetMap contributors. Para regenerarlos: `pip install -r requirements-datos.txt` y luego `python scripts/generar_datos.py`.
+Los datos (grafo de calles, pasos bajo nivel y puntos de evacuación) ya vienen en `dry-route/data/`, extraídos de © OpenStreetMap contributors. Para regenerarlos: `pip install -r requirements-datos.txt` y luego `python scripts/generar_datos.py sur` (zonas disponibles: `demo`, `sur` y `santiago`).
 
 ## Documentación
 

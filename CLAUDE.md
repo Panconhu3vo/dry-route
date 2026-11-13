@@ -31,7 +31,7 @@ El detalle y las razones de cada decisión están en [docs/DECISIONES.md](docs/D
 - **Ruteo:** NetworkX sobre un **grafo de calles precalculado** (`dry-route/data/grafo.json`). En tiempo de ejecución no se descarga nada.
 - **Datos:** se extraen automáticamente de OpenStreetMap con `scripts/generar_datos.py` (OSMnx). Los pasos bajo nivel son los puntos de riesgo; hospitales, bomberos, Carabineros y colegios son los puntos de evacuación. Los puntos se cargan a la base de datos, y en el admin de Django se marca cuáles están **anegados ahora** (`activo=True`).
 - **Reportes colaborativos:** un reporte no bloquea rutas por sí solo. Dos reportes de personas distintas a menos de 100 m activan un `PuntoAnegado`, y `ruteo.py` lo evita sin cambios (DECISIONES D11).
-- **Zona:** eje Gran Avenida, entre Departamental y Américo Vespucio (San Miguel, La Cisterna y alrededores).
+- **Zona:** sector sur de Santiago (San Miguel, San Joaquín, PAC, La Cisterna, Lo Espejo, La Granja, San Ramón y El Bosque), definida en `dry-route/data/zona.json`. Se genera con `python scripts/generar_datos.py <zona>` (DECISIONES D3).
 - **Frontend:** plantillas Django, Leaflet 1.9.4 y JavaScript plano. **Sin Node, sin React, sin compiladores.**
 - **Búsqueda de direcciones:** Nominatim (OSM), llamado desde el navegador. No se usa Google: su API de rutas no permite evitar puntos arbitrarios.
 - **Diseño visual:** claro, mobile-first y de alto contraste. Ver [docs/DISENO.md](docs/DISENO.md).
@@ -51,7 +51,7 @@ dry-route/                  ← raíz del repo (aquí están README, CLAUDE.md, 
     │                          management/commands/cargar_datos.py
     ├── templates/          ← base.html, rutas/mapa.html
     ├── static/             ← css/ (app, reporte, avisos), js/ (mapa, entrada, resultado, reporte)
-    └── data/               ← grafo.json, puntos_anegados.json, puntos_evacuacion.json
+    └── data/               ← zona.json, grafo.json, puntos_anegados.json, puntos_evacuacion.json
 ```
 
 El JavaScript está dividido **un archivo por responsable** (mapa / entrada / resultado) para evitar conflictos de Git entre los tres integrantes de front.

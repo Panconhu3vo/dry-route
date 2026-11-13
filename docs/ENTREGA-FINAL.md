@@ -81,6 +81,7 @@ Mismo recorrido de la demo, sin pausas: ruta segura (45 s), caso sin ruta (30 s)
 | ¿Qué datos se guardan? | Reportes (tipo, lugar, fecha) y puntos. No se guardan cuentas ni consultas |
 | ¿Qué pasa si estoy dentro de la zona anegada? | Se ignora el destino y se guía al punto de evacuación seguro más cercano, con la salida que pasa por menos agua |
 | ¿Cómo verificaron que funciona? | Pruebas automáticas, pruebas con 5 usuarios y escenarios simulados |
+| ¿Qué zona cubre la app y por qué no todo Chile? | El sector sur de Santiago. Partimos con una zona acotada para probar el algoritmo (R3) y la ampliamos por fases sin cambiar el código: basta regenerar los datos con otra zona (D3) |
 | ¿Cómo usaron la IA y cómo validaron lo que entregó? | Con Claude Code, trabajando por tareas; cada integrante revisa, prueba y documenta su parte en `explicaciones/` |
 
 ## Resultados de las pruebas con usuarios (T19)

@@ -1,25 +1,30 @@
 """
 Genera los datos de Dry Routes desde OpenStreetMap (tarea T1).
 
-Escribe tres archivos en dry-route/data/:
+Escribe cuatro archivos en dry-route/data/:
+  - zona.json              límites de la zona cubierta (la app los lee de aquí)
   - grafo.json             calles de la zona (nodos = esquinas, aristas = tramos de calle)
   - puntos_anegados.json   pasos bajo nivel: los puntos que se pueden anegar
   - puntos_evacuacion.json hospitales, bomberos, Carabineros, colegios y puntos de encuentro
 
-Se corre UNA vez (necesita internet). La app después solo lee los JSON.
+Se corre UNA vez por zona (necesita internet). La app después solo lee los JSON.
 Uso, desde la raíz del repo:
     pip install -r requirements-datos.txt
-    python scripts/generar_datos.py
+    python scripts/generar_datos.py sur        (o: demo, santiago)
 """
 
 import json
+import sys
 from pathlib import Path
 
 import osmnx as ox
 
-# Zona de la demo: eje Gran Avenida, de Departamental a Lo Espejo (DECISIONES D3).
-NORTE, SUR, OESTE, ESTE = -33.490, -33.545, -70.680, -70.635
-ZONA = (OESTE, SUR, ESTE, NORTE)  # OSMnx pide el rectángulo en este orden
+# Zonas que se pueden generar (DECISIONES D3). La de la entrega se elige al correr el script.
+ZONAS = {
+    "demo": {"norte": -33.490, "sur": -33.545, "oeste": -70.680, "este": -70.635},      # eje Gran Avenida (E3)
+    "sur": {"norte": -33.470, "sur": -33.590, "oeste": -70.720, "este": -70.600},       # comunas del sector sur
+    "santiago": {"norte": -33.360, "sur": -33.630, "oeste": -70.800, "este": -70.500},  # Gran Santiago
+}
 
 CARPETA_DATOS = Path(__file__).resolve().parent.parent / "dry-route" / "data"
 
@@ -93,11 +98,11 @@ def guardar(nombre_archivo, datos, compacto=False):
     print(f"  {ruta.name}: {ruta.stat().st_size / 1024:.0f} KB")
 
 
-def generar_grafo():
+def generar_grafo(rectangulo):
     print("Descargando calles de OpenStreetMap...")
     # "layer" no viene por defecto en OSMnx y lo necesitamos para detectar pasos bajo nivel.
     ox.settings.useful_tags_way = ox.settings.useful_tags_way + ["layer"]
-    grafo = ox.graph_from_bbox(ZONA, network_type="drive")
+    grafo = ox.graph_from_bbox(rectangulo, network_type="drive")
     # Solo la parte conectada más grande: así no quedan calles "islas" a las que nunca se puede llegar.
     grafo = ox.truncate.largest_component(grafo)
     # Sin sentido de tránsito: cada calle aparece una vez (decisión de Vicente, DECISIONES D2).
@@ -150,14 +155,16 @@ def exportar_puntos_anegados(grafo):
     print(f"    {len(puntos)} pasos bajo nivel")
 
 
-def exportar_puntos_evacuacion():
+def descargar_puntos_evacuacion(rectangulo):
     print("Descargando puntos de evacuación...")
     etiquetas = {
         "amenity": ["hospital", "clinic", "fire_station", "police", "school"],
         "emergency": "assembly_point",
     }
-    elementos = ox.features_from_bbox(ZONA, tags=etiquetas)
+    return ox.features_from_bbox(rectangulo, tags=etiquetas)
 
+
+def exportar_puntos_evacuacion(elementos):
     puntos = []
     for (tipo_elemento, numero), fila in elementos.iterrows():
         tipo_osm = fila.get("amenity") if isinstance(fila.get("amenity"), str) else fila.get("emergency")
@@ -179,9 +186,21 @@ def exportar_puntos_evacuacion():
 
 
 if __name__ == "__main__":
+    if len(sys.argv) != 2 or sys.argv[1] not in ZONAS:
+        sys.exit(f"Indica la zona: python scripts/generar_datos.py <{'|'.join(ZONAS)}>")
+    zona = ZONAS[sys.argv[1]]
+    rectangulo = (zona["oeste"], zona["sur"], zona["este"], zona["norte"])  # OSMnx pide el rectángulo en este orden
+    # Una zona grande tarda más en responder: damos hasta 10 minutos antes de rendirnos
+    ox.settings.requests_timeout = 600
+
+    # Primero todo lo que necesita internet. Si una descarga falla, no se alcanza a escribir ningún archivo
+    # y la app sigue con los datos anteriores completos (sin mezclar dos zonas).
+    grafo = generar_grafo(rectangulo)
+    elementos_evacuacion = descargar_puntos_evacuacion(rectangulo)
+
     CARPETA_DATOS.mkdir(parents=True, exist_ok=True)
-    grafo = generar_grafo()
     exportar_grafo(grafo)
     exportar_puntos_anegados(grafo)
-    exportar_puntos_evacuacion()
-    print("Listo.")
+    exportar_puntos_evacuacion(elementos_evacuacion)
+    guardar("zona.json", zona)
+    print(f"Listo: zona '{sys.argv[1]}'.")
