@@ -153,7 +153,7 @@ Enlace del video y archivo de la presentación. El lunes 16 queda solo como marg
 
 - [x] Código que escala: esquina más cercana por cuadrícula, filtro rápido de tramos, zona leída desde `data/zona.json` y mapa dibujado con *canvas*.
 - [x] **Fase 1, sector sur:** `python scripts/generar_datos.py sur`. Pruebas en verde y metas cumplidas ([DECISIONES.md](DECISIONES.md) D3). **Se combina sí o sí.**
-- [ ] **Fase 2, todo Santiago:** `python scripts/generar_datos.py santiago`. **Se combina solo si** una ruta toma menos de 1 s y el caso sin ruta menos de 2 s. Si no, queda el sector sur.
+- [x] **Fase 2, todo Santiago:** `python scripts/generar_datos.py santiago`. Metas cumplidas el viernes 13 después de optimizar `ruteo.py`: una ruta de 40 km toma 0,86 s y el caso sin ruta 0,85 s ([DECISIONES.md](DECISIONES.md) D3).
 
 ---
 

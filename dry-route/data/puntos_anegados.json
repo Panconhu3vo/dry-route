@@ -1,5 +1,250 @@
 [
   {
+    "osm_id": "way/28968030",
+    "nombre": "Paso bajo nivel Bandera / Agustinas",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.444011,
+    "lon": -70.651674
+  },
+  {
+    "osm_id": "way/207822765",
+    "nombre": "Paso bajo nivel Zenteno / Avenida Libertador Bernardo O'Higgins",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.445379,
+    "lon": -70.65276
+  },
+  {
+    "osm_id": "way/26103530",
+    "nombre": "Paso bajo nivel sin nombre / Avenida Cardenal José María Caro",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.434594,
+    "lon": -70.639948
+  },
+  {
+    "osm_id": "way/23321627",
+    "nombre": "Paso bajo nivel Lira / Diagonal Paraguay",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.441149,
+    "lon": -70.641944
+  },
+  {
+    "osm_id": "way/446896959",
+    "nombre": "Paso bajo nivel Avenida Presidente Kennedy / Avenida Presidente Kennedy Lateral",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.403171,
+    "lon": -70.584066
+  },
+  {
+    "osm_id": "way/28161758",
+    "nombre": "Paso bajo nivel sin nombre / Avenida Las Condes",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.38606,
+    "lon": -70.537793
+  },
+  {
+    "osm_id": "way/28161979",
+    "nombre": "Paso bajo nivel Avenida Presidente Kennedy / Avenida Las Condes",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.385769,
+    "lon": -70.537856
+  },
+  {
+    "osm_id": "way/655010769",
+    "nombre": "Paso bajo nivel José Arrieta / Avenida Francisco Bilbao",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.440988,
+    "lon": -70.632949
+  },
+  {
+    "osm_id": "way/448219093",
+    "nombre": "Paso bajo nivel Fernando Manterola / Avenida Santa María",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.432223,
+    "lon": -70.628409
+  },
+  {
+    "osm_id": "way/34766475",
+    "nombre": "Paso bajo nivel sin nombre / Avenida El Cerro",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.422726,
+    "lon": -70.62072
+  },
+  {
+    "osm_id": "way/22699833",
+    "nombre": "Paso bajo nivel Ruta 78",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.49564,
+    "lon": -70.777131
+  },
+  {
+    "osm_id": "way/727602084",
+    "nombre": "Paso bajo nivel Armando Cortínez Oriente / Acceso Terminal 2 Internacional y Estacionamiento Expreso",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.401411,
+    "lon": -70.791975
+  },
+  {
+    "osm_id": "way/23365243",
+    "nombre": "Paso bajo nivel Avenida Manquehue / Avenida Manquehue Sur",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.409021,
+    "lon": -70.567178
+  },
+  {
+    "osm_id": "way/28161958",
+    "nombre": "Paso bajo nivel Avenida Presidente Kennedy / Avenida Las Condes",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.383879,
+    "lon": -70.533929
+  },
+  {
+    "osm_id": "way/450610497",
+    "nombre": "Paso bajo nivel Paseo Los Arcos Norte / Avenida Vicuña Mackenna",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.551167,
+    "lon": -70.586482
+  },
+  {
+    "osm_id": "way/42118505",
+    "nombre": "Paso bajo nivel Santa Lucía / Avenida Libertador Bernardo O'Higgins",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.442029,
+    "lon": -70.644227
+  },
+  {
+    "osm_id": "way/23365976",
+    "nombre": "Paso bajo nivel Avenida Tomás Moro / Amazona",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.417948,
+    "lon": -70.55306
+  },
+  {
+    "osm_id": "way/452809921",
+    "nombre": "Paso bajo nivel sin nombre / Avenida Américo Vespucio Norte",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.389162,
+    "lon": -70.596045
+  },
+  {
+    "osm_id": "way/445918173",
+    "nombre": "Paso bajo nivel sin nombre / Avenida Alonso de Córdova",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.403305,
+    "lon": -70.586684
+  },
+  {
+    "osm_id": "way/38620496",
+    "nombre": "Paso bajo nivel sin nombre / Avenida Andrés Bello",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.436461,
+    "lon": -70.633842
+  },
+  {
+    "osm_id": "way/23391708",
+    "nombre": "Paso bajo nivel sin nombre / Avenida Américo Vespucio",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.396059,
+    "lon": -70.621054
+  },
+  {
+    "osm_id": "way/25450092",
+    "nombre": "Paso bajo nivel Autopista Costanera Norte",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.409389,
+    "lon": -70.606032
+  },
+  {
+    "osm_id": "way/377902094",
+    "nombre": "Paso bajo nivel Avenida Presidente Kennedy Lateral / Avenida Manquehue",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.397501,
+    "lon": -70.569282
+  },
+  {
+    "osm_id": "way/85447221",
+    "nombre": "Paso bajo nivel sin nombre / Avenida Manuel Rodríguez Norte",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.444079,
+    "lon": -70.660892
+  },
+  {
+    "osm_id": "way/107714724",
+    "nombre": "Paso bajo nivel Nataniel Cox / Avenida Libertador Bernardo O'Higgins",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.445625,
+    "lon": -70.653964
+  },
+  {
+    "osm_id": "way/32841113",
+    "nombre": "Paso bajo nivel Autopista Central / Avenida Viel",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.461641,
+    "lon": -70.656626
+  },
+  {
+    "osm_id": "way/26454778",
+    "nombre": "Paso bajo nivel Autopista Costanera Norte",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.377616,
+    "lon": -70.570212
+  },
+  {
+    "osm_id": "way/26454780",
+    "nombre": "Paso bajo nivel Autopista Costanera Norte / Avenida Santa María",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.377304,
+    "lon": -70.569381
+  },
+  {
+    "osm_id": "way/30594210",
+    "nombre": "Paso bajo nivel sin nombre / Avenida Santa María",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.376921,
+    "lon": -70.563902
+  },
+  {
+    "osm_id": "way/26296717",
+    "nombre": "Paso bajo nivel Autopista Costanera Norte",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.431426,
+    "lon": -70.626044
+  },
+  {
+    "osm_id": "way/25450030",
+    "nombre": "Paso bajo nivel Autopista Costanera Norte / Avenida Presidente Kennedy",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.420184,
+    "lon": -70.612518
+  },
+  {
+    "osm_id": "way/38621347",
+    "nombre": "Paso bajo nivel sin nombre / Avenida Recoleta",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.432103,
+    "lon": -70.648286
+  },
+  {
+    "osm_id": "way/979445147",
+    "nombre": "Paso bajo nivel Autopista Costanera Norte",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.431827,
+    "lon": -70.652734
+  },
+  {
+    "osm_id": "way/1048455971",
+    "nombre": "Paso bajo nivel Autopista Costanera Norte",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.433776,
+    "lon": -70.644295
+  },
+  {
+    "osm_id": "way/41719035",
+    "nombre": "Paso bajo nivel Las Encinas / Avenida Central",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.44853,
+    "lon": -70.688345
+  },
+  {
     "osm_id": "way/451437804",
     "nombre": "Paso bajo nivel Avenida Departamental / Gran Avenida José Miguel Carrera",
     "tipo": "paso_bajo_nivel",
@@ -14,11 +259,123 @@
     "lon": -70.616024
   },
   {
+    "osm_id": "way/26296639",
+    "nombre": "Paso bajo nivel sin nombre / Autopista Central",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.427789,
+    "lon": -70.66689
+  },
+  {
+    "osm_id": "way/27989138",
+    "nombre": "Paso bajo nivel Autopista Central",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.430808,
+    "lon": -70.661586
+  },
+  {
+    "osm_id": "way/299493700",
+    "nombre": "Paso bajo nivel sin nombre / Avenida Mapocho",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.429987,
+    "lon": -70.662105
+  },
+  {
+    "osm_id": "way/411173487",
+    "nombre": "Paso bajo nivel sin nombre / Autopista Costanera Norte",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.401058,
+    "lon": -70.604642
+  },
+  {
+    "osm_id": "way/25450114",
+    "nombre": "Paso bajo nivel sin nombre / Avenida Santa María",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.410938,
+    "lon": -70.606686
+  },
+  {
     "osm_id": "way/39324407",
     "nombre": "Paso bajo nivel Avenida Departamental / Avenida Santa Rosa",
     "tipo": "paso_bajo_nivel",
     "lat": -33.507118,
     "lon": -70.63851
+  },
+  {
+    "osm_id": "way/39369792",
+    "nombre": "Paso bajo nivel Avenida Américo Vespucio / Oceánica",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.445462,
+    "lon": -70.782084
+  },
+  {
+    "osm_id": "way/26103534",
+    "nombre": "Paso bajo nivel sin nombre / Avenida Cardenal José María Caro",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.43349,
+    "lon": -70.650085
+  },
+  {
+    "osm_id": "way/26114625",
+    "nombre": "Paso bajo nivel Túnel San Cristóbal / Avenida Américo Vespucio",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.405585,
+    "lon": -70.613172
+  },
+  {
+    "osm_id": "way/33616696",
+    "nombre": "Paso bajo nivel Túnel San Cristóbal / Avenida El Cerro",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.414872,
+    "lon": -70.613276
+  },
+  {
+    "osm_id": "way/69341960",
+    "nombre": "Paso bajo nivel sin nombre / Avenida El Cerro",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.412666,
+    "lon": -70.610569
+  },
+  {
+    "osm_id": "way/26114643",
+    "nombre": "Paso bajo nivel Autopista Vespucio Norte / Avenida El Cerro",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.404644,
+    "lon": -70.613171
+  },
+  {
+    "osm_id": "way/448362259",
+    "nombre": "Paso bajo nivel General Velásquez / Avenida Apóstol Santiago",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.409936,
+    "lon": -70.693493
+  },
+  {
+    "osm_id": "way/26296481",
+    "nombre": "Paso bajo nivel Autopista Central / Avenida Mapocho",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.431515,
+    "lon": -70.661052
+  },
+  {
+    "osm_id": "way/26296535",
+    "nombre": "Paso bajo nivel sin nombre / Avenida Fermín Vivaceta",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.428502,
+    "lon": -70.662658
+  },
+  {
+    "osm_id": "way/26454905",
+    "nombre": "Paso bajo nivel sin nombre / Avenida Santa María",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.376311,
+    "lon": -70.558335
+  },
+  {
+    "osm_id": "way/26455258",
+    "nombre": "Paso bajo nivel Avenida Santa María / Avenida Santa María Lateral",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.385816,
+    "lon": -70.594508
   },
   {
     "osm_id": "way/32441059",
@@ -33,6 +390,55 @@
     "tipo": "paso_bajo_nivel",
     "lat": -33.540228,
     "lon": -70.650958
+  },
+  {
+    "osm_id": "way/32841110",
+    "nombre": "Paso bajo nivel Autopista Central / Avenida Manuel Rodríguez Sur",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.460913,
+    "lon": -70.657006
+  },
+  {
+    "osm_id": "way/987009558",
+    "nombre": "Paso bajo nivel Autopista Central",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.447354,
+    "lon": -70.660434
+  },
+  {
+    "osm_id": "way/34766217",
+    "nombre": "Paso bajo nivel Autopista Costanera Norte",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.422615,
+    "lon": -70.619754
+  },
+  {
+    "osm_id": "way/23477056",
+    "nombre": "Paso bajo nivel Autopista Costanera Norte",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.418652,
+    "lon": -70.61066
+  },
+  {
+    "osm_id": "way/48549531",
+    "nombre": "Paso bajo nivel Avenida Carlos Reed / Avenida Alberto Mackenna",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.429088,
+    "lon": -70.630635
+  },
+  {
+    "osm_id": "way/38950969",
+    "nombre": "Paso bajo nivel Avenida Américo Vespucio / Avenida Claudio Arrau",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.446697,
+    "lon": -70.776135
+  },
+  {
+    "osm_id": "way/24603492",
+    "nombre": "Paso bajo nivel sin nombre / Autopista Vespucio Norte",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.365815,
+    "lon": -70.689131
   },
   {
     "osm_id": "way/38958389",
@@ -63,6 +469,20 @@
     "lon": -70.629717
   },
   {
+    "osm_id": "way/23393795",
+    "nombre": "Paso bajo nivel Avenida Gladys Marín / Avenida General Óscar Bonilla",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.458588,
+    "lon": -70.711787
+  },
+  {
+    "osm_id": "way/27989069",
+    "nombre": "Paso bajo nivel Avenida Jorge Hirmas / Avenida Presidente Eduardo Frei Montalva",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.419613,
+    "lon": -70.678125
+  },
+  {
     "osm_id": "way/160935073",
     "nombre": "Paso bajo nivel sin nombre",
     "tipo": "paso_bajo_nivel",
@@ -84,11 +504,74 @@
     "lon": -70.701175
   },
   {
+    "osm_id": "way/77850350",
+    "nombre": "Paso bajo nivel Avenida Costanera Sur / Avenida Américo Vespucio",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.415365,
+    "lon": -70.77693
+  },
+  {
     "osm_id": "way/15239609",
     "nombre": "Paso bajo nivel Avenida Isabel Riquelme / Avenida Alcalde Carlos Valdovinos",
     "tipo": "paso_bajo_nivel",
     "lat": -33.476807,
     "lon": -70.678368
+  },
+  {
+    "osm_id": "way/104945573",
+    "nombre": "Paso bajo nivel Serafín Zamora / Avenida Américo Vespucio",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.519746,
+    "lon": -70.597888
+  },
+  {
+    "osm_id": "way/354626430",
+    "nombre": "Paso bajo nivel Avenida Presidente Kennedy",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.409271,
+    "lon": -70.606191
+  },
+  {
+    "osm_id": "way/445977370",
+    "nombre": "Paso bajo nivel Avenida La Florida / Botacura",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.523471,
+    "lon": -70.578413
+  },
+  {
+    "osm_id": "way/447501114",
+    "nombre": "Paso bajo nivel Avenida La Florida / La Primavera",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.522237,
+    "lon": -70.578839
+  },
+  {
+    "osm_id": "way/442664284",
+    "nombre": "Paso bajo nivel Avenida San Luis de Macul / Avenida Américo Vespucio",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.506892,
+    "lon": -70.58968
+  },
+  {
+    "osm_id": "way/39369508",
+    "nombre": "Paso bajo nivel Alonso de Ercilla / Avenida Américo Vespucio",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.514679,
+    "lon": -70.592028
+  },
+  {
+    "osm_id": "way/32839907",
+    "nombre": "Paso bajo nivel Autopista Central / Manuel Rodríguez Norte",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.447973,
+    "lon": -70.65988
+  },
+  {
+    "osm_id": "way/39015507",
+    "nombre": "Paso bajo nivel Arica / Avenida Almirante Blanco Encalada",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.45876,
+    "lon": -70.679378
   },
   {
     "osm_id": "way/15089636",
@@ -98,11 +581,109 @@
     "lon": -70.605489
   },
   {
+    "osm_id": "way/1048455960",
+    "nombre": "Paso bajo nivel Autopista Costanera Norte",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.434481,
+    "lon": -70.641916
+  },
+  {
     "osm_id": "way/174966448",
     "nombre": "Paso bajo nivel Camino La Vara / Avenida Presidente Jorge Alessandri Rodríguez",
     "tipo": "paso_bajo_nivel",
     "lat": -33.567202,
     "lon": -70.711705
+  },
+  {
+    "osm_id": "way/536731174",
+    "nombre": "Paso bajo nivel sin nombre / Avenida Alonso de Córdova",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.40398,
+    "lon": -70.583956
+  },
+  {
+    "osm_id": "way/40968362",
+    "nombre": "Paso bajo nivel Autopista Vespucio Sur / Avenida Américo Vespucio",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.521214,
+    "lon": -70.597407
+  },
+  {
+    "osm_id": "way/32839917",
+    "nombre": "Paso bajo nivel Autopista Central / Avenida Manuel Rodríguez Norte",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.440592,
+    "lon": -70.659637
+  },
+  {
+    "osm_id": "way/34920932",
+    "nombre": "Paso bajo nivel General Velásquez / Avenida Apostol Santiago",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.452628,
+    "lon": -70.691358
+  },
+  {
+    "osm_id": "way/26410238",
+    "nombre": "Paso bajo nivel General Velásquez / Avenida Apostol Santiago",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.435633,
+    "lon": -70.692324
+  },
+  {
+    "osm_id": "way/255581411",
+    "nombre": "Paso bajo nivel General Velásquez / Avenida San Alberto Hurtado",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.452689,
+    "lon": -70.691181
+  },
+  {
+    "osm_id": "way/85459539",
+    "nombre": "Paso bajo nivel sin nombre / Avenida Carrascal",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.424591,
+    "lon": -70.691546
+  },
+  {
+    "osm_id": "way/1040234476",
+    "nombre": "Paso bajo nivel General Velásquez / Avenida Joaquín Walker Martínez",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.427161,
+    "lon": -70.691837
+  },
+  {
+    "osm_id": "way/988465193",
+    "nombre": "Paso bajo nivel General Velásquez / Avenida Joaquín Walker Martínez",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.423441,
+    "lon": -70.691222
+  },
+  {
+    "osm_id": "way/1040234474",
+    "nombre": "Paso bajo nivel General Velásquez / Joaquín Walker Martínez",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.427075,
+    "lon": -70.691688
+  },
+  {
+    "osm_id": "way/85459544",
+    "nombre": "Paso bajo nivel sin nombre / Avenida Coronel Robles",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.429315,
+    "lon": -70.691994
+  },
+  {
+    "osm_id": "way/26115612",
+    "nombre": "Paso bajo nivel General Velásquez / Joaquín Walker Martínez",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.423638,
+    "lon": -70.691114
+  },
+  {
+    "osm_id": "way/26296315",
+    "nombre": "Paso bajo nivel General Velásquez / Avenida Apóstol Santiago",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.41319,
+    "lon": -70.692256
   },
   {
     "osm_id": "way/180014707",
@@ -112,6 +693,48 @@
     "lon": -70.710546
   },
   {
+    "osm_id": "way/694309028",
+    "nombre": "Paso bajo nivel General Velásquez / Avenida General Velásquez",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.466924,
+    "lon": -70.688165
+  },
+  {
+    "osm_id": "way/85461535",
+    "nombre": "Paso bajo nivel sin nombre / Avenida San Alberto Hurtado",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.456629,
+    "lon": -70.690137
+  },
+  {
+    "osm_id": "way/85461538",
+    "nombre": "Paso bajo nivel sin nombre / Avenida San Alberto Hurtado",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.460941,
+    "lon": -70.688341
+  },
+  {
+    "osm_id": "way/179550935",
+    "nombre": "Paso bajo nivel General Velásquez / Avenida San Alberto Hurtado",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.459809,
+    "lon": -70.688865
+  },
+  {
+    "osm_id": "way/255581410",
+    "nombre": "Paso bajo nivel General Velásquez / Avenida San Alberto Hurtado",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.463643,
+    "lon": -70.688278
+  },
+  {
+    "osm_id": "way/90276917",
+    "nombre": "Paso bajo nivel Radial Aeropuerto / Radial Palena",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.417034,
+    "lon": -70.789232
+  },
+  {
     "osm_id": "way/436178801",
     "nombre": "Paso bajo nivel Avenida Américo Vespucio / Avenida Cardenal Raúl Silva Henríquez",
     "tipo": "paso_bajo_nivel",
@@ -119,11 +742,25 @@
     "lon": -70.621832
   },
   {
+    "osm_id": "way/33611854",
+    "nombre": "Paso bajo nivel Autopista Nororiente / Avenida Américo Vespucio Norte",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.374199,
+    "lon": -70.603661
+  },
+  {
     "osm_id": "way/39369512",
     "nombre": "Paso bajo nivel Gerónimo de Alderete / Avenida Américo Vespucio",
     "tipo": "paso_bajo_nivel",
     "lat": -33.528431,
     "lon": -70.603367
+  },
+  {
+    "osm_id": "way/28161978",
+    "nombre": "Paso bajo nivel Avenida Presidente Kennedy / Avenida Presidente Kennedy Lateral",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.38586,
+    "lon": -70.53837
   },
   {
     "osm_id": "way/40997306",
@@ -140,6 +777,139 @@
     "lon": -70.614849
   },
   {
+    "osm_id": "way/173704371",
+    "nombre": "Paso bajo nivel La Hacienda / Los Lirios",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.399295,
+    "lon": -70.757666
+  },
+  {
+    "osm_id": "way/173704368",
+    "nombre": "Paso bajo nivel La Hacienda / El Montijo",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.399417,
+    "lon": -70.757348
+  },
+  {
+    "osm_id": "way/1084507633",
+    "nombre": "Paso bajo nivel sin nombre / Avenida Américo Vespucio Norte",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.409524,
+    "lon": -70.58685
+  },
+  {
+    "osm_id": "way/76946710",
+    "nombre": "Paso bajo nivel sin nombre / Alberto Risopatrón",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.409678,
+    "lon": -70.606818
+  },
+  {
+    "osm_id": "way/33611868",
+    "nombre": "Paso bajo nivel Autopista Nororiente",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.373992,
+    "lon": -70.60369
+  },
+  {
+    "osm_id": "way/25734193",
+    "nombre": "Paso bajo nivel sin nombre / Autopista Los Libertadores",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.365483,
+    "lon": -70.689395
+  },
+  {
+    "osm_id": "way/23392547",
+    "nombre": "Paso bajo nivel Avenida Santa Cruz / Avenida Américo Vespucio",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.388636,
+    "lon": -70.597403
+  },
+  {
+    "osm_id": "way/26455333",
+    "nombre": "Paso bajo nivel sin nombre / Avenida Santa Cruz",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.386897,
+    "lon": -70.595821
+  },
+  {
+    "osm_id": "way/23406489",
+    "nombre": "Paso bajo nivel Autopista Central / Avenida Manuel Rodríguez Norte",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.442308,
+    "lon": -70.660356
+  },
+  {
+    "osm_id": "way/32839851",
+    "nombre": "Paso bajo nivel sin nombre / Avenida Libertador Bernardo O'Higgins",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.445167,
+    "lon": -70.660246
+  },
+  {
+    "osm_id": "way/33195074",
+    "nombre": "Paso bajo nivel Avenida Los Leones / Avenida Andrés Bello",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.419654,
+    "lon": -70.60604
+  },
+  {
+    "osm_id": "way/140494178",
+    "nombre": "Paso bajo nivel Armando Cortínez Poniente / Armando Cortínez Norte",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.401651,
+    "lon": -70.794968
+  },
+  {
+    "osm_id": "way/727602083",
+    "nombre": "Paso bajo nivel Armando Cortínez Poniente / César Copetta",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.401865,
+    "lon": -70.794409
+  },
+  {
+    "osm_id": "way/842298183",
+    "nombre": "Paso bajo nivel sin nombre / Avenida Américo Vespucio Sur",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.424617,
+    "lon": -70.57822
+  },
+  {
+    "osm_id": "way/254288849",
+    "nombre": "Paso bajo nivel sin nombre / Autopista Central",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.429273,
+    "lon": -70.662259
+  },
+  {
+    "osm_id": "way/35078890",
+    "nombre": "Paso bajo nivel sin nombre / Autopista Vespucio Norte",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.365791,
+    "lon": -70.698318
+  },
+  {
+    "osm_id": "way/1180651138",
+    "nombre": "Paso bajo nivel Jaime Eyzaguirre / Avenida Libertador Bernardo O'Higgins",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.439547,
+    "lon": -70.638472
+  },
+  {
+    "osm_id": "way/411175219",
+    "nombre": "Paso bajo nivel sin nombre / Autopista Costanera Norte",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.403043,
+    "lon": -70.603723
+  },
+  {
+    "osm_id": "way/295009742",
+    "nombre": "Paso bajo nivel sin nombre / Camino Santa Teresa de Los Andes",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.373225,
+    "lon": -70.544314
+  },
+  {
     "osm_id": "way/48431816",
     "nombre": "Paso bajo nivel sin nombre / Avenida Lo Errázuriz",
     "tipo": "paso_bajo_nivel",
@@ -147,11 +917,151 @@
     "lon": -70.711773
   },
   {
+    "osm_id": "way/995573746",
+    "nombre": "Paso bajo nivel sin nombre / La Castellana",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.412079,
+    "lon": -70.581368
+  },
+  {
+    "osm_id": "way/984980545",
+    "nombre": "Paso bajo nivel Valentín Letelier / Avenida Libertador Bernardo O'Higgins",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.443419,
+    "lon": -70.654813
+  },
+  {
+    "osm_id": "way/1048455974",
+    "nombre": "Paso bajo nivel Autopista Costanera Norte",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.434889,
+    "lon": -70.639532
+  },
+  {
+    "osm_id": "way/38620338",
+    "nombre": "Paso bajo nivel sin nombre / Avenida Santa María",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.434863,
+    "lon": -70.639052
+  },
+  {
+    "osm_id": "way/34766233",
+    "nombre": "Paso bajo nivel Autopista Costanera Norte",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.432716,
+    "lon": -70.627582
+  },
+  {
+    "osm_id": "way/694766749",
+    "nombre": "Paso bajo nivel Autopista Costanera Norte / Avenida Santa María",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.431501,
+    "lon": -70.654749
+  },
+  {
     "osm_id": "way/389710779",
     "nombre": "Paso bajo nivel Presidente Eduardo Frei Montalva / Avenida Clotario Blest",
     "tipo": "paso_bajo_nivel",
     "lat": -33.52299,
     "lon": -70.687515
+  },
+  {
+    "osm_id": "way/404114052",
+    "nombre": "Paso bajo nivel Avenida Presidente Kennedy",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.406234,
+    "lon": -70.593602
+  },
+  {
+    "osm_id": "way/551369611",
+    "nombre": "Paso bajo nivel Avenida Presidente Kennedy",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.408323,
+    "lon": -70.600445
+  },
+  {
+    "osm_id": "way/536731177",
+    "nombre": "Paso bajo nivel sin nombre / Avenida Andrés Bello",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.409128,
+    "lon": -70.601783
+  },
+  {
+    "osm_id": "way/453737355",
+    "nombre": "Paso bajo nivel Avenida Presidente Kennedy",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.403915,
+    "lon": -70.585222
+  },
+  {
+    "osm_id": "way/536731173",
+    "nombre": "Paso bajo nivel sin nombre",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.404165,
+    "lon": -70.585455
+  },
+  {
+    "osm_id": "way/411177511",
+    "nombre": "Paso bajo nivel sin nombre / Costanera Sur",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.405622,
+    "lon": -70.603435
+  },
+  {
+    "osm_id": "way/995581646",
+    "nombre": "Paso bajo nivel sin nombre / Avenida Presidente Kennedy",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.402086,
+    "lon": -70.581917
+  },
+  {
+    "osm_id": "way/445918172",
+    "nombre": "Paso bajo nivel sin nombre / Avenida Alonso de Córdova",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.405057,
+    "lon": -70.586181
+  },
+  {
+    "osm_id": "way/577322996",
+    "nombre": "Paso bajo nivel sin nombre / Avenida Santa María",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.408503,
+    "lon": -70.602052
+  },
+  {
+    "osm_id": "way/458321776",
+    "nombre": "Paso bajo nivel Avenida Presidente Kennedy",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.402533,
+    "lon": -70.582421
+  },
+  {
+    "osm_id": "way/536731178",
+    "nombre": "Paso bajo nivel sin nombre / Avenida Presidente Kennedy Lateral",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.402956,
+    "lon": -70.583036
+  },
+  {
+    "osm_id": "way/734347336",
+    "nombre": "Paso bajo nivel sin nombre / Avenida Nueva Costanera",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.390953,
+    "lon": -70.596962
+  },
+  {
+    "osm_id": "way/582803423",
+    "nombre": "Paso bajo nivel Avenida Presidente Kennedy Lateral / Avenida Alonso de Córdova",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.403898,
+    "lon": -70.585984
+  },
+  {
+    "osm_id": "way/995581650",
+    "nombre": "Paso bajo nivel sin nombre",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.406856,
+    "lon": -70.587089
   },
   {
     "osm_id": "way/1463391520",
@@ -166,5 +1076,222 @@
     "tipo": "paso_bajo_nivel",
     "lat": -33.4998,
     "lon": -70.615668
+  },
+  {
+    "osm_id": "way/1182527863",
+    "nombre": "Paso bajo nivel sin nombre / Autopista Vespucio Norte",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.445633,
+    "lon": -70.77749
+  },
+  {
+    "osm_id": "way/842298177",
+    "nombre": "Paso bajo nivel sin nombre / Avenida Américo Vespucio Interior",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.392332,
+    "lon": -70.593219
+  },
+  {
+    "osm_id": "way/842298175",
+    "nombre": "Paso bajo nivel sin nombre / Avenida Américo Vespucio Norte",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.39693,
+    "lon": -70.588598
+  },
+  {
+    "osm_id": "way/914244735",
+    "nombre": "Paso bajo nivel sin nombre / Avenida Américo Vespucio",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.395432,
+    "lon": -70.622885
+  },
+  {
+    "osm_id": "way/1064030615",
+    "nombre": "Paso bajo nivel Autopista Vespucio Oriente",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.396561,
+    "lon": -70.588917
+  },
+  {
+    "osm_id": "way/1067760601",
+    "nombre": "Paso bajo nivel Autopista Vespucio Oriente",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.390764,
+    "lon": -70.597098
+  },
+  {
+    "osm_id": "way/1080794534",
+    "nombre": "Paso bajo nivel Autopista Vespucio Oriente",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.405319,
+    "lon": -70.58631
+  },
+  {
+    "osm_id": "way/842298179",
+    "nombre": "Paso bajo nivel sin nombre / Avenida Américo Vespucio Norte",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.401985,
+    "lon": -70.587125
+  },
+  {
+    "osm_id": "way/1080794533",
+    "nombre": "Paso bajo nivel Autopista Vespucio Oriente",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.40742,
+    "lon": -70.587267
+  },
+  {
+    "osm_id": "way/1121210674",
+    "nombre": "Paso bajo nivel Autopista Vespucio Oriente",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.40937,
+    "lon": -70.587078
+  },
+  {
+    "osm_id": "way/995561257",
+    "nombre": "Paso bajo nivel sin nombre / Avenida Ossa",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.431822,
+    "lon": -70.574604
+  },
+  {
+    "osm_id": "way/1075623780",
+    "nombre": "Paso bajo nivel Autopista Vespucio Oriente",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.437003,
+    "lon": -70.573665
+  },
+  {
+    "osm_id": "way/1075623784",
+    "nombre": "Paso bajo nivel Autopista Vespucio Oriente",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.42734,
+    "lon": -70.57552
+  },
+  {
+    "osm_id": "way/1121210677",
+    "nombre": "Paso bajo nivel Autopista Vespucio Oriente",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.417606,
+    "lon": -70.583042
+  },
+  {
+    "osm_id": "way/842298173",
+    "nombre": "Paso bajo nivel sin nombre / Avenida Américo Vespucio Sur",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.420255,
+    "lon": -70.581536
+  },
+  {
+    "osm_id": "way/734347337",
+    "nombre": "Paso bajo nivel Autopista Vespucio Oriente",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.423771,
+    "lon": -70.578892
+  },
+  {
+    "osm_id": "way/995573747",
+    "nombre": "Paso bajo nivel sin nombre",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.414336,
+    "lon": -70.584382
+  },
+  {
+    "osm_id": "way/1080794539",
+    "nombre": "Paso bajo nivel Autopista Vespucio Oriente",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.413519,
+    "lon": -70.585008
+  },
+  {
+    "osm_id": "way/1084695150",
+    "nombre": "Paso bajo nivel Autopista Vespucio Oriente",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.400621,
+    "lon": -70.587326
+  },
+  {
+    "osm_id": "way/734347342",
+    "nombre": "Paso bajo nivel Autopista Vespucio Oriente",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.394846,
+    "lon": -70.603961
+  },
+  {
+    "osm_id": "way/734347339",
+    "nombre": "Paso bajo nivel sin nombre / Autopista Costanera Norte",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.398859,
+    "lon": -70.604593
+  },
+  {
+    "osm_id": "way/734347344",
+    "nombre": "Paso bajo nivel Autopista Vespucio Oriente",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.398991,
+    "lon": -70.614492
+  },
+  {
+    "osm_id": "way/842298169",
+    "nombre": "Paso bajo nivel sin nombre / Avenida Américo Vespucio Sur",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.429529,
+    "lon": -70.574746
+  },
+  {
+    "osm_id": "way/842298171",
+    "nombre": "Paso bajo nivel sin nombre / Avenida Isabel La Católica",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.425459,
+    "lon": -70.577022
+  },
+  {
+    "osm_id": "way/734381019",
+    "nombre": "Paso bajo nivel Autopista Vespucio Oriente / Avenida Américo Vespucio",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.39243,
+    "lon": -70.592867
+  },
+  {
+    "osm_id": "way/995573749",
+    "nombre": "Paso bajo nivel sin nombre",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.412212,
+    "lon": -70.585628
+  },
+  {
+    "osm_id": "way/667542381",
+    "nombre": "Paso bajo nivel Acceso Embarque Internacional y Estacionamiento Expreso / Acceso Terminal 2 Internacional y Estacionamiento Expreso",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.399861,
+    "lon": -70.793558
+  },
+  {
+    "osm_id": "way/1045540165",
+    "nombre": "Paso bajo nivel Acceso Llegadas Terminal 2 Internacional / Acceso Terminal 2 Internacional y Estacionamiento Expreso",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.399763,
+    "lon": -70.793533
+  },
+  {
+    "osm_id": "way/26410143",
+    "nombre": "Paso bajo nivel Avenida Apóstol Santiago / Fresia",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.386743,
+    "lon": -70.698022
+  },
+  {
+    "osm_id": "way/103618718",
+    "nombre": "Paso bajo nivel Iquique / Almirante Churruca",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.464009,
+    "lon": -70.679834
+  },
+  {
+    "osm_id": "way/1182527873",
+    "nombre": "Paso bajo nivel sin nombre / Autopista Vespucio Norte",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.445896,
+    "lon": -70.779487
   }
 ]

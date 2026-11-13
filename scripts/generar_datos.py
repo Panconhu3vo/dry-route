@@ -17,6 +17,7 @@ import json
 import sys
 from pathlib import Path
 
+import networkx as nx
 import osmnx as ox
 
 # Zonas que se pueden generar (DECISIONES D3). La de la entrega se elige al correr el script.
@@ -61,7 +62,9 @@ def calle_que_cruza(grafo, u, v, calle, distancia_m=200):
     Mira los tramos que salen de las esquinas a menos de 200 m de los extremos del paso."""
     cercanos = set()
     for extremo in (u, v):
-        cercanos |= set(ox.truncate.truncate_graph_dist(grafo, extremo, distancia_m, weight="length").nodes)
+        # cutoff: Dijkstra se detiene a los 200 m. Antes usábamos truncate_graph_dist de OSMnx, que da lo
+        # mismo pero mide hasta TODAS las esquinas y copia el grafo entero: con Santiago tardaba casi una hora.
+        cercanos |= set(nx.single_source_dijkstra_path_length(grafo, extremo, cutoff=distancia_m, weight="length"))
     nombres = set()
     for nodo in cercanos:
         for _, _, datos in grafo.edges(nodo, data=True):

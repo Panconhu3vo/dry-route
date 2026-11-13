@@ -19,17 +19,21 @@ Fecha de este registro: 28 de octubre de 2026.
 - **Grafo no dirigido (decisión de Vicente en T1):** en `grafo.json` cada calle aparece **una sola vez y sin sentido de tránsito**, porque la ruta es referencial. El archivo pesa menos y el cálculo es más simple. En T6 se carga como `nx.Graph()`, no `nx.DiGraph()`.
 - **Formato elegido:** JSON propio en lugar de GraphML. GraphML guarda todo como texto y obliga a convertir tipos, mientras que el JSON se lee directo y cualquiera puede abrirlo.
 
-## D3. Zona: sector sur de Santiago (ampliable a todo Santiago)
+## D3. Zona: todo el Gran Santiago (ampliada por fases)
 
-- **Evolución:** el E3 cubrió el eje Gran Avenida, unos 25 km² (R3: probar primero en una zona acotada). Para la entrega final se amplía por fases (T28). Primero el **sector sur** (San Miguel, San Joaquín, PAC, La Cisterna, Lo Espejo, La Granja, San Ramón y El Bosque; unos 150 km²). Después **todo el Gran Santiago** (unos 830 km²), que se combina solo si cumple las metas de rendimiento.
+- **Evolución:** el E3 cubrió el eje Gran Avenida, unos 25 km² (R3: probar primero en una zona acotada). Para la entrega final se amplía por fases (T28). Primero el **sector sur** (San Miguel, San Joaquín, PAC, La Cisterna, Lo Espejo, La Granja, San Ramón y El Bosque; unos 150 km²). Después **todo el Gran Santiago** (unos 830 km²), que se combinó el 13-11 después de cumplir las metas de rendimiento.
 - **Dónde está:** las zonas posibles están en `ZONAS`, dentro de `scripts/generar_datos.py`. Se elige al correr `python scripts/generar_datos.py sur` (o `demo`, o `santiago`), que escribe `data/zona.json`. La app lee la zona de ese archivo y no está escrita a mano en ningún otro lugar.
 - **Para que escale:**
   - La esquina más cercana se busca en una cuadrícula de celdas de unos 500 m, no comparando contra todas.
   - Antes de medir la distancia exacta a un tramo, se descarta con un rectángulo.
   - Los tramos cercanos a cada punto anegado se guardan en memoria, porque las calles no cambian.
-  - Se verificó que estas tres técnicas dan resultados idénticos al cálculo completo.
-- **Metas:** una ruta en menos de 1 s y el caso sin ruta en menos de 2 s. Medido en el sector sur: rutas de 16 a 300 ms; caso sin ruta, 1,0 s la primera vez y 0,3 s después.
+  - Los tramos con agua se "quitan" con una función de peso que devuelve `None`, en vez de una vista filtrada del grafo (`subgraph_view`), que era casi el doble de lenta.
+  - Las rutas se calculan con Dijkstra bidireccional, que busca desde ambos extremos a la vez.
+  - El punto de evacuación se busca solo entre los que están a menos de 5 km en línea recta, y la búsqueda por calles se corta a los 10 km (D5).
+  - Todo se verificó contra la versión anterior: resultados idénticos en 2.000 búsquedas de esquina y en 60 escenarios de ruta al azar.
+- **Metas:** una ruta en menos de 1 s y el caso sin ruta en menos de 2 s. Medido en todo Santiago (109.350 esquinas): ruta normal entre 36 y 530 ms; ruta de 40 km, 0,86 s; caso sin ruta, 0,85 s la primera vez y 0,28 s después.
 - **Red:** `network_type="drive"` (calles vehiculares). Es más pequeña y los pasos bajo nivel son vehiculares.
+- **Generar los datos:** con la caché de OSMnx, `python scripts/generar_datos.py santiago` tarda unos 2 minutos. Si el servidor público de OpenStreetMap limita la descarga, hay que esperar unas horas. No sirve cambiar a un servidor espejo, porque la caché depende del servidor.
 
 ## D4. Datos desde OpenStreetMap, sin trabajo manual
 
@@ -47,6 +51,7 @@ Fecha de este registro: 28 de octubre de 2026.
 - **Origen en zona anegada** (a menos de 100 m de un anegado activo): se ignora el destino y se guía al punto de evacuación más cercano (`estado = "en_peligro"`). Para salir se permite cruzar tramos con agua, pero cada metro ahí cuesta `PENALIZACION_ZONA_ANEGADA = 20` veces más, así Dijkstra elige la salida con menos agua.
 - Nunca se elige un punto de evacuación que esté a menos de 100 m de un anegado activo.
 - Los tramos que salen del origen nunca se bloquean: si el usuario está dentro de una zona anegada, igual tiene que poder salir.
+- **Búsqueda del punto de evacuación:** solo entre los que están a menos de 5 km en línea recta del origen (`RADIO_EVACUACION_M`) y por calles hasta 10 km (`CORTE_EVACUACION_M`). Si no hay ninguno, se informa que no hay un punto alcanzable. En Santiago siempre hay alguno mucho más cerca.
 - **Tiempo estimado:** distancia dividida por 15 km/h (velocidad urbana en contingencia; coincide con el prototipo: 4,2 km en 18 min).
 
 ## D6. Frontend con plantillas Django, Leaflet y JavaScript plano
