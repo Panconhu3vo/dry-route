@@ -7,6 +7,13 @@
     "lon": -70.654867
   },
   {
+    "osm_id": "way/36590653",
+    "nombre": "Paso bajo nivel Coronel / Avenida Américo Vespucio",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.541262,
+    "lon": -70.616024
+  },
+  {
     "osm_id": "way/39324407",
     "nombre": "Paso bajo nivel Avenida Departamental / Avenida Santa Rosa",
     "tipo": "paso_bajo_nivel",
@@ -26,5 +33,138 @@
     "tipo": "paso_bajo_nivel",
     "lat": -33.540228,
     "lon": -70.650958
+  },
+  {
+    "osm_id": "way/38958389",
+    "nombre": "Paso bajo nivel sin nombre / Autopista Acceso Sur",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.54187,
+    "lon": -70.619187
+  },
+  {
+    "osm_id": "way/701462019",
+    "nombre": "Paso bajo nivel Autopista Acceso Sur",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.542734,
+    "lon": -70.620131
+  },
+  {
+    "osm_id": "way/39259013",
+    "nombre": "Paso bajo nivel Autopista Acceso Sur",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.555265,
+    "lon": -70.616508
+  },
+  {
+    "osm_id": "way/39259023",
+    "nombre": "Paso bajo nivel Paso Bajo Nivel Avenida Manuel Rodríguez / Avenida Américo Vespucio",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.542845,
+    "lon": -70.629717
+  },
+  {
+    "osm_id": "way/160935073",
+    "nombre": "Paso bajo nivel sin nombre",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.543324,
+    "lon": -70.620132
+  },
+  {
+    "osm_id": "way/38958388",
+    "nombre": "Paso bajo nivel sin nombre / Autopista Vespucio Sur",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.542226,
+    "lon": -70.621882
+  },
+  {
+    "osm_id": "way/549786047",
+    "nombre": "Paso bajo nivel sin nombre / Avenida Presidente Jorge Alessandri Rodríguez",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.550483,
+    "lon": -70.701175
+  },
+  {
+    "osm_id": "way/15239609",
+    "nombre": "Paso bajo nivel Avenida Isabel Riquelme / Avenida Alcalde Carlos Valdovinos",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.476807,
+    "lon": -70.678368
+  },
+  {
+    "osm_id": "way/15089636",
+    "nombre": "Paso bajo nivel Santa Julia / Avenida Américo Vespucio",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.531093,
+    "lon": -70.605489
+  },
+  {
+    "osm_id": "way/174966448",
+    "nombre": "Paso bajo nivel Camino La Vara / Avenida Presidente Jorge Alessandri Rodríguez",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.567202,
+    "lon": -70.711705
+  },
+  {
+    "osm_id": "way/180014707",
+    "nombre": "Paso bajo nivel Las Acacias / Avenida General Velásquez",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.559049,
+    "lon": -70.710546
+  },
+  {
+    "osm_id": "way/436178801",
+    "nombre": "Paso bajo nivel Avenida Américo Vespucio / Avenida Cardenal Raúl Silva Henríquez",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.541606,
+    "lon": -70.621832
+  },
+  {
+    "osm_id": "way/39369512",
+    "nombre": "Paso bajo nivel Gerónimo de Alderete / Avenida Américo Vespucio",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.528431,
+    "lon": -70.603367
+  },
+  {
+    "osm_id": "way/40997306",
+    "nombre": "Paso bajo nivel Autopista Acceso Sur / Avenida Cardenal Raúl Silva Henríquez",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.540839,
+    "lon": -70.620541
+  },
+  {
+    "osm_id": "way/54564562",
+    "nombre": "Paso bajo nivel Autopista Acceso Sur",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.561623,
+    "lon": -70.614849
+  },
+  {
+    "osm_id": "way/48431816",
+    "nombre": "Paso bajo nivel sin nombre / Avenida Lo Errázuriz",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.504263,
+    "lon": -70.711773
+  },
+  {
+    "osm_id": "way/389710779",
+    "nombre": "Paso bajo nivel Presidente Eduardo Frei Montalva / Avenida Clotario Blest",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.52299,
+    "lon": -70.687515
+  },
+  {
+    "osm_id": "way/1463391520",
+    "nombre": "Paso bajo nivel Corredor Transporte Público Vicuña Mackenna / Avenida Pintor Benito Rebolledo",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.502539,
+    "lon": -70.615241
+  },
+  {
+    "osm_id": "way/645439802",
+    "nombre": "Paso bajo nivel Corredor Transporte Público Vicuña Mackenna / Avenida Pintor Benito Rebolledo",
+    "tipo": "paso_bajo_nivel",
+    "lat": -33.4998,
+    "lon": -70.615668
   }
 ]

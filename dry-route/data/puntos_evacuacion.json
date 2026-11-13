@@ -7,11 +7,319 @@
     "lon": -70.650946
   },
   {
+    "osm_id": "node/906399171",
+    "nombre": "Escuela de Párvulos y Especial Edial",
+    "tipo": "colegio",
+    "lat": -33.576825,
+    "lon": -70.708231
+  },
+  {
+    "osm_id": "node/906399228",
+    "nombre": "Colegio Saint Arieli",
+    "tipo": "colegio",
+    "lat": -33.589714,
+    "lon": -70.7062
+  },
+  {
+    "osm_id": "node/906399245",
+    "nombre": "Escuela Especial Santa Cecilia De San Be",
+    "tipo": "colegio",
+    "lat": -33.584324,
+    "lon": -70.694496
+  },
+  {
+    "osm_id": "node/906399248",
+    "nombre": "Escuela Básica Bélgica",
+    "tipo": "colegio",
+    "lat": -33.585014,
+    "lon": -70.706445
+  },
+  {
+    "osm_id": "node/906399250",
+    "nombre": "Colegio Juan Bautista Duran",
+    "tipo": "colegio",
+    "lat": -33.574774,
+    "lon": -70.688182
+  },
+  {
+    "osm_id": "node/906399252",
+    "nombre": "Escuela Especial San Judas Tadeo",
+    "tipo": "colegio",
+    "lat": -33.578266,
+    "lon": -70.686869
+  },
+  {
+    "osm_id": "node/906399253",
+    "nombre": "Escuela Esp. Centro De Estim De Hab Com",
+    "tipo": "colegio",
+    "lat": -33.580676,
+    "lon": -70.704456
+  },
+  {
+    "osm_id": "node/906399255",
+    "nombre": "Escuela Básica Particular Kimkelen",
+    "tipo": "colegio",
+    "lat": -33.587914,
+    "lon": -70.677357
+  },
+  {
+    "osm_id": "node/906399259",
+    "nombre": "Escuela Básica Ignacio Serrano De San Bernardo",
+    "tipo": "colegio",
+    "lat": -33.588073,
+    "lon": -70.677249
+  },
+  {
+    "osm_id": "node/906399262",
+    "nombre": "Liceo Valle de Lluta",
+    "tipo": "colegio",
+    "lat": -33.584118,
+    "lon": -70.667914
+  },
+  {
+    "osm_id": "node/906399263",
+    "nombre": "Escuela Especial El Principito de El Bosque",
+    "tipo": "colegio",
+    "lat": -33.580935,
+    "lon": -70.675562
+  },
+  {
+    "osm_id": "node/906399264",
+    "nombre": "Escuela Básica Nueva Esperanza de El Bosque",
+    "tipo": "colegio",
+    "lat": -33.579842,
+    "lon": -70.673965
+  },
+  {
+    "osm_id": "node/906399265",
+    "nombre": "Colegio de Adultos Alfred Nobel El Bosque",
+    "tipo": "colegio",
+    "lat": -33.579757,
+    "lon": -70.67316
+  },
+  {
+    "osm_id": "node/906399270",
+    "nombre": "Escuela de Lenguaje Capullito",
+    "tipo": "colegio",
+    "lat": -33.574764,
+    "lon": -70.685066
+  },
+  {
+    "osm_id": "node/906399271",
+    "nombre": "Escuela Especial Renacer II",
+    "tipo": "colegio",
+    "lat": -33.579895,
+    "lon": -70.666399
+  },
+  {
+    "osm_id": "node/906399272",
+    "nombre": "Escuela Especial Tragaluz del Bosque",
+    "tipo": "colegio",
+    "lat": -33.581496,
+    "lon": -70.67296
+  },
+  {
+    "osm_id": "node/906399862",
+    "nombre": "Escuela Básica Quillahue",
+    "tipo": "colegio",
+    "lat": -33.570824,
+    "lon": -70.719155
+  },
+  {
+    "osm_id": "node/906399894",
+    "nombre": "Escuela Especial Georgina De Las Nieves",
+    "tipo": "colegio",
+    "lat": -33.572034,
+    "lon": -70.694386
+  },
+  {
+    "osm_id": "node/906399909",
+    "nombre": "Escuela Especial Santa María del Bosque",
+    "tipo": "colegio",
+    "lat": -33.572801,
+    "lon": -70.689141
+  },
+  {
+    "osm_id": "node/906399940",
+    "nombre": "Escuela Especial Idelen",
+    "tipo": "colegio",
+    "lat": -33.571119,
+    "lon": -70.698847
+  },
+  {
+    "osm_id": "node/906400000",
+    "nombre": "Centro Educacional Denver Colorado Schoo",
+    "tipo": "colegio",
+    "lat": -33.572394,
+    "lon": -70.695316
+  },
+  {
+    "osm_id": "node/906400064",
+    "nombre": "Escuela Especial Dame La Mano",
+    "tipo": "colegio",
+    "lat": -33.568774,
+    "lon": -70.667017
+  },
+  {
+    "osm_id": "node/906400079",
+    "nombre": "Colegio Politecnico Maria Griselda Vall",
+    "tipo": "colegio",
+    "lat": -33.572794,
+    "lon": -70.664798
+  },
+  {
+    "osm_id": "node/906400221",
+    "nombre": "Liceo Elena Caffarena Morice",
+    "tipo": "colegio",
+    "lat": -33.570363,
+    "lon": -70.666787
+  },
+  {
+    "osm_id": "node/906400236",
+    "nombre": "Escuela Diferencial Juan Sandoval",
+    "tipo": "colegio",
+    "lat": -33.564336,
+    "lon": -70.682699
+  },
+  {
+    "osm_id": "node/906400257",
+    "nombre": "Escuela Particular Marvit School",
+    "tipo": "colegio",
+    "lat": -33.568518,
+    "lon": -70.683579
+  },
+  {
+    "osm_id": "node/906400302",
+    "nombre": "Escuela La Farola",
+    "tipo": "colegio",
+    "lat": -33.562799,
+    "lon": -70.681508
+  },
+  {
+    "osm_id": "node/906400317",
+    "nombre": "Escuela Especial Manantial del Bosque",
+    "tipo": "colegio",
+    "lat": -33.563245,
+    "lon": -70.678014
+  },
+  {
+    "osm_id": "node/906400335",
+    "nombre": "Escuela Especial Semillitas De El Bosque",
+    "tipo": "colegio",
+    "lat": -33.562406,
+    "lon": -70.679809
+  },
+  {
+    "osm_id": "node/906400372",
+    "nombre": "Escuela Especial Bosque de Niños",
+    "tipo": "colegio",
+    "lat": -33.558521,
+    "lon": -70.677756
+  },
+  {
+    "osm_id": "node/906400394",
+    "nombre": "Escuela Básica El Bosque",
+    "tipo": "colegio",
+    "lat": -33.56184,
+    "lon": -70.681215
+  },
+  {
+    "osm_id": "node/906400443",
+    "nombre": "Escuela Especial Los Copihues De El Bosque",
+    "tipo": "colegio",
+    "lat": -33.561684,
+    "lon": -70.671117
+  },
+  {
+    "osm_id": "node/906400456",
+    "nombre": "Soc Educacional Ludilen Limitada",
+    "tipo": "colegio",
+    "lat": -33.558663,
+    "lon": -70.665593
+  },
+  {
+    "osm_id": "node/906400468",
+    "nombre": "Escuela Particular Campanita",
+    "tipo": "colegio",
+    "lat": -33.559339,
+    "lon": -70.666642
+  },
+  {
+    "osm_id": "node/906400541",
+    "nombre": "Escuela Básica The Forest College",
+    "tipo": "colegio",
+    "lat": -33.553765,
+    "lon": -70.671897
+  },
+  {
+    "osm_id": "node/906400550",
+    "nombre": "Liceo Villa El Sol",
+    "tipo": "colegio",
+    "lat": -33.554513,
+    "lon": -70.670249
+  },
+  {
+    "osm_id": "node/906400621",
+    "nombre": "Escuela Particular Kennedy",
+    "tipo": "colegio",
+    "lat": -33.533625,
+    "lon": -70.698277
+  },
+  {
+    "osm_id": "node/906400674",
+    "nombre": "Escuela Básica Saint Phillips Of Nery",
+    "tipo": "colegio",
+    "lat": -33.532305,
+    "lon": -70.693646
+  },
+  {
+    "osm_id": "node/906400692",
+    "nombre": "Escuela Especial Addenun N 2",
+    "tipo": "colegio",
+    "lat": -33.533425,
+    "lon": -70.692016
+  },
+  {
+    "osm_id": "node/906400727",
+    "nombre": "Escuela Especial Trem-Tremo",
+    "tipo": "colegio",
+    "lat": -33.551124,
+    "lon": -70.678982
+  },
+  {
+    "osm_id": "node/906400739",
+    "nombre": "Centro Educacional Matías Cousiño",
+    "tipo": "colegio",
+    "lat": -33.551456,
+    "lon": -70.676897
+  },
+  {
+    "osm_id": "node/906400753",
+    "nombre": "Escuela Particular José Miguel Carrera",
+    "tipo": "colegio",
+    "lat": -33.551741,
+    "lon": -70.675658
+  },
+  {
     "osm_id": "node/906400768",
     "nombre": "Escuela Básica Los Lagos De Chile",
     "tipo": "colegio",
     "lat": -33.544405,
     "lon": -70.677717
+  },
+  {
+    "osm_id": "node/906400935",
+    "nombre": "Escuela De Parvulos Y Especial Yampai",
+    "tipo": "colegio",
+    "lat": -33.550666,
+    "lon": -70.674255
+  },
+  {
+    "osm_id": "node/906401013",
+    "nombre": "Escuela Especial San Mateo de El Bosque",
+    "tipo": "colegio",
+    "lat": -33.552528,
+    "lon": -70.66507
   },
   {
     "osm_id": "node/906401072",
@@ -56,6 +364,20 @@
     "lon": -70.677961
   },
   {
+    "osm_id": "node/906402114",
+    "nombre": "Colegio Especial Madre Teresa de Calcuta",
+    "tipo": "colegio",
+    "lat": -33.530893,
+    "lon": -70.697989
+  },
+  {
+    "osm_id": "node/906402178",
+    "nombre": "Escuela Especial Newen",
+    "tipo": "colegio",
+    "lat": -33.515486,
+    "lon": -70.688296
+  },
+  {
     "osm_id": "node/906402299",
     "nombre": "Escuela Básica Willis Collins Hooven Kur",
     "tipo": "colegio",
@@ -68,6 +390,13 @@
     "tipo": "colegio",
     "lat": -33.53066,
     "lon": -70.674565
+  },
+  {
+    "osm_id": "node/906402351",
+    "nombre": "Escuela Básica y Especial Despertar de Lo Espejo",
+    "tipo": "colegio",
+    "lat": -33.51827,
+    "lon": -70.683246
   },
   {
     "osm_id": "node/906402362",
@@ -84,6 +413,20 @@
     "lon": -70.667364
   },
   {
+    "osm_id": "node/906402483",
+    "nombre": "Escuela Básica Salomon Sack",
+    "tipo": "colegio",
+    "lat": -33.51458,
+    "lon": -70.684925
+  },
+  {
+    "osm_id": "node/906402511",
+    "nombre": "Escuela Especial El Riel",
+    "tipo": "colegio",
+    "lat": -33.504404,
+    "lon": -70.690499
+  },
+  {
     "osm_id": "node/906402865",
     "nombre": "Escuela Especial Particular Papelucho",
     "tipo": "colegio",
@@ -96,6 +439,27 @@
     "tipo": "colegio",
     "lat": -33.507676,
     "lon": -70.665667
+  },
+  {
+    "osm_id": "node/906402969",
+    "nombre": "Sociedad Educacional Los Chiquitines de Pedro Aguirre Cerda",
+    "tipo": "colegio",
+    "lat": -33.488604,
+    "lon": -70.684853
+  },
+  {
+    "osm_id": "node/906402982",
+    "nombre": "Escuela De Parvulos Y Especial Luis Semb",
+    "tipo": "colegio",
+    "lat": -33.490716,
+    "lon": -70.682007
+  },
+  {
+    "osm_id": "node/906403004",
+    "nombre": "Escuela Básica Padre Fidel Abarca",
+    "tipo": "colegio",
+    "lat": -33.489995,
+    "lon": -70.677616
   },
   {
     "osm_id": "node/906403063",
@@ -119,11 +483,200 @@
     "lon": -70.669857
   },
   {
+    "osm_id": "node/906405712",
+    "nombre": "Escuela Particular Children's School",
+    "tipo": "colegio",
+    "lat": -33.471241,
+    "lon": -70.714638
+  },
+  {
+    "osm_id": "node/906407397",
+    "nombre": "Escuela Básica San Pedro",
+    "tipo": "colegio",
+    "lat": -33.483696,
+    "lon": -70.692546
+  },
+  {
+    "osm_id": "node/906407433",
+    "nombre": "Escuela Especial América del Sur",
+    "tipo": "colegio",
+    "lat": -33.483894,
+    "lon": -70.692504
+  },
+  {
+    "osm_id": "node/906407564",
+    "nombre": "Escuela Particular Pío XII",
+    "tipo": "colegio",
+    "lat": -33.478319,
+    "lon": -70.668273
+  },
+  {
+    "osm_id": "node/906407579",
+    "nombre": "Escuela Básica Particular Jacqueline Kennedy",
+    "tipo": "colegio",
+    "lat": -33.479418,
+    "lon": -70.670023
+  },
+  {
+    "osm_id": "node/906407588",
+    "nombre": "Colegio Particular Población Alessandri",
+    "tipo": "colegio",
+    "lat": -33.482431,
+    "lon": -70.665366
+  },
+  {
+    "osm_id": "node/906407638",
+    "nombre": "Escuela Especial Virgen de Las Peñas",
+    "tipo": "colegio",
+    "lat": -33.47291,
+    "lon": -70.670917
+  },
+  {
+    "osm_id": "node/906407709",
+    "nombre": "Escuela de Lenguaje Mi Espacio",
+    "tipo": "colegio",
+    "lat": -33.473693,
+    "lon": -70.671397
+  },
+  {
+    "osm_id": "node/906416879",
+    "nombre": "Centro De Desarrollo Del Lenguaje",
+    "tipo": "colegio",
+    "lat": -33.578426,
+    "lon": -70.649578
+  },
+  {
+    "osm_id": "node/906416902",
+    "nombre": "Escuela Especial Nueva Alborada",
+    "tipo": "colegio",
+    "lat": -33.579554,
+    "lon": -70.644798
+  },
+  {
+    "osm_id": "node/906417074",
+    "nombre": "Escuela Especial Planeta de Niños",
+    "tipo": "colegio",
+    "lat": -33.58281,
+    "lon": -70.626801
+  },
+  {
+    "osm_id": "node/906417752",
+    "nombre": "Escuela Básica Forjadores Del Futuro",
+    "tipo": "colegio",
+    "lat": -33.586439,
+    "lon": -70.616861
+  },
+  {
+    "osm_id": "node/906417829",
+    "nombre": "Escuela Especial Sn Miguel De Nva Extrem",
+    "tipo": "colegio",
+    "lat": -33.589765,
+    "lon": -70.613072
+  },
+  {
+    "osm_id": "node/906417959",
+    "nombre": "Escuela Especial de Lenguaje Pablo Neruda",
+    "tipo": "colegio",
+    "lat": -33.581639,
+    "lon": -70.600783
+  },
+  {
+    "osm_id": "node/906418040",
+    "nombre": "Colegio Hernán Larraín Peró",
+    "tipo": "colegio",
+    "lat": -33.583438,
+    "lon": -70.615331
+  },
+  {
+    "osm_id": "node/906418709",
+    "nombre": "Escuela Básica Paul Harris El Bosque",
+    "tipo": "colegio",
+    "lat": -33.567574,
+    "lon": -70.659118
+  },
+  {
+    "osm_id": "node/906418710",
+    "nombre": "Escuela Nemesio Antúnez",
+    "tipo": "colegio",
+    "lat": -33.570784,
+    "lon": -70.663447
+  },
+  {
+    "osm_id": "node/906418711",
+    "nombre": "Escuela Especial El Nidito",
+    "tipo": "colegio",
+    "lat": -33.563282,
+    "lon": -70.660297
+  },
+  {
+    "osm_id": "node/906418714",
+    "nombre": "Colegio Santa Fe",
+    "tipo": "colegio",
+    "lat": -33.552795,
+    "lon": -70.661748
+  },
+  {
+    "osm_id": "node/906418731",
+    "nombre": "Liceo de Adultos Ceia de La Pintana",
+    "tipo": "colegio",
+    "lat": -33.559796,
+    "lon": -70.628457
+  },
+  {
+    "osm_id": "node/906418734",
+    "nombre": "Escuela Especial Madre María Mazzarello",
+    "tipo": "colegio",
+    "lat": -33.548799,
+    "lon": -70.654692
+  },
+  {
+    "osm_id": "node/906418736",
+    "nombre": "Escuela Particular Santa María Mazzarello",
+    "tipo": "colegio",
+    "lat": -33.549038,
+    "lon": -70.655223
+  },
+  {
+    "osm_id": "node/906418738",
+    "nombre": "Escuela Especial Jesús del Bosque",
+    "tipo": "colegio",
+    "lat": -33.548391,
+    "lon": -70.654575
+  },
+  {
+    "osm_id": "node/906418739",
+    "nombre": "Escuela Especial Dalcahue Sur 2",
+    "tipo": "colegio",
+    "lat": -33.550365,
+    "lon": -70.653918
+  },
+  {
     "osm_id": "node/906418740",
     "nombre": "Escuela Básica Abet",
     "tipo": "colegio",
     "lat": -33.543055,
     "lon": -70.658858
+  },
+  {
+    "osm_id": "node/906418743",
+    "nombre": "Escuela Particular San Martín de Porres",
+    "tipo": "colegio",
+    "lat": -33.545025,
+    "lon": -70.663278
+  },
+  {
+    "osm_id": "node/906418745",
+    "nombre": "Escuela Particular Children's College",
+    "tipo": "colegio",
+    "lat": -33.545246,
+    "lon": -70.660817
+  },
+  {
+    "osm_id": "node/906418752",
+    "nombre": "Escuela Especial Edén de San Ramón",
+    "tipo": "colegio",
+    "lat": -33.5452,
+    "lon": -70.651046
   },
   {
     "osm_id": "node/906418757",
@@ -175,11 +728,25 @@
     "lon": -70.647278
   },
   {
+    "osm_id": "node/906418912",
+    "nombre": "Centro Educacion Integral Adultos",
+    "tipo": "colegio",
+    "lat": -33.548543,
+    "lon": -70.63357
+  },
+  {
     "osm_id": "node/906418984",
     "nombre": "Escuela Básica Educadores De Chile",
     "tipo": "colegio",
     "lat": -33.537005,
     "lon": -70.640739
+  },
+  {
+    "osm_id": "node/906419074",
+    "nombre": "Escuela Especial Santa Rita de Casia",
+    "tipo": "colegio",
+    "lat": -33.532005,
+    "lon": -70.633279
   },
   {
     "osm_id": "node/906419102",
@@ -215,6 +782,41 @@
     "tipo": "colegio",
     "lat": -33.534385,
     "lon": -70.635219
+  },
+  {
+    "osm_id": "node/906419186",
+    "nombre": "Escuela Especial Güenipillan",
+    "tipo": "colegio",
+    "lat": -33.539015,
+    "lon": -70.630709
+  },
+  {
+    "osm_id": "node/906419381",
+    "nombre": "Escuela Especial Palu",
+    "tipo": "colegio",
+    "lat": -33.55272,
+    "lon": -70.603456
+  },
+  {
+    "osm_id": "node/906419970",
+    "nombre": "Escuela Particular Laura Elgueta",
+    "tipo": "colegio",
+    "lat": -33.546503,
+    "lon": -70.604707
+  },
+  {
+    "osm_id": "node/906420098",
+    "nombre": "Escuela Basica Nelquihue",
+    "tipo": "colegio",
+    "lat": -33.537258,
+    "lon": -70.614722
+  },
+  {
+    "osm_id": "node/906420111",
+    "nombre": "Escuela Especial Marta y Berta",
+    "tipo": "colegio",
+    "lat": -33.538845,
+    "lon": -70.602891
   },
   {
     "osm_id": "node/906420922",
@@ -357,11 +959,25 @@
     "lon": -70.656781
   },
   {
+    "osm_id": "node/906421303",
+    "nombre": "Escuela Especial Gribel",
+    "tipo": "colegio",
+    "lat": -33.521652,
+    "lon": -70.628219
+  },
+  {
     "osm_id": "node/906421333",
     "nombre": "Escuela Colegio Alberto Blest Gana",
     "tipo": "colegio",
     "lat": -33.519506,
     "lon": -70.638063
+  },
+  {
+    "osm_id": "node/906421358",
+    "nombre": "Escuela Básica Particular Estrella De Chile",
+    "tipo": "colegio",
+    "lat": -33.530072,
+    "lon": -70.631608
   },
   {
     "osm_id": "node/906421365",
@@ -378,11 +994,32 @@
     "lon": -70.637747
   },
   {
+    "osm_id": "node/906421384",
+    "nombre": "Escuela Especial Despertares",
+    "tipo": "colegio",
+    "lat": -33.529799,
+    "lon": -70.621883
+  },
+  {
     "osm_id": "node/906421396",
     "nombre": "Colegio Betania - Talleres Prevocacionales Hogar De Cristo",
     "tipo": "colegio",
     "lat": -33.528564,
     "lon": -70.635221
+  },
+  {
+    "osm_id": "node/906421415",
+    "nombre": "Escuela Particular Javiera Carrera",
+    "tipo": "colegio",
+    "lat": -33.517063,
+    "lon": -70.634803
+  },
+  {
+    "osm_id": "node/906421425",
+    "nombre": "Col De Adul Cent De Educ Int De Adul La",
+    "tipo": "colegio",
+    "lat": -33.516388,
+    "lon": -70.633157
   },
   {
     "osm_id": "node/906421447",
@@ -406,11 +1043,32 @@
     "lon": -70.637639
   },
   {
+    "osm_id": "node/906421487",
+    "nombre": "Escuela Básica la Castrina",
+    "tipo": "colegio",
+    "lat": -33.516452,
+    "lon": -70.633143
+  },
+  {
     "osm_id": "node/906421495",
     "nombre": "Escuela Básica Santa Fé",
     "tipo": "colegio",
     "lat": -33.513576,
     "lon": -70.637689
+  },
+  {
+    "osm_id": "node/906421535",
+    "nombre": "Escuela Especial Cantares",
+    "tipo": "colegio",
+    "lat": -33.515696,
+    "lon": -70.625969
+  },
+  {
+    "osm_id": "node/906421560",
+    "nombre": "Escuela Especial Francisca Mackarena",
+    "tipo": "colegio",
+    "lat": -33.516398,
+    "lon": -70.627966
   },
   {
     "osm_id": "node/906421615",
@@ -504,6 +1162,13 @@
     "lon": -70.657212
   },
   {
+    "osm_id": "node/906421675",
+    "nombre": "Escuela Especial Tu Esperanza",
+    "tipo": "colegio",
+    "lat": -33.489673,
+    "lon": -70.663715
+  },
+  {
     "osm_id": "node/906421680",
     "nombre": "Liceo Técnico A-100 San Miguel",
     "tipo": "colegio",
@@ -518,6 +1183,13 @@
     "lon": -70.648038
   },
   {
+    "osm_id": "node/906421683",
+    "nombre": "Colegio Pan American College",
+    "tipo": "colegio",
+    "lat": -33.487672,
+    "lon": -70.651447
+  },
+  {
     "osm_id": "node/906421686",
     "nombre": "Escuela Básica Álvarez de Toledo",
     "tipo": "colegio",
@@ -525,11 +1197,25 @@
     "lon": -70.645585
   },
   {
+    "osm_id": "node/906421687",
+    "nombre": "Escuela Básica Y Especial San Clemente",
+    "tipo": "colegio",
+    "lat": -33.488126,
+    "lon": -70.652118
+  },
+  {
     "osm_id": "node/906421688",
     "nombre": "Escuela Especial Tecnológica",
     "tipo": "colegio",
     "lat": -33.491442,
     "lon": -70.649819
+  },
+  {
+    "osm_id": "node/906421697",
+    "nombre": "Escuela Básica Particular Rainbow School",
+    "tipo": "colegio",
+    "lat": -33.500762,
+    "lon": -70.631336
   },
   {
     "osm_id": "node/906421711",
@@ -546,11 +1232,277 @@
     "lon": -70.637413
   },
   {
+    "osm_id": "node/906421715",
+    "nombre": "Escuela Especial Vocare",
+    "tipo": "colegio",
+    "lat": -33.498941,
+    "lon": -70.625061
+  },
+  {
+    "osm_id": "node/906421716",
+    "nombre": "Escuela Especial de Lenguaje Chile Cuba",
+    "tipo": "colegio",
+    "lat": -33.501311,
+    "lon": -70.627698
+  },
+  {
+    "osm_id": "node/906421717",
+    "nombre": "Escuela Especial Carrusel",
+    "tipo": "colegio",
+    "lat": -33.498196,
+    "lon": -70.632639
+  },
+  {
     "osm_id": "node/906421718",
     "nombre": "Escuela Básica Lucila Godoy",
     "tipo": "colegio",
     "lat": -33.501666,
     "lon": -70.642138
+  },
+  {
+    "osm_id": "node/906421722",
+    "nombre": "Escuela Básica Particular Queen & Flowers College",
+    "tipo": "colegio",
+    "lat": -33.496134,
+    "lon": -70.63093
+  },
+  {
+    "osm_id": "node/906421723",
+    "nombre": "Escuela Especial Arboliris",
+    "tipo": "colegio",
+    "lat": -33.489965,
+    "lon": -70.629885
+  },
+  {
+    "osm_id": "node/906421725",
+    "nombre": "Liceo Polivalente Adventista Stgo. Sur",
+    "tipo": "colegio",
+    "lat": -33.495836,
+    "lon": -70.628276
+  },
+  {
+    "osm_id": "node/906421732",
+    "nombre": "Escuela Especial Mi Casita",
+    "tipo": "colegio",
+    "lat": -33.521952,
+    "lon": -70.609597
+  },
+  {
+    "osm_id": "node/906421733",
+    "nombre": "Colegio Cristiano Bethel N.3",
+    "tipo": "colegio",
+    "lat": -33.520643,
+    "lon": -70.608592
+  },
+  {
+    "osm_id": "node/906421735",
+    "nombre": "Escuela Especial Angel Riviere",
+    "tipo": "colegio",
+    "lat": -33.523972,
+    "lon": -70.603572
+  },
+  {
+    "osm_id": "node/906421736",
+    "nombre": "Escuela Particular Elliot College",
+    "tipo": "colegio",
+    "lat": -33.524445,
+    "lon": -70.61985
+  },
+  {
+    "osm_id": "node/906421738",
+    "nombre": "Casa Azul",
+    "tipo": "colegio",
+    "lat": -33.523385,
+    "lon": -70.6188
+  },
+  {
+    "osm_id": "node/906421739",
+    "nombre": "Escuela Basica Y Especial Andres Rey",
+    "tipo": "colegio",
+    "lat": -33.52121,
+    "lon": -70.601718
+  },
+  {
+    "osm_id": "node/906421741",
+    "nombre": "Colegio de Adultos Manuel Bulnes",
+    "tipo": "colegio",
+    "lat": -33.515921,
+    "lon": -70.609957
+  },
+  {
+    "osm_id": "node/906421748",
+    "nombre": "Escuela Especial Jean Piaget",
+    "tipo": "colegio",
+    "lat": -33.512663,
+    "lon": -70.607178
+  },
+  {
+    "osm_id": "node/906421749",
+    "nombre": "Escuela Especial Abra Palabra",
+    "tipo": "colegio",
+    "lat": -33.511642,
+    "lon": -70.614564
+  },
+  {
+    "osm_id": "node/906421751",
+    "nombre": "Colegio Manuel Bulnes de La Florida",
+    "tipo": "colegio",
+    "lat": -33.516179,
+    "lon": -70.610313
+  },
+  {
+    "osm_id": "node/906421752",
+    "nombre": "Colegio Santa Cecilia De La Florida",
+    "tipo": "colegio",
+    "lat": -33.512821,
+    "lon": -70.607453
+  },
+  {
+    "osm_id": "node/906421812",
+    "nombre": "Escuela Particular Centro Educacional Santa Mónica",
+    "tipo": "colegio",
+    "lat": -33.498964,
+    "lon": -70.618119
+  },
+  {
+    "osm_id": "node/906421813",
+    "nombre": "Escuela Basica Marta Brunet",
+    "tipo": "colegio",
+    "lat": -33.50471,
+    "lon": -70.607534
+  },
+  {
+    "osm_id": "node/906422015",
+    "nombre": "Escuela Básica Los Húsares",
+    "tipo": "colegio",
+    "lat": -33.492729,
+    "lon": -70.609358
+  },
+  {
+    "osm_id": "node/906424831",
+    "nombre": "Escuela Básica Corpameg",
+    "tipo": "colegio",
+    "lat": -33.483867,
+    "lon": -70.656434
+  },
+  {
+    "osm_id": "node/906424972",
+    "nombre": "Escuela Particular Rocío De Los Ángeles",
+    "tipo": "colegio",
+    "lat": -33.477826,
+    "lon": -70.661736
+  },
+  {
+    "osm_id": "node/906425162",
+    "nombre": "Escuela Básica y Especial Barros Luco",
+    "tipo": "colegio",
+    "lat": -33.480367,
+    "lon": -70.655272
+  },
+  {
+    "osm_id": "node/906425257",
+    "nombre": "Colegio Pipan",
+    "tipo": "colegio",
+    "lat": -33.484296,
+    "lon": -70.652548
+  },
+  {
+    "osm_id": "node/906425258",
+    "nombre": "Escuela Especial Despertares",
+    "tipo": "colegio",
+    "lat": -33.484225,
+    "lon": -70.659704
+  },
+  {
+    "osm_id": "node/906425351",
+    "nombre": "Escuela Especial Los Cedros Del Libano",
+    "tipo": "colegio",
+    "lat": -33.484646,
+    "lon": -70.652768
+  },
+  {
+    "osm_id": "node/906425380",
+    "nombre": "Escuela Básica Piloto Pardo",
+    "tipo": "colegio",
+    "lat": -33.472556,
+    "lon": -70.659203
+  },
+  {
+    "osm_id": "node/906425381",
+    "nombre": "Liceo República de Brasil",
+    "tipo": "colegio",
+    "lat": -33.471989,
+    "lon": -70.659203
+  },
+  {
+    "osm_id": "node/906425395",
+    "nombre": "Liceo Inst. De Educación Media Claudio M",
+    "tipo": "colegio",
+    "lat": -33.474276,
+    "lon": -70.649279
+  },
+  {
+    "osm_id": "node/906425426",
+    "nombre": "Colegio We Tripantu",
+    "tipo": "colegio",
+    "lat": -33.481431,
+    "lon": -70.624009
+  },
+  {
+    "osm_id": "node/906425427",
+    "nombre": "Escuela Robert Baden Powell School",
+    "tipo": "colegio",
+    "lat": -33.479632,
+    "lon": -70.624165
+  },
+  {
+    "osm_id": "node/906425428",
+    "nombre": "Colegio Arzobispo Manuel Vicuña",
+    "tipo": "colegio",
+    "lat": -33.486017,
+    "lon": -70.640674
+  },
+  {
+    "osm_id": "node/906425828",
+    "nombre": "Centro Educacional San Antonio de Padua",
+    "tipo": "colegio",
+    "lat": -33.47978,
+    "lon": -70.641528
+  },
+  {
+    "osm_id": "node/906426652",
+    "nombre": "Jardín Infantil Pelusita",
+    "tipo": "colegio",
+    "lat": -33.471927,
+    "lon": -70.638518
+  },
+  {
+    "osm_id": "node/906426901",
+    "nombre": "Escuela Especial Castorcito",
+    "tipo": "colegio",
+    "lat": -33.475714,
+    "lon": -70.633542
+  },
+  {
+    "osm_id": "node/906433464",
+    "nombre": "Liceo Instituto De Educacion De Adulto Mayor",
+    "tipo": "colegio",
+    "lat": -33.481949,
+    "lon": -70.600808
+  },
+  {
+    "osm_id": "node/906433507",
+    "nombre": "Escuela Básica Newton School",
+    "tipo": "colegio",
+    "lat": -33.4837,
+    "lon": -70.609764
+  },
+  {
+    "osm_id": "node/906434377",
+    "nombre": "Colegio Psicopedagogico Juan Wesley",
+    "tipo": "colegio",
+    "lat": -33.471377,
+    "lon": -70.602261
   },
   {
     "osm_id": "node/1111281692",
@@ -560,11 +1512,39 @@
     "lon": -70.652489
   },
   {
+    "osm_id": "node/1245673980",
+    "nombre": "Escuela Especial de Lenguaje Dame la Mano",
+    "tipo": "colegio",
+    "lat": -33.575455,
+    "lon": -70.663303
+  },
+  {
+    "osm_id": "node/1278659100",
+    "nombre": "Integramédica",
+    "tipo": "clinica",
+    "lat": -33.516679,
+    "lon": -70.717654
+  },
+  {
+    "osm_id": "node/2080632348",
+    "nombre": "Tenencia Lo Sierra",
+    "tipo": "carabineros",
+    "lat": -33.53205,
+    "lon": -70.703673
+  },
+  {
     "osm_id": "node/2277907408",
     "nombre": "Tenencia Nueva España",
     "tipo": "carabineros",
     "lat": -33.528319,
     "lon": -70.672472
+  },
+  {
+    "osm_id": "node/2494560224",
+    "nombre": "13 Comisaría La Granja",
+    "tipo": "carabineros",
+    "lat": -33.535269,
+    "lon": -70.613519
   },
   {
     "osm_id": "node/2528021044",
@@ -588,11 +1568,60 @@
     "lon": -70.659307
   },
   {
+    "osm_id": "node/3699071132",
+    "nombre": "Subcomisaría Cerrillos",
+    "tipo": "carabineros",
+    "lat": -33.479599,
+    "lon": -70.687967
+  },
+  {
+    "osm_id": "node/3700131755",
+    "nombre": "39 Comisaria El Bosque",
+    "tipo": "carabineros",
+    "lat": -33.565745,
+    "lon": -70.665896
+  },
+  {
+    "osm_id": "node/3700295423",
+    "nombre": "Subcomisaría Parque Brasil",
+    "tipo": "carabineros",
+    "lat": -33.515395,
+    "lon": -70.614798
+  },
+  {
+    "osm_id": "node/3700334111",
+    "nombre": "41 Comisaría La Pintana",
+    "tipo": "carabineros",
+    "lat": -33.583015,
+    "lon": -70.631573
+  },
+  {
+    "osm_id": "node/3700439026",
+    "nombre": "40 Comisaría Fuerzas Especiales",
+    "tipo": "carabineros",
+    "lat": -33.506019,
+    "lon": -70.696253
+  },
+  {
     "osm_id": "node/3725765640",
     "nombre": "Centro Médico Santa Elena",
     "tipo": "clinica",
     "lat": -33.516847,
     "lon": -70.659101
+  },
+  {
+    "osm_id": "node/3893389150",
+    "nombre": "Cuarta Compañía del Cuerpo de Bomberos de San Bernardo",
+    "tipo": "bomberos",
+    "lat": -33.570755,
+    "lon": -70.680139
+  },
+  {
+    "osm_id": "node/3896780225",
+    "nombre": "Escuela de Lenguaje America",
+    "tipo": "colegio",
+    "lat": -33.581107,
+    "lon": -70.704288
   },
   {
     "osm_id": "node/4192973289",
@@ -602,11 +1631,39 @@
     "lon": -70.656918
   },
   {
+    "osm_id": "node/4337460072",
+    "nombre": "Tenencia El Bosque Poniente",
+    "tipo": "carabineros",
+    "lat": -33.551878,
+    "lon": -70.688433
+  },
+  {
+    "osm_id": "node/4458147873",
+    "nombre": "Consultas Medicas",
+    "tipo": "clinica",
+    "lat": -33.521142,
+    "lon": -70.600511
+  },
+  {
     "osm_id": "node/4494764335",
     "nombre": "Consulta Médica",
     "tipo": "clinica",
     "lat": -33.534377,
     "lon": -70.663334
+  },
+  {
+    "osm_id": "node/4700450789",
+    "nombre": "ESCUELA DE INGLÉS - John O'Shea",
+    "tipo": "colegio",
+    "lat": -33.562748,
+    "lon": -70.661558
+  },
+  {
+    "osm_id": "node/4707290990",
+    "nombre": "Clases de Inglés - John O'Shea",
+    "tipo": "colegio",
+    "lat": -33.562738,
+    "lon": -70.661488
   },
   {
     "osm_id": "node/4751442423",
@@ -623,11 +1680,25 @@
     "lon": -70.656068
   },
   {
+    "osm_id": "node/4815874433",
+    "nombre": "ACHS",
+    "tipo": "clinica",
+    "lat": -33.486847,
+    "lon": -70.647994
+  },
+  {
     "osm_id": "node/4825689921",
     "nombre": "Centro Medico y de Dialisis LTDA",
     "tipo": "clinica",
     "lat": -33.532401,
     "lon": -70.660907
+  },
+  {
+    "osm_id": "node/4974419621",
+    "nombre": "Kinefagleon",
+    "tipo": "clinica",
+    "lat": -33.556571,
+    "lon": -70.623122
   },
   {
     "osm_id": "node/5583551497",
@@ -637,11 +1708,53 @@
     "lon": -70.667247
   },
   {
+    "osm_id": "node/5645883555",
+    "nombre": "CESFAM Santa Laura",
+    "tipo": "clinica",
+    "lat": -33.552514,
+    "lon": -70.688801
+  },
+  {
+    "osm_id": "node/6864812345",
+    "nombre": "Escuela San Luis del Bosque",
+    "tipo": "colegio",
+    "lat": -33.547667,
+    "lon": -70.685585
+  },
+  {
     "osm_id": "node/7176094207",
     "nombre": "CESFAM Recreo",
     "tipo": "clinica",
     "lat": -33.510359,
     "lon": -70.649166
+  },
+  {
+    "osm_id": "node/9000087747",
+    "nombre": "Escuela Básica República de Haití",
+    "tipo": "colegio",
+    "lat": -33.474867,
+    "lon": -70.651719
+  },
+  {
+    "osm_id": "node/9000087766",
+    "nombre": "Instituto de Enseñanza Media Claudio Matte",
+    "tipo": "colegio",
+    "lat": -33.474769,
+    "lon": -70.649643
+  },
+  {
+    "osm_id": "node/9000136976",
+    "nombre": "CESFAM Yalta San Joaquín",
+    "tipo": "clinica",
+    "lat": -33.47865,
+    "lon": -70.636607
+  },
+  {
+    "osm_id": "node/9417763213",
+    "nombre": "Novena Compañía del Cuerpo de Bomberos de Maipú",
+    "tipo": "bomberos",
+    "lat": -33.511383,
+    "lon": -70.708328
   },
   {
     "osm_id": "node/9419541637",
@@ -651,6 +1764,83 @@
     "lon": -70.678032
   },
   {
+    "osm_id": "node/10108508843",
+    "nombre": "Segunda Compañía del Cuerpo de Bomberos Metropolitano Sur",
+    "tipo": "bomberos",
+    "lat": -33.533085,
+    "lon": -70.693808
+  },
+  {
+    "osm_id": "node/10695157022",
+    "nombre": "Escuela Popular Espacio Kutral",
+    "tipo": "colegio",
+    "lat": -33.565244,
+    "lon": -70.666702
+  },
+  {
+    "osm_id": "node/10922902934",
+    "nombre": "Punto de Encuentro",
+    "tipo": "punto_encuentro",
+    "lat": -33.522858,
+    "lon": -70.611906
+  },
+  {
+    "osm_id": "node/10959777108",
+    "nombre": "Escuela Republica El Libano",
+    "tipo": "colegio",
+    "lat": -33.472658,
+    "lon": -70.659165
+  },
+  {
+    "osm_id": "node/10961802205",
+    "nombre": "Escuela de Párvulos San Esteban",
+    "tipo": "colegio",
+    "lat": -33.489848,
+    "lon": -70.683318
+  },
+  {
+    "osm_id": "node/10965791290",
+    "nombre": "Escuela Particular Marta Brunet",
+    "tipo": "colegio",
+    "lat": -33.504928,
+    "lon": -70.60771
+  },
+  {
+    "osm_id": "node/10971289643",
+    "nombre": "Escuela República Dominicana",
+    "tipo": "colegio",
+    "lat": -33.5323,
+    "lon": -70.601792
+  },
+  {
+    "osm_id": "node/10971302171",
+    "nombre": "Escuela Cataluña",
+    "tipo": "colegio",
+    "lat": -33.54783,
+    "lon": -70.609579
+  },
+  {
+    "osm_id": "node/10971303711",
+    "nombre": "Escuela Áreas Verdes",
+    "tipo": "colegio",
+    "lat": -33.513449,
+    "lon": -70.600366
+  },
+  {
+    "osm_id": "node/10971356912",
+    "nombre": "Escuela Villa Unidas",
+    "tipo": "colegio",
+    "lat": -33.52784,
+    "lon": -70.606889
+  },
+  {
+    "osm_id": "node/10971878526",
+    "nombre": "Escuela Especial Los Cedros Del Libano",
+    "tipo": "colegio",
+    "lat": -33.485339,
+    "lon": -70.652719
+  },
+  {
     "osm_id": "node/10973796501",
     "nombre": "Liceo Saint Patrick's School",
     "tipo": "colegio",
@@ -658,11 +1848,32 @@
     "lon": -70.655143
   },
   {
+    "osm_id": "node/10973831842",
+    "nombre": "Inst. Regional de Educación Adultos San Miguel",
+    "tipo": "colegio",
+    "lat": -33.489337,
+    "lon": -70.656442
+  },
+  {
     "osm_id": "node/10973853060",
     "nombre": "Liceo Comercial Javiera y José Luis Carrera N1",
     "tipo": "colegio",
     "lat": -33.516588,
     "lon": -70.638081
+  },
+  {
+    "osm_id": "node/10973867225",
+    "nombre": "Escuela Educacional Instituto de Madrid",
+    "tipo": "colegio",
+    "lat": -33.479887,
+    "lon": -70.647532
+  },
+  {
+    "osm_id": "node/10973869435",
+    "nombre": "Colegio Polivalente Adventista Santiago Sur",
+    "tipo": "colegio",
+    "lat": -33.496581,
+    "lon": -70.628695
   },
   {
     "osm_id": "node/10973871721",
@@ -686,6 +1897,27 @@
     "lon": -70.647395
   },
   {
+    "osm_id": "node/10974293137",
+    "nombre": "Escuela de Lenguaje Ecológica Andalen",
+    "tipo": "colegio",
+    "lat": -33.548677,
+    "lon": -70.661344
+  },
+  {
+    "osm_id": "node/10974305029",
+    "nombre": "Escuela Especial de Adultos",
+    "tipo": "colegio",
+    "lat": -33.549012,
+    "lon": -70.633335
+  },
+  {
+    "osm_id": "node/10974431393",
+    "nombre": "Escuela Básica Óscar Salinas",
+    "tipo": "colegio",
+    "lat": -33.586291,
+    "lon": -70.615747
+  },
+  {
     "osm_id": "node/10974491094",
     "nombre": "Escuela Básica Álas de Águila",
     "tipo": "colegio",
@@ -693,11 +1925,25 @@
     "lon": -70.636701
   },
   {
+    "osm_id": "node/10977241410",
+    "nombre": "CEIA Aprender",
+    "tipo": "colegio",
+    "lat": -33.515608,
+    "lon": -70.68027
+  },
+  {
     "osm_id": "node/10977241961",
     "nombre": "Liceo Polivalente Ministro Abdón Cifuentes Espinoza",
     "tipo": "colegio",
     "lat": -33.527357,
     "lon": -70.654517
+  },
+  {
+    "osm_id": "node/10977256758",
+    "nombre": "Escuela Básica Salomón Sack",
+    "tipo": "colegio",
+    "lat": -33.516132,
+    "lon": -70.685402
   },
   {
     "osm_id": "node/10977457859",
@@ -721,6 +1967,13 @@
     "lon": -70.655797
   },
   {
+    "osm_id": "node/10977780858",
+    "nombre": "Escuela de Párvulos Los duendecitos II",
+    "tipo": "colegio",
+    "lat": -33.554811,
+    "lon": -70.618502
+  },
+  {
     "osm_id": "node/10978860390",
     "nombre": "Escuela Particular Los Capullitos",
     "tipo": "colegio",
@@ -735,11 +1988,53 @@
     "lon": -70.653513
   },
   {
+    "osm_id": "node/10979214260",
+    "nombre": "Colegio SanTA SOFIA",
+    "tipo": "colegio",
+    "lat": -33.56193,
+    "lon": -70.624798
+  },
+  {
+    "osm_id": "node/10979216380",
+    "nombre": "La NONI Escuela de Párvulos Y Lenguaje",
+    "tipo": "colegio",
+    "lat": -33.569628,
+    "lon": -70.683685
+  },
+  {
+    "osm_id": "node/10979351769",
+    "nombre": "Escuela Hablando Sin Parar",
+    "tipo": "colegio",
+    "lat": -33.560254,
+    "lon": -70.678119
+  },
+  {
     "osm_id": "node/10979374676",
     "nombre": "Escuela de Lenguaje CHILE",
     "tipo": "colegio",
     "lat": -33.534155,
     "lon": -70.641497
+  },
+  {
+    "osm_id": "node/10980864626",
+    "nombre": "Escuela Especial San Vicente",
+    "tipo": "colegio",
+    "lat": -33.577503,
+    "lon": -70.708206
+  },
+  {
+    "osm_id": "node/10980885897",
+    "nombre": "Escuela Especial N°192 de Colores",
+    "tipo": "colegio",
+    "lat": -33.581448,
+    "lon": -70.686288
+  },
+  {
+    "osm_id": "node/10980910147",
+    "nombre": "Escuela Especial Mi Club Rymai",
+    "tipo": "colegio",
+    "lat": -33.553404,
+    "lon": -70.630466
   },
   {
     "osm_id": "node/10980910226",
@@ -749,11 +2044,25 @@
     "lon": -70.645249
   },
   {
+    "osm_id": "node/10981287249",
+    "nombre": "Escuela Especial The Almond School",
+    "tipo": "colegio",
+    "lat": -33.559491,
+    "lon": -70.644023
+  },
+  {
     "osm_id": "node/10981328822",
     "nombre": "Escuela de Párvulos Rayito de Sol",
     "tipo": "colegio",
     "lat": -33.511349,
     "lon": -70.65597
+  },
+  {
+    "osm_id": "node/10989823984",
+    "nombre": "Escuela Especial Elefante Melodia",
+    "tipo": "colegio",
+    "lat": -33.516496,
+    "lon": -70.623457
   },
   {
     "osm_id": "node/10989836243",
@@ -777,6 +2086,20 @@
     "lon": -70.661687
   },
   {
+    "osm_id": "node/11001863991",
+    "nombre": "Colegio Domingo Eyzaguirre",
+    "tipo": "colegio",
+    "lat": -33.585041,
+    "lon": -70.696202
+  },
+  {
+    "osm_id": "node/11002037727",
+    "nombre": "Colegio Juan Bautista Durán",
+    "tipo": "colegio",
+    "lat": -33.573653,
+    "lon": -70.6917
+  },
+  {
     "osm_id": "node/11210547186",
     "nombre": "CESFAM Barros Luco",
     "tipo": "clinica",
@@ -784,11 +2107,39 @@
     "lon": -70.657393
   },
   {
+    "osm_id": "node/11210598676",
+    "nombre": "CESFAM/ SAPU San Joaquín",
+    "tipo": "clinica",
+    "lat": -33.486799,
+    "lon": -70.623636
+  },
+  {
+    "osm_id": "node/11210876835",
+    "nombre": "CESFAM Julio Acuña Pinzón",
+    "tipo": "clinica",
+    "lat": -33.522697,
+    "lon": -70.697486
+  },
+  {
+    "osm_id": "node/11228431763",
+    "nombre": "Escuela Marcial Martínez de Ferrari",
+    "tipo": "colegio",
+    "lat": -33.570019,
+    "lon": -70.687237
+  },
+  {
     "osm_id": "node/11243617899",
     "nombre": "Escuela Especial y de Párvulos Petit Prince",
     "tipo": "colegio",
     "lat": -33.54301,
     "lon": -70.65584
+  },
+  {
+    "osm_id": "node/11246127363",
+    "nombre": "Colegio Hospitalario Hospital El Pino",
+    "tipo": "colegio",
+    "lat": -33.584073,
+    "lon": -70.676094
   },
   {
     "osm_id": "node/11246676992",
@@ -812,11 +2163,39 @@
     "lon": -70.655954
   },
   {
+    "osm_id": "node/11246985296",
+    "nombre": "Escuela Aitue",
+    "tipo": "colegio",
+    "lat": -33.472667,
+    "lon": -70.690386
+  },
+  {
+    "osm_id": "node/11246997204",
+    "nombre": "Escuela de Lenguaje Los Músicos de Bremen",
+    "tipo": "colegio",
+    "lat": -33.558154,
+    "lon": -70.642599
+  },
+  {
     "osm_id": "node/11248821404",
     "nombre": "Escuela Ecológica Mapu Lihuen",
     "tipo": "colegio",
     "lat": -33.506743,
     "lon": -70.666459
+  },
+  {
+    "osm_id": "node/11266809922",
+    "nombre": "Escuela de Lenguaje The Almond School II",
+    "tipo": "colegio",
+    "lat": -33.5762,
+    "lon": -70.655764
+  },
+  {
+    "osm_id": "node/11267855248",
+    "nombre": "Escuela de Lenguaje Tu Arcoiris",
+    "tipo": "colegio",
+    "lat": -33.540436,
+    "lon": -70.614446
   },
   {
     "osm_id": "node/11284339296",
@@ -826,11 +2205,67 @@
     "lon": -70.642687
   },
   {
+    "osm_id": "node/11309935266",
+    "nombre": "Escuela de Lenguaje Génesis",
+    "tipo": "colegio",
+    "lat": -33.500267,
+    "lon": -70.688529
+  },
+  {
+    "osm_id": "node/11329134621",
+    "nombre": "Escuela Especial Particular Luna Nueva",
+    "tipo": "colegio",
+    "lat": -33.530607,
+    "lon": -70.610621
+  },
+  {
+    "osm_id": "node/11331123445",
+    "nombre": "Escuela Hospitalaria Padre Hurtado",
+    "tipo": "colegio",
+    "lat": -33.552629,
+    "lon": -70.634407
+  },
+  {
+    "osm_id": "node/11338667464",
+    "nombre": "Escuela Especial Arcoiris del Bosque",
+    "tipo": "colegio",
+    "lat": -33.548446,
+    "lon": -70.675169
+  },
+  {
     "osm_id": "node/11367059258",
     "nombre": "Centro de Educacion Diferencial Armonia",
     "tipo": "colegio",
     "lat": -33.512099,
     "lon": -70.658418
+  },
+  {
+    "osm_id": "node/11367092339",
+    "nombre": "Escuela Especial Eden de San Ramon",
+    "tipo": "colegio",
+    "lat": -33.547357,
+    "lon": -70.637225
+  },
+  {
+    "osm_id": "node/11367267731",
+    "nombre": "Escuela Básica Saint Phillip Of Nery",
+    "tipo": "colegio",
+    "lat": -33.532836,
+    "lon": -70.693522
+  },
+  {
+    "osm_id": "node/11373752375",
+    "nombre": "Sociedad Educacional María Dominga Mazzarello",
+    "tipo": "colegio",
+    "lat": -33.55051,
+    "lon": -70.655104
+  },
+  {
+    "osm_id": "node/11373962999",
+    "nombre": "Escuela Básica Casa Azul",
+    "tipo": "colegio",
+    "lat": -33.524037,
+    "lon": -70.620218
   },
   {
     "osm_id": "node/11379813220",
@@ -854,11 +2289,109 @@
     "lon": -70.654749
   },
   {
+    "osm_id": "node/11383740815",
+    "nombre": "Sagrada familia",
+    "tipo": "colegio",
+    "lat": -33.584184,
+    "lon": -70.703613
+  },
+  {
+    "osm_id": "node/11392297878",
+    "nombre": "Escuela Especial Capullitos de Sol",
+    "tipo": "colegio",
+    "lat": -33.491141,
+    "lon": -70.603814
+  },
+  {
+    "osm_id": "node/11392463053",
+    "nombre": "Escuela Especial de Lenguaje Amanecer de La Granja",
+    "tipo": "colegio",
+    "lat": -33.543978,
+    "lon": -70.62768
+  },
+  {
+    "osm_id": "node/11394034402",
+    "nombre": "Escuela de Párvulos Phillips Garden",
+    "tipo": "colegio",
+    "lat": -33.527467,
+    "lon": -70.605165
+  },
+  {
+    "osm_id": "node/11394781448",
+    "nombre": "Escuela Especial Mirador Azul",
+    "tipo": "colegio",
+    "lat": -33.512552,
+    "lon": -70.603915
+  },
+  {
+    "osm_id": "node/11397714938",
+    "nombre": "Escuela de Párvulos OESTE",
+    "tipo": "colegio",
+    "lat": -33.515061,
+    "lon": -70.709105
+  },
+  {
+    "osm_id": "node/11397801085",
+    "nombre": "Sociedad Educacional Danicalin Limitada",
+    "tipo": "colegio",
+    "lat": -33.58773,
+    "lon": -70.673468
+  },
+  {
+    "osm_id": "node/11397816716",
+    "nombre": "Escuela Nuestra Señora de Covadonga",
+    "tipo": "colegio",
+    "lat": -33.518081,
+    "lon": -70.607217
+  },
+  {
+    "osm_id": "node/11400953155",
+    "nombre": "Liceo De Adultos Herbert Vargas Wallis",
+    "tipo": "colegio",
+    "lat": -33.473635,
+    "lon": -70.658722
+  },
+  {
+    "osm_id": "node/11401082312",
+    "nombre": "Escuela Especial Niño de Jesús San Joaquín",
+    "tipo": "colegio",
+    "lat": -33.502356,
+    "lon": -70.628124
+  },
+  {
     "osm_id": "node/11401126172",
     "nombre": "Escuela de Párvulos Kuky",
     "tipo": "colegio",
     "lat": -33.537966,
     "lon": -70.651695
+  },
+  {
+    "osm_id": "node/11401249422",
+    "nombre": "Colegio Echaurren",
+    "tipo": "colegio",
+    "lat": -33.475279,
+    "lon": -70.716249
+  },
+  {
+    "osm_id": "node/11405557616",
+    "nombre": "Escuela Especial de Lenguaje Antü Küyen",
+    "tipo": "colegio",
+    "lat": -33.513527,
+    "lon": -70.707091
+  },
+  {
+    "osm_id": "node/11405797870",
+    "nombre": "Los Duendecitos de la Granja",
+    "tipo": "colegio",
+    "lat": -33.555169,
+    "lon": -70.618653
+  },
+  {
+    "osm_id": "node/11408398656",
+    "nombre": "Escuela de Párvulos Andalue",
+    "tipo": "colegio",
+    "lat": -33.510925,
+    "lon": -70.61777
   },
   {
     "osm_id": "node/11409423657",
@@ -868,6 +2401,13 @@
     "lon": -70.678976
   },
   {
+    "osm_id": "node/11409472409",
+    "nombre": "Escuela Especial Niño Jesus de la Granja",
+    "tipo": "colegio",
+    "lat": -33.552111,
+    "lon": -70.618
+  },
+  {
     "osm_id": "node/11409490778",
     "nombre": "Escuela De Lenguaje Gabriela Rubio",
     "tipo": "colegio",
@@ -875,11 +2415,81 @@
     "lon": -70.65978
   },
   {
+    "osm_id": "node/11409798753",
+    "nombre": "Escuela De Párvulos El Canelo De El Bosque",
+    "tipo": "colegio",
+    "lat": -33.555852,
+    "lon": -70.663754
+  },
+  {
+    "osm_id": "node/11410242254",
+    "nombre": "Escuela Especial Eluney",
+    "tipo": "colegio",
+    "lat": -33.47244,
+    "lon": -70.708856
+  },
+  {
+    "osm_id": "node/11410370092",
+    "nombre": "Escuela de Lenguaje Mis Tres Angelitos",
+    "tipo": "colegio",
+    "lat": -33.581199,
+    "lon": -70.688337
+  },
+  {
+    "osm_id": "node/11410408186",
+    "nombre": "Escuela Especial El Arca de los Niños",
+    "tipo": "colegio",
+    "lat": -33.531713,
+    "lon": -70.694863
+  },
+  {
+    "osm_id": "node/11410438138",
+    "nombre": "Escuela de Lenguaje América",
+    "tipo": "colegio",
+    "lat": -33.541989,
+    "lon": -70.633053
+  },
+  {
+    "osm_id": "node/11410538436",
+    "nombre": "Escuela Balipeques",
+    "tipo": "colegio",
+    "lat": -33.571711,
+    "lon": -70.698888
+  },
+  {
     "osm_id": "node/11412038595",
     "nombre": "Sociedad Educacional Luz de Esperanza",
     "tipo": "colegio",
     "lat": -33.513781,
     "lon": -70.635339
+  },
+  {
+    "osm_id": "node/11412072472",
+    "nombre": "Escuela de Lenguaje Los Clarines",
+    "tipo": "colegio",
+    "lat": -33.543085,
+    "lon": -70.607275
+  },
+  {
+    "osm_id": "node/11412087581",
+    "nombre": "Escuela Especial La Morenita",
+    "tipo": "colegio",
+    "lat": -33.562265,
+    "lon": -70.663214
+  },
+  {
+    "osm_id": "node/11412131720",
+    "nombre": "Escuela Básica San Javier del Bosque",
+    "tipo": "colegio",
+    "lat": -33.545786,
+    "lon": -70.669727
+  },
+  {
+    "osm_id": "node/11412169577",
+    "nombre": "Escuela Especial de Lenguaje San Gabriel",
+    "tipo": "colegio",
+    "lat": -33.478059,
+    "lon": -70.717266
   },
   {
     "osm_id": "node/11412475534",
@@ -903,6 +2513,48 @@
     "lon": -70.679803
   },
   {
+    "osm_id": "node/11415462801",
+    "nombre": "Escuela especial pioneritos",
+    "tipo": "colegio",
+    "lat": -33.559966,
+    "lon": -70.651988
+  },
+  {
+    "osm_id": "node/11415513873",
+    "nombre": "Colegio Inglaterra",
+    "tipo": "colegio",
+    "lat": -33.512234,
+    "lon": -70.607683
+  },
+  {
+    "osm_id": "node/11415726002",
+    "nombre": "Escuela Basica Ventura Maturana Barahona",
+    "tipo": "colegio",
+    "lat": -33.537254,
+    "lon": -70.614662
+  },
+  {
+    "osm_id": "node/11415810637",
+    "nombre": "Escuela Básica Salomón Sack",
+    "tipo": "colegio",
+    "lat": -33.519774,
+    "lon": -70.688099
+  },
+  {
+    "osm_id": "node/11417770662",
+    "nombre": "Escuela Especial Luis Sembrador",
+    "tipo": "colegio",
+    "lat": -33.515593,
+    "lon": -70.695966
+  },
+  {
+    "osm_id": "node/11429262841",
+    "nombre": "Escuela Particular N°333 el Ángel",
+    "tipo": "colegio",
+    "lat": -33.496232,
+    "lon": -70.629696
+  },
+  {
     "osm_id": "node/11429516314",
     "nombre": "Escuela De Lenguaje Cecla",
     "tipo": "colegio",
@@ -915,6 +2567,41 @@
     "tipo": "colegio",
     "lat": -33.511585,
     "lon": -70.664085
+  },
+  {
+    "osm_id": "node/11432087126",
+    "nombre": "Escuela Especial Tamarugal",
+    "tipo": "colegio",
+    "lat": -33.513657,
+    "lon": -70.695228
+  },
+  {
+    "osm_id": "node/11432425335",
+    "nombre": "Colegio Batalla de la Concepción",
+    "tipo": "colegio",
+    "lat": -33.580871,
+    "lon": -70.668685
+  },
+  {
+    "osm_id": "node/11443429674",
+    "nombre": "Escuela Especial N°196 Aurinko",
+    "tipo": "colegio",
+    "lat": -33.560062,
+    "lon": -70.715148
+  },
+  {
+    "osm_id": "node/11507771173",
+    "nombre": "Escuela Ocampo",
+    "tipo": "colegio",
+    "lat": -33.470233,
+    "lon": -70.650438
+  },
+  {
+    "osm_id": "node/11754586868",
+    "nombre": "Prefectura Santiago Rinconada",
+    "tipo": "carabineros",
+    "lat": -33.495251,
+    "lon": -70.683924
   },
   {
     "osm_id": "node/11764824880",
@@ -931,11 +2618,39 @@
     "lon": -70.635331
   },
   {
+    "osm_id": "node/11947864593",
+    "nombre": "Cesfam Dr. Norman Voulliéme",
+    "tipo": "clinica",
+    "lat": -33.492898,
+    "lon": -70.719754
+  },
+  {
     "osm_id": "node/11959135849",
     "nombre": "Escuela Industrial Particular Lautaro",
     "tipo": "colegio",
     "lat": -33.499114,
     "lon": -70.655319
+  },
+  {
+    "osm_id": "node/12007654855",
+    "nombre": "Escuela Especial Marta y Berta",
+    "tipo": "colegio",
+    "lat": -33.539417,
+    "lon": -70.603056
+  },
+  {
+    "osm_id": "node/12007780672",
+    "nombre": "Escuela Especial Virgen de las Penas",
+    "tipo": "colegio",
+    "lat": -33.474107,
+    "lon": -70.671441
+  },
+  {
+    "osm_id": "node/12007907276",
+    "nombre": "Escuela de Lenguaje Capullito",
+    "tipo": "colegio",
+    "lat": -33.575322,
+    "lon": -70.685226
   },
   {
     "osm_id": "node/12008707957",
@@ -945,11 +2660,46 @@
     "lon": -70.666006
   },
   {
+    "osm_id": "node/12011178944",
+    "nombre": "Escuela de Parvulos Heidi Garden School",
+    "tipo": "colegio",
+    "lat": -33.518284,
+    "lon": -70.634416
+  },
+  {
+    "osm_id": "node/12011222141",
+    "nombre": "Colegio Arzobispo Manuel Vicuña",
+    "tipo": "colegio",
+    "lat": -33.487341,
+    "lon": -70.639816
+  },
+  {
+    "osm_id": "node/12015639772",
+    "nombre": "Escuela de párvulos Burbujitas",
+    "tipo": "colegio",
+    "lat": -33.515872,
+    "lon": -70.681159
+  },
+  {
+    "osm_id": "node/12015872099",
+    "nombre": "Escuela De Lenguaje PequeSol",
+    "tipo": "colegio",
+    "lat": -33.571168,
+    "lon": -70.699658
+  },
+  {
     "osm_id": "node/12016015574",
     "nombre": "Escuela Especial De Lenguaje Anchimallen",
     "tipo": "colegio",
     "lat": -33.532838,
     "lon": -70.677416
+  },
+  {
+    "osm_id": "node/12016621596",
+    "nombre": "Escuela de Lenguaje la Granjita",
+    "tipo": "colegio",
+    "lat": -33.530392,
+    "lon": -70.615556
   },
   {
     "osm_id": "node/12016649825",
@@ -959,11 +2709,67 @@
     "lon": -70.668982
   },
   {
+    "osm_id": "node/12017499576",
+    "nombre": "PDI Brigada de Robos",
+    "tipo": "carabineros",
+    "lat": -33.471864,
+    "lon": -70.620192
+  },
+  {
+    "osm_id": "node/12019982052",
+    "nombre": "Escuela de  Parvulos Kids Kingdom",
+    "tipo": "colegio",
+    "lat": -33.589821,
+    "lon": -70.696943
+  },
+  {
+    "osm_id": "node/12027000152",
+    "nombre": "CESFAM Dra. Haydée López Cassou",
+    "tipo": "clinica",
+    "lat": -33.570177,
+    "lon": -70.66715
+  },
+  {
+    "osm_id": "node/12849630301",
+    "nombre": "Unicof",
+    "tipo": "clinica",
+    "lat": -33.51775,
+    "lon": -70.601809
+  },
+  {
+    "osm_id": "node/13158821455",
+    "nombre": "Fast Clinic",
+    "tipo": "clinica",
+    "lat": -33.583007,
+    "lon": -70.676443
+  },
+  {
+    "osm_id": "node/13370234524",
+    "nombre": "Integramédica El Llano",
+    "tipo": "clinica",
+    "lat": -33.485689,
+    "lon": -70.650817
+  },
+  {
     "osm_id": "relation/6652421",
     "nombre": "12 Comisaria San Miguel",
     "tipo": "carabineros",
     "lat": -33.489883,
     "lon": -70.650472
+  },
+  {
+    "osm_id": "relation/8160267",
+    "nombre": "Colegio Subercaseaux College",
+    "tipo": "colegio",
+    "lat": -33.48009,
+    "lon": -70.655414
+  },
+  {
+    "osm_id": "relation/12253128",
+    "nombre": "Hospital Barros Luco - Trudeau",
+    "tipo": "hospital",
+    "lat": -33.485275,
+    "lon": -70.643073
   },
   {
     "osm_id": "way/102342817",
@@ -973,6 +2779,132 @@
     "lon": -70.677705
   },
   {
+    "osm_id": "way/138284878",
+    "nombre": "Centro Educacional Municipal San Joaquín",
+    "tipo": "colegio",
+    "lat": -33.510946,
+    "lon": -70.627182
+  },
+  {
+    "osm_id": "way/138284883",
+    "nombre": "Escuela Básica Fray Camilo Henríquez",
+    "tipo": "colegio",
+    "lat": -33.505685,
+    "lon": -70.624664
+  },
+  {
+    "osm_id": "way/138284928",
+    "nombre": "Centro Educional Horacio Aravena Andaur",
+    "tipo": "colegio",
+    "lat": -33.499703,
+    "lon": -70.634586
+  },
+  {
+    "osm_id": "way/138285470",
+    "nombre": "50 Comisaría San Joaquín",
+    "tipo": "carabineros",
+    "lat": -33.484827,
+    "lon": -70.630069
+  },
+  {
+    "osm_id": "way/138285471",
+    "nombre": "Escuela Particular Laura Vicuña",
+    "tipo": "colegio",
+    "lat": -33.486941,
+    "lon": -70.633002
+  },
+  {
+    "osm_id": "way/138285473",
+    "nombre": "Escuela Básica y Especial Su Santidad Juan XXIII",
+    "tipo": "colegio",
+    "lat": -33.489848,
+    "lon": -70.632226
+  },
+  {
+    "osm_id": "way/138324500",
+    "nombre": "Escuela Básica Haydn",
+    "tipo": "colegio",
+    "lat": -33.508389,
+    "lon": -70.617772
+  },
+  {
+    "osm_id": "way/138326093",
+    "nombre": "Liceo Industrial de San Miguel Agustín Edwards Ross",
+    "tipo": "colegio",
+    "lat": -33.505976,
+    "lon": -70.632495
+  },
+  {
+    "osm_id": "way/154084104",
+    "nombre": "CESFAM Pueblo Lo Espejo",
+    "tipo": "clinica",
+    "lat": -33.534665,
+    "lon": -70.696377
+  },
+  {
+    "osm_id": "way/157755853",
+    "nombre": "Centro Médico UC San Joaquín",
+    "tipo": "clinica",
+    "lat": -33.49706,
+    "lon": -70.614595
+  },
+  {
+    "osm_id": "way/167918017",
+    "nombre": "Colegio Nuestra Señora María Inmaculada",
+    "tipo": "colegio",
+    "lat": -33.554569,
+    "lon": -70.676006
+  },
+  {
+    "osm_id": "way/173792547",
+    "nombre": "Escuela Básica Cóndores de Plata",
+    "tipo": "colegio",
+    "lat": -33.493209,
+    "lon": -70.718617
+  },
+  {
+    "osm_id": "way/173825798",
+    "nombre": "Escuela Cerrillos",
+    "tipo": "colegio",
+    "lat": -33.494286,
+    "lon": -70.710442
+  },
+  {
+    "osm_id": "way/173834202",
+    "nombre": "Colegio Particular Mater Dei",
+    "tipo": "colegio",
+    "lat": -33.501024,
+    "lon": -70.71193
+  },
+  {
+    "osm_id": "way/175003539",
+    "nombre": "Politécnico Alemán Albert Einstein",
+    "tipo": "colegio",
+    "lat": -33.497602,
+    "lon": -70.719549
+  },
+  {
+    "osm_id": "way/175827652",
+    "nombre": "Colegio San José de Cerrillos",
+    "tipo": "colegio",
+    "lat": -33.501312,
+    "lon": -70.717389
+  },
+  {
+    "osm_id": "way/177051810",
+    "nombre": "Colegio Industrial Particular Don Orione",
+    "tipo": "colegio",
+    "lat": -33.503106,
+    "lon": -70.713202
+  },
+  {
+    "osm_id": "way/188287453",
+    "nombre": "Escuela Julio Barrenechea",
+    "tipo": "colegio",
+    "lat": -33.502082,
+    "lon": -70.607213
+  },
+  {
     "osm_id": "way/192078224",
     "nombre": "Escuela Consolidada Dávila",
     "tipo": "colegio",
@@ -980,11 +2912,158 @@
     "lon": -70.66983
   },
   {
+    "osm_id": "way/192242155",
+    "nombre": "Centro Educacional Municipal Mariano Latorre",
+    "tipo": "colegio",
+    "lat": -33.578446,
+    "lon": -70.641484
+  },
+  {
+    "osm_id": "way/192290519",
+    "nombre": "Escuela Particular Presidente José Joaquín Prieto",
+    "tipo": "colegio",
+    "lat": -33.577791,
+    "lon": -70.630231
+  },
+  {
+    "osm_id": "way/192290547",
+    "nombre": "Liceo N°523 Las Américas",
+    "tipo": "colegio",
+    "lat": -33.577485,
+    "lon": -70.63727
+  },
+  {
+    "osm_id": "way/193407435",
+    "nombre": "Colegio Marista Marcelino Champagnat",
+    "tipo": "colegio",
+    "lat": -33.588507,
+    "lon": -70.615372
+  },
+  {
+    "osm_id": "way/193760181",
+    "nombre": "Hospital Padre Hurtado",
+    "tipo": "hospital",
+    "lat": -33.552668,
+    "lon": -70.635138
+  },
+  {
+    "osm_id": "way/221560127",
+    "nombre": "Instituto Miguel León Prado",
+    "tipo": "colegio",
+    "lat": -33.488413,
+    "lon": -70.649903
+  },
+  {
     "osm_id": "way/221560690",
     "nombre": "Escuela de la Industria Gráfica Héctor Gómez Matus",
     "tipo": "colegio",
     "lat": -33.489668,
     "lon": -70.657849
+  },
+  {
+    "osm_id": "way/222403435",
+    "nombre": "Hospital El Pino",
+    "tipo": "hospital",
+    "lat": -33.584747,
+    "lon": -70.67475
+  },
+  {
+    "osm_id": "way/230514992",
+    "nombre": "Colegio Alma Mater",
+    "tipo": "colegio",
+    "lat": -33.556447,
+    "lon": -70.619343
+  },
+  {
+    "osm_id": "way/230515013",
+    "nombre": "Colegio Nuestra Señora de Guadalupe",
+    "tipo": "colegio",
+    "lat": -33.556177,
+    "lon": -70.618072
+  },
+  {
+    "osm_id": "way/231172992",
+    "nombre": "Escuela de Párvulos y Especial Marta Hid",
+    "tipo": "colegio",
+    "lat": -33.580257,
+    "lon": -70.609149
+  },
+  {
+    "osm_id": "way/231172995",
+    "nombre": "CESFAM Bernardo Leighton",
+    "tipo": "clinica",
+    "lat": -33.584205,
+    "lon": -70.604328
+  },
+  {
+    "osm_id": "way/231172996",
+    "nombre": "Colegio Senda del Saber",
+    "tipo": "colegio",
+    "lat": -33.581341,
+    "lon": -70.607675
+  },
+  {
+    "osm_id": "way/231173002",
+    "nombre": "Colegio Polivalente El Alborada",
+    "tipo": "colegio",
+    "lat": -33.584002,
+    "lon": -70.608541
+  },
+  {
+    "osm_id": "way/233102551",
+    "nombre": "Escuela Básica Instituto S.A.",
+    "tipo": "colegio",
+    "lat": -33.56252,
+    "lon": -70.610021
+  },
+  {
+    "osm_id": "way/233105149",
+    "nombre": "Colegio Polivalente Cardenal Jose María Caro",
+    "tipo": "colegio",
+    "lat": -33.564202,
+    "lon": -70.625169
+  },
+  {
+    "osm_id": "way/233105153",
+    "nombre": "Colegio Jorge Huneeus Zegers",
+    "tipo": "colegio",
+    "lat": -33.564527,
+    "lon": -70.629067
+  },
+  {
+    "osm_id": "way/233128626",
+    "nombre": "Liceo Polivalente Sergio Silva Bascuñán",
+    "tipo": "colegio",
+    "lat": -33.564318,
+    "lon": -70.644978
+  },
+  {
+    "osm_id": "way/233129697",
+    "nombre": "Escuela Básica Villa La Cultura",
+    "tipo": "colegio",
+    "lat": -33.555471,
+    "lon": -70.632567
+  },
+  {
+    "osm_id": "way/253434936",
+    "nombre": "Escuela Básica República de Indonesia",
+    "tipo": "colegio",
+    "lat": -33.530756,
+    "lon": -70.701289
+  },
+  {
+    "osm_id": "way/254298897",
+    "nombre": "Escuela Sol de Chile",
+    "tipo": "colegio",
+    "lat": -33.529023,
+    "lon": -70.697794
+  },
+  {
+    "osm_id": "way/272714296",
+    "nombre": "Escuela Especial Magdalena Ávalos Cruz",
+    "tipo": "colegio",
+    "lat": -33.480295,
+    "lon": -70.647653
   },
   {
     "osm_id": "way/277709937",
@@ -1001,11 +3080,46 @@
     "lon": -70.660883
   },
   {
+    "osm_id": "way/282117132",
+    "nombre": "Escuela Santa Adela",
+    "tipo": "colegio",
+    "lat": -33.509397,
+    "lon": -70.716322
+  },
+  {
+    "osm_id": "way/282120507",
+    "nombre": "Escuela Especial Don Orione",
+    "tipo": "colegio",
+    "lat": -33.502548,
+    "lon": -70.716072
+  },
+  {
+    "osm_id": "way/285945397",
+    "nombre": "33 Comisaría Ñuñoa",
+    "tipo": "carabineros",
+    "lat": -33.471186,
+    "lon": -70.613821
+  },
+  {
+    "osm_id": "way/296061848",
+    "nombre": "Liceo Municipalizado Centro Educacional La Pintana",
+    "tipo": "colegio",
+    "lat": -33.584332,
+    "lon": -70.653219
+  },
+  {
     "osm_id": "way/305805720",
     "nombre": "Centro Médico y Dental RedSalud",
     "tipo": "clinica",
     "lat": -33.506629,
     "lon": -70.654994
+  },
+  {
+    "osm_id": "way/319495632",
+    "nombre": "CESFAM Villa Sur",
+    "tipo": "clinica",
+    "lat": -33.501692,
+    "lon": -70.680842
   },
   {
     "osm_id": "way/319498475",
@@ -1015,11 +3129,60 @@
     "lon": -70.676194
   },
   {
+    "osm_id": "way/319499344",
+    "nombre": "51 Comisaría Pedro Aguirre Cerda",
+    "tipo": "carabineros",
+    "lat": -33.494735,
+    "lon": -70.68428
+  },
+  {
+    "osm_id": "way/319499916",
+    "nombre": "Tenencia Carlos Valdovinos",
+    "tipo": "carabineros",
+    "lat": -33.480745,
+    "lon": -70.674486
+  },
+  {
+    "osm_id": "way/319503108",
+    "nombre": "Sexta Compañía Bomba Pedro Aguirre Cerda",
+    "tipo": "bomberos",
+    "lat": -33.480276,
+    "lon": -70.66292
+  },
+  {
     "osm_id": "way/319503166",
     "nombre": "Séptima Compañía del Cuerpo de Bomberos Metropolitano Sur",
     "tipo": "bomberos",
     "lat": -33.503738,
     "lon": -70.674432
+  },
+  {
+    "osm_id": "way/319505756",
+    "nombre": "CESFAM / SAPU - Centro de Salud Familiar Padre Pierre Dubois",
+    "tipo": "clinica",
+    "lat": -33.489631,
+    "lon": -70.67607
+  },
+  {
+    "osm_id": "way/319505915",
+    "nombre": "CESFAM / SAPU - Centro de Salud Familiar Dr. Edgardo Enríquez Froedden",
+    "tipo": "clinica",
+    "lat": -33.480152,
+    "lon": -70.66904
+  },
+  {
+    "osm_id": "way/319652193",
+    "nombre": "CESFAM Lo Valledor Norte",
+    "tipo": "clinica",
+    "lat": -33.488129,
+    "lon": -70.686412
+  },
+  {
+    "osm_id": "way/319765066",
+    "nombre": "Colegio Parque Las Américas",
+    "tipo": "colegio",
+    "lat": -33.502295,
+    "lon": -70.693241
   },
   {
     "osm_id": "way/320468919",
@@ -1036,11 +3199,81 @@
     "lon": -70.676116
   },
   {
+    "osm_id": "way/321892525",
+    "nombre": "46 Comisaría Macul",
+    "tipo": "carabineros",
+    "lat": -33.490012,
+    "lon": -70.608192
+  },
+  {
     "osm_id": "way/343774715",
     "nombre": "Colegio ArcangEl Gabriel",
     "tipo": "colegio",
     "lat": -33.4973,
     "lon": -70.666494
+  },
+  {
+    "osm_id": "way/352177169",
+    "nombre": "CESFAM/ SAPU Villa O'Higgins",
+    "tipo": "clinica",
+    "lat": -33.530925,
+    "lon": -70.604486
+  },
+  {
+    "osm_id": "way/370734194",
+    "nombre": "Liceo El Roble",
+    "tipo": "colegio",
+    "lat": -33.563713,
+    "lon": -70.649623
+  },
+  {
+    "osm_id": "way/372007733",
+    "nombre": "Escuela D-276 Básicas Comunes",
+    "tipo": "colegio",
+    "lat": -33.473848,
+    "lon": -70.705263
+  },
+  {
+    "osm_id": "way/384564453",
+    "nombre": "Escuela Centro Educacional República Mexicana",
+    "tipo": "colegio",
+    "lat": -33.488986,
+    "lon": -70.665532
+  },
+  {
+    "osm_id": "way/386003123",
+    "nombre": "Escuela Particular Karol Cardenal de Cracovia",
+    "tipo": "colegio",
+    "lat": -33.501728,
+    "lon": -70.693066
+  },
+  {
+    "osm_id": "way/386003135",
+    "nombre": "Complejo Educacional Particular Monseñor Luis Arturo Pérez",
+    "tipo": "colegio",
+    "lat": -33.501417,
+    "lon": -70.688915
+  },
+  {
+    "osm_id": "way/386103347",
+    "nombre": "Asociación Chilena de Seguridad ACHS",
+    "tipo": "clinica",
+    "lat": -33.58644,
+    "lon": -70.702617
+  },
+  {
+    "osm_id": "way/386257719",
+    "nombre": "Liceo Eugenio Pereira Salas",
+    "tipo": "colegio",
+    "lat": -33.494706,
+    "lon": -70.683641
+  },
+  {
+    "osm_id": "way/386257720",
+    "nombre": "Escuela Villa Sur",
+    "tipo": "colegio",
+    "lat": -33.501983,
+    "lon": -70.682548
   },
   {
     "osm_id": "way/386944797",
@@ -1057,11 +3290,53 @@
     "lon": -70.672988
   },
   {
+    "osm_id": "way/399499087",
+    "nombre": "Escuela Diferencial Juan Sandoval",
+    "tipo": "colegio",
+    "lat": -33.470684,
+    "lon": -70.652705
+  },
+  {
+    "osm_id": "way/413771180",
+    "nombre": "Hospital Clínico Metropolitano de La Florida Doctora Eloísa Díaz Insunza",
+    "tipo": "hospital",
+    "lat": -33.514218,
+    "lon": -70.598515
+  },
+  {
+    "osm_id": "way/426457037",
+    "nombre": "IntegraMédica Plaza Vespucio",
+    "tipo": "clinica",
+    "lat": -33.517052,
+    "lon": -70.601126
+  },
+  {
     "osm_id": "way/439807810",
     "nombre": "Centro de Educación Integral de Adultos",
     "tipo": "colegio",
     "lat": -33.508753,
     "lon": -70.674166
+  },
+  {
+    "osm_id": "way/441512680",
+    "nombre": "Escuela Básica Ricardo E. Latcham",
+    "tipo": "colegio",
+    "lat": -33.490638,
+    "lon": -70.682402
+  },
+  {
+    "osm_id": "way/441512707",
+    "nombre": "Escuela Especial Nuestra Señora de las Peñas",
+    "tipo": "colegio",
+    "lat": -33.498336,
+    "lon": -70.692407
+  },
+  {
+    "osm_id": "way/441512723",
+    "nombre": "Escuela Lo Valledor",
+    "tipo": "colegio",
+    "lat": -33.505037,
+    "lon": -70.685287
   },
   {
     "osm_id": "way/444957478",
@@ -1076,6 +3351,27 @@
     "tipo": "colegio",
     "lat": -33.539479,
     "lon": -70.656353
+  },
+  {
+    "osm_id": "way/445112525",
+    "nombre": "Escuela de Párvulos Kinder Pando",
+    "tipo": "colegio",
+    "lat": -33.50666,
+    "lon": -70.601338
+  },
+  {
+    "osm_id": "way/445118825",
+    "nombre": "Colegio San Viator",
+    "tipo": "colegio",
+    "lat": -33.506388,
+    "lon": -70.602665
+  },
+  {
+    "osm_id": "way/445548570",
+    "nombre": "CESFAM Bellavista Transitorio",
+    "tipo": "clinica",
+    "lat": -33.512709,
+    "lon": -70.600575
   },
   {
     "osm_id": "way/446890179",
@@ -1120,6 +3416,90 @@
     "lon": -70.662736
   },
   {
+    "osm_id": "way/447063904",
+    "nombre": "Escuela Básica Parvularia Bélgica",
+    "tipo": "colegio",
+    "lat": -33.585366,
+    "lon": -70.706081
+  },
+  {
+    "osm_id": "way/447255047",
+    "nombre": "Escuela Manuel Magallanes Moure",
+    "tipo": "colegio",
+    "lat": -33.588641,
+    "lon": -70.703369
+  },
+  {
+    "osm_id": "way/447256206",
+    "nombre": "Liceo Industrial Miguel Aylwin Gajardo",
+    "tipo": "colegio",
+    "lat": -33.588423,
+    "lon": -70.700587
+  },
+  {
+    "osm_id": "way/447256208",
+    "nombre": "Liceo Polivalente Santiago de Compostela",
+    "tipo": "colegio",
+    "lat": -33.586966,
+    "lon": -70.69936
+  },
+  {
+    "osm_id": "way/447256209",
+    "nombre": "Escuela Especial Apore",
+    "tipo": "colegio",
+    "lat": -33.587288,
+    "lon": -70.703665
+  },
+  {
+    "osm_id": "way/447256210",
+    "nombre": "Liceo De Adultos Pucara De Chena",
+    "tipo": "colegio",
+    "lat": -33.587557,
+    "lon": -70.703717
+  },
+  {
+    "osm_id": "way/447275387",
+    "nombre": "Escuela Especial Nuevo Mundo de la Granja",
+    "tipo": "colegio",
+    "lat": -33.519127,
+    "lon": -70.62393
+  },
+  {
+    "osm_id": "way/447307457",
+    "nombre": "Escuela Deportiva Marcial Koreana Meneses Lee",
+    "tipo": "colegio",
+    "lat": -33.585534,
+    "lon": -70.703956
+  },
+  {
+    "osm_id": "way/447307458",
+    "nombre": "Colegio Inmaculada Concepción",
+    "tipo": "colegio",
+    "lat": -33.590771,
+    "lon": -70.705383
+  },
+  {
+    "osm_id": "way/447329928",
+    "nombre": "Escuela Especial Sagrada Familia De San",
+    "tipo": "colegio",
+    "lat": -33.587851,
+    "lon": -70.705329
+  },
+  {
+    "osm_id": "way/447559909",
+    "nombre": "Instituto de Educación de Adultos Macul",
+    "tipo": "colegio",
+    "lat": -33.49366,
+    "lon": -70.600144
+  },
+  {
+    "osm_id": "way/448177187",
+    "nombre": "Colegio Parroquial San Miguel",
+    "tipo": "colegio",
+    "lat": -33.486881,
+    "lon": -70.649754
+  },
+  {
     "osm_id": "way/448177744",
     "nombre": "Clínica San Miguel",
     "tipo": "clinica",
@@ -1127,11 +3507,46 @@
     "lon": -70.648519
   },
   {
+    "osm_id": "way/448183548",
+    "nombre": "Centro de Salud Doctor Arturo Baeza Goni",
+    "tipo": "clinica",
+    "lat": -33.491857,
+    "lon": -70.633209
+  },
+  {
+    "osm_id": "way/448222537",
+    "nombre": "Quinta Compañía del Cuerpo de Bomberos Metropolitano Sur",
+    "tipo": "bomberos",
+    "lat": -33.490433,
+    "lon": -70.6323
+  },
+  {
     "osm_id": "way/448740925",
     "nombre": "Escuela Boroa",
     "tipo": "colegio",
     "lat": -33.505158,
     "lon": -70.674875
+  },
+  {
+    "osm_id": "way/448834470",
+    "nombre": "Décima Compañía del Cuerpo de Bomberos Metropolitano Sur",
+    "tipo": "bomberos",
+    "lat": -33.509983,
+    "lon": -70.625165
+  },
+  {
+    "osm_id": "way/448845248",
+    "nombre": "Fonasa",
+    "tipo": "clinica",
+    "lat": -33.511356,
+    "lon": -70.611064
+  },
+  {
+    "osm_id": "way/449393354",
+    "nombre": "Liceo Bicentenario Polivalente Italia",
+    "tipo": "colegio",
+    "lat": -33.470605,
+    "lon": -70.650596
   },
   {
     "osm_id": "way/449422392",
@@ -1148,6 +3563,62 @@
     "lon": -70.63709
   },
   {
+    "osm_id": "way/449442869",
+    "nombre": "Escuela Especial la Granja",
+    "tipo": "colegio",
+    "lat": -33.532411,
+    "lon": -70.631235
+  },
+  {
+    "osm_id": "way/449458573",
+    "nombre": "Colegio Dagoberto Godoy",
+    "tipo": "colegio",
+    "lat": -33.540986,
+    "lon": -70.632855
+  },
+  {
+    "osm_id": "way/449562709",
+    "nombre": "Colegio San Lucas",
+    "tipo": "colegio",
+    "lat": -33.524528,
+    "lon": -70.702942
+  },
+  {
+    "osm_id": "way/449566109",
+    "nombre": "Colegio Polivatente Saint Trinity College",
+    "tipo": "colegio",
+    "lat": -33.529593,
+    "lon": -70.68981
+  },
+  {
+    "osm_id": "way/449934073",
+    "nombre": "Colegio Diferencial Cerrillos",
+    "tipo": "colegio",
+    "lat": -33.497134,
+    "lon": -70.718342
+  },
+  {
+    "osm_id": "way/449934076",
+    "nombre": "Escuela Particular Industrial Cerrillos",
+    "tipo": "colegio",
+    "lat": -33.496739,
+    "lon": -70.717641
+  },
+  {
+    "osm_id": "way/450133484",
+    "nombre": "Segunda Compañía del Cuerpo de Bomberos de Maipú",
+    "tipo": "bomberos",
+    "lat": -33.49278,
+    "lon": -70.713318
+  },
+  {
+    "osm_id": "way/450395112",
+    "nombre": "Colegio sin nombre",
+    "tipo": "colegio",
+    "lat": -33.474541,
+    "lon": -70.712698
+  },
+  {
     "osm_id": "way/450672781",
     "nombre": "Colegio Chile",
     "tipo": "colegio",
@@ -1155,11 +3626,25 @@
     "lon": -70.654498
   },
   {
+    "osm_id": "way/450674166",
+    "nombre": "Escuela Poeta Victor Domingo Silva",
+    "tipo": "colegio",
+    "lat": -33.502855,
+    "lon": -70.634609
+  },
+  {
     "osm_id": "way/450675828",
     "nombre": "Escuela Particular Gran Avenida",
     "tipo": "colegio",
     "lat": -33.505881,
     "lon": -70.656105
+  },
+  {
+    "osm_id": "way/450803549",
+    "nombre": "Escuela Básica Los Héroes de Yungay",
+    "tipo": "colegio",
+    "lat": -33.521708,
+    "lon": -70.618002
   },
   {
     "osm_id": "way/450812207",
@@ -1176,11 +3661,46 @@
     "lon": -70.660276
   },
   {
+    "osm_id": "way/450832481",
+    "nombre": "Colegio San Gregorio de la Salle",
+    "tipo": "colegio",
+    "lat": -33.536594,
+    "lon": -70.620394
+  },
+  {
+    "osm_id": "way/450856223",
+    "nombre": "Colegio Saint Christian College",
+    "tipo": "colegio",
+    "lat": -33.553801,
+    "lon": -70.623949
+  },
+  {
     "osm_id": "way/450864478",
     "nombre": "Colegio San Cristóbal College",
     "tipo": "colegio",
     "lat": -33.495436,
     "lon": -70.652373
+  },
+  {
+    "osm_id": "way/450880107",
+    "nombre": "Liceo Técnico Profesional Patricio Aylwin Azócar",
+    "tipo": "colegio",
+    "lat": -33.555197,
+    "lon": -70.628667
+  },
+  {
+    "osm_id": "way/451081721",
+    "nombre": "Quinta Compañía del Cuerpo de Bomberos de La Granja",
+    "tipo": "bomberos",
+    "lat": -33.556612,
+    "lon": -70.615874
+  },
+  {
+    "osm_id": "way/451087458",
+    "nombre": "CESFAM/ SAPU Santo Tomás",
+    "tipo": "clinica",
+    "lat": -33.556988,
+    "lon": -70.616559
   },
   {
     "osm_id": "way/451148389",
@@ -1204,11 +3724,32 @@
     "lon": -70.67382
   },
   {
+    "osm_id": "way/451191425",
+    "nombre": "CESFAM/ SAPU Los Quillayes",
+    "tipo": "clinica",
+    "lat": -33.560402,
+    "lon": -70.605962
+  },
+  {
+    "osm_id": "way/451197726",
+    "nombre": "Colegio Los Navíos",
+    "tipo": "colegio",
+    "lat": -33.569463,
+    "lon": -70.609872
+  },
+  {
     "osm_id": "way/451255050",
     "nombre": "Escuela Pablo de Tarso",
     "tipo": "colegio",
     "lat": -33.516275,
     "lon": -70.667177
+  },
+  {
+    "osm_id": "way/451366954",
+    "nombre": "Colegio Santo Tomás",
+    "tipo": "colegio",
+    "lat": -33.559819,
+    "lon": -70.62736
   },
   {
     "osm_id": "way/451378009",
@@ -1218,11 +3759,39 @@
     "lon": -70.667626
   },
   {
+    "osm_id": "way/451403493",
+    "nombre": "Escuela Especial N° 263 \"Educadoras Agazzi\"",
+    "tipo": "colegio",
+    "lat": -33.543837,
+    "lon": -70.628466
+  },
+  {
+    "osm_id": "way/451403496",
+    "nombre": "Colegio Polivalente Bahía Darwin",
+    "tipo": "colegio",
+    "lat": -33.544305,
+    "lon": -70.62643
+  },
+  {
+    "osm_id": "way/451406956",
+    "nombre": "Escuela Especial Campanita de La Granja",
+    "tipo": "colegio",
+    "lat": -33.555341,
+    "lon": -70.624418
+  },
+  {
     "osm_id": "way/451407863",
     "nombre": "R-Molino",
     "tipo": "colegio",
     "lat": -33.511463,
     "lon": -70.664615
+  },
+  {
+    "osm_id": "way/451413612",
+    "nombre": "Escuela Especial Mis Amiguitos de la Granja",
+    "tipo": "colegio",
+    "lat": -33.55705,
+    "lon": -70.623523
   },
   {
     "osm_id": "way/451427206",
@@ -1274,6 +3843,13 @@
     "lon": -70.635934
   },
   {
+    "osm_id": "way/451450572",
+    "nombre": "Escuela Marcela Paz",
+    "tipo": "colegio",
+    "lat": -33.530639,
+    "lon": -70.60796
+  },
+  {
     "osm_id": "way/451463525",
     "nombre": "Centro Educacional Santa Clara",
     "tipo": "colegio",
@@ -1316,6 +3892,13 @@
     "lon": -70.653469
   },
   {
+    "osm_id": "way/451919798",
+    "nombre": "Colegio San José de la Familia",
+    "tipo": "colegio",
+    "lat": -33.561895,
+    "lon": -70.63113
+  },
+  {
     "osm_id": "way/451919952",
     "nombre": "Liceo Municipal Araucanía",
     "tipo": "colegio",
@@ -1323,11 +3906,88 @@
     "lon": -70.637448
   },
   {
+    "osm_id": "way/451936791",
+    "nombre": "San Esteban",
+    "tipo": "colegio",
+    "lat": -33.557968,
+    "lon": -70.602053
+  },
+  {
+    "osm_id": "way/451964682",
+    "nombre": "Escuela Sótero del Río",
+    "tipo": "colegio",
+    "lat": -33.53928,
+    "lon": -70.605083
+  },
+  {
+    "osm_id": "way/452326162",
+    "nombre": "Escuela Básica San Carlos De La Florida",
+    "tipo": "colegio",
+    "lat": -33.548112,
+    "lon": -70.61175
+  },
+  {
+    "osm_id": "way/452326163",
+    "nombre": "Escuela Especial Girasol",
+    "tipo": "colegio",
+    "lat": -33.547944,
+    "lon": -70.61367
+  },
+  {
+    "osm_id": "way/452329956",
+    "nombre": "Colegio Particular Isla Wellington",
+    "tipo": "colegio",
+    "lat": -33.546295,
+    "lon": -70.606997
+  },
+  {
+    "osm_id": "way/452355827",
+    "nombre": "Escuela Básica Alberto Magno La Florida",
+    "tipo": "colegio",
+    "lat": -33.556019,
+    "lon": -70.609505
+  },
+  {
+    "osm_id": "way/452524146",
+    "nombre": "Colegio Familia de Nazareth",
+    "tipo": "colegio",
+    "lat": -33.547399,
+    "lon": -70.60106
+  },
+  {
+    "osm_id": "way/452548646",
+    "nombre": "Escuela de Lenguaje Palu",
+    "tipo": "colegio",
+    "lat": -33.553749,
+    "lon": -70.604172
+  },
+  {
     "osm_id": "way/452743659",
     "nombre": "Centro Medico Goycolea",
     "tipo": "clinica",
     "lat": -33.54385,
     "lon": -70.646285
+  },
+  {
+    "osm_id": "way/452744893",
+    "nombre": "Escuela Básica Mario Arce Gatica",
+    "tipo": "colegio",
+    "lat": -33.562684,
+    "lon": -70.664381
+  },
+  {
+    "osm_id": "way/452749707",
+    "nombre": "Undécima Compañía del Cuerpo de Bomberos Metropolitano Sur",
+    "tipo": "bomberos",
+    "lat": -33.555688,
+    "lon": -70.665051
+  },
+  {
+    "osm_id": "way/452751021",
+    "nombre": "Escuela José Abelardo Núñez N°2",
+    "tipo": "colegio",
+    "lat": -33.560671,
+    "lon": -70.664617
   },
   {
     "osm_id": "way/452751697",
@@ -1351,6 +4011,265 @@
     "lon": -70.661457
   },
   {
+    "osm_id": "way/452926296",
+    "nombre": "Complejo Educacional Stella Maris",
+    "tipo": "colegio",
+    "lat": -33.557069,
+    "lon": -70.673921
+  },
+  {
+    "osm_id": "way/454932524",
+    "nombre": "Colegio María Elena",
+    "tipo": "colegio",
+    "lat": -33.563214,
+    "lon": -70.60361
+  },
+  {
+    "osm_id": "way/454971929",
+    "nombre": "Escuela Particular Arturo Matte Larraín",
+    "tipo": "colegio",
+    "lat": -33.548283,
+    "lon": -70.649338
+  },
+  {
+    "osm_id": "way/455120113",
+    "nombre": "The Forest College",
+    "tipo": "colegio",
+    "lat": -33.554654,
+    "lon": -70.672157
+  },
+  {
+    "osm_id": "way/455128805",
+    "nombre": "Liceo Polivalente Juan Gómez Millas",
+    "tipo": "colegio",
+    "lat": -33.549468,
+    "lon": -70.670714
+  },
+  {
+    "osm_id": "way/455128806",
+    "nombre": "Liceo Christa Mc Auliffe",
+    "tipo": "colegio",
+    "lat": -33.54916,
+    "lon": -70.670133
+  },
+  {
+    "osm_id": "way/455128810",
+    "nombre": "Escuela y Liceo Liahona",
+    "tipo": "colegio",
+    "lat": -33.547075,
+    "lon": -70.668685
+  },
+  {
+    "osm_id": "way/455138860",
+    "nombre": "Escuela Diferencial Para Niños Sordos",
+    "tipo": "colegio",
+    "lat": -33.549704,
+    "lon": -70.668239
+  },
+  {
+    "osm_id": "way/455140776",
+    "nombre": "Complejo Educacional Felipe Herrera Lane",
+    "tipo": "colegio",
+    "lat": -33.560016,
+    "lon": -70.666305
+  },
+  {
+    "osm_id": "way/455141706",
+    "nombre": "Colegio Villa Santa María",
+    "tipo": "colegio",
+    "lat": -33.553071,
+    "lon": -70.674919
+  },
+  {
+    "osm_id": "way/455145343",
+    "nombre": "Urgencias Dentales",
+    "tipo": "clinica",
+    "lat": -33.548073,
+    "lon": -70.670492
+  },
+  {
+    "osm_id": "way/455147250",
+    "nombre": "Escuela Especial Gabriela Mistral",
+    "tipo": "colegio",
+    "lat": -33.545346,
+    "lon": -70.666184
+  },
+  {
+    "osm_id": "way/504788609",
+    "nombre": "Liceo Bicentenario Teresa Prat de Sarratea",
+    "tipo": "colegio",
+    "lat": -33.470377,
+    "lon": -70.64583
+  },
+  {
+    "osm_id": "way/504826859",
+    "nombre": "Liceo Andrés Bello",
+    "tipo": "colegio",
+    "lat": -33.486197,
+    "lon": -70.652894
+  },
+  {
+    "osm_id": "way/537801070",
+    "nombre": "Dirección Regional Gendarmería Metropolitana",
+    "tipo": "carabineros",
+    "lat": -33.502059,
+    "lon": -70.615898
+  },
+  {
+    "osm_id": "way/539674136",
+    "nombre": "Escuela Básica Pedro Aguirre Cerda",
+    "tipo": "colegio",
+    "lat": -33.481681,
+    "lon": -70.693392
+  },
+  {
+    "osm_id": "way/546422557",
+    "nombre": "Colegio Arzobispo Crescente Errázuriz",
+    "tipo": "colegio",
+    "lat": -33.573366,
+    "lon": -70.606015
+  },
+  {
+    "osm_id": "way/547532403",
+    "nombre": "Tenencia Teniente Mauricio Rivera López",
+    "tipo": "carabineros",
+    "lat": -33.556384,
+    "lon": -70.616887
+  },
+  {
+    "osm_id": "way/547534781",
+    "nombre": "Colegio Técnico Profesional Aprender",
+    "tipo": "colegio",
+    "lat": -33.557162,
+    "lon": -70.617345
+  },
+  {
+    "osm_id": "way/550450908",
+    "nombre": "The Forest College",
+    "tipo": "colegio",
+    "lat": -33.552265,
+    "lon": -70.676281
+  },
+  {
+    "osm_id": "way/550450912",
+    "nombre": "Escuela Especial Clemente de Jesús",
+    "tipo": "colegio",
+    "lat": -33.551008,
+    "lon": -70.684601
+  },
+  {
+    "osm_id": "way/550450915",
+    "nombre": "Escuela Canciller Orlando Letelier Del Solar",
+    "tipo": "colegio",
+    "lat": -33.552379,
+    "lon": -70.687928
+  },
+  {
+    "osm_id": "way/550497144",
+    "nombre": "Colegio Cardenal José María Caro",
+    "tipo": "colegio",
+    "lat": -33.564265,
+    "lon": -70.626274
+  },
+  {
+    "osm_id": "way/550689063",
+    "nombre": "Escuela General Alberto Bachelet Martínez",
+    "tipo": "colegio",
+    "lat": -33.566215,
+    "lon": -70.681209
+  },
+  {
+    "osm_id": "way/550699109",
+    "nombre": "Escuela Nemesio Antúnez",
+    "tipo": "colegio",
+    "lat": -33.571018,
+    "lon": -70.663256
+  },
+  {
+    "osm_id": "way/550901745",
+    "nombre": "Escuela Particular Miguel de Cervantes",
+    "tipo": "colegio",
+    "lat": -33.579008,
+    "lon": -70.672831
+  },
+  {
+    "osm_id": "way/550901747",
+    "nombre": "Escuela Básica Batalla de la Concepción",
+    "tipo": "colegio",
+    "lat": -33.579768,
+    "lon": -70.669761
+  },
+  {
+    "osm_id": "way/551106608",
+    "nombre": "Centro Educacional Denver Colorado School",
+    "tipo": "colegio",
+    "lat": -33.575055,
+    "lon": -70.689101
+  },
+  {
+    "osm_id": "way/551107476",
+    "nombre": "Colegio polivalente Paul Harris School",
+    "tipo": "colegio",
+    "lat": -33.575301,
+    "lon": -70.68848
+  },
+  {
+    "osm_id": "way/551136596",
+    "nombre": "Escuela Básica Bremen",
+    "tipo": "colegio",
+    "lat": -33.558952,
+    "lon": -70.657405
+  },
+  {
+    "osm_id": "way/556387758",
+    "nombre": "Escuela Particular Villa el Sol",
+    "tipo": "colegio",
+    "lat": -33.555058,
+    "lon": -70.669786
+  },
+  {
+    "osm_id": "way/557525742",
+    "nombre": "Escuela Básica Hispano Americano",
+    "tipo": "colegio",
+    "lat": -33.551421,
+    "lon": -70.670046
+  },
+  {
+    "osm_id": "way/557877067",
+    "nombre": "Colegio María Imaculada",
+    "tipo": "colegio",
+    "lat": -33.552471,
+    "lon": -70.675038
+  },
+  {
+    "osm_id": "way/566332200",
+    "nombre": "Colegio Sol del Illimani",
+    "tipo": "colegio",
+    "lat": -33.53323,
+    "lon": -70.604573
+  },
+  {
+    "osm_id": "way/567470930",
+    "nombre": "Escuela de Conductores Fénix",
+    "tipo": "colegio",
+    "lat": -33.47982,
+    "lon": -70.654057
+  },
+  {
+    "osm_id": "way/574900950",
+    "nombre": "Liceo Villa Macul Académia",
+    "tipo": "colegio",
+    "lat": -33.481718,
+    "lon": -70.600558
+  },
+  {
+    "osm_id": "way/574910079",
+    "nombre": "Liceo Juan Gómez Millas",
+    "tipo": "colegio",
+    "lat": -33.549094,
+    "lon": -70.672794
+  },
+  {
     "osm_id": "way/577517324",
     "nombre": "Escuela Particular Ecole Noel",
     "tipo": "colegio",
@@ -1363,6 +4282,34 @@
     "tipo": "colegio",
     "lat": -33.533292,
     "lon": -70.667808
+  },
+  {
+    "osm_id": "way/584069817",
+    "nombre": "Colegio Particular Tantauco El Bosque",
+    "tipo": "colegio",
+    "lat": -33.55603,
+    "lon": -70.670372
+  },
+  {
+    "osm_id": "way/584069819",
+    "nombre": "Complejo Educacional Particular Las Acacias",
+    "tipo": "colegio",
+    "lat": -33.568644,
+    "lon": -70.670312
+  },
+  {
+    "osm_id": "way/585008119",
+    "nombre": "Jardín Infantil El Llano",
+    "tipo": "colegio",
+    "lat": -33.481164,
+    "lon": -70.654309
+  },
+  {
+    "osm_id": "way/587772573",
+    "nombre": "Centro Politécnico Particular San Ramón",
+    "tipo": "colegio",
+    "lat": -33.555791,
+    "lon": -70.653166
   },
   {
     "osm_id": "way/587787697",
@@ -1386,11 +4333,284 @@
     "lon": -70.656332
   },
   {
+    "osm_id": "way/591304513",
+    "nombre": "Escuela Ciudad de Lyon",
+    "tipo": "colegio",
+    "lat": -33.556065,
+    "lon": -70.656717
+  },
+  {
+    "osm_id": "way/591304517",
+    "nombre": "Colegio Christian Garden School",
+    "tipo": "colegio",
+    "lat": -33.554652,
+    "lon": -70.629208
+  },
+  {
+    "osm_id": "way/595609354",
+    "nombre": "Escuela Raúl Sáez Sáez",
+    "tipo": "colegio",
+    "lat": -33.512409,
+    "lon": -70.688943
+  },
+  {
+    "osm_id": "way/597945071",
+    "nombre": "Liceo Profesora Aurelia Rojas Burgos",
+    "tipo": "colegio",
+    "lat": -33.560151,
+    "lon": -70.620002
+  },
+  {
+    "osm_id": "way/601894769",
+    "nombre": "Colegio Teniente Dagoberto Godoy",
+    "tipo": "colegio",
+    "lat": -33.559748,
+    "lon": -70.658523
+  },
+  {
+    "osm_id": "way/601901739",
+    "nombre": "Escuela Particular Celestín Freinet",
+    "tipo": "colegio",
+    "lat": -33.557349,
+    "lon": -70.641059
+  },
+  {
+    "osm_id": "way/601901744",
+    "nombre": "Chilean Eagles College-La Pintana",
+    "tipo": "colegio",
+    "lat": -33.556575,
+    "lon": -70.647952
+  },
+  {
+    "osm_id": "way/601901773",
+    "nombre": "Colegio Santo Tomas",
+    "tipo": "colegio",
+    "lat": -33.57579,
+    "lon": -70.692511
+  },
+  {
+    "osm_id": "way/602285305",
+    "nombre": "Liceo Malaquías Concha",
+    "tipo": "colegio",
+    "lat": -33.528311,
+    "lon": -70.621199
+  },
+  {
+    "osm_id": "way/602289479",
+    "nombre": "Escuela Básica José Marti",
+    "tipo": "colegio",
+    "lat": -33.541694,
+    "lon": -70.683823
+  },
+  {
+    "osm_id": "way/602291290",
+    "nombre": "Escuela General René Schneider Chereau",
+    "tipo": "colegio",
+    "lat": -33.583266,
+    "lon": -70.692087
+  },
+  {
+    "osm_id": "way/602292180",
+    "nombre": "Escuela Bélgica",
+    "tipo": "colegio",
+    "lat": -33.534666,
+    "lon": -70.625401
+  },
+  {
+    "osm_id": "way/602292186",
+    "nombre": "Escuela Básica Tecno-Sur",
+    "tipo": "colegio",
+    "lat": -33.536849,
+    "lon": -70.631615
+  },
+  {
+    "osm_id": "way/602294188",
+    "nombre": "Escuela Básica Islas De Chile",
+    "tipo": "colegio",
+    "lat": -33.545969,
+    "lon": -70.614169
+  },
+  {
+    "osm_id": "way/602319737",
+    "nombre": "Colegio Espíritu Santo Del Verbo Divino",
+    "tipo": "colegio",
+    "lat": -33.492948,
+    "lon": -70.619547
+  },
+  {
+    "osm_id": "way/605956705",
+    "nombre": "Colegio Polivalente Nueva Nazareth",
+    "tipo": "colegio",
+    "lat": -33.582258,
+    "lon": -70.615418
+  },
+  {
+    "osm_id": "way/605958477",
+    "nombre": "Colegio RainBow",
+    "tipo": "colegio",
+    "lat": -33.588891,
+    "lon": -70.603556
+  },
+  {
+    "osm_id": "way/605958520",
+    "nombre": "Tercera Compañia del Cuerpo de Bomberos de La Granja",
+    "tipo": "bomberos",
+    "lat": -33.583249,
+    "lon": -70.632902
+  },
+  {
+    "osm_id": "way/605958578",
+    "nombre": "Escuela Municipal Violeta Parra",
+    "tipo": "colegio",
+    "lat": -33.577203,
+    "lon": -70.649807
+  },
+  {
+    "osm_id": "way/605960281",
+    "nombre": "Escuela Básica Club Hípico",
+    "tipo": "colegio",
+    "lat": -33.580064,
+    "lon": -70.678637
+  },
+  {
+    "osm_id": "way/605960282",
+    "nombre": "Sociedad Educacional José Abelardo Núñez",
+    "tipo": "colegio",
+    "lat": -33.583076,
+    "lon": -70.681611
+  },
+  {
+    "osm_id": "way/605960287",
+    "nombre": "Escuela Javiera Carrera Verdugo",
+    "tipo": "colegio",
+    "lat": -33.583754,
+    "lon": -70.686915
+  },
+  {
+    "osm_id": "way/606519605",
+    "nombre": "Cecosf Villa Francia",
+    "tipo": "clinica",
+    "lat": -33.474863,
+    "lon": -70.715437
+  },
+  {
+    "osm_id": "way/606920792",
+    "nombre": "Novena Compañía del Cuerpo de Bomberos Metropolitano Sur",
+    "tipo": "bomberos",
+    "lat": -33.509116,
+    "lon": -70.690781
+  },
+  {
+    "osm_id": "way/607858277",
+    "nombre": "Escuela Básica República de Austria",
+    "tipo": "colegio",
+    "lat": -33.474969,
+    "lon": -70.695043
+  },
+  {
+    "osm_id": "way/609333432",
+    "nombre": "Escuela Blue Star College",
+    "tipo": "colegio",
+    "lat": -33.517497,
+    "lon": -70.691344
+  },
+  {
+    "osm_id": "way/609391279",
+    "nombre": "Colegio Polivalente Saint Orland Nº 2",
+    "tipo": "colegio",
+    "lat": -33.518312,
+    "lon": -70.701163
+  },
+  {
+    "osm_id": "way/614960491",
+    "nombre": "Escuela Básica Las Espigas",
+    "tipo": "colegio",
+    "lat": -33.515126,
+    "lon": -70.696867
+  },
+  {
+    "osm_id": "way/614960493",
+    "nombre": "Escuela Básica Conquistando Futuro",
+    "tipo": "colegio",
+    "lat": -33.514645,
+    "lon": -70.697616
+  },
+  {
+    "osm_id": "way/614961207",
+    "nombre": "Escuela Especial Tamarugal",
+    "tipo": "colegio",
+    "lat": -33.515883,
+    "lon": -70.696793
+  },
+  {
+    "osm_id": "way/614968827",
+    "nombre": "Escuela Particular Adventista Buenaventura",
+    "tipo": "colegio",
+    "lat": -33.506006,
+    "lon": -70.694956
+  },
+  {
+    "osm_id": "way/614968830",
+    "nombre": "11 Comisaría Lo Espejo",
+    "tipo": "carabineros",
+    "lat": -33.50703,
+    "lon": -70.696273
+  },
+  {
+    "osm_id": "way/614968832",
+    "nombre": "Colegio Rosa Elvira Matte de Prieto",
+    "tipo": "colegio",
+    "lat": -33.507235,
+    "lon": -70.692806
+  },
+  {
+    "osm_id": "way/614968833",
+    "nombre": "Consultorio Mariela Salgado",
+    "tipo": "clinica",
+    "lat": -33.50758,
+    "lon": -70.694266
+  },
+  {
+    "osm_id": "way/614968834",
+    "nombre": "Centro Educacional Cardenal José María Caro",
+    "tipo": "colegio",
+    "lat": -33.507988,
+    "lon": -70.693173
+  },
+  {
     "osm_id": "way/618398114",
     "nombre": "Colegio Técnico Profesional San Ramón La Cisterna",
     "tipo": "colegio",
     "lat": -33.538131,
     "lon": -70.656926
+  },
+  {
+    "osm_id": "way/618693630",
+    "nombre": "Colegio Polivalente Santo Tomas",
+    "tipo": "colegio",
+    "lat": -33.559516,
+    "lon": -70.627837
+  },
+  {
+    "osm_id": "way/618693658",
+    "nombre": "Liceo Municipal La Granja Poeta Neruda",
+    "tipo": "colegio",
+    "lat": -33.551508,
+    "lon": -70.62866
+  },
+  {
+    "osm_id": "way/618693753",
+    "nombre": "Escuela Nanihue",
+    "tipo": "colegio",
+    "lat": -33.549722,
+    "lon": -70.640416
+  },
+  {
+    "osm_id": "way/618693770",
+    "nombre": "Centro Educacional Paula Jaraquemada",
+    "tipo": "colegio",
+    "lat": -33.551821,
+    "lon": -70.645052
   },
   {
     "osm_id": "way/618706502",
@@ -1400,6 +4620,27 @@
     "lon": -70.636462
   },
   {
+    "osm_id": "way/619013084",
+    "nombre": "Escuela Particular San Marcelo",
+    "tipo": "colegio",
+    "lat": -33.551728,
+    "lon": -70.631697
+  },
+  {
+    "osm_id": "way/619013087",
+    "nombre": "Escuela Básica Benjamín Sebercaseaux",
+    "tipo": "colegio",
+    "lat": -33.553822,
+    "lon": -70.629207
+  },
+  {
+    "osm_id": "way/619015152",
+    "nombre": "Escuela Jose Bernardo Suárez",
+    "tipo": "colegio",
+    "lat": -33.477661,
+    "lon": -70.607608
+  },
+  {
     "osm_id": "way/620756791",
     "nombre": "Escuela Particular Parroquial Domingo Savio",
     "tipo": "colegio",
@@ -1407,11 +4648,144 @@
     "lon": -70.646517
   },
   {
+    "osm_id": "way/620756803",
+    "nombre": "Escuela Básica Paul Harris",
+    "tipo": "colegio",
+    "lat": -33.567186,
+    "lon": -70.660082
+  },
+  {
+    "osm_id": "way/620756822",
+    "nombre": "Liceo Elena Caffarena Morice",
+    "tipo": "colegio",
+    "lat": -33.570312,
+    "lon": -70.666959
+  },
+  {
+    "osm_id": "way/620758182",
+    "nombre": "31 Comisaría San Ramón",
+    "tipo": "carabineros",
+    "lat": -33.54624,
+    "lon": -70.644731
+  },
+  {
+    "osm_id": "way/620758188",
+    "nombre": "Escuela Básica Aviadores",
+    "tipo": "colegio",
+    "lat": -33.550137,
+    "lon": -70.664246
+  },
+  {
+    "osm_id": "way/622848545",
+    "nombre": "Hospital Penitenciario, Santiago",
+    "tipo": "hospital",
+    "lat": -33.473919,
+    "lon": -70.660378
+  },
+  {
     "osm_id": "way/625789213",
     "nombre": "Escuela Particular El Greco",
     "tipo": "colegio",
     "lat": -33.497055,
     "lon": -70.665837
+  },
+  {
+    "osm_id": "way/629236226",
+    "nombre": "Escuela Particular Unidad Divina",
+    "tipo": "colegio",
+    "lat": -33.53739,
+    "lon": -70.60065
+  },
+  {
+    "osm_id": "way/629753469",
+    "nombre": "CESFAM Doctor Carlos Lorca Tobar",
+    "tipo": "clinica",
+    "lat": -33.554153,
+    "lon": -70.666796
+  },
+  {
+    "osm_id": "way/630680487",
+    "nombre": "CESFAM Cóndores de Chile",
+    "tipo": "clinica",
+    "lat": -33.561521,
+    "lon": -70.67469
+  },
+  {
+    "osm_id": "way/630683838",
+    "nombre": "Escuela Básica Base El Bosque",
+    "tipo": "colegio",
+    "lat": -33.562388,
+    "lon": -70.674946
+  },
+  {
+    "osm_id": "way/636187629",
+    "nombre": "Escuela Particular Claudio Matte",
+    "tipo": "colegio",
+    "lat": -33.520005,
+    "lon": -70.633104
+  },
+  {
+    "osm_id": "way/636432858",
+    "nombre": "Escuela Básica Sanitas",
+    "tipo": "colegio",
+    "lat": -33.521995,
+    "lon": -70.628112
+  },
+  {
+    "osm_id": "way/636691416",
+    "nombre": "Escuela Básica Poeta Óscar Castro Zúñiga",
+    "tipo": "colegio",
+    "lat": -33.530482,
+    "lon": -70.622961
+  },
+  {
+    "osm_id": "way/636695927",
+    "nombre": "Complejo Educacional Esperanza",
+    "tipo": "colegio",
+    "lat": -33.489132,
+    "lon": -70.604019
+  },
+  {
+    "osm_id": "way/637361043",
+    "nombre": "CESFAM/ SAPU Padre Vicente Irarrázaval",
+    "tipo": "clinica",
+    "lat": -33.47275,
+    "lon": -70.691928
+  },
+  {
+    "osm_id": "way/637975240",
+    "nombre": "Colegio Bellavista",
+    "tipo": "colegio",
+    "lat": -33.513117,
+    "lon": -70.599871
+  },
+  {
+    "osm_id": "way/637977394",
+    "nombre": "CESFAM Bellavista",
+    "tipo": "clinica",
+    "lat": -33.5185,
+    "lon": -70.601983
+  },
+  {
+    "osm_id": "way/637977399",
+    "nombre": "Colegio Bellavista",
+    "tipo": "colegio",
+    "lat": -33.51915,
+    "lon": -70.60145
+  },
+  {
+    "osm_id": "way/640736520",
+    "nombre": "CESFAM/ SAPU Pablo de Rokha",
+    "tipo": "clinica",
+    "lat": -33.576773,
+    "lon": -70.649722
+  },
+  {
+    "osm_id": "way/642276660",
+    "nombre": "Liceo Victor Jara",
+    "tipo": "colegio",
+    "lat": -33.58329,
+    "lon": -70.642816
   },
   {
     "osm_id": "way/645393198",
@@ -1435,11 +4809,116 @@
     "lon": -70.635577
   },
   {
+    "osm_id": "way/648582598",
+    "nombre": "Liceo Politécnico de San Joaquín",
+    "tipo": "colegio",
+    "lat": -33.483578,
+    "lon": -70.640481
+  },
+  {
+    "osm_id": "way/649705830",
+    "nombre": "Liceo Comercial Padre Alberto Hurtado",
+    "tipo": "colegio",
+    "lat": -33.502019,
+    "lon": -70.681774
+  },
+  {
+    "osm_id": "way/649705831",
+    "nombre": "Liceo Técnico Clotario Blest Riffo",
+    "tipo": "colegio",
+    "lat": -33.501436,
+    "lon": -70.681936
+  },
+  {
+    "osm_id": "way/663219526",
+    "nombre": "Colegio Santa María",
+    "tipo": "colegio",
+    "lat": -33.51325,
+    "lon": -70.610266
+  },
+  {
+    "osm_id": "way/701978210",
+    "nombre": "Escuela La Victoria",
+    "tipo": "colegio",
+    "lat": -33.48787,
+    "lon": -70.679438
+  },
+  {
+    "osm_id": "way/714742327",
+    "nombre": "Escuela Bernardo Leighton",
+    "tipo": "colegio",
+    "lat": -33.574656,
+    "lon": -70.679355
+  },
+  {
+    "osm_id": "way/716753391",
+    "nombre": "Colegio Polivalente Agustiniano",
+    "tipo": "colegio",
+    "lat": -33.569928,
+    "lon": -70.680007
+  },
+  {
+    "osm_id": "way/733132088",
+    "nombre": "Escuela Básica Tupahue",
+    "tipo": "colegio",
+    "lat": -33.553938,
+    "lon": -70.641212
+  },
+  {
+    "osm_id": "way/738092818",
+    "nombre": "Saint Mary Joseph School",
+    "tipo": "colegio",
+    "lat": -33.482062,
+    "lon": -70.610303
+  },
+  {
+    "osm_id": "way/762585349",
+    "nombre": "Octava Compañía del Cuerpo de Bomberos de San Bernardo",
+    "tipo": "bomberos",
+    "lat": -33.542217,
+    "lon": -70.684589
+  },
+  {
+    "osm_id": "way/768965532",
+    "nombre": "CESFAM - Centro de Salud Familiar Lo Valledor Norte",
+    "tipo": "hospital",
+    "lat": -33.495294,
+    "lon": -70.683505
+  },
+  {
+    "osm_id": "way/768965658",
+    "nombre": "Liceo Enrique Backausse",
+    "tipo": "colegio",
+    "lat": -33.482892,
+    "lon": -70.674638
+  },
+  {
+    "osm_id": "way/779530885",
+    "nombre": "Segunda Compañía del Cuerpo de Bomberos de La Granja",
+    "tipo": "bomberos",
+    "lat": -33.550601,
+    "lon": -70.645798
+  },
+  {
     "osm_id": "way/817015387",
     "nombre": "Liceo Polivalente La Cisterna N. 1",
     "tipo": "colegio",
     "lat": -33.529064,
     "lon": -70.651282
+  },
+  {
+    "osm_id": "way/835597154",
+    "nombre": "Edificio Institucional SML",
+    "tipo": "hospital",
+    "lat": -33.476853,
+    "lon": -70.658454
+  },
+  {
+    "osm_id": "way/859883141",
+    "nombre": "Escuela de Lenguaje Kimkumtun",
+    "tipo": "colegio",
+    "lat": -33.58726,
+    "lon": -70.699118
   },
   {
     "osm_id": "way/860349154",
@@ -1449,11 +4928,39 @@
     "lon": -70.677591
   },
   {
+    "osm_id": "way/860693781",
+    "nombre": "Instituto Politécnico San Miguel Arcángel",
+    "tipo": "colegio",
+    "lat": -33.487213,
+    "lon": -70.649135
+  },
+  {
     "osm_id": "way/886502662",
     "nombre": "Colegio Particular Marqués de Ovando",
     "tipo": "colegio",
     "lat": -33.492905,
     "lon": -70.667257
+  },
+  {
+    "osm_id": "way/896752511",
+    "nombre": "Colegio Alcántara La Florida",
+    "tipo": "colegio",
+    "lat": -33.510615,
+    "lon": -70.61046
+  },
+  {
+    "osm_id": "way/901976591",
+    "nombre": "Hospital de Enfermedades Infecciosas Lucio Córdova",
+    "tipo": "hospital",
+    "lat": -33.485275,
+    "lon": -70.645309
+  },
+  {
+    "osm_id": "way/901976592",
+    "nombre": "Hospital de Niños Doctor Exequiel González Cortés",
+    "tipo": "hospital",
+    "lat": -33.484906,
+    "lon": -70.648187
   },
   {
     "osm_id": "way/902338737",
@@ -1463,11 +4970,39 @@
     "lon": -70.676341
   },
   {
+    "osm_id": "way/934447700",
+    "nombre": "CESFAM La Granja",
+    "tipo": "clinica",
+    "lat": -33.536675,
+    "lon": -70.633662
+  },
+  {
+    "osm_id": "way/934452979",
+    "nombre": "CESFAM Malaquías Concha",
+    "tipo": "clinica",
+    "lat": -33.527633,
+    "lon": -70.621275
+  },
+  {
+    "osm_id": "way/954105976",
+    "nombre": "Escuela Llano Subercaseaux",
+    "tipo": "colegio",
+    "lat": -33.485591,
+    "lon": -70.656408
+  },
+  {
     "osm_id": "way/972422439",
     "nombre": "Liceo Politécnico Particular Sagrado Corazón",
     "tipo": "colegio",
     "lat": -33.514822,
     "lon": -70.680346
+  },
+  {
+    "osm_id": "way/972422775",
+    "nombre": "Liceo Polivalente",
+    "tipo": "colegio",
+    "lat": -33.513581,
+    "lon": -70.682577
   },
   {
     "osm_id": "way/972423146",
@@ -1498,6 +5033,20 @@
     "lon": -70.680016
   },
   {
+    "osm_id": "way/993515591",
+    "nombre": "Escuela Básica Alicia Ariztía de Silva",
+    "tipo": "colegio",
+    "lat": -33.520003,
+    "lon": -70.683937
+  },
+  {
+    "osm_id": "way/993517477",
+    "nombre": "Escuela Básica República de Filipinas",
+    "tipo": "colegio",
+    "lat": -33.523129,
+    "lon": -70.688671
+  },
+  {
     "osm_id": "way/1009657094",
     "nombre": "Vacunatorio Municipal Plaza Cívica",
     "tipo": "clinica",
@@ -1505,11 +5054,88 @@
     "lon": -70.665746
   },
   {
+    "osm_id": "way/1024339084",
+    "nombre": "Hospital Clínico IST",
+    "tipo": "clinica",
+    "lat": -33.476206,
+    "lon": -70.651458
+  },
+  {
+    "osm_id": "way/1039065685",
+    "nombre": "Colegio Presidente José Manuel Balmaceda",
+    "tipo": "colegio",
+    "lat": -33.559624,
+    "lon": -70.712311
+  },
+  {
+    "osm_id": "way/1039348922",
+    "nombre": "Escuela Básica Amor de Dios",
+    "tipo": "colegio",
+    "lat": -33.479247,
+    "lon": -70.686501
+  },
+  {
     "osm_id": "way/1045125647",
     "nombre": "Colegio Adventista La Cisterna",
     "tipo": "colegio",
     "lat": -33.536805,
     "lon": -70.668074
+  },
+  {
+    "osm_id": "way/1054331610",
+    "nombre": "Policlínico Tantauco",
+    "tipo": "clinica",
+    "lat": -33.555845,
+    "lon": -70.675366
+  },
+  {
+    "osm_id": "way/1058726077",
+    "nombre": "Escuela Risopatrón",
+    "tipo": "colegio",
+    "lat": -33.490241,
+    "lon": -70.688316
+  },
+  {
+    "osm_id": "way/1065383692",
+    "nombre": "Escuela Claudio Arrau León",
+    "tipo": "colegio",
+    "lat": -33.571413,
+    "lon": -70.680742
+  },
+  {
+    "osm_id": "way/1099765348",
+    "nombre": "Escuela Básica Padre Esteban Gumucio Vives",
+    "tipo": "colegio",
+    "lat": -33.520454,
+    "lon": -70.625176
+  },
+  {
+    "osm_id": "way/1099767434",
+    "nombre": "Escuela Diferencial Santa Teresita de Los Andes",
+    "tipo": "colegio",
+    "lat": -33.519883,
+    "lon": -70.626646
+  },
+  {
+    "osm_id": "way/1101597321",
+    "nombre": "Liceo Doctor Alejandro del Río",
+    "tipo": "colegio",
+    "lat": -33.516461,
+    "lon": -70.62109
+  },
+  {
+    "osm_id": "way/1106730384",
+    "nombre": "Escuela Básica Humberto ValenzueLa Garcia",
+    "tipo": "colegio",
+    "lat": -33.471949,
+    "lon": -70.691925
+  },
+  {
+    "osm_id": "way/1106730385",
+    "nombre": "Colegio San Alberto",
+    "tipo": "colegio",
+    "lat": -33.470852,
+    "lon": -70.692226
   },
   {
     "osm_id": "way/1125689007",
@@ -1540,6 +5166,160 @@
     "lon": -70.644069
   },
   {
+    "osm_id": "way/1129346345",
+    "nombre": "Liceo San Francisco",
+    "tipo": "colegio",
+    "lat": -33.544137,
+    "lon": -70.63456
+  },
+  {
+    "osm_id": "way/1129346366",
+    "nombre": "Escuela Especial Tiempo Nuevo",
+    "tipo": "colegio",
+    "lat": -33.589418,
+    "lon": -70.631936
+  },
+  {
+    "osm_id": "way/1129346367",
+    "nombre": "Centro Educacional Santa Rosa del Sur",
+    "tipo": "colegio",
+    "lat": -33.584581,
+    "lon": -70.627661
+  },
+  {
+    "osm_id": "way/1129346368",
+    "nombre": "Colegio Iberoamericano La Pintana",
+    "tipo": "colegio",
+    "lat": -33.582749,
+    "lon": -70.627145
+  },
+  {
+    "osm_id": "way/1129346369",
+    "nombre": "Escuela Básica Miguel Ángel",
+    "tipo": "colegio",
+    "lat": -33.587889,
+    "lon": -70.625927
+  },
+  {
+    "osm_id": "way/1129346370",
+    "nombre": "Colegio Alto Gabriela",
+    "tipo": "colegio",
+    "lat": -33.583264,
+    "lon": -70.616083
+  },
+  {
+    "osm_id": "way/1129346371",
+    "nombre": "Colegio Santa Sofia",
+    "tipo": "colegio",
+    "lat": -33.58309,
+    "lon": -70.614784
+  },
+  {
+    "osm_id": "way/1129346372",
+    "nombre": "Escuela Básica Juan De Dios Aldea",
+    "tipo": "colegio",
+    "lat": -33.586578,
+    "lon": -70.61271
+  },
+  {
+    "osm_id": "way/1129346373",
+    "nombre": "Escuela Básica y Especial Lautraru",
+    "tipo": "colegio",
+    "lat": -33.587325,
+    "lon": -70.619542
+  },
+  {
+    "osm_id": "way/1129346374",
+    "nombre": "Escuela Básica Particular Hueñecito",
+    "tipo": "colegio",
+    "lat": -33.589023,
+    "lon": -70.649589
+  },
+  {
+    "osm_id": "way/1129346394",
+    "nombre": "Escuela Especial Particular Las Rosas",
+    "tipo": "colegio",
+    "lat": -33.582228,
+    "lon": -70.625083
+  },
+  {
+    "osm_id": "way/1129346398",
+    "nombre": "CESFAM/ SAPU Santiago de la Nueva Extremadura",
+    "tipo": "clinica",
+    "lat": -33.588969,
+    "lon": -70.618636
+  },
+  {
+    "osm_id": "way/1131071481",
+    "nombre": "Escuela Básica Bernardo O'Higgins",
+    "tipo": "colegio",
+    "lat": -33.510251,
+    "lon": -70.695275
+  },
+  {
+    "osm_id": "way/1131071482",
+    "nombre": "Colegio Grace School",
+    "tipo": "colegio",
+    "lat": -33.501908,
+    "lon": -70.686686
+  },
+  {
+    "osm_id": "way/1131071483",
+    "nombre": "Escuela Hernán Olguín Maybee",
+    "tipo": "colegio",
+    "lat": -33.522006,
+    "lon": -70.696566
+  },
+  {
+    "osm_id": "way/1139049705",
+    "nombre": "Colegio Quillahue San Bernardo",
+    "tipo": "colegio",
+    "lat": -33.570903,
+    "lon": -70.711406
+  },
+  {
+    "osm_id": "way/1143734240",
+    "nombre": "Colegio Politécnico María Griselda Valle",
+    "tipo": "colegio",
+    "lat": -33.573992,
+    "lon": -70.664927
+  },
+  {
+    "osm_id": "way/1143734241",
+    "nombre": "Colegio El Almendro",
+    "tipo": "colegio",
+    "lat": -33.576417,
+    "lon": -70.663092
+  },
+  {
+    "osm_id": "way/1149681858",
+    "nombre": "Escuela Básica Villa Santa Elena",
+    "tipo": "colegio",
+    "lat": -33.564919,
+    "lon": -70.667211
+  },
+  {
+    "osm_id": "way/1149681860",
+    "nombre": "Escuela Básica Cristiano Bethel Ii",
+    "tipo": "colegio",
+    "lat": -33.568635,
+    "lon": -70.67127
+  },
+  {
+    "osm_id": "way/1149681867",
+    "nombre": "CESFAM Orlando Letelier",
+    "tipo": "clinica",
+    "lat": -33.577989,
+    "lon": -70.677972
+  },
+  {
+    "osm_id": "way/1149716206",
+    "nombre": "Escuela Marcial Martínez de Ferrari",
+    "tipo": "colegio",
+    "lat": -33.571025,
+    "lon": -70.686749
+  },
+  {
     "osm_id": "way/1149802019",
     "nombre": "CESFAM Doctor Salvador Allende",
     "tipo": "clinica",
@@ -1559,6 +5339,20 @@
     "tipo": "colegio",
     "lat": -33.490268,
     "lon": -70.656424
+  },
+  {
+    "osm_id": "way/1177965188",
+    "nombre": "Instituto Reg. De Educ. Adultos",
+    "tipo": "colegio",
+    "lat": -33.485501,
+    "lon": -70.652489
+  },
+  {
+    "osm_id": "way/1177965196",
+    "nombre": "Centro Educacional Provincia De ÑUble",
+    "tipo": "colegio",
+    "lat": -33.478427,
+    "lon": -70.63629
   },
   {
     "osm_id": "way/1178197110",
@@ -1582,6 +5376,76 @@
     "lon": -70.643827
   },
   {
+    "osm_id": "way/1178197117",
+    "nombre": "Colegio Municipal Próceres de Chile",
+    "tipo": "colegio",
+    "lat": -33.526906,
+    "lon": -70.613941
+  },
+  {
+    "osm_id": "way/1178665633",
+    "nombre": "Centro Educacional Municipal San Ramón",
+    "tipo": "colegio",
+    "lat": -33.549748,
+    "lon": -70.644781
+  },
+  {
+    "osm_id": "way/1178665634",
+    "nombre": "Escuela Básica Aliven",
+    "tipo": "colegio",
+    "lat": -33.550769,
+    "lon": -70.644991
+  },
+  {
+    "osm_id": "way/1180378342",
+    "nombre": "Sexta Compañía del Cuerpo de Bomberos de San Bernardo",
+    "tipo": "bomberos",
+    "lat": -33.584713,
+    "lon": -70.691591
+  },
+  {
+    "osm_id": "way/1180535944",
+    "nombre": "CESFAM/ SAPU Juan Pablo II",
+    "tipo": "clinica",
+    "lat": -33.584513,
+    "lon": -70.692138
+  },
+  {
+    "osm_id": "way/1180676087",
+    "nombre": "Escuela Basica Particular Los Husares",
+    "tipo": "colegio",
+    "lat": -33.493009,
+    "lon": -70.609622
+  },
+  {
+    "osm_id": "way/1181805621",
+    "nombre": "Colegio Neruda",
+    "tipo": "colegio",
+    "lat": -33.579959,
+    "lon": -70.6581
+  },
+  {
+    "osm_id": "way/1182126364",
+    "nombre": "Escuela Especial Alegría De Niños",
+    "tipo": "colegio",
+    "lat": -33.584308,
+    "lon": -70.659021
+  },
+  {
+    "osm_id": "way/1182126366",
+    "nombre": "Escuela Particular Puerto Navarino",
+    "tipo": "colegio",
+    "lat": -33.578279,
+    "lon": -70.657539
+  },
+  {
+    "osm_id": "way/1182126367",
+    "nombre": "Escuela Capitán Ávalos",
+    "tipo": "colegio",
+    "lat": -33.576116,
+    "lon": -70.656409
+  },
+  {
     "osm_id": "way/1185782015",
     "nombre": "Escuela Especial Particular Santiago Sur",
     "tipo": "colegio",
@@ -1596,6 +5460,118 @@
     "lon": -70.673581
   },
   {
+    "osm_id": "way/1186090188",
+    "nombre": "Escuela Ciudad de Barcelona",
+    "tipo": "colegio",
+    "lat": -33.497127,
+    "lon": -70.690658
+  },
+  {
+    "osm_id": "way/1187042916",
+    "nombre": "Escuela Básica Capitán Pastene Anexo",
+    "tipo": "colegio",
+    "lat": -33.569209,
+    "lon": -70.608995
+  },
+  {
+    "osm_id": "way/1189759206",
+    "nombre": "Escuela Básica La Araucanía",
+    "tipo": "colegio",
+    "lat": -33.534913,
+    "lon": -70.616144
+  },
+  {
+    "osm_id": "way/1189759207",
+    "nombre": "Escuela Básica Reina Guillermina de Holanda",
+    "tipo": "colegio",
+    "lat": -33.534507,
+    "lon": -70.616185
+  },
+  {
+    "osm_id": "way/1189759208",
+    "nombre": "Escuela Básica Belén O'Higgins",
+    "tipo": "colegio",
+    "lat": -33.537927,
+    "lon": -70.605315
+  },
+  {
+    "osm_id": "way/1190495782",
+    "nombre": "Colegio Ciudad De Frankfort",
+    "tipo": "colegio",
+    "lat": -33.489251,
+    "lon": -70.622625
+  },
+  {
+    "osm_id": "way/1190495784",
+    "nombre": "Fundación San Nectario",
+    "tipo": "colegio",
+    "lat": -33.469877,
+    "lon": -70.619511
+  },
+  {
+    "osm_id": "way/1190495785",
+    "nombre": "Escuela Básica Provincia de Chiloé",
+    "tipo": "colegio",
+    "lat": -33.470998,
+    "lon": -70.671126
+  },
+  {
+    "osm_id": "way/1190495787",
+    "nombre": "Liceo Municipal San Joaquin",
+    "tipo": "colegio",
+    "lat": -33.493417,
+    "lon": -70.62676
+  },
+  {
+    "osm_id": "way/1193192136",
+    "nombre": "Colegio Ignacio Serrano",
+    "tipo": "colegio",
+    "lat": -33.588317,
+    "lon": -70.674284
+  },
+  {
+    "osm_id": "way/1205668647",
+    "nombre": "CESFAM Flor Fernández",
+    "tipo": "clinica",
+    "lat": -33.58537,
+    "lon": -70.636278
+  },
+  {
+    "osm_id": "way/1208177390",
+    "nombre": "Escuela Particular Hermanos Matte",
+    "tipo": "colegio",
+    "lat": -33.475165,
+    "lon": -70.649947
+  },
+  {
+    "osm_id": "way/1208177433",
+    "nombre": "Colegio Particular Nuestra Sra Del Huerto",
+    "tipo": "colegio",
+    "lat": -33.472371,
+    "lon": -70.62534
+  },
+  {
+    "osm_id": "way/1208356080",
+    "nombre": "Escuela Básica Japón",
+    "tipo": "colegio",
+    "lat": -33.473838,
+    "lon": -70.701268
+  },
+  {
+    "osm_id": "way/1208356081",
+    "nombre": "Escuela Básica Estado de Palestina",
+    "tipo": "colegio",
+    "lat": -33.473969,
+    "lon": -70.701595
+  },
+  {
+    "osm_id": "way/1212165079",
+    "nombre": "Escuela Básica República De Francia",
+    "tipo": "colegio",
+    "lat": -33.47584,
+    "lon": -70.710767
+  },
+  {
     "osm_id": "way/1213969254",
     "nombre": "Colegio Polivalente Francisco Ramirez",
     "tipo": "colegio",
@@ -1603,11 +5579,60 @@
     "lon": -70.63708
   },
   {
+    "osm_id": "way/1214853716",
+    "nombre": "Liceo de Adultos Pucará de Chena",
+    "tipo": "colegio",
+    "lat": -33.588081,
+    "lon": -70.703941
+  },
+  {
+    "osm_id": "way/1220648490",
+    "nombre": "Brigada de Investigación Criminal Cerrillos",
+    "tipo": "carabineros",
+    "lat": -33.480368,
+    "lon": -70.71998
+  },
+  {
     "osm_id": "way/1221344835",
     "nombre": "Escuela Territorio Antártico",
     "tipo": "colegio",
     "lat": -33.507347,
     "lon": -70.662284
+  },
+  {
+    "osm_id": "way/1224893563",
+    "nombre": "Escuela Santa Teresa de Los Morros",
+    "tipo": "colegio",
+    "lat": -33.588661,
+    "lon": -70.677851
+  },
+  {
+    "osm_id": "way/1224893567",
+    "nombre": "CESFAM Doctor Mario Salcedo",
+    "tipo": "clinica",
+    "lat": -33.58195,
+    "lon": -70.668671
+  },
+  {
+    "osm_id": "way/1224893568",
+    "nombre": "Liceo Valle de Lluta",
+    "tipo": "colegio",
+    "lat": -33.584582,
+    "lon": -70.668239
+  },
+  {
+    "osm_id": "way/1224893574",
+    "nombre": "Escuela Pablo De Rokha",
+    "tipo": "colegio",
+    "lat": -33.580325,
+    "lon": -70.650825
+  },
+  {
+    "osm_id": "way/1224893592",
+    "nombre": "CESFAM San Rafael",
+    "tipo": "clinica",
+    "lat": -33.579626,
+    "lon": -70.639118
   },
   {
     "osm_id": "way/1226061896",
@@ -1622,6 +5647,167 @@
     "tipo": "clinica",
     "lat": -33.538962,
     "lon": -70.662386
+  },
+  {
+    "osm_id": "way/1228975321",
+    "nombre": "Escuela Básica Antonio Bórquez Solar",
+    "tipo": "colegio",
+    "lat": -33.590212,
+    "lon": -70.606651
+  },
+  {
+    "osm_id": "way/1229195946",
+    "nombre": "Colegio Los Pinos",
+    "tipo": "colegio",
+    "lat": -33.570516,
+    "lon": -70.702534
+  },
+  {
+    "osm_id": "way/1229195950",
+    "nombre": "Escuela República De Los Estados Unidos de América",
+    "tipo": "colegio",
+    "lat": -33.576495,
+    "lon": -70.704153
+  },
+  {
+    "osm_id": "way/1229195951",
+    "nombre": "Escuela Básica Antupillán",
+    "tipo": "colegio",
+    "lat": -33.58045,
+    "lon": -70.701583
+  },
+  {
+    "osm_id": "way/1229195953",
+    "nombre": "Escuela Alemania",
+    "tipo": "colegio",
+    "lat": -33.581144,
+    "lon": -70.706105
+  },
+  {
+    "osm_id": "way/1229195954",
+    "nombre": "Liceo Polivalente Lucila Godoy Alcayaga",
+    "tipo": "colegio",
+    "lat": -33.583913,
+    "lon": -70.709139
+  },
+  {
+    "osm_id": "way/1229195955",
+    "nombre": "Escuela Cardenal Antonio Samoré",
+    "tipo": "colegio",
+    "lat": -33.564109,
+    "lon": -70.705946
+  },
+  {
+    "osm_id": "way/1229195965",
+    "nombre": "Centro Educacional Baldomero Lillo",
+    "tipo": "colegio",
+    "lat": -33.580388,
+    "lon": -70.688998
+  },
+  {
+    "osm_id": "way/1229195966",
+    "nombre": "CESFAM/ SAPU Confraternidad",
+    "tipo": "clinica",
+    "lat": -33.589743,
+    "lon": -70.682892
+  },
+  {
+    "osm_id": "way/1229195967",
+    "nombre": "Escuela Básica Presidente Salvador Allende",
+    "tipo": "colegio",
+    "lat": -33.577381,
+    "lon": -70.666024
+  },
+  {
+    "osm_id": "way/1229195969",
+    "nombre": "Escuela Básica N°1343 CEDEL Integración",
+    "tipo": "colegio",
+    "lat": -33.579023,
+    "lon": -70.649723
+  },
+  {
+    "osm_id": "way/1229196040",
+    "nombre": "Colegio Arturo Matte Larraín",
+    "tipo": "colegio",
+    "lat": -33.553076,
+    "lon": -70.650329
+  },
+  {
+    "osm_id": "way/1229196047",
+    "nombre": "Escuela Basica San Marcelo Anexo",
+    "tipo": "colegio",
+    "lat": -33.548712,
+    "lon": -70.631797
+  },
+  {
+    "osm_id": "way/1229196053",
+    "nombre": "Cesfam/ SAPU Gabriela Mistral",
+    "tipo": "clinica",
+    "lat": -33.551591,
+    "lon": -70.640747
+  },
+  {
+    "osm_id": "way/1231149060",
+    "nombre": "Escuela Particular María Medianera",
+    "tipo": "colegio",
+    "lat": -33.578307,
+    "lon": -70.686188
+  },
+  {
+    "osm_id": "way/1231149064",
+    "nombre": "Colegio Santa Barbara College",
+    "tipo": "colegio",
+    "lat": -33.575034,
+    "lon": -70.663427
+  },
+  {
+    "osm_id": "way/1233449654",
+    "nombre": "Liceo Fray Luis Beltran",
+    "tipo": "colegio",
+    "lat": -33.546527,
+    "lon": -70.68423
+  },
+  {
+    "osm_id": "way/1233449656",
+    "nombre": "Liceo Teniente Francisco Mery Aguirre",
+    "tipo": "colegio",
+    "lat": -33.534005,
+    "lon": -70.695851
+  },
+  {
+    "osm_id": "way/1246109115",
+    "nombre": "Colegio Pestalozzi",
+    "tipo": "colegio",
+    "lat": -33.505236,
+    "lon": -70.620416
+  },
+  {
+    "osm_id": "way/1246126673",
+    "nombre": "Liceo Santa María Eufrasia Escuela Cárcel",
+    "tipo": "colegio",
+    "lat": -33.501837,
+    "lon": -70.617424
+  },
+  {
+    "osm_id": "way/1248964669",
+    "nombre": "Tenencia La Victoria",
+    "tipo": "carabineros",
+    "lat": -33.486805,
+    "lon": -70.679587
+  },
+  {
+    "osm_id": "way/1270763544",
+    "nombre": "Instituto de la Sordera",
+    "tipo": "colegio",
+    "lat": -33.491604,
+    "lon": -70.620425
+  },
+  {
+    "osm_id": "way/1273945325",
+    "nombre": "Colegio sin nombre",
+    "tipo": "colegio",
+    "lat": -33.472213,
+    "lon": -70.658851
   },
   {
     "osm_id": "way/1279880286",
@@ -1645,6 +5831,13 @@
     "lon": -70.674869
   },
   {
+    "osm_id": "way/1307762367",
+    "nombre": "Escuela Básica y Especial Oscarito y sus Amigos",
+    "tipo": "colegio",
+    "lat": -33.589674,
+    "lon": -70.629085
+  },
+  {
     "osm_id": "way/1308693453",
     "nombre": "Liceo Froilán Yáñez de la Barra",
     "tipo": "colegio",
@@ -1666,11 +5859,81 @@
     "lon": -70.668355
   },
   {
+    "osm_id": "way/1309035721",
+    "nombre": "Escuela Básica Emilia González Espinoza",
+    "tipo": "colegio",
+    "lat": -33.570111,
+    "lon": -70.700456
+  },
+  {
+    "osm_id": "way/1309866012",
+    "nombre": "Escuela España",
+    "tipo": "colegio",
+    "lat": -33.577947,
+    "lon": -70.696019
+  },
+  {
+    "osm_id": "way/1311368476",
+    "nombre": "Escuela Básica Paicaví Nº 2",
+    "tipo": "colegio",
+    "lat": -33.553182,
+    "lon": -70.601442
+  },
+  {
+    "osm_id": "way/1312705028",
+    "nombre": "Escuela Básica Capitán Pastene",
+    "tipo": "colegio",
+    "lat": -33.554378,
+    "lon": -70.60463
+  },
+  {
     "osm_id": "way/1319272101",
     "nombre": "Centro Politécnico Carlos Condell",
     "tipo": "colegio",
     "lat": -33.544053,
     "lon": -70.661293
+  },
+  {
+    "osm_id": "way/1319705082",
+    "nombre": "Colegio Santa Cecilia de La Florida",
+    "tipo": "colegio",
+    "lat": -33.514231,
+    "lon": -70.609506
+  },
+  {
+    "osm_id": "way/1353561487",
+    "nombre": "Escuela Poetas de Chile",
+    "tipo": "colegio",
+    "lat": -33.480536,
+    "lon": -70.65987
+  },
+  {
+    "osm_id": "way/1353561489",
+    "nombre": "Jardín Infantil Pequeño Aymara",
+    "tipo": "colegio",
+    "lat": -33.488076,
+    "lon": -70.679753
+  },
+  {
+    "osm_id": "way/1413586595",
+    "nombre": "Tenencia S.O.M. Óscar Galindo Saravia",
+    "tipo": "carabineros",
+    "lat": -33.56534,
+    "lon": -70.637202
+  },
+  {
+    "osm_id": "way/1420271466",
+    "nombre": "Escuela Básica Presbiteriana El Salvador",
+    "tipo": "colegio",
+    "lat": -33.537215,
+    "lon": -70.621122
+  },
+  {
+    "osm_id": "way/1421577371",
+    "nombre": "Escuela Básica Poeta Neruda",
+    "tipo": "colegio",
+    "lat": -33.513365,
+    "lon": -70.630615
   },
   {
     "osm_id": "way/1422491570",
@@ -1699,5 +5962,40 @@
     "tipo": "carabineros",
     "lat": -33.508263,
     "lon": -70.679154
+  },
+  {
+    "osm_id": "way/1503418181",
+    "nombre": "Escuela Especial Los Copihues N°4",
+    "tipo": "colegio",
+    "lat": -33.488257,
+    "lon": -70.638534
+  },
+  {
+    "osm_id": "way/1503597220",
+    "nombre": "Complejo Educacional Joaquín Edwards Bello",
+    "tipo": "colegio",
+    "lat": -33.493643,
+    "lon": -70.600754
+  },
+  {
+    "osm_id": "way/1506113272",
+    "nombre": "Colegio Florence Nightingale (Escuela Particular nº 520)",
+    "tipo": "colegio",
+    "lat": -33.477403,
+    "lon": -70.599681
+  },
+  {
+    "osm_id": "way/1508286977",
+    "nombre": "Jefatura de Inteligencia Policial de la Policia de Investigaciones (JIPOL)",
+    "tipo": "carabineros",
+    "lat": -33.473183,
+    "lon": -70.614801
+  },
+  {
+    "osm_id": "way/1530483308",
+    "nombre": "Colegio sin nombre",
+    "tipo": "colegio",
+    "lat": -33.487725,
+    "lon": -70.65156
   }
 ]

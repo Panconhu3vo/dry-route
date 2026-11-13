@@ -8,11 +8,13 @@ from django.utils import timezone
 
 from .models import PuntoAnegado, Reporte
 from .reportes import HORAS_VIGENCIA_REPORTE
-from .ruteo import RADIO_BLOQUEO_M, distancia_a_tramo_m, distancia_m
+from .ruteo import RADIO_BLOQUEO_M, ZONA, distancia_a_tramo_m, distancia_m
 
 # Los dos casos de prueba del Entregable III (docs/ENTREGABLE-3.md)
 PASO_DEPARTAMENTAL = "way/451437804"  # Paso bajo nivel Avenida Departamental / Gran Avenida
 PASO_CERRO_NEGRO = "way/39259025"     # Paso bajo nivel Cerro Negro / Avenida Américo Vespucio
+# 0,1 grados (~11 km) al norte del borde de la zona: queda afuera aunque la zona cambie (T28)
+FUERA_DE_LA_ZONA = f"{ZONA['norte'] + 0.1},{ZONA['oeste']}"
 
 
 class CasosDePrueba(TestCase):
@@ -73,13 +75,13 @@ class CasosDePrueba(TestCase):
         self.assertEqual(respuesta.json()["error"], "parametros_invalidos")
 
     def test_error_si_el_punto_esta_fuera_de_la_zona(self):
-        respuesta = self.pedir_ruta("-33.44,-70.65", "-33.505348,-70.647249")  # Santiago Centro
+        respuesta = self.pedir_ruta(FUERA_DE_LA_ZONA, "-33.505348,-70.647249")
         self.assertEqual(respuesta.status_code, 400)
         self.assertEqual(respuesta.json()["error"], "fuera_de_zona")
 
     def test_api_puntos_entrega_zona_y_puntos(self):
         datos = self.client.get("/api/puntos/").json()
-        self.assertEqual(len(datos["anegados"]), 4)
+        self.assertEqual(len(datos["anegados"]), PuntoAnegado.objects.count())
         self.assertGreater(len(datos["evacuacion"]), 0)
         self.assertIn("norte", datos["zona"])
         self.assertEqual(datos["anegados"][0]["fuente"], "OpenStreetMap")
@@ -148,13 +150,14 @@ class ReporteColaborativo(TestCase):
 
     def test_reporte_cerca_de_un_paso_bajo_nivel_activa_ese_paso(self):
         paso = PuntoAnegado.objects.get(osm_id=PASO_DEPARTAMENTAL)
+        puntos_antes = PuntoAnegado.objects.count()
         self.reportar(Client(), (paso.lat + 0.0003, paso.lon))  # unos 30 m al norte del paso
         respuesta = self.reportar(Client(), (paso.lat, paso.lon + 0.0003)).json()
 
         self.assertEqual(respuesta["punto_id"], paso.id)
         paso.refresh_from_db()
         self.assertTrue(paso.activo)
-        self.assertEqual(PuntoAnegado.objects.count(), 4)  # no se creó un punto repetido
+        self.assertEqual(PuntoAnegado.objects.count(), puntos_antes)  # no se creó un punto repetido
 
     def test_tipo_invalido_devuelve_400(self):
         respuesta = self.reportar(self.client, LUGAR_EN_LA_RUTA, tipo="incendio")
@@ -162,7 +165,7 @@ class ReporteColaborativo(TestCase):
         self.assertEqual(respuesta.json()["error"], "tipo_invalido")
 
     def test_punto_fuera_de_la_zona_devuelve_400(self):
-        respuesta = self.reportar(self.client, (-33.44, -70.65))  # Santiago Centro
+        respuesta = self.reportar(self.client, [float(x) for x in FUERA_DE_LA_ZONA.split(",")])
         self.assertEqual(respuesta.status_code, 400)
         self.assertEqual(respuesta.json()["error"], "fuera_de_zona")
 

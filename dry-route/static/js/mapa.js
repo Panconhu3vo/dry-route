@@ -68,7 +68,9 @@ function limitesDeZona(zona) {
 
 // ---------- Crear el mapa ----------
 DryRoute.zona = PUNTOS_DE_EJEMPLO.zona; // valor provisional hasta que responda el servidor
-DryRoute.mapa = L.map("mapa");
+// preferCanvas: los círculos y puntos se pintan en un solo lienzo en vez de uno por uno.
+// Con miles de puntos de evacuación (zona ampliada, T28) el mapa se mueve fluido igual.
+DryRoute.mapa = L.map("mapa", { preferCanvas: true });
 DryRoute.mapa.fitBounds(limitesDeZona(DryRoute.zona));
 
 // Teselas estándar de OpenStreetMap. La atribución es obligatoria por su licencia.

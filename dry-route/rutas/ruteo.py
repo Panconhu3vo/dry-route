@@ -7,13 +7,26 @@ a menos de 100 m de un punto anegado activo y buscamos el camino más corto en l
 
 import json
 import math
+from collections import defaultdict
 from functools import cache, lru_cache
+from types import SimpleNamespace
 
 import networkx as nx
 from django.conf import settings
 
-ZONA = {"norte": -33.490, "sur": -33.545, "oeste": -70.680, "este": -70.635}  # igual que scripts/generar_datos.py
+
+def leer_zona():
+    """La zona cubierta la escribe scripts/generar_datos.py junto con el grafo: así se cambia en un solo lugar."""
+    with open(settings.BASE_DIR / "data" / "zona.json", encoding="utf-8") as archivo:
+        return json.load(archivo)
+
+
+ZONA = leer_zona()
 RADIO_BLOQUEO_M = 100
+# El mapa se divide en una cuadrícula de celdas de ~500 m para no medir contra todas las esquinas (T28)
+TAMANO_CELDA = 0.005  # grados
+# ~130 m expresados en grados de latitud o longitud aquí: cubre el radio de bloqueo con holgura
+MARGEN_GRADOS = 0.0012
 VELOCIDAD_KMH = 15  # velocidad urbana en contingencia (coincide con el prototipo del E2)
 # Si estás dentro de una zona anegada, la ruta puede cruzar agua para salir, pero cada metro ahí "cuesta" 20 veces más
 PENALIZACION_ZONA_ANEGADA = 20
@@ -41,12 +54,40 @@ def distancia_m(lat1, lon1, lat2, lon2):
     return 2 * radio_tierra * math.asin(math.sqrt(a))
 
 
+def celda_de(lat, lon):
+    return math.floor(lat / TAMANO_CELDA), math.floor(lon / TAMANO_CELDA)
+
+
+@cache
+def esquinas_por_celda():
+    """{celda: [esquinas que caen en ella]}. Se arma una sola vez, la primera vez que se usa."""
+    celdas = defaultdict(list)
+    for nodo, datos in cargar_grafo().nodes(data=True):
+        celdas[celda_de(datos["lat"], datos["lon"])].append(nodo)
+    return celdas
+
+
+def esquinas_alrededor(fila, columna, radio):
+    """Esquinas del cuadrado de celdas de lado 2*radio+1 centrado en (fila, columna)."""
+    celdas = esquinas_por_celda()
+    return [nodo for f in range(fila - radio, fila + radio + 1) for c in range(columna - radio, columna + radio + 1)
+            for nodo in celdas.get((f, c), [])]
+
+
 # Con límite: las coordenadas vienen del usuario, y sin tope cada consulta distinta quedaría en memoria
-# para siempre (alguien podría llenar la memoria del servidor pidiendo miles de rutas distintas).
-@lru_cache(maxsize=1000)
+# para siempre. 10.000 alcanza para todos los puntos de evacuación de Santiago más las consultas.
+@lru_cache(maxsize=10_000)
 def nodo_mas_cercano(lat, lon):
+    """La esquina del grafo más cercana a (lat, lon). Mira primero la celda del punto y va ampliando
+    el cuadrado de celdas hasta encontrar esquinas. Después mira un anillo más, porque la más cercana
+    puede estar justo al otro lado del borde de una celda."""
     grafo = cargar_grafo()
-    return min(grafo.nodes, key=lambda n: distancia_m(lat, lon, grafo.nodes[n]["lat"], grafo.nodes[n]["lon"]))
+    fila, columna = celda_de(lat, lon)
+    radio = 0
+    while radio < 200 and not esquinas_alrededor(fila, columna, radio):  # 200 celdas = más que toda la zona
+        radio += 1
+    candidatas = esquinas_alrededor(fila, columna, radio + 1)
+    return min(candidatas, key=lambda n: distancia_m(lat, lon, grafo.nodes[n]["lat"], grafo.nodes[n]["lon"]))
 
 
 def distancia_a_tramo_m(punto, esquina_a, esquina_b):
@@ -66,9 +107,25 @@ def distancia_a_tramo_m(punto, esquina_a, esquina_b):
 
 def tramos_cerca_de(punto):
     """Tramos de calle (pares de esquinas) que pasan a menos de RADIO_BLOQUEO_M del punto anegado."""
+    return tramos_cerca_de_coordenadas(punto.lat, punto.lon)
+
+
+# Las calles no se mueven: para un mismo lugar el resultado es siempre el mismo, así que se guarda
+@lru_cache(maxsize=10_000)
+def tramos_cerca_de_coordenadas(lat, lon):
     grafo = cargar_grafo()
-    return {frozenset((u, v)) for u, v in grafo.edges
-            if distancia_a_tramo_m(punto, grafo.nodes[u], grafo.nodes[v]) < RADIO_BLOQUEO_M}
+    lugar = SimpleNamespace(lat=lat, lon=lon)  # distancia_a_tramo_m espera algo con .lat y .lon
+    cercanos = set()
+    for u, v in grafo.edges:
+        a, b = grafo.nodes[u], grafo.nodes[v]
+        # Filtro rápido: si el punto queda fuera del rectángulo que encierra al tramo (más un margen),
+        # el tramo no puede pasar a menos de 100 m y no vale la pena hacer la cuenta completa.
+        if not (min(a["lat"], b["lat"]) - MARGEN_GRADOS <= lat <= max(a["lat"], b["lat"]) + MARGEN_GRADOS
+                and min(a["lon"], b["lon"]) - MARGEN_GRADOS <= lon <= max(a["lon"], b["lon"]) + MARGEN_GRADOS):
+            continue
+        if distancia_a_tramo_m(lugar, a, b) < RADIO_BLOQUEO_M:
+            cercanos.add(frozenset((u, v)))
+    return frozenset(cercanos)
 
 
 def tramos_de(camino):
