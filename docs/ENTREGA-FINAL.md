@@ -38,12 +38,15 @@ Reparto propuesto; el equipo lo confirma en T23.
 | Tiempo | Acción | Qué debe verse |
 |---|---|---|
 | 0:00 | Presentar el mapa y la leyenda | Círculo rojo en Departamental / Gran Avenida |
-| 0:20 | Marcar origen y destino a ambos lados del paso; **Calcular ruta** | Ruta que lo rodea y "Evita 1 punto anegado" |
-| 1:20 | **Nueva ruta** con destino dentro del círculo rojo | "No hay ruta segura" y ruta al punto de evacuación |
-| 1:50 | Calcular una ruta y, en la ventana normal, reportar una calle anegada sobre ella | Marcador ámbar "1 de 2". **La ruta no cambia** |
-| 2:20 | En la ventana de incógnito (otra persona), reportar el mismo lugar | Queda confirmado. Volver a la primera ventana: **en hasta 15 segundos** avisa "Ruta recalculada" y la ruta rodea el lugar. Mientras tanto, explicar la regla de las 2 personas |
-| 3:00 | Abrir el admin; luego `Ctrl + C`, `runserver` y recargar | Los 2 reportes guardados y el punto sigue en el mapa |
-| 3:40 | Cierre: qué recibe la persona usuaria | Ruta segura y aviso "referencial" |
+| 0:15 | Marcar origen y destino a ambos lados del paso; **Calcular ruta** | Ruta que lo rodea y "Evita 1 punto anegado" |
+| 1:00 | **Nueva ruta** con destino dentro del círculo rojo | "No hay ruta segura" y ruta al punto de evacuación |
+| 1:25 | Calcular una ruta y, en la ventana normal, reportar una calle anegada sobre ella | Marcador ámbar "1 de 2". **La ruta no cambia** |
+| 1:50 | En la ventana de incógnito (otra persona), reportar el mismo lugar | Queda confirmado. Volver a la primera ventana: **en hasta 15 segundos** avisa "Ruta recalculada" y la ruta rodea el lugar. Mientras tanto, explicar la regla de las 2 personas |
+| 2:35 | Abrir el admin; luego `Ctrl + C`, `runserver` y recargar | Los 2 reportes guardados y el punto sigue en el mapa |
+| 3:10 | **Anegar la universidad.** Calcular una ruta que salga del campus San Joaquín hacia el norte por Vicuña Mackenna. En el admin, **Puntos anegados** (aparece primero en la lista), marcar "anegado ahora" en *Anegamiento simulado: USM campus San Joaquín* y **Guardar**. Volver al mapa | En hasta 15 segundos: "Ruta recalculada", círculo rojo sobre el campus, **"Estás en una zona de peligro"** y la ruta de escape al punto de evacuación más cercano |
+| 3:50 | Cierre: qué recibe la persona usuaria | Ruta segura, ruta de escape y aviso "referencial" |
+
+**Para el paso de la universidad:** el origen se marca **sobre los edificios del campus**, a menos de 100 m del centro, que es donde queda la zona anegada. Si presentan en Vitacura, usen *Anegamiento simulado: USM campus Vitacura* y una ruta hacia el oriente por Av. Santa María. Los dos puntos los deja listos (apagados) `preparar_demo`.
 
 **Si falla algo en vivo:** mostrar el video de respaldo y explicar qué ocurrió. Probar internet antes, porque el mapa y la búsqueda de direcciones lo necesitan.
 

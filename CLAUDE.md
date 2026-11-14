@@ -66,7 +66,7 @@ pip install -r requirements.txt
 cd dry-route
 python manage.py migrate
 python manage.py cargar_datos      # carga los puntos a la base de datos
-python manage.py preparar_demo     # borra reportes y deja anegado solo el paso de la demo
+python manage.py preparar_demo     # borra reportes, deja anegado el paso de la demo y crea apagados los anegamientos simulados de la USM
 python manage.py runserver         # http://127.0.0.1:8000
 python manage.py test rutas        # pruebas
 python manage.py check             # correr antes de cada commit

@@ -267,3 +267,26 @@ class VencimientoYDemo(TestCase):
         self.assertFalse(PuntoAnegado.objects.filter(fuente="Reportes ciudadanos").exists())
         activos = list(PuntoAnegado.objects.filter(activo=True).values_list("osm_id", flat=True))
         self.assertEqual(activos, [PASO_DEPARTAMENTAL])
+        # Los anegamientos simulados de la universidad quedan creados, pero apagados
+        simulados = PuntoAnegado.objects.filter(osm_id__startswith="simulacion/usm-")
+        self.assertEqual(simulados.count(), 2)
+        self.assertFalse(simulados.filter(activo=True).exists())
+
+    def test_anegar_la_universidad_convierte_la_ruta_en_una_ruta_de_escape(self):
+        call_command("preparar_demo", stdout=StringIO())
+        campus = "-33.491080,-70.619010"  # campus San Joaquín
+        destino = "-33.475000,-70.622000"
+        antes = self.client.get("/api/ruta/", {"origen": campus, "destino": destino}).json()
+
+        # En la demo esto se hace en el admin: marcar "anegado ahora" y guardar
+        PuntoAnegado.objects.filter(osm_id="simulacion/usm-san-joaquin").update(activo=True)
+        despues = self.client.get("/api/ruta/", {"origen": campus, "destino": destino}).json()
+
+        self.assertEqual(antes["estado"], "segura")
+        self.assertEqual(despues["estado"], "en_peligro")
+        self.assertIsNotNone(despues["punto_evacuacion"])
+
+    def test_preparar_demo_se_puede_correr_varias_veces(self):
+        call_command("preparar_demo", stdout=StringIO())
+        call_command("preparar_demo", stdout=StringIO())
+        self.assertEqual(PuntoAnegado.objects.filter(osm_id__startswith="simulacion/usm-").count(), 2)
