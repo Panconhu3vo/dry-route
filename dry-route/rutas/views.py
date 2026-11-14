@@ -14,7 +14,8 @@ from .ruteo import ZONA, calcular_ruta, esta_en_zona
 # Sin esta cookie, Django rechazaría el POST con el que el navegador envía un reporte
 @ensure_csrf_cookie
 def mapa(request):
-    return render(request, "rutas/mapa.html")
+    # La zona va en la página: así el mapa se encuadra al tiro, sin esperar a /api/puntos/
+    return render(request, "rutas/mapa.html", {"zona": ZONA})
 
 
 def api_puntos(request):

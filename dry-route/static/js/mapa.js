@@ -5,24 +5,6 @@
 // Un solo objeto global compartido por los tres archivos JS, para no ensuciar la página con variables sueltas.
 window.DryRoute = window.DryRoute || {};
 
-// Datos de ejemplo con la misma forma que GET /api/puntos/ (docs/API.md).
-// Se usan solo si el servidor todavía no tiene ese endpoint (T2 de Juan). Se quitan en T7.
-const PUNTOS_DE_EJEMPLO = {
-  zona: { norte: -33.490, sur: -33.545, oeste: -70.680, este: -70.635 },
-  anegados: [
-    { id: 1, nombre: "Paso bajo nivel Gran Avenida / Departamental", tipo: "paso_bajo_nivel", activo: true, fuente: "OpenStreetMap", confirmaciones: 0, lat: -33.5019, lon: -70.6526 },
-    { id: 2, nombre: "Punto de riesgo de ejemplo (sin anegamiento)", tipo: "paso_bajo_nivel", activo: false, fuente: "OpenStreetMap", confirmaciones: 0, lat: -33.5250, lon: -70.6600 },
-    { id: 9, nombre: "Reporte ciudadano: calle anegada", tipo: "anegamiento", activo: true, fuente: "Reportes ciudadanos", confirmaciones: 2, lat: -33.5101, lon: -70.6566 }
-  ],
-  evacuacion: [
-    { id: 7, nombre: "Hospital Barros Luco", tipo: "hospital", lat: -33.5047, lon: -70.6560 },
-    { id: 8, nombre: "Punto de evacuación de ejemplo", tipo: "bomberos", lat: -33.5300, lon: -70.6650 }
-  ],
-  reportes_pendientes: [
-    { id: 12, tipo: "arbol_caido", descripcion: "Árbol sobre la calzada", lat: -33.5150, lon: -70.6580, fecha_hora: "2026-11-11T18:30:00-03:00", confirmaciones: 1, requeridas: 2 }
-  ]
-};
-
 // Radio de bloqueo alrededor de un punto anegado activo. Debe coincidir con el del ruteo (T6).
 const RADIO_BLOQUEO_M = 100;
 
@@ -67,7 +49,8 @@ function limitesDeZona(zona) {
 }
 
 // ---------- Crear el mapa ----------
-DryRoute.zona = PUNTOS_DE_EJEMPLO.zona; // valor provisional hasta que responda el servidor
+// La zona la escribe la vista en la página (json_script de Django): el mapa se encuadra sin esperar al servidor
+DryRoute.zona = JSON.parse(document.getElementById("zona-datos").textContent);
 // preferCanvas: los círculos y puntos se pintan en un solo lienzo en vez de uno por uno.
 // Con miles de puntos de evacuación (zona ampliada, T28) el mapa se mueve fluido igual.
 DryRoute.mapa = L.map("mapa", { preferCanvas: true });
@@ -209,17 +192,26 @@ function pedirPuntos() {
   });
 }
 
-// Al abrir la página: si el endpoint aún no existe o falla, usa los de ejemplo
-// para que el front se pueda probar sin esperar al backend.
+// Si no llegan los puntos se avisa en el panel. Nunca se muestran datos inventados: en una emergencia,
+// un mapa vacío con un aviso es más honesto que uno con puntos falsos.
+function mostrarErrorDePuntos() {
+  if (document.getElementById("error-puntos")) {
+    return;
+  }
+  const caja = document.createElement("p");
+  caja.id = "error-puntos";
+  caja.className = "tarjeta tarjeta-error";
+  caja.setAttribute("role", "alert");
+  caja.textContent = "⚠ No pudimos cargar los puntos anegados. Revisa que el servidor esté funcionando y recarga la página.";
+  document.getElementById("aviso").after(caja);
+}
+
 // Lo último que llegó del servidor, como texto: si en una revisión llega lo mismo no se redibuja,
 // así no se cierra cada 15 segundos el popup que la persona tenga abierto (T15).
 let ultimosPuntos = "";
 
+// Al abrir la página
 pedirPuntos()
-  .catch(function (error) {
-    console.warn("No se pudo cargar /api/puntos/, se usan datos de ejemplo.", error);
-    return PUNTOS_DE_EJEMPLO;
-  })
   .then(function (datos) {
     ultimosPuntos = JSON.stringify(datos);
     dibujarPuntos(datos);
@@ -227,14 +219,23 @@ pedirPuntos()
     if (DryRoute.alRecargarPuntos) {
       DryRoute.alRecargarPuntos(datos);
     }
+  })
+  .catch(function (error) {
+    console.error("No se pudo cargar /api/puntos/.", error);
+    mostrarErrorDePuntos();
   });
 
 // Vuelve a pedir los puntos: lo usan reporte.js (después de enviar un reporte) y resultado.js (cada 15 s).
 // Si cambió algo, resultado.js recalcula la ruta en DryRoute.alRecargarPuntos(datos).
-// Aquí no usamos los datos de ejemplo: si falla, es mejor dejar el mapa como estaba que mostrar datos falsos.
+// Si una revisión falla, el mapa queda como estaba.
 DryRoute.recargarPuntos = function () {
   return pedirPuntos()
     .then(function (datos) {
+      // Si al abrir no habían llegado los puntos y ahora sí, se quita el aviso de error
+      const error = document.getElementById("error-puntos");
+      if (error) {
+        error.remove();
+      }
       const texto = JSON.stringify(datos);
       if (texto !== ultimosPuntos) {
         ultimosPuntos = texto;

@@ -97,6 +97,8 @@
 {% endblock %}
 
 {% block scripts %}
+<!-- json_script escribe la zona como JSON seguro dentro de la página; mapa.js la lee de ahí -->
+{{ zona|json_script:"zona-datos" }}
 <!-- El orden importa: mapa.js crea DryRoute.mapa, que los demás usan, y reporte.js usa funciones de entrada.js -->
 <script src="{% static 'js/mapa.js' %}"></script>       <!-- Gonzalo -->
 <script src="{% static 'js/resultado.js' %}"></script>  <!-- Yusu -->

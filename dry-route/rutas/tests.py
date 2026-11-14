@@ -79,6 +79,12 @@ class CasosDePrueba(TestCase):
         self.assertEqual(respuesta.status_code, 400)
         self.assertEqual(respuesta.json()["error"], "fuera_de_zona")
 
+    def test_la_pagina_trae_la_zona_para_encuadrar_el_mapa(self):
+        # mapa.js lee la zona de aquí (json_script), sin datos de ejemplo
+        respuesta = self.client.get("/")
+        self.assertContains(respuesta, 'id="zona-datos"')
+        self.assertContains(respuesta, f'"norte": {ZONA["norte"]}')
+
     def test_api_puntos_entrega_zona_y_puntos(self):
         datos = self.client.get("/api/puntos/").json()
         self.assertEqual(len(datos["anegados"]), PuntoAnegado.objects.count())
