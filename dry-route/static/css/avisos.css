@@ -7,9 +7,9 @@
   margin: 0;
   padding: 8px 12px;
   background: var(--alerta-fondo);
-  border: 2px solid var(--alerta-borde);
-  border-radius: var(--radio);
-  font-size: 14px;
+  border-left: 4px solid var(--alerta-borde);
+  border-radius: 8px;
+  font-size: 13px;
   font-weight: 700;
   color: var(--texto);
 }

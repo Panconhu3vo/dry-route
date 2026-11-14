@@ -15,25 +15,23 @@ Base: el prototipo de baja fidelidad del E2 ([img/prototipo-baja-fidelidad.png](
 
 ```css
 :root {
-  --fondo:          #F4F7FA;
-  --superficie:     #FFFFFF;
-  --texto:          #14212B;
-  --texto-suave:    #51616E;
-  --borde:          #D3DCE3;
-
-  --agua:           #0B63C4;  /* acción principal, ubicación del usuario */
-  --ruta:           #1E9E5A;  /* línea de la ruta segura y bandera de destino (no usar para texto) */
-  --ruta-texto:     #146B3E;  /* texto "Ruta segura" */
-  --peligro:        #C8322A;  /* anegado activo, "No hay ruta segura" */
-  --alerta-fondo:   #FFF1D6;  /* fondo del aviso; texto en --texto */
-  --alerta-borde:   #E08A00;
-  --inactivo:       #8D9AA5;  /* punto de riesgo sin anegamiento */
-
-  --radio:          12px;
-  --sombra:         0 2px 12px rgb(20 33 43 / 0.12);
-  --fuente:         "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fondo:            #F8F9FA;
+  --superficie:       #FFFFFF;
+  --superficie-suave: #F1F3F4;  /* campos de texto */
+  --texto:            #1F2328;
+  --texto-suave:      #5F6368;
+  --borde:            #DADCE0;
+  --agua:             #1A6FD8;  /* acción principal */
+  --ruta:             #188038;  /* ruta segura (no usar para texto) */
+  --ruta-texto:       #137333;
+  --peligro:          #D93025;  /* anegado, "No hay ruta segura" */
+  --alerta-fondo:     #FEF7E0;
+  --alerta-borde:     #F29900;  /* avisos y reportes pendientes */
+  --inactivo:         #9AA0A6;  /* paso bajo nivel sin agua */
 }
 ```
+
+**Estilo (rediseño del 13-11, inspirado en Google Flood Hub):** mapa a pantalla completa en grises suaves; panel blanco flotante con sombra (en el celular, hoja inferior); campos grises redondeados; botones tipo píldora; tarjetas de resultado con fondo verde o rojo suave. El color se reserva para lo que significa algo: azul para las acciones, verde para la ruta, rojo para lo anegado y ámbar para lo pendiente.
 
 **Tipografía:** [Atkinson Hyperlegible](https://fonts.google.com/specimen/Atkinson+Hyperlegible), diseñada para máxima legibilidad (encaja con una app de emergencia). Una sola familia, en pesos 400 y 700.
 Escala: 14 / **16 (base)** / 20 / 24 px. Interlineado 1,4.
@@ -49,7 +47,7 @@ Escala: 14 / **16 (base)** / 20 / 24 px. Interlineado 1,4.
 | Punto de evacuación | marcador verde con ícono de cruz o casa; solo se resalta cuando es el resultado |
 | Ruta segura | línea `--ruta`, grosor 6, con borde blanco para que se lea sobre el mapa |
 
-Teselas: OpenStreetMap estándar, **con la atribución visible** (es obligatoria): `© OpenStreetMap contributors`.
+Teselas: OpenStreetMap estándar, pasadas a grises con un filtro CSS solo en la capa base (`.leaflet-tile-pane`), **con la atribución visible** (es obligatoria): `© OpenStreetMap contributors`. Se probó CARTO Positron, pero ahora exige una clave de API.
 
 ## Pantallas (del prototipo E2)
 

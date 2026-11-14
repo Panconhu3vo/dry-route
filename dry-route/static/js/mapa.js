@@ -48,15 +48,27 @@ function limitesDeZona(zona) {
   return [[zona.sur, zona.oeste], [zona.norte, zona.este]];
 }
 
+// En escritorio el panel flota sobre la izquierda del mapa: al encuadrar algo se deja libre ese espacio,
+// para que la ruta o un punto no queden escondidos detrás del panel. En el celular el panel va abajo.
+DryRoute.opcionesDeEncuadre = function () {
+  const panel = document.getElementById("panel");
+  const izquierda = window.innerWidth >= 768 ? panel.offsetWidth + 32 : 40;
+  return { paddingTopLeft: [izquierda, 40], paddingBottomRight: [40, 40] };
+};
+
 // ---------- Crear el mapa ----------
 // La zona la escribe la vista en la página (json_script de Django): el mapa se encuadra sin esperar al servidor
 DryRoute.zona = JSON.parse(document.getElementById("zona-datos").textContent);
 // preferCanvas: los círculos y puntos se pintan en un solo lienzo en vez de uno por uno.
 // Con miles de puntos de evacuación (zona ampliada, T28) el mapa se mueve fluido igual.
-DryRoute.mapa = L.map("mapa", { preferCanvas: true });
-DryRoute.mapa.fitBounds(limitesDeZona(DryRoute.zona));
+// El zoom va abajo a la derecha: a la izquierda (en escritorio) queda tapado por el panel flotante
+DryRoute.mapa = L.map("mapa", { preferCanvas: true, zoomControl: false });
+L.control.zoom({ position: "bottomright", zoomInTitle: "Acercar", zoomOutTitle: "Alejar" }).addTo(DryRoute.mapa);
+DryRoute.mapa.fitBounds(limitesDeZona(DryRoute.zona), DryRoute.opcionesDeEncuadre());
 
 // Teselas estándar de OpenStreetMap. La atribución es obligatoria por su licencia.
+// app.css las pasa a grises suaves (.leaflet-tile-pane): así el rojo de lo anegado y el verde de la ruta
+// resaltan solos. El filtro afecta solo al mapa base, no a los círculos, marcadores ni a la ruta.
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 19,
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -90,7 +102,7 @@ let primeraCarga = true;
 function dibujarPuntos(datos) {
   DryRoute.zona = datos.zona;
   if (primeraCarga) {
-    DryRoute.mapa.fitBounds(limitesDeZona(DryRoute.zona));
+    DryRoute.mapa.fitBounds(limitesDeZona(DryRoute.zona), DryRoute.opcionesDeEncuadre());
     primeraCarga = false;
   }
 

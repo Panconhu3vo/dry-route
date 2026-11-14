@@ -138,8 +138,8 @@ DryRoute.mostrarResultado = function (r) {
     encuadre.extend([r.punto_evacuacion.lat, r.punto_evacuacion.lon]);
   }
   if (encuadre.isValid()) {
-    // El padding deja espacio para que nada quede pegado al borde del mapa.
-    DryRoute.mapa.fitBounds(encuadre, { padding: [40, 40], maxZoom: 17 });
+    // Deja espacio en los bordes y, en escritorio, el del panel flotante (mapa.js), para que nada quede tapado
+    DryRoute.mapa.fitBounds(encuadre, Object.assign(DryRoute.opcionesDeEncuadre(), { maxZoom: 17 }));
   }
   // Va después de fitBounds para que el popup se abra ya en el encuadre final.
   if (r.estado !== "segura" && r.punto_evacuacion) {

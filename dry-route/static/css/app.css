@@ -1,25 +1,34 @@
 /* Estilos de Dry Routes. Los valores vienen de docs/DISENO.md.
-   Se escribe primero para celular (mobile-first) y al final se ajusta para escritorio. */
+   Se escribe primero para celular (mobile-first) y al final se ajusta para escritorio.
+   Idea visual: el mapa es la pantalla y va en grises suaves; el color se reserva para lo que significa algo
+   (azul = acción, verde = ruta segura, rojo = anegado, ámbar = pendiente o aviso). */
 
 /* ---------- Tokens: colores y medidas que usa toda la app ---------- */
 :root {
-  --fondo:          #F4F7FA;
-  --superficie:     #FFFFFF;
-  --texto:          #14212B;
-  --texto-suave:    #51616E;
-  --borde:          #D3DCE3;
+  --fondo:            #F8F9FA;
+  --superficie:       #FFFFFF;
+  --superficie-suave: #F1F3F4;  /* campos de texto y fondos secundarios */
+  --texto:            #1F2328;
+  --texto-suave:      #5F6368;
+  --borde:            #DADCE0;
 
-  --agua:           #0B63C4;  /* acción principal, ubicación del usuario */
-  --ruta:           #1E9E5A;  /* línea de la ruta segura y bandera de destino (no usar para texto) */
-  --ruta-texto:     #146B3E;  /* texto "Ruta segura" */
-  --peligro:        #C8322A;  /* anegado activo, "No hay ruta segura" */
-  --alerta-fondo:   #FFF1D6;  /* fondo del aviso; texto en --texto */
-  --alerta-borde:   #E08A00;
-  --inactivo:       #8D9AA5;  /* punto de riesgo sin anegamiento */
+  --agua:             #1A6FD8;  /* acción principal, ubicación del usuario */
+  --agua-oscura:      #1557B0;  /* acción principal al pasar el mouse */
+  --agua-suave:       #E8F0FE;  /* fondo de un botón secundario al pasar el mouse */
+  --ruta:             #188038;  /* línea de la ruta segura y bandera de destino (no usar para texto) */
+  --ruta-texto:       #137333;  /* texto "Ruta segura" */
+  --ruta-fondo:       #E6F4EA;
+  --peligro:          #D93025;  /* anegado activo, "No hay ruta segura" */
+  --peligro-fondo:    #FCE8E6;
+  --alerta-fondo:     #FEF7E0;  /* fondo de los avisos; texto en --texto */
+  --alerta-borde:     #F29900;
+  --inactivo:         #9AA0A6;  /* punto de riesgo sin anegamiento */
 
-  --radio:          12px;
-  --sombra:         0 2px 12px rgb(20 33 43 / 0.12);
-  --fuente:         "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --radio:            12px;
+  --radio-panel:      16px;
+  --sombra:           0 1px 3px rgb(60 64 67 / 0.3);
+  --sombra-panel:     0 1px 2px rgb(60 64 67 / 0.3), 0 2px 6px 2px rgb(60 64 67 / 0.15);
+  --fuente:           "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
 /* ---------- Base ---------- */
@@ -40,7 +49,7 @@ body {
   color: var(--texto);
   font-family: var(--fuente);
   font-size: 16px;
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
 /* Sin esto, una regla como "display: flex" le gana al atributo hidden y el elemento no se esconde */
@@ -54,32 +63,42 @@ body {
   outline-offset: 2px;
 }
 
-/* ---------- Encabezado ---------- */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
+
+/* ---------- Barra superior ---------- */
 .encabezado {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 8px 16px;
+  gap: 12px;
+  min-height: 56px;
+  padding: 0 16px;
   background: var(--superficie);
   border-bottom: 1px solid var(--borde);
+  position: relative;
+  z-index: 1100; /* sobre el mapa y sus controles */
 }
 
 .logo {
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   flex-shrink: 0;
-}
-
-.lema {
-  margin: 0;
-  font-size: 14px;
-  color: var(--texto-suave);
 }
 
 .encabezado h1 {
   margin: 0;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
+  line-height: 1.2;
+}
+
+.lema {
+  margin: 0;
+  font-size: 13px;
+  color: var(--texto-suave);
 }
 
 /* ---------- Layout celular: mapa arriba y panel abajo (bottom sheet) ---------- */
@@ -93,36 +112,97 @@ body {
 #mapa {
   flex: 1;
   min-height: 0;
+  background: var(--fondo); /* lo que se ve mientras cargan las teselas */
 }
 
 #panel {
-  /* El mapa es la pantalla: el panel ocupa como máximo el 40% del alto y hace scroll si no cabe */
-  max-height: 40vh;
+  /* El mapa es la pantalla: el panel ocupa como máximo el 45% del alto y hace scroll si no cabe */
+  max-height: 45vh;
   overflow-y: auto;
-  padding: 16px;
+  scrollbar-width: thin;
+  padding: 20px 16px 16px;
   background: var(--superficie);
-  border-radius: var(--radio) var(--radio) 0 0;
-  box-shadow: var(--sombra);
+  border-radius: var(--radio-panel) var(--radio-panel) 0 0;
+  box-shadow: var(--sombra-panel);
   /* Sube un poco sobre el mapa para que se vea como una hoja; z-index sobre los controles de Leaflet */
-  margin-top: calc(-1 * var(--radio));
+  margin-top: calc(-1 * var(--radio-panel));
   position: relative;
   z-index: 1000;
+}
+
+/* Barrita gris arriba del panel en el celular: la señal habitual de "hoja que se desliza" */
+#panel::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  width: 36px;
+  height: 4px;
+  margin-left: -18px;
+  border-radius: 2px;
+  background: var(--borde);
 }
 
 /* El panel se monta sobre el borde inferior del mapa: subimos los controles de abajo
    para que la atribución de OpenStreetMap (obligatoria) no quede tapada */
 .leaflet-bottom {
-  bottom: var(--radio);
+  bottom: var(--radio-panel);
+}
+
+/* ---------- Controles y popups de Leaflet con el mismo estilo ---------- */
+/* Selectores más específicos que los de leaflet.css, que se carga antes */
+.leaflet-container {
+  font-family: var(--fuente);
+}
+
+/* Mapa base en grises suaves: solo las teselas. Los círculos, marcadores y la ruta van en otra capa
+   y conservan su color, así lo importante resalta sobre un fondo tranquilo. */
+.leaflet-tile-pane {
+  filter: grayscale(0.9) brightness(1.05) contrast(0.9);
+}
+
+.leaflet-container .leaflet-control-zoom.leaflet-bar {
+  border: none;
+  border-radius: 8px;
+  box-shadow: var(--sombra-panel);
+  overflow: hidden;
+}
+
+.leaflet-container .leaflet-control-zoom a {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 20px;
+  color: var(--texto-suave);
+  background: var(--superficie);
+  border-bottom-color: var(--borde);
+}
+
+.leaflet-container .leaflet-control-zoom a:hover {
+  background: var(--superficie-suave);
+  color: var(--texto);
+}
+
+.leaflet-container .leaflet-popup-content-wrapper {
+  border-radius: var(--radio);
+  box-shadow: var(--sombra-panel);
+}
+
+.leaflet-container .leaflet-popup-content {
+  margin: 12px 16px;
+  font-size: 14px;
+  line-height: 1.4;
 }
 
 /* ---------- Aviso permanente ---------- */
 #aviso {
   margin: 0 0 16px;
-  padding: 8px 12px;
+  padding: 10px 12px;
   background: var(--alerta-fondo);
-  border: 2px solid var(--alerta-borde);
-  border-radius: var(--radio);
-  font-size: 14px;
+  border-left: 4px solid var(--alerta-borde);
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--texto);
 }
 
 /* ---------- Formulario ---------- */
@@ -132,39 +212,63 @@ body {
   gap: 12px;
 }
 
+.pista {
+  margin: 0;
+  font-size: 13px;
+  color: var(--texto-suave);
+}
+
 .campo {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
 .campo label {
+  font-size: 13px;
   font-weight: 700;
+  color: var(--texto);
 }
 
+/* Campos rellenos en gris, sin borde: el borde azul aparece solo al escribir */
 .campo input {
   min-height: 48px;
-  padding: 0 12px;
-  border: 2px solid var(--borde);
-  border-radius: var(--radio);
+  padding: 0 18px;
+  border: 1px solid transparent;
+  border-radius: 24px;
   font: inherit;
+  font-size: 15px;
   color: var(--texto);
-  background: var(--superficie);
+  background: var(--superficie-suave);
+  transition: background-color 0.15s, border-color 0.15s;
 }
 
 .campo input::placeholder {
   color: var(--texto-suave);
 }
 
-/* ---------- Botones (mínimo 48 px de alto, para el dedo mojado) ---------- */
+.campo input:hover {
+  background: #E8EAED;
+}
+
+.campo input:focus {
+  outline: none;
+  background: var(--superficie);
+  border-color: var(--agua);
+  box-shadow: 0 0 0 1px var(--agua);
+}
+
+/* ---------- Botones tipo píldora (mínimo 48 px de alto, para el dedo mojado) ---------- */
 .boton {
   min-height: 48px;
-  padding: 0 16px;
-  border: 2px solid var(--agua);
-  border-radius: var(--radio);
+  padding: 0 20px;
+  border: 1px solid transparent;
+  border-radius: 24px;
   font: inherit;
+  font-size: 15px;
   font-weight: 700;
   cursor: pointer;
+  transition: background-color 0.15s, box-shadow 0.15s;
 }
 
 .boton-principal {
@@ -172,15 +276,25 @@ body {
   color: var(--superficie);
 }
 
+.boton-principal:hover:not(:disabled) {
+  background: var(--agua-oscura);
+  box-shadow: var(--sombra);
+}
+
 .boton-secundario {
   background: var(--superficie);
+  border-color: var(--borde);
   color: var(--agua);
 }
 
+.boton-secundario:hover:not(:disabled) {
+  background: var(--agua-suave);
+}
+
 .boton:disabled {
-  background: var(--borde);
-  border-color: var(--borde);
-  color: var(--texto-suave);
+  background: var(--superficie-suave);
+  border-color: transparent;
+  color: #80868B;
   cursor: not-allowed;
 }
 
@@ -188,7 +302,7 @@ body {
 /* El resto del formulario lo estiliza reporte.css (Cristóbal); aquí solo su lugar en el panel */
 .boton-reportar {
   width: 100%;
-  margin-top: 16px;
+  margin-top: 12px;
 }
 
 .titulo-reporte {
@@ -209,7 +323,7 @@ body {
   border-radius: 6px;
   box-shadow: var(--sombra);
   font-weight: 700;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1;
 }
 
@@ -232,30 +346,33 @@ body {
 .icono-evacuacion-resaltado {
   font-size: 22px;
   border-width: 3px;
-  box-shadow: 0 0 0 6px rgb(30 158 90 / 0.35), var(--sombra);
+  box-shadow: 0 0 0 6px rgb(24 128 56 / 0.3), var(--sombra);
 }
 
 /* ---------- Tarjeta de resultado (resultado.js) ---------- */
-/* El estado se comunica con borde de color + ícono + texto, nunca solo con color (docs/DISENO.md) */
+/* El estado se comunica con fondo de color + ícono + texto, nunca solo con color (docs/DISENO.md) */
 .tarjeta {
   display: flex;
   flex-direction: column;
   gap: 8px;
   padding: 16px;
   background: var(--superficie);
-  border: 2px solid var(--borde);
-  border-left-width: 8px;
+  border: 1px solid var(--borde);
   border-radius: var(--radio);
 }
 
 .tarjeta-titulo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   margin: 0;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
+  line-height: 1.25;
 }
 
 .tarjeta-icono {
-  font-size: 24px;
+  font-size: 20px;
 }
 
 .tarjeta-datos {
@@ -266,11 +383,17 @@ body {
 
 .tarjeta-detalle {
   margin: 0;
+  font-size: 14px;
   color: var(--texto-suave);
 }
 
+.tarjeta .boton {
+  margin-top: 4px;
+}
+
 .tarjeta-segura {
-  border-color: var(--ruta);
+  background: var(--ruta-fondo);
+  border-color: #CEEAD6;
 }
 
 .tarjeta-segura .tarjeta-titulo {
@@ -279,7 +402,8 @@ body {
 
 .tarjeta-sin-ruta,
 .tarjeta-error {
-  border-color: var(--peligro);
+  background: var(--peligro-fondo);
+  border-color: #FAD2CF;
 }
 
 .tarjeta-sin-ruta .tarjeta-titulo,
@@ -287,24 +411,20 @@ body {
   color: var(--peligro);
 }
 
-/* ---------- Pista de uso y leyenda ---------- */
-.pista {
-  margin: 0;
-  font-size: 14px;
+/* ---------- Leyenda ---------- */
+.leyenda {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--borde);
+  font-size: 13px;
   color: var(--texto-suave);
 }
 
-.leyenda {
-  margin-top: 20px;
-  padding-top: 12px;
-  border-top: 1px solid var(--borde);
-  font-size: 14px;
-}
-
 .leyenda h2 {
-  margin: 0 0 8px;
+  margin: 0 0 10px;
   font-size: 14px;
   font-weight: 700;
+  color: var(--texto);
 }
 
 .leyenda ul {
@@ -313,40 +433,40 @@ body {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 
 .leyenda li {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 10px;
 }
 
 /* Muestras de la leyenda: copian el aspecto de lo que se dibuja en el mapa */
 .simbolo {
   display: inline-flex;
   flex-shrink: 0;
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
 }
 
 .simbolo-anegado {
   border-radius: 50%;
   border: 2px solid var(--peligro);
-  background: rgb(200 50 42 / 0.35);
+  background: rgb(217 48 37 / 0.3);
 }
 
 .simbolo-riesgo {
   width: 10px;
   height: 10px;
-  margin: 0 4px;
+  margin: 0 3px;
   border-radius: 50%;
   background: var(--inactivo);
 }
 
 .simbolo-ruta {
-  height: 6px;
+  height: 5px;
   border-radius: 3px;
   background: var(--ruta);
 }
@@ -354,36 +474,48 @@ body {
 .simbolo-colegio {
   width: 10px;
   height: 10px;
-  margin: 0 4px;
+  margin: 0 3px;
   border-radius: 50%;
   border: 1px solid var(--superficie);
   background: var(--ruta);
 }
 
 .leyenda .icono-reporte-pendiente {
-  width: 20px;
-  font-size: 12px;
+  width: 18px;
+  font-size: 11px;
   padding-bottom: 1px;
 }
 
 .leyenda .icono-evacuacion {
-  font-size: 13px;
+  font-size: 12px;
   box-shadow: none;
 }
 
-/* ---------- Escritorio (768 px o más): panel a la izquierda de 380 px ---------- */
+/* ---------- Escritorio (768 px o más): mapa a pantalla completa y panel flotante ---------- */
 @media (min-width: 768px) {
   .contenido {
-    flex-direction: row;
+    position: relative;
+    display: block;
+  }
+
+  #mapa {
+    position: absolute;
+    inset: 0;
   }
 
   #panel {
-    order: -1; /* en el HTML va después del mapa; aquí lo pasamos a la izquierda */
-    width: 380px;
-    max-height: none;
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    width: 384px;
+    max-height: calc(100% - 32px);
     margin-top: 0;
-    border-radius: 0;
-    border-right: 1px solid var(--borde);
+    padding: 20px;
+    border-radius: var(--radio-panel);
+  }
+
+  #panel::before {
+    display: none; /* la barrita de "hoja" solo tiene sentido en el celular */
   }
 
   .leaflet-bottom {

@@ -24,12 +24,21 @@
 #select-tipo-reporte,
 #input-descripcion-reporte {
   min-height: 48px;
-  padding: 8px 12px;
-  border: 2px solid var(--borde);
-  border-radius: var(--radio);
+  padding: 0 18px;
+  border: 1px solid transparent;
+  border-radius: 24px;
   font: inherit;
+  font-size: 15px;
   color: var(--texto);
+  background: var(--superficie-suave);
+}
+
+#select-tipo-reporte:focus,
+#input-descripcion-reporte:focus {
+  outline: none;
   background: var(--superficie);
+  border-color: var(--agua);
+  box-shadow: 0 0 0 1px var(--agua);
 }
 
 #input-descripcion-reporte::placeholder {
