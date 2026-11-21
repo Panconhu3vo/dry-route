@@ -37,13 +37,13 @@ Reparto propuesto; el equipo lo confirma en T23.
 
 | Tiempo | Acción | Qué debe verse |
 |---|---|---|
-| 0:00 | Presentar el mapa y la leyenda | Círculo rojo en Departamental / Gran Avenida |
+| 0:00 | Presentar el mapa, la leyenda y el estado de la zona | Zona con olas y gota celeste en Departamental / Gran Avenida, y "1 anegamiento activo" arriba del panel |
 | 0:15 | Marcar origen y destino a ambos lados del paso; **Calcular ruta** | Ruta que lo rodea y "Evita 1 punto anegado" |
-| 1:00 | **Nueva ruta** con destino dentro del círculo rojo | "No hay ruta segura" y ruta al punto de evacuación |
+| 1:00 | **Nueva ruta** con destino dentro de la zona anegada | "No hay ruta segura" y ruta al punto de evacuación |
 | 1:25 | Calcular una ruta y, en la ventana normal, reportar una calle anegada sobre ella | Marcador ámbar "1 de 2". **La ruta no cambia** |
 | 1:50 | En la ventana de incógnito (otra persona), reportar el mismo lugar | Queda confirmado. Volver a la primera ventana: **en hasta 15 segundos** avisa "Ruta recalculada" y la ruta rodea el lugar. Mientras tanto, explicar la regla de las 2 personas |
 | 2:35 | Abrir el admin; luego `Ctrl + C`, `runserver` y recargar | Los 2 reportes guardados y el punto sigue en el mapa |
-| 3:10 | **Anegar la universidad.** Calcular una ruta que salga del campus San Joaquín hacia el norte por Vicuña Mackenna. En el admin, **Puntos anegados** (aparece primero en la lista), marcar "anegado ahora" en *Anegamiento simulado: USM campus San Joaquín* y **Guardar**. Volver al mapa | En hasta 15 segundos: "Ruta recalculada", círculo rojo sobre el campus, **"Estás en una zona de peligro"** y la ruta de escape al punto de evacuación más cercano |
+| 3:10 | **Anegar la universidad.** Calcular una ruta que salga del campus San Joaquín hacia el norte por Vicuña Mackenna. En el admin, **Puntos anegados** (aparece primero en la lista), marcar "anegado ahora" en *Anegamiento simulado: USM campus San Joaquín* y **Guardar**. Volver al mapa | En hasta 15 segundos: "Ruta recalculada", zona anegada sobre el campus, **"Estás en una zona de peligro"** y la ruta de escape al punto de evacuación más cercano |
 | 3:50 | Cierre: qué recibe la persona usuaria | Ruta segura, ruta de escape y aviso "referencial" |
 
 **Para el paso de la universidad:** el origen se marca **sobre los edificios del campus**, a menos de 100 m del centro, que es donde queda la zona anegada. Si presentan en Vitacura, usen *Anegamiento simulado: USM campus Vitacura* y una ruta hacia el oriente por Av. Santa María. Los dos puntos los deja listos (apagados) `preparar_demo`.
@@ -52,7 +52,7 @@ Reparto propuesto; el equipo lo confirma en T23.
 
 1. Calcular una ruta desde el campus San Joaquín hacia el sur, por ejemplo hasta Avenida Departamental con Vicuña Mackenna.
 2. En otra terminal: `python manage.py actualizar_alertas --simular 10 --cerca -33.4911,-70.6190`.
-3. En hasta 15 segundos: círculos rojos en los 2 pasos bajo nivel de Vicuña Mackenna con Benito Rebolledo, "Ruta recalculada" y la ruta los rodea. En hasta 1 minuto, la franja de arriba se pone roja: *"Lluvia 10 mm/h · 2 pasos bajo nivel con riesgo · simulación"*.
+3. En hasta 15 segundos: zonas anegadas (olas y gota) en los 2 pasos bajo nivel de Vicuña Mackenna con Benito Rebolledo, "Ruta recalculada" y la ruta los rodea. En hasta 1 minuto, la franja de lluvia del panel se pone roja: *"Lluvia 10 mm/h · 2 pasos bajo nivel con riesgo · simulación"*.
 4. Cerrar con `python manage.py actualizar_alertas --simular 0`: los pasos se apagan solos.
 
 Mensaje clave: nadie tocó el admin; la lluvia encendió los puntos. Con lluvia real se usa `actualizar_alertas --cada 10`.

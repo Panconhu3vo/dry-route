@@ -1,5 +1,6 @@
 // alertas.js — Alertas de lluvia (F3, DECISIONES D14)
-// Llena la franja de lluvia (#alerta-lluvia) con GET /api/alertas/ y la vuelve a pedir cada minuto.
+// Llena la franja de lluvia (#alerta-lluvia, junto a "N anegamientos activos") con GET /api/alertas/ y la
+// vuelve a pedir cada minuto.
 // Solo muestra el estado: los pasos bajo nivel que enciende la lluvia los dibuja mapa.js, y si cambian
 // mientras hay una ruta en pantalla, resultado.js la recalcula sola (T15). Ver docs/API.md.
 

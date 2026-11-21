@@ -29,20 +29,23 @@ const MENSAJE_NO_ENCONTRADA = "No encontramos esa dirección. Prueba con calle y
 const camposTexto = { origen: inputOrigen, destino: inputDestino };
 const marcadores = { origen: null, destino: null };
 
-// El origen es un círculo azul y el destino una bandera verde (docs/DISENO.md): cambian la forma y no solo el color.
+// El origen es un círculo azul y el destino una bandera oscura (docs/DISENO.md): cambian la forma y no solo el color.
 // Los estilos van aquí y no en app.css porque ese archivo es de Gonzalo.
 const ICONO_ORIGEN = L.divIcon({
   className: "",
   html: '<div style="width:22px;height:22px;border-radius:50%;background:var(--agua);' +
-        'border:3px solid var(--superficie);box-shadow:0 0 0 6px rgb(11 99 196 / 0.3)"></div>',
+        'border:3px solid var(--superficie);box-shadow:0 0 0 7px rgb(11 99 196 / 0.18),0 2px 4px rgb(20 33 43 / 0.35)"></div>',
   iconSize: [22, 22]
 });
+// Bandera del prototipo: palo y paño oscuros con borde blanco, para que se vea sobre cualquier calle
 const ICONO_DESTINO = L.divIcon({
   className: "",
-  html: '<div style="font-size:34px;line-height:1;color:var(--ruta);' +
-        'text-shadow:0 0 3px var(--superficie),0 0 3px var(--superficie)">⚑</div>',
-  iconSize: [34, 34],
-  iconAnchor: [8, 32] // el palo de la bandera queda justo sobre el punto marcado
+  html: '<svg width="30" height="40" viewBox="-4 -38 30 40" style="filter:drop-shadow(0 2px 2px rgb(20 33 43 / 0.35))">' +
+        '<ellipse rx="7" ry="3" fill="#14212B" fill-opacity="0.25"/>' +
+        '<line x1="0" y1="0" x2="0" y2="-34" stroke="#14212B" stroke-width="3" stroke-linecap="round"/>' +
+        '<path d="M0 -34 L22 -27 L0 -19 Z" fill="#14212B" stroke="#FFFFFF" stroke-width="1.5" stroke-linejoin="round"/></svg>',
+  iconSize: [30, 40],
+  iconAnchor: [4, 38] // el pie del palo queda justo sobre el punto marcado
 });
 
 // ---------- Mensajes del panel (buscando, no encontrada, fuera de zona) ----------
@@ -178,7 +181,8 @@ function crearListaResultados(input) {
   lista.style.display = "flex";
   lista.style.flexDirection = "column";
   lista.style.gap = "8px";
-  input.parentElement.appendChild(lista);
+  // Debajo de todo el campo (.campo) y no al lado del input: el de origen comparte fila con el botón GPS
+  input.closest(".campo").appendChild(lista);
   return lista;
 }
 const listasResultados = {
@@ -244,6 +248,7 @@ function mostrarOpciones(cual, lugares) {
     opcion.type = "button";
     opcion.className = "boton boton-secundario";
     opcion.style.textAlign = "left";
+    opcion.style.justifyContent = "flex-start";
     opcion.style.fontWeight = "400";
     // textContent y no innerHTML: el nombre viene de OpenStreetMap y no lo tratamos como HTML.
     opcion.textContent = nombreCorto(lugar.display_name);

@@ -1,42 +1,46 @@
 /* Franja de lluvia de alertas.js (F3, DECISIONES D14). Usa los tokens de app.css (docs/DISENO.md).
-   Va arriba del panel: es lo primero que se lee. El nivel se nota por el color, el ícono y el texto. */
+   Va en el estado de la zona, junto a "N anegamientos activos": en el celular es una píldora sobre el mapa
+   y en escritorio una línea dentro de la caja gris. El nivel se nota por el color, el ícono y el texto. */
 
 .franja-lluvia {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin: 0 0 12px;
-  padding: 10px 12px;
-  border: 1px solid var(--borde);
-  border-radius: var(--radio);
-  background: var(--superficie-suave);
+  gap: 8px;
+  min-height: 36px;
+  margin: 0;
+  padding: 6px 14px;
+  border-radius: 18px;
+  background: var(--superficie);
+  box-shadow: 0 1px 2px rgb(20 33 43 / 0.10), 0 2px 8px rgb(20 33 43 / 0.08);
   font-size: 14px;
-  font-weight: 700;
   line-height: 1.3;
-  color: var(--texto);
+  color: var(--texto-suave);
 }
 
 .franja-icono {
-  flex-shrink: 0;
+  flex: none;
   display: grid;
   place-items: center;
-  width: 26px;
-  height: 26px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
-  font-size: 14px;
+  font-size: 12px;
+  font-weight: 700;
   color: var(--superficie);
   background: var(--texto-suave);
 }
 
-/* Sin alertas: tranquilo, con el visto en verde */
+/* Sin alertas: solo el texto, tranquilo ("Sin alertas de lluvia · actualizado 21:22") */
 .franja-normal .franja-icono {
-  background: var(--ruta);
+  display: none;
 }
 
 /* Aviso: se espera lluvia fuerte, pero todavía no se corta ninguna ruta */
 .franja-aviso {
   background: var(--alerta-fondo);
-  border-color: var(--alerta-borde);
+  box-shadow: inset 0 0 0 1px var(--alerta-borde);
+  color: var(--texto);
+  font-weight: 700;
 }
 
 .franja-aviso .franja-icono {
@@ -47,7 +51,9 @@
 /* Alerta: llueve sobre el umbral y hay pasos bajo nivel encendidos */
 .franja-alerta {
   background: var(--peligro-fondo);
-  border-color: var(--peligro);
+  box-shadow: inset 0 0 0 1px var(--peligro);
+  color: var(--peligro-texto);
+  font-weight: 700;
 }
 
 .franja-alerta .franja-icono {
@@ -57,8 +63,8 @@
 /* Alarma: lluvia muy fuerte. Fondo rojo lleno, para que no pase desapercibida */
 .franja-alarma {
   background: var(--peligro);
-  border-color: var(--peligro);
   color: var(--superficie);
+  font-weight: 700;
 }
 
 .franja-alarma .franja-icono {
@@ -66,7 +72,35 @@
   color: var(--peligro);
 }
 
-/* Sin datos al día: texto normal, sin negrita, para no parecer una alerta */
-.franja-sin-datos {
-  font-weight: 400;
+/* En escritorio, dentro de la caja gris del estado de la zona: sin sombra, y sin fondo si no hay alerta */
+@media (min-width: 768px) {
+  .franja-lluvia {
+    min-height: 0;
+    padding: 0;
+    border-radius: 8px;
+    background: none;
+    box-shadow: none;
+    font-size: 13px;
+  }
+
+  .franja-aviso,
+  .franja-alerta,
+  .franja-alarma {
+    margin-top: 4px;
+    padding: 8px 10px;
+  }
+
+  .franja-aviso {
+    background: var(--alerta-fondo);
+    box-shadow: inset 0 0 0 1px var(--alerta-borde);
+  }
+
+  .franja-alerta {
+    background: var(--peligro-fondo);
+    box-shadow: inset 0 0 0 1px var(--peligro);
+  }
+
+  .franja-alarma {
+    background: var(--peligro);
+  }
 }

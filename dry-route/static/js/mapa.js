@@ -48,12 +48,17 @@ function limitesDeZona(zona) {
   return [[zona.sur, zona.oeste], [zona.norte, zona.este]];
 }
 
-// En escritorio el panel flota sobre la izquierda del mapa: al encuadrar algo se deja libre ese espacio,
-// para que la ruta o un punto no queden escondidos detrás del panel. En el celular el panel va abajo.
+// Al encuadrar algo se deja libre lo que tapa el mapa, para que la ruta o un punto no queden escondidos:
+// en escritorio, el panel que flota a la izquierda (16 px de margen + su ancho) y la leyenda de abajo;
+// en el celular, la cabecera que flota arriba (ahí el panel va debajo del mapa).
 DryRoute.opcionesDeEncuadre = function () {
   const panel = document.getElementById("panel");
-  const izquierda = window.innerWidth >= 768 ? panel.offsetWidth + 32 : 40;
-  return { paddingTopLeft: [izquierda, 40], paddingBottomRight: [40, 40] };
+  const leyenda = document.getElementById("leyenda");
+  const cabecera = document.querySelector(".cabecera");
+  if (window.innerWidth >= 768) {
+    return { paddingTopLeft: [16 + panel.offsetWidth + 40, 40], paddingBottomRight: [40, leyenda.offsetHeight + 40] };
+  }
+  return { paddingTopLeft: [24, cabecera.offsetHeight + 24], paddingBottomRight: [24, 32] };
 };
 
 // ---------- Crear el mapa ----------
@@ -64,6 +69,24 @@ DryRoute.zona = JSON.parse(document.getElementById("zona-datos").textContent);
 // El zoom va abajo a la derecha: a la izquierda (en escritorio) queda tapado por el panel flotante
 DryRoute.mapa = L.map("mapa", { preferCanvas: true, zoomControl: false });
 L.control.zoom({ position: "bottomright", zoomInTitle: "Acercar", zoomOutTitle: "Alejar" }).addTo(DryRoute.mapa);
+
+// La leyenda está escrita en mapa.html; aquí se mueve sobre el mapa, abajo a la izquierda, como un control
+// de Leaflet. disableClickPropagation: un clic en la leyenda no marca un origen ni un destino.
+const leyendaMapa = document.getElementById("leyenda");
+const controlLeyenda = L.control({ position: "bottomleft" });
+controlLeyenda.onAdd = function () {
+  L.DomEvent.disableClickPropagation(leyendaMapa);
+  return leyendaMapa;
+};
+controlLeyenda.addTo(DryRoute.mapa);
+
+// En el celular la leyenda no cabe siempre a la vista: el botón (i) de la cabecera la abre y la cierra
+const botonInfo = document.getElementById("btn-info");
+botonInfo.addEventListener("click", function () {
+  const abierta = document.body.classList.toggle("leyenda-abierta");
+  botonInfo.setAttribute("aria-expanded", String(abierta));
+});
+
 DryRoute.mapa.fitBounds(limitesDeZona(DryRoute.zona), DryRoute.opcionesDeEncuadre());
 
 // Teselas estándar de OpenStreetMap. La atribución es obligatoria por su licencia.
@@ -87,8 +110,15 @@ const capaColegios = L.layerGroup();   // colegios y puntos de encuentro
 const ZOOM_SERVICIOS = 14;
 const ZOOM_COLEGIOS = 16;
 
+// Las zonas anegadas se dibujan en SVG y no en el lienzo (preferCanvas): así pueden rellenarse con el
+// patrón de olas de mapa.html. Son pocas comparadas con los miles de puntos de evacuación.
+const rendererAgua = L.svg();
+
+// Círculo celeste con una gota blanca en el centro de cada zona anegada (los estilos están en app.css)
+const ICONO_ANEGADO = L.divIcon({ className: "icono-anegado", iconSize: [28, 28] });
+
 // Triángulo ámbar con "!", como una señal de advertencia: forma, color y símbolo distintos
-// del círculo rojo (anegado) y del círculo ámbar con que reporte.js marca el lugar elegido.
+// de la gota celeste (anegado) y del círculo ámbar con que reporte.js marca el lugar elegido.
 const ICONO_REPORTE_PENDIENTE = L.divIcon({
   className: "icono-reporte-pendiente",
   html: "!",
@@ -112,24 +142,28 @@ function dibujarPuntos(datos) {
 
   for (const punto of datos.anegados) {
     if (punto.activo) {
-      // Anegado ahora: círculo rojo del tamaño del radio de bloqueo, para que se vea qué zona evita la ruta.
+      // Anegado ahora: círculo con olas del tamaño del radio de bloqueo, para que se vea qué zona evita
+      // la ruta, y una gota en el centro, que se ve aunque el mapa esté alejado y el círculo sea chico.
       L.circle([punto.lat, punto.lon], {
         radius: RADIO_BLOQUEO_M,
-        color: color("--peligro"),
-        fillColor: color("--peligro"),
-        fillOpacity: 0.35,
-        weight: 2
+        renderer: rendererAgua,
+        className: "zona-anegada",  // app.css lo rellena con las olas
+        color: color("--anegado"),
+        weight: 1.5
       })
+        .bindPopup(popupAnegado(punto))
+        .addTo(capaAnegados);
+      L.marker([punto.lat, punto.lon], { icon: ICONO_ANEGADO, title: punto.nombre, zIndexOffset: 200 })
         .bindPopup(popupAnegado(punto))
         .addTo(capaAnegados);
     } else {
       // Punto de riesgo sin agua: puntito gris, discreto, porque la ruta sí puede pasar por ahí.
       L.circleMarker([punto.lat, punto.lon], {
-        radius: 5,
-        color: color("--inactivo"),
+        radius: 6,
+        color: color("--superficie"),
         fillColor: color("--inactivo"),
-        fillOpacity: 0.9,
-        weight: 1
+        fillOpacity: 1,
+        weight: 2
       })
         .bindPopup(textoPopup("Punto de riesgo (sin anegamiento)", punto.nombre + textoLluvia(punto)))
         .addTo(capaAnegados);
@@ -156,7 +190,7 @@ function dibujarPuntos(datos) {
         radius: 4,
         color: color("--superficie"),
         weight: 1,
-        fillColor: color("--ruta"),
+        fillColor: color("--evacuacion"),
         fillOpacity: 1
       }).bindPopup(popup).addTo(capaColegios);
     } else {
@@ -171,6 +205,67 @@ function dibujarPuntos(datos) {
     }
   }
   mostrarSegunZoom();
+  mostrarAnegadosActivos(datos.anegados.filter(function (p) { return p.activo; }));
+}
+
+// ---------- Anegamientos activos en el panel ----------
+// Se muestran a lo más 5: con lluvia en toda la ciudad pueden ser más de 100 y taparían el formulario.
+const MAXIMO_EN_LISTA = 5;
+
+function textoCantidadAnegados(cantidad) {
+  if (cantidad === 0) {
+    return "Sin anegamientos activos";
+  }
+  return cantidad === 1 ? "1 anegamiento activo" : cantidad + " anegamientos activos";
+}
+
+// Por qué está anegado: cuánto llueve ahí o cuántas personas lo reportaron. Si lo marcó una persona
+// en el admin no se dice nada.
+function detalleAnegado(punto) {
+  if (punto.activado_por_lluvia && punto.lluvia_mm !== null) {
+    return String(punto.lluvia_mm).replace(".", ",") + " mm/h";
+  }
+  if (punto.fuente === "Reportes ciudadanos") {
+    return punto.confirmaciones + " reportes";
+  }
+  return "";
+}
+
+function mostrarAnegadosActivos(activos) {
+  document.getElementById("texto-anegados").textContent = textoCantidadAnegados(activos.length);
+
+  const seccion = document.getElementById("seccion-anegados");
+  const lista = document.getElementById("lista-anegados");
+  lista.replaceChildren();
+  seccion.hidden = activos.length === 0;
+
+  for (const punto of activos.slice(0, MAXIMO_EN_LISTA)) {
+    // Un botón por punto: al tocarlo, el mapa se acerca a ese lugar y abre su información
+    const boton = document.createElement("button");
+    boton.type = "button";
+    const nombre = document.createElement("span");
+    nombre.className = "nombre-anegado";
+    nombre.textContent = punto.nombre;  // texto plano: el nombre viene de OpenStreetMap o de un reporte
+    const detalle = document.createElement("span");
+    detalle.className = "detalle-anegado";
+    detalle.textContent = detalleAnegado(punto);
+    boton.append(nombre, detalle);
+    boton.addEventListener("click", function () {
+      DryRoute.mapa.setView([punto.lat, punto.lon], 16);
+      L.popup().setLatLng([punto.lat, punto.lon]).setContent(popupAnegado(punto)).openOn(DryRoute.mapa);
+    });
+    const elemento = document.createElement("li");
+    elemento.appendChild(boton);
+    lista.appendChild(elemento);
+  }
+
+  const restantes = activos.length - MAXIMO_EN_LISTA;
+  if (restantes > 0) {
+    const mas = document.createElement("li");
+    mas.className = "mas-anegados";
+    mas.textContent = "y " + restantes + " más en el mapa";
+    lista.appendChild(mas);
+  }
 }
 
 // ". Lluvia: 7,2 mm/h" si ya se consultó la lluvia sobre el punto (F3); si no, nada.
@@ -227,7 +322,8 @@ function mostrarErrorDePuntos() {
   caja.className = "tarjeta tarjeta-error";
   caja.setAttribute("role", "alert");
   caja.textContent = "⚠ No pudimos cargar los puntos anegados. Revisa que el servidor esté funcionando y recarga la página.";
-  document.getElementById("aviso").after(caja);
+  document.getElementById("texto-anegados").textContent = "Puntos no disponibles";
+  document.querySelector(".estado-zona").after(caja);
 }
 
 // Lo último que llegó del servidor, como texto: si en una revisión llega lo mismo no se redibuja,

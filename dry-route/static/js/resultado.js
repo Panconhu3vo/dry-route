@@ -44,29 +44,99 @@ function crear(etiqueta, clase, texto) {
   return elemento;
 }
 
+// Ícono de app.css ("escudo", "ruta", "advertencia", "casa"...). Es decorativo: el texto de al lado ya dice lo mismo.
+function crearIcono(nombre) {
+  const icono = crear("span", "icono icono-" + nombre, "");
+  icono.setAttribute("aria-hidden", "true");
+  return icono;
+}
+
 // Título con ícono + texto: el estado nunca se comunica solo con color (docs/DISENO.md).
 function crearTitulo(icono, texto) {
   const titulo = crear("h2", "tarjeta-titulo", "");
-  const simbolo = crear("span", "tarjeta-icono", icono);
-  simbolo.setAttribute("aria-hidden", "true"); // el lector de pantalla ya lee el texto
-  titulo.appendChild(simbolo);
-  titulo.appendChild(document.createTextNode(" " + texto));
+  titulo.append(crearIcono(icono), texto);
   return titulo;
 }
 
-// La línea va dos veces: una blanca y gruesa abajo, y la verde encima.
-// El borde blanco hace que la ruta se lea sobre cualquier calle del mapa.
-function dibujarRuta(puntos) {
-  L.polyline(puntos, { color: colorCss("--superficie"), weight: 10, opacity: 1 }).addTo(capaResultado);
-  L.polyline(puntos, { color: colorCss("--ruta"), weight: 6, opacity: 1 }).addTo(capaResultado);
+// "Desde: Tu ubicación / Hasta: Metro Lo Ovalle": recuerda qué ruta se está mirando.
+// Los textos son los de los campos de entrada.js (una dirección o "Punto marcado en el mapa").
+function crearResumen(hasta) {
+  const lista = crear("ul", "resumen-viaje", "");
+  const filas = [
+    ["marca-desde", "Desde", document.getElementById("input-origen").value || "Origen"],
+    ["marca-hasta", "Hasta", hasta]
+  ];
+  for (const [marca, etiqueta, lugar] of filas) {
+    const fila = document.createElement("li");
+    const simbolo = crear("span", marca, "");
+    simbolo.setAttribute("aria-hidden", "true");
+    fila.append(simbolo, crear("span", "etiqueta", etiqueta), crear("span", "lugar", lugar));
+    lista.appendChild(fila);
+  }
+  return lista;
 }
 
-// Marcador más grande encima del que ya dibujó mapa.js, para que se note cuál es el elegido.
+// Ruta segura: "17 min" grande (lo que más importa al evacuar), la distancia y cuántos anegados evita.
+function crearTarjetaSegura(r) {
+  const tarjeta = crear("div", "tarjeta tarjeta-segura", "");
+  tarjeta.appendChild(crearTitulo("escudo", "Ruta segura"));
+
+  const cifras = crear("p", "tarjeta-cifras", "");
+  const tiempo = crear("span", "cifra-principal", String(r.tiempo_min));
+  tiempo.appendChild(crear("small", "", "min"));
+  cifras.append(tiempo, crear("span", "cifra-secundaria", formatoDistancia(r.distancia_m)));
+  tarjeta.appendChild(cifras);
+
+  const evita = crear("p", "etiqueta-evita", "");
+  evita.append(crearIcono("ruta"), textoPuntosEvitados(r.puntos_evitados.length));
+  tarjeta.appendChild(evita);
+  return tarjeta;
+}
+
+// Sin ruta segura o en zona de peligro: borde rojo con la advertencia y el mensaje del servidor.
+function crearTarjetaSinRuta(titulo, mensaje, clase) {
+  const tarjeta = crear("div", "tarjeta " + clase, "");
+  const circulo = crear("span", "circulo-advertencia", "");
+  circulo.appendChild(crearIcono("advertencia"));
+  const texto = crear("div", "tarjeta-texto", "");
+  // El mensaje lo escribe el servidor: explica qué pasó (por ejemplo, que no hay punto alcanzable).
+  texto.append(crear("h2", "tarjeta-titulo", titulo), crear("p", "tarjeta-detalle", mensaje));
+  tarjeta.append(circulo, texto);
+  return tarjeta;
+}
+
+// "PUNTO DE EVACUACIÓN · Hospital Barros Luco · 1,1 km · 14 min"
+function crearFilaEvacuacion(r) {
+  const fila = crear("div", "fila-evacuacion", "");
+  const circulo = crear("span", "circulo-casa", "");
+  circulo.appendChild(crearIcono("casa"));
+  const texto = crear("div", "fila-evacuacion-texto", "");
+  texto.append(crear("span", "etiqueta", "Punto de evacuación"), crear("strong", "", r.punto_evacuacion.nombre));
+  const cifras = crear("p", "fila-evacuacion-cifras", formatoDistancia(r.distancia_m));
+  cifras.appendChild(crear("span", "", r.tiempo_min + " min"));
+  fila.append(circulo, texto, cifras);
+  return fila;
+}
+
+// La ruta va en SVG y no en el lienzo (preferCanvas de mapa.js): así el borde blanco puede llevar
+// una sombra hecha con CSS (.ruta-borde en app.css), que la despega del mapa.
+const rendererRuta = L.svg();
+
+// La línea va dos veces: una blanca y gruesa abajo, y la azul encima.
+// El borde blanco hace que la ruta se lea sobre cualquier calle del mapa.
+function dibujarRuta(puntos) {
+  const estilo = { opacity: 1, lineJoin: "round", lineCap: "round", renderer: rendererRuta };
+  L.polyline(puntos, Object.assign({ color: colorCss("--superficie"), weight: 12, className: "ruta-borde" }, estilo))
+    .addTo(capaResultado);
+  L.polyline(puntos, Object.assign({ color: colorCss("--ruta"), weight: 7 }, estilo)).addTo(capaResultado);
+}
+
+// Círculo azul grande sobre el punto elegido, con cruz (salud) o casa: es el final de la ruta.
 function resaltarPuntoEvacuacion(punto) {
   const esSalud = punto.tipo === "hospital" || punto.tipo === "clinica";
   const icono = L.divIcon({
-    className: "icono-evacuacion icono-evacuacion-resaltado",
-    html: esSalud ? "+" : "⌂",
+    className: "icono-evacuacion-resaltado",
+    html: '<span class="icono icono-' + (esSalud ? "cruz" : "casa") + '"></span>',
     iconSize: [40, 40]
   });
   L.marker([punto.lat, punto.lon], { icon: icono, title: punto.nombre, zIndexOffset: 1000 })
@@ -83,48 +153,40 @@ function mostrarFormulario(visible) {
 }
 
 // El panel muestra el formulario o el resultado, nunca los dos (docs/DISENO.md).
-function mostrarTarjeta(tarjeta, conBotonNuevaRuta) {
+// elementos: lo que va en el resultado, en orden (resumen, tarjeta, fila del punto de evacuación...).
+function mostrarTarjeta(elementos, conBotonNuevaRuta) {
   if (conBotonNuevaRuta) {
-    const boton = crear("button", "boton boton-principal", "Nueva ruta");
+    const boton = crear("button", "boton boton-secundario", "Nueva ruta");
     boton.type = "button";
     boton.addEventListener("click", DryRoute.limpiarResultado);
-    tarjeta.appendChild(boton);
+    elementos.push(boton);
   }
-  cajaResultado.replaceChildren(tarjeta);
+  cajaResultado.replaceChildren(...elementos);
   cajaResultado.hidden = false;
 }
 
 // r es la respuesta 200 de /api/ruta/, con estado "segura", "sin_ruta" o "en_peligro".
 DryRoute.mostrarResultado = function (r) {
   DryRoute.limpiarResultado(); // borra una ruta anterior, si había
-  const tarjeta = document.createElement("div");
+  const elementos = [];
 
   if (r.estado === "segura") {
-    tarjeta.className = "tarjeta tarjeta-segura";
-    tarjeta.appendChild(crearTitulo("✓", "Ruta segura"));
-    tarjeta.appendChild(crear("p", "tarjeta-datos",
-      formatoDistancia(r.distancia_m) + " · " + r.tiempo_min + " min"));
-    tarjeta.appendChild(crear("p", "tarjeta-detalle", textoPuntosEvitados(r.puntos_evitados.length)));
+    elementos.push(crearResumen(document.getElementById("input-destino").value || "Destino"));
+    elementos.push(crearTarjetaSegura(r));
   } else {
-    tarjeta.className = "tarjeta tarjeta-sin-ruta";
     // "en_peligro": el origen está en una zona anegada y la prioridad es salir, no llegar al destino
     const titulo = r.estado === "en_peligro" ? "Estás en una zona de peligro" : "No hay ruta segura a tu destino";
-    tarjeta.appendChild(crearTitulo("⚠", titulo));
-    // El mensaje lo escribe el servidor: explica qué pasó (por ejemplo, que no hay punto alcanzable).
-    tarjeta.appendChild(crear("p", "tarjeta-detalle", r.mensaje));
+    elementos.push(crearTarjetaSinRuta(titulo, r.mensaje, "tarjeta-sin-ruta"));
     if (r.punto_evacuacion) {
-      tarjeta.appendChild(crear("p", "tarjeta-datos",
-        "Ir al punto de evacuación: " + r.punto_evacuacion.nombre));
-      tarjeta.appendChild(crear("p", "tarjeta-detalle",
-        "A " + formatoDistancia(r.distancia_m) + " · " + r.tiempo_min + " min"));
+      elementos.push(crearFilaEvacuacion(r));
     }
   }
 
-  // Si esta ruta viene de un recálculo automático (T15), se avisa arriba de la tarjeta
+  // Si esta ruta viene de un recálculo automático (T15), se avisa arriba de todo
   if (avisoRecalculoPendiente) {
     const aviso = crear("p", "aviso-recalculo", "↻ Cambiaron los puntos anegados de la zona. Ruta recalculada.");
     aviso.setAttribute("role", "status");
-    tarjeta.prepend(aviso);
+    elementos.unshift(aviso);
     avisoRecalculoPendiente = false;
   }
 
@@ -137,18 +199,21 @@ DryRoute.mostrarResultado = function (r) {
   if (r.estado !== "segura" && r.punto_evacuacion) {
     encuadre.extend([r.punto_evacuacion.lat, r.punto_evacuacion.lon]);
   }
+
+  mostrarFormulario(false);
+  mostrarTarjeta(elementos, true);
+  hayRutaEnPantalla = true;
+
   if (encuadre.isValid()) {
-    // Deja espacio en los bordes y, en escritorio, el del panel flotante (mapa.js), para que nada quede tapado
+    // Deja libre lo que tapa el mapa (la leyenda o la cabecera, ver mapa.js), para que nada quede escondido.
+    // Va después de mostrar la tarjeta: en el celular el panel cambia de alto y con él, el espacio del mapa.
+    DryRoute.mapa.invalidateSize();
     DryRoute.mapa.fitBounds(encuadre, Object.assign(DryRoute.opcionesDeEncuadre(), { maxZoom: 17 }));
   }
   // Va después de fitBounds para que el popup se abra ya en el encuadre final.
   if (r.estado !== "segura" && r.punto_evacuacion) {
     resaltarPuntoEvacuacion(r.punto_evacuacion);
   }
-
-  mostrarFormulario(false);
-  mostrarTarjeta(tarjeta, true);
-  hayRutaEnPantalla = true;
 };
 
 // Para errores (respuesta 400, sin conexión, dirección no encontrada) el formulario sigue visible:
@@ -158,12 +223,9 @@ DryRoute.mostrarError = function (mensaje) {
   hayRutaEnPantalla = false;
   avisoRecalculoPendiente = false;
   mostrarFormulario(true);
-  const tarjeta = document.createElement("div");
-  tarjeta.className = "tarjeta tarjeta-error";
+  const tarjeta = crearTarjetaSinRuta("No pudimos calcular la ruta", mensaje, "tarjeta-error");
   tarjeta.setAttribute("role", "alert"); // un error se anuncia de inmediato, no "cuando se pueda"
-  tarjeta.appendChild(crearTitulo("⚠", "No pudimos calcular la ruta"));
-  tarjeta.appendChild(crear("p", "tarjeta-detalle", mensaje));
-  mostrarTarjeta(tarjeta, false);
+  mostrarTarjeta([tarjeta], false);
   // En el celular el panel es bajo y el error queda debajo del formulario: lo traemos a la vista.
   tarjeta.scrollIntoView({ block: "nearest" });
 };
@@ -176,11 +238,13 @@ DryRoute.limpiarResultado = function () {
   cajaResultado.hidden = true;
   mostrarFormulario(true);
   hayRutaEnPantalla = false;
+  // En el celular el panel cambió de alto: Leaflet tiene que volver a medir el mapa para dibujarlo completo
+  DryRoute.mapa.invalidateSize();
 };
 
 // ---------- Recálculo automático (T15, pantalla 5 del prototipo) ----------
-// Si cambian los puntos anegados (otra persona confirmó un reporte, alguien activó un punto en el admin
-// o un reporte venció) y hay una ruta en pantalla, la ruta se recalcula sola y se avisa.
+// Si cambian los puntos anegados (otra persona confirmó un reporte, alguien activó un punto en el admin,
+// un reporte venció o cambió la lluvia) y hay una ruta en pantalla, la ruta se recalcula sola y se avisa.
 const SEGUNDOS_ENTRE_REVISIONES = 15;
 let firmaAnegados = null;          // ids de los anegados activos la última vez, como texto: "3,9,15"
 let hayRutaEnPantalla = false;

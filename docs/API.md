@@ -278,3 +278,12 @@ Alertas de lluvia (F3). `alertas.js` se carga después de `reporte.js`:
 | id | Elemento |
 |---|---|
 | `alerta-lluvia` | franja de lluvia arriba del panel (`aria-live="polite"`) |
+
+Rediseño (20-11). Los id anteriores no cambian; se agregan estos, que usa `mapa.js`:
+
+| id | Elemento |
+|---|---|
+| `texto-anegados` | "N anegamientos activos", en el estado de la zona |
+| `seccion-anegados`, `lista-anegados` | lista de anegamientos activos del panel (a lo más 5) |
+| `leyenda` | leyenda; `mapa.js` la mueve sobre el mapa como control de Leaflet |
+| `btn-info` | botón (i) de la cabecera del celular: abre y cierra la leyenda |

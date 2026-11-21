@@ -1,34 +1,44 @@
-/* Estilos de Dry Routes. Los valores vienen de docs/DISENO.md.
+/* Estilos de Dry Routes. Los valores vienen de docs/DISENO.md (rediseño del 20-11, según el prototipo
+   "Dry Routes — Rediseño moderno").
    Se escribe primero para celular (mobile-first) y al final se ajusta para escritorio.
-   Idea visual: el mapa es la pantalla y va en grises suaves; el color se reserva para lo que significa algo
-   (azul = acción, verde = ruta segura, rojo = anegado, ámbar = pendiente o aviso). */
+   Idea visual: el mapa es la pantalla y va en grises suaves. El color se reserva para lo que significa algo:
+   azul = acción y ruta segura, celeste con olas = agua (anegado), rojo = peligro, ámbar = aviso o pendiente. */
 
 /* ---------- Tokens: colores y medidas que usa toda la app ---------- */
 :root {
-  --fondo:            #F8F9FA;
+  --fondo:            #F4F7FA;
   --superficie:       #FFFFFF;
-  --superficie-suave: #F1F3F4;  /* campos de texto y fondos secundarios */
-  --texto:            #1F2328;
-  --texto-suave:      #5F6368;
-  --borde:            #DADCE0;
+  --superficie-suave: #F4F7FA;  /* cajas secundarias, como el estado de la zona */
+  --texto:            #14212B;
+  --texto-suave:      #51616E;
+  --borde:            #D3DCE3;
+  --borde-suave:      #EDF1F4;  /* separadores de listas */
 
-  --agua:             #1A6FD8;  /* acción principal, ubicación del usuario */
-  --agua-oscura:      #1557B0;  /* acción principal al pasar el mouse */
-  --agua-suave:       #E8F0FE;  /* fondo de un botón secundario al pasar el mouse */
-  --ruta:             #188038;  /* línea de la ruta segura y bandera de destino (no usar para texto) */
-  --ruta-texto:       #137333;  /* texto "Ruta segura" */
-  --ruta-fondo:       #E6F4EA;
-  --peligro:          #D93025;  /* anegado activo, "No hay ruta segura" */
-  --peligro-fondo:    #FCE8E6;
-  --alerta-fondo:     #FEF7E0;  /* fondo de los avisos; texto en --texto */
-  --alerta-borde:     #F29900;
-  --inactivo:         #9AA0A6;  /* punto de riesgo sin anegamiento */
+  --agua:             #0B63C4;  /* acción principal y tu ubicación (el nombre viene del diseño anterior) */
+  --agua-oscura:      #084C96;  /* acción principal al pasar el mouse */
+  --agua-suave:       #E8F1FB;  /* fondo de botones con ícono y etiquetas */
+  --ruta:             #0B63C4;  /* línea de la ruta segura */
+  --ruta-texto:       #0B4E9C;  /* texto "Ruta segura" */
+  --ruta-fondo:       #E8F1FB;
+  --anegado:          #0782A8;  /* agua: zona anegada ahora */
+  --peligro:          #C8322A;  /* "No hay ruta segura", errores */
+  --peligro-texto:    #B02A23;
+  --peligro-fondo:    #FBE6E4;
+  --alerta-fondo:     #FFF1D6;  /* fondo de los avisos; texto en --texto */
+  --alerta-borde:     #E08A00;
+  --inactivo:         #8D9AA5;  /* punto de riesgo sin anegamiento */
+  --evacuacion:       #188038;  /* puntos de evacuación: salud, bomberos, Carabineros y colegios */
 
-  --radio:            12px;
-  --radio-panel:      16px;
-  --sombra:           0 1px 3px rgb(60 64 67 / 0.3);
-  --sombra-panel:     0 1px 2px rgb(60 64 67 / 0.3), 0 2px 6px 2px rgb(60 64 67 / 0.15);
-  --fuente:           "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --radio:            14px;
+  --radio-tarjeta:    18px;
+  --radio-panel:      24px;
+  --sombra:           0 1px 2px rgb(20 33 43 / 0.10), 0 6px 20px rgb(20 33 43 / 0.14);
+  --sombra-tarjeta:   0 1px 2px rgb(20 33 43 / 0.06), 0 10px 28px rgb(20 33 43 / 0.10);
+  /* Sombra suave para campos, botones y cajas: los despega del fondo blanco sin recargar */
+  --sombra-suave:     0 1px 2px rgb(20 33 43 / 0.06), 0 2px 8px rgb(20 33 43 / 0.08);
+  --fuente:           "Atkinson Hyperlegible Next", system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* Números de igual ancho: tiempos, distancias y teléfonos se leen de un vistazo */
+  --fuente-numeros:   "Atkinson Hyperlegible Mono", ui-monospace, monospace;
 }
 
 /* ---------- Base ---------- */
@@ -69,39 +79,62 @@ body {
   }
 }
 
-/* ---------- Barra superior ---------- */
-.encabezado {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  min-height: 56px;
-  padding: 0 16px;
-  background: var(--superficie);
-  border-bottom: 1px solid var(--borde);
+/* El SVG con el patrón de olas no ocupa espacio (display: none rompería el patrón en algunos navegadores) */
+.definiciones-svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+/* ---------- Íconos ---------- */
+/* Cada ícono es una máscara: toma la forma del SVG y el color del texto (currentColor).
+   Así un mismo ícono sirve en azul, rojo o blanco, y no hace falta repetir el SVG en el HTML ni en el JS. */
+.icono {
+  display: inline-block;
+  flex: none;
+  width: 20px;
+  height: 20px;
+  background: currentColor;
+  -webkit-mask: var(--svg) center / contain no-repeat;
+  mask: var(--svg) center / contain no-repeat;
+}
+
+.icono-ruta { --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2.4'%3E%3Cpath d='M4 20C4 13 10 13 12 11C14 9 20 9 20 4'/%3E%3C/svg%3E"); }
+.icono-escudo { --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2.2'%3E%3Cpath d='M12 3L19 6V11C19 15.5 16 19 12 21C8 19 5 15.5 5 11V6Z'/%3E%3Cpath d='M9 12L11.2 14.2L15.5 9.8'/%3E%3C/svg%3E"); }
+.icono-gps { --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='6'/%3E%3Ccircle cx='12' cy='12' r='2' fill='black'/%3E%3Cpath d='M12 2V5M12 19V22M2 12H5M19 12H22'/%3E%3C/svg%3E"); }
+.icono-info { --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 11V16'/%3E%3Ccircle cx='12' cy='8' r='1.1' fill='black' stroke='none'/%3E%3C/svg%3E"); }
+.icono-advertencia { --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2.2'%3E%3Cpath d='M12 4L21 19.5H3Z'/%3E%3Cpath d='M12 9.5V13.5'/%3E%3Ccircle cx='12' cy='16.6' r='1.1' fill='black' stroke='none'/%3E%3C/svg%3E"); }
+.icono-casa { --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='8 9 24 24' fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2.2'%3E%3Cpath d='M12 21L20 13L28 21M14.5 19V28H25.5V19'/%3E%3C/svg%3E"); }
+.icono-cruz { --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='3'%3E%3Cpath d='M12 5V19M5 12H19'/%3E%3C/svg%3E"); }
+.icono-gota { --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='5 5 14 14'%3E%3Cpath d='M12 6C14.5 9.5 16 11 16 13.5A4 4 0 0 1 8 13.5C8 11 9.5 9.5 12 6Z' fill='black'/%3E%3C/svg%3E"); }
+.icono-flecha { --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Cpath d='M5 12H19M13 6L19 12L13 18'/%3E%3C/svg%3E"); }
+
+/* Círculo celeste con una gota blanca: "anegado ahora", en el mapa, la leyenda y el estado de la zona */
+.insignia-gota {
   position: relative;
-  z-index: 1100; /* sobre el mapa y sus controles */
+  display: inline-block;
+  flex: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--anegado);
 }
 
-.logo {
-  width: 30px;
-  height: 30px;
-  flex-shrink: 0;
+.insignia-gota::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  background: var(--superficie);
+  -webkit-mask: var(--svg) center / contain no-repeat;
+  mask: var(--svg) center / contain no-repeat;
 }
 
-.encabezado h1 {
-  margin: 0;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1.2;
+.insignia-gota::before,
+.icono-anegado::before {
+  --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='5 5 14 14'%3E%3Cpath d='M12 6C14.5 9.5 16 11 16 13.5A4 4 0 0 1 8 13.5C8 11 9.5 9.5 12 6Z' fill='black'/%3E%3C/svg%3E");
 }
 
-.lema {
-  margin: 0;
-  font-size: 13px;
-  color: var(--texto-suave);
-}
-
-/* ---------- Layout celular: mapa arriba y panel abajo (bottom sheet) ---------- */
+/* ---------- Layout celular: mapa a pantalla completa, cabecera flotante y panel abajo (bottom sheet) ---------- */
 .contenido {
   flex: 1;
   display: flex;
@@ -112,18 +145,21 @@ body {
 #mapa {
   flex: 1;
   min-height: 0;
-  background: var(--fondo); /* lo que se ve mientras cargan las teselas */
+  background: #ECEFF1; /* lo que se ve mientras cargan las teselas */
 }
 
 #panel {
   /* El mapa es la pantalla: el panel ocupa como máximo el 45% del alto y hace scroll si no cabe */
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
   max-height: 45vh;
   overflow-y: auto;
   scrollbar-width: thin;
-  padding: 20px 16px 16px;
+  padding: 20px 20px 20px;
   background: var(--superficie);
   border-radius: var(--radio-panel) var(--radio-panel) 0 0;
-  box-shadow: var(--sombra-panel);
+  box-shadow: 0 -2px 24px rgb(20 33 43 / 0.14);
   /* Sube un poco sobre el mapa para que se vea como una hoja; z-index sobre los controles de Leaflet */
   margin-top: calc(-1 * var(--radio-panel));
   position: relative;
@@ -140,7 +176,69 @@ body {
   height: 4px;
   margin-left: -18px;
   border-radius: 2px;
-  background: var(--borde);
+  background: #C5CFD7;
+}
+
+/* En el celular la cabecera flota arriba del mapa. Es fixed y no absolute para que no la arrastre el
+   scroll del panel, que es donde está en el HTML */
+.cabecera {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none; /* entre las píldoras se puede tocar el mapa */
+}
+
+.cabecera > * {
+  pointer-events: auto;
+}
+
+.encabezado {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 56px;
+  padding: 0 6px 0 20px;
+  background: var(--superficie);
+  border-radius: 28px;
+  box-shadow: var(--sombra);
+}
+
+.encabezado h1 {
+  flex-grow: 1;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+
+/* Estado de la zona: en el celular, dos píldoras blancas sobre el mapa */
+.estado-zona {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.estado-anegados {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  margin: 0;
+  padding: 0 14px 0 10px;
+  background: var(--superficie);
+  border-radius: 18px;
+  box-shadow: 0 1px 2px rgb(20 33 43 / 0.10), 0 2px 8px rgb(20 33 43 / 0.08);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.estado-anegados .insignia-gota {
+  width: 18px;
+  height: 18px;
 }
 
 /* El panel se monta sobre el borde inferior del mapa: subimos los controles de abajo
@@ -163,29 +261,28 @@ body {
 
 .leaflet-container .leaflet-control-zoom.leaflet-bar {
   border: none;
-  border-radius: 8px;
-  box-shadow: var(--sombra-panel);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
   overflow: hidden;
 }
 
 .leaflet-container .leaflet-control-zoom a {
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
-  font-size: 20px;
-  color: var(--texto-suave);
+  width: 48px;
+  height: 48px;
+  line-height: 48px;
+  font-size: 22px;
+  color: var(--texto);
   background: var(--superficie);
-  border-bottom-color: var(--borde);
+  border-bottom-color: var(--borde-suave);
 }
 
 .leaflet-container .leaflet-control-zoom a:hover {
-  background: var(--superficie-suave);
-  color: var(--texto);
+  background: var(--fondo);
 }
 
 .leaflet-container .leaflet-popup-content-wrapper {
   border-radius: var(--radio);
-  box-shadow: var(--sombra-panel);
+  box-shadow: var(--sombra);
 }
 
 .leaflet-container .leaflet-popup-content {
@@ -194,27 +291,96 @@ body {
   line-height: 1.4;
 }
 
-/* ---------- Aviso permanente ---------- */
+/* Zona anegada (mapa.js): círculo de 100 m relleno con el patrón de olas definido en mapa.html.
+   La regla CSS le gana al color de relleno que pone Leaflet */
+.zona-anegada {
+  fill: url(#olas);
+  fill-opacity: 1;
+}
+
+/* Sombra bajo el borde blanco de la ruta (resultado.js): la ruta parece flotar sobre las calles */
+.ruta-borde {
+  filter: drop-shadow(0 2px 2px rgb(20 33 43 / 0.35));
+}
+
+/* ---------- Aviso permanente con los números de emergencia ---------- */
+/* Siempre a la vista (regla R5): queda pegado al borde de abajo del panel aunque el contenido haga scroll */
 #aviso {
-  margin: 0 0 16px;
-  padding: 10px 12px;
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* La primera sombra (ámbar) es la que se ve; las blancas tapan lo que pasa por detrás al hacer scroll */
+  box-shadow: 0 2px 10px rgb(224 138 0 / 0.20), 0 -14px 12px var(--superficie), 0 14px 0 14px var(--superficie);
+  padding: 12px 14px;
   background: var(--alerta-fondo);
-  border-left: 4px solid var(--alerta-borde);
-  border-radius: 8px;
-  font-size: 13px;
+  border: 1px solid var(--alerta-borde);
+  border-radius: var(--radio);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+#aviso p {
+  margin: 0;
+}
+
+.emergencias {
+  display: flex;
+  gap: 6px;
+}
+
+/* Botones de 44 px de alto para llamar con un toque: número arriba, institución abajo */
+.emergencias a {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  border-radius: 10px;
+  background: var(--superficie);
+  box-shadow: 0 1px 3px rgb(20 33 43 / 0.12);
   color: var(--texto);
+  text-decoration: none;
+  line-height: 1.15;
+}
+
+.emergencias strong {
+  font-family: var(--fuente-numeros);
+  font-size: 15px;
+}
+
+.emergencias span {
+  font-size: 11px;
+  color: var(--texto-suave);
+}
+
+.emergencias a:hover {
+  background: var(--fondo);
 }
 
 /* ---------- Formulario ---------- */
 #form-ruta {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
+}
+
+.titulo-panel {
+  margin: 4px 0 0;
+  font-size: 24px;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+  font-weight: 700;
 }
 
 .pista {
   margin: 0;
-  font-size: 13px;
+  font-size: 14px;
+  line-height: 1.4;
   color: var(--texto-suave);
 }
 
@@ -225,22 +391,34 @@ body {
 }
 
 .campo label {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--texto);
 }
 
-/* Campos rellenos en gris, sin borde: el borde azul aparece solo al escribir */
+/* El campo de origen lleva al lado el botón "Usar mi ubicación" */
+.campo-con-boton {
+  display: flex;
+  gap: 8px;
+}
+
+.campo-con-boton input {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* Campos blancos con borde: se distinguen bien del fondo aun con el sol encima */
 .campo input {
-  min-height: 48px;
-  padding: 0 18px;
-  border: 1px solid transparent;
-  border-radius: 24px;
+  height: 52px;
+  padding: 0 16px;
+  border: 1.5px solid var(--borde);
+  border-radius: var(--radio);
   font: inherit;
-  font-size: 15px;
+  font-size: 16px; /* con menos de 16 px, el iPhone acerca la página al escribir */
   color: var(--texto);
-  background: var(--superficie-suave);
-  transition: background-color 0.15s, border-color 0.15s;
+  background: var(--superficie);
+  box-shadow: var(--sombra-suave);
+  transition: border-color 0.15s, box-shadow 0.15s;
 }
 
 .campo input::placeholder {
@@ -248,24 +426,27 @@ body {
 }
 
 .campo input:hover {
-  background: #E8EAED;
+  border-color: var(--inactivo);
 }
 
 .campo input:focus {
   outline: none;
-  background: var(--superficie);
   border-color: var(--agua);
-  box-shadow: 0 0 0 1px var(--agua);
+  box-shadow: 0 0 0 1px var(--agua), var(--sombra-suave);
 }
 
 /* ---------- Botones tipo píldora (mínimo 48 px de alto, para el dedo mojado) ---------- */
 .boton {
-  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 52px;
   padding: 0 20px;
-  border: 1px solid transparent;
-  border-radius: 24px;
+  border: 1.5px solid transparent;
+  border-radius: 26px;
   font: inherit;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
   cursor: pointer;
   transition: background-color 0.15s, box-shadow 0.15s;
@@ -274,17 +455,36 @@ body {
 .boton-principal {
   background: var(--agua);
   color: var(--superficie);
+  box-shadow: 0 2px 4px rgb(11 99 196 / 0.25), 0 8px 20px rgb(11 99 196 / 0.30);
 }
 
 .boton-principal:hover:not(:disabled) {
   background: var(--agua-oscura);
-  box-shadow: var(--sombra);
+}
+
+/* "Calcular ruta": el botón más importante, más alto y con el ícono de ruta. El ícono va en ::before
+   porque entrada.js cambia el texto del botón ("Calculando…") y así no se pierde */
+.boton-grande {
+  min-height: 56px;
+  border-radius: 28px;
+  font-size: 17px;
+}
+
+.boton-grande::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background: currentColor;
+  -webkit-mask: var(--svg) center / contain no-repeat;
+  mask: var(--svg) center / contain no-repeat;
+  --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2.4'%3E%3Cpath d='M4 20C4 13 10 13 12 11C14 9 20 9 20 4'/%3E%3C/svg%3E");
 }
 
 .boton-secundario {
   background: var(--superficie);
   border-color: var(--borde);
   color: var(--agua);
+  box-shadow: var(--sombra-suave);
 }
 
 .boton-secundario:hover:not(:disabled) {
@@ -292,36 +492,161 @@ body {
 }
 
 .boton:disabled {
-  background: var(--superficie-suave);
+  background: var(--borde-suave);
   border-color: transparent;
-  color: #80868B;
+  box-shadow: none;
+  color: #6B7A86;
   cursor: not-allowed;
+}
+
+/* Botón cuadrado de solo ícono (ubicación, leyenda). Lleva aria-label en el HTML */
+.boton-icono {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border: 0;
+  border-radius: var(--radio);
+  background: var(--agua-suave);
+  color: var(--agua);
+  box-shadow: var(--sombra-suave);
+  cursor: pointer;
+}
+
+.boton-icono .icono {
+  width: 22px;
+  height: 22px;
+}
+
+.boton-icono:hover:not(:disabled) {
+  background: #D6E6F8;
+}
+
+.boton-icono:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+/* El botón de la leyenda va dentro de la barra blanca de la cabecera (solo celular) */
+.boton-info {
+  width: 44px;
+  height: 44px;
+  border-radius: 22px;
+  background: transparent;
+  box-shadow: none; /* ya está sobre la barra blanca, que tiene su propia sombra */
+  color: var(--texto-suave);
 }
 
 /* ---------- Panel de reporte ---------- */
 /* El resto del formulario lo estiliza reporte.css (Cristóbal); aquí solo su lugar en el panel */
-.boton-reportar {
-  width: 100%;
-  margin-top: 12px;
-}
-
 .titulo-reporte {
   margin: 0;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
 }
 
+/* ---------- Lista de anegamientos activos (mapa.js) ---------- */
+.titulo-seccion {
+  margin: 0 0 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--texto-suave);
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+}
+
+.lista-anegados ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lista-anegados li + li {
+  border-top: 1px solid var(--borde-suave);
+}
+
+/* Cada punto es un botón: al tocarlo, el mapa va a ese lugar */
+.lista-anegados button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 48px;
+  padding: 6px 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 15px;
+  color: var(--texto);
+  text-align: left;
+  cursor: pointer;
+}
+
+.lista-anegados button:hover .nombre-anegado {
+  text-decoration: underline;
+}
+
+.lista-anegados button::before {
+  content: "";
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--anegado);
+}
+
+/* Hay nombres de OpenStreetMap muy largos: se cortan en 2 líneas (el nombre completo está en el popup) */
+.nombre-anegado {
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+.detalle-anegado {
+  flex: none;
+  font-size: 13px;
+  color: var(--texto-suave);
+}
+
+.mas-anegados {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: var(--texto-suave);
+}
+
 /* ---------- Íconos del mapa ---------- */
+/* Anegado ahora (mapa.js): círculo celeste con borde blanco y una gota, en el centro de la zona con olas */
+.icono-anegado {
+  border-radius: 50%;
+  background: var(--anegado);
+  border: 3px solid var(--superficie);
+  box-shadow: 0 2px 4px rgb(20 33 43 / 0.35);
+}
+
+.icono-anegado::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  background: var(--superficie);
+  -webkit-mask: var(--svg) center / contain no-repeat;
+  mask: var(--svg) center / contain no-repeat;
+}
+
 /* Punto de evacuación: cuadrado verde con cruz o casa (forma + color + popup, nunca solo color) */
 .icono-evacuacion {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--ruta);
+  background: var(--evacuacion);
   color: var(--superficie);
   border: 2px solid var(--superficie);
   border-radius: 6px;
-  box-shadow: var(--sombra);
+  box-shadow: 0 1px 3px rgb(20 33 43 / 0.3);
   font-weight: 700;
   font-size: 15px;
   line-height: 1;
@@ -342,23 +667,79 @@ body {
   line-height: 1;
 }
 
-/* Punto de evacuación elegido como resultado (resultado.js): más grande y con halo, para que se distinga */
+/* Punto de evacuación elegido como resultado (resultado.js): círculo azul grande, como el destino de la ruta */
 .icono-evacuacion-resaltado {
-  font-size: 22px;
-  border-width: 3px;
-  box-shadow: 0 0 0 6px rgb(24 128 56 / 0.3), var(--sombra);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--ruta);
+  color: var(--superficie);
+  border: 3px solid var(--superficie);
+  box-shadow: 0 2px 5px rgb(20 33 43 / 0.35);
 }
 
-/* ---------- Tarjeta de resultado (resultado.js) ---------- */
-/* El estado se comunica con fondo de color + ícono + texto, nunca solo con color (docs/DISENO.md) */
+/* ---------- Resultado (resultado.js) ---------- */
+#resultado {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* "Desde ... Hasta ...": recuerda qué ruta se está mirando */
+.resumen-viaje {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.resumen-viaje li {
+  display: grid;
+  grid-template-columns: 20px 52px 1fr;
+  align-items: center;
+  gap: 10px;
+  min-height: 36px;
+}
+
+.resumen-viaje .etiqueta {
+  font-size: 13px;
+  color: var(--texto-suave);
+}
+
+.resumen-viaje .lugar {
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+/* Marcas a la izquierda: punto azul (desde) y bandera (hasta), las mismas del mapa */
+.marca-desde {
+  justify-self: center;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--agua);
+}
+
+.marca-hasta {
+  justify-self: center;
+  width: 16px;
+  height: 18px;
+  background: var(--texto);
+  clip-path: polygon(10% 0, 100% 25%, 22% 50%, 22% 100%, 0 100%, 0 0);
+}
+
+/* El estado se comunica con color + ícono + texto, nunca solo con color (docs/DISENO.md) */
 .tarjeta {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: 16px;
+  gap: 12px;
+  padding: 18px 20px;
   background: var(--superficie);
-  border: 1px solid var(--borde);
-  border-radius: var(--radio);
+  border: 1px solid #E3E9EE;
+  border-radius: var(--radio-tarjeta);
+  box-shadow: var(--sombra-tarjeta);
 }
 
 .tarjeta-titulo {
@@ -366,65 +747,197 @@ body {
   align-items: center;
   gap: 8px;
   margin: 0;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
   line-height: 1.25;
 }
 
-.tarjeta-icono {
-  font-size: 20px;
-}
-
-.tarjeta-datos {
-  margin: 0;
-  font-size: 18px;
-  font-weight: 700;
-}
-
-.tarjeta-detalle {
-  margin: 0;
-  font-size: 14px;
-  color: var(--texto-suave);
-}
-
-.tarjeta .boton {
-  margin-top: 4px;
-}
-
-.tarjeta-segura {
-  background: var(--ruta-fondo);
-  border-color: #CEEAD6;
+.tarjeta-titulo .icono {
+  width: 22px;
+  height: 22px;
 }
 
 .tarjeta-segura .tarjeta-titulo {
   color: var(--ruta-texto);
 }
 
+/* "17 min  4,2 km": el tiempo grande, que es lo que más importa en una evacuación */
+.tarjeta-cifras {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin: 0;
+  font-family: var(--fuente-numeros);
+}
+
+.cifra-principal {
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: -2px;
+  line-height: 1;
+}
+
+.cifra-principal small {
+  margin-left: 4px;
+  font-size: 22px;
+  letter-spacing: 0;
+}
+
+.cifra-secundaria {
+  font-size: 20px;
+  color: var(--texto-suave);
+}
+
+/* "Evita 2 puntos anegados" */
+.etiqueta-evita {
+  display: flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 6px;
+  min-height: 32px;
+  margin: 0;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: var(--agua-suave);
+  color: var(--ruta-texto);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.etiqueta-evita .icono {
+  width: 16px;
+  height: 16px;
+}
+
+/* Sin ruta segura y errores: borde rojo con el ícono de advertencia en un círculo rojo suave */
 .tarjeta-sin-ruta,
 .tarjeta-error {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px;
+  border: 2px solid var(--peligro);
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgb(200 50 42 / 0.14); /* sombra rojiza: refuerza que es una advertencia */
+}
+
+.circulo-advertencia {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
   background: var(--peligro-fondo);
-  border-color: #FAD2CF;
+  color: var(--peligro);
 }
 
 .tarjeta-sin-ruta .tarjeta-titulo,
 .tarjeta-error .tarjeta-titulo {
-  color: var(--peligro);
+  font-size: 18px;
+  color: var(--peligro-texto);
 }
 
-/* ---------- Leyenda ---------- */
-.leyenda {
-  margin-top: 20px;
-  padding-top: 16px;
-  border-top: 1px solid var(--borde);
-  font-size: 13px;
+.tarjeta-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tarjeta-detalle {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
   color: var(--texto-suave);
 }
 
-.leyenda h2 {
-  margin: 0 0 10px;
-  font-size: 14px;
+/* Punto de evacuación al que lleva la ruta: casa en un círculo azul suave, nombre y distancia */
+.fila-evacuacion {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.circulo-casa {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--agua-suave);
+  color: var(--ruta-texto);
+}
+
+.circulo-casa .icono {
+  width: 24px;
+  height: 24px;
+}
+
+.fila-evacuacion-texto {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.fila-evacuacion-texto .etiqueta {
+  font-size: 12px;
+  color: var(--texto-suave);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.fila-evacuacion-texto strong {
+  font-size: 17px;
+  overflow-wrap: anywhere;
+}
+
+.fila-evacuacion-cifras {
+  flex: none;
+  margin: 0;
+  text-align: right;
+  font-family: var(--fuente-numeros);
+  font-size: 16px;
   font-weight: 700;
+  line-height: 1.2;
+}
+
+.fila-evacuacion-cifras span {
+  display: block;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--texto-suave);
+}
+
+/* ---------- Leyenda (un control de Leaflet sobre el mapa, ver mapa.js) ---------- */
+/* Compacta: acompaña al mapa sin taparlo. En el celular está escondida y se abre con el botón (i) */
+.leyenda {
+  display: none;
+  max-width: calc(100vw - 24px);
+  padding: 8px 12px;
+  background: var(--superficie);
+  border-radius: 12px;
+  box-shadow: var(--sombra);
+  font-size: 12px;
+  line-height: 1.3;
   color: var(--texto);
+}
+
+.leyenda-abierta .leyenda {
+  display: block;
+}
+
+.leyenda h2 {
+  margin: 0 0 6px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--texto-suave);
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
 }
 
 .leyenda ul {
@@ -433,69 +946,87 @@ body {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .leyenda li {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.leyenda .insignia-gota {
+  width: 15px;
+  height: 15px;
+}
+
+.leyenda .insignia-gota::before {
+  inset: 3px;
 }
 
 /* Muestras de la leyenda: copian el aspecto de lo que se dibuja en el mapa */
 .simbolo {
   display: inline-flex;
   flex-shrink: 0;
-  width: 16px;
-  height: 16px;
-}
-
-.simbolo-anegado {
-  border-radius: 50%;
-  border: 2px solid var(--peligro);
-  background: rgb(217 48 37 / 0.3);
+  width: 14px;
+  height: 14px;
 }
 
 .simbolo-riesgo {
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
   margin: 0 3px;
   border-radius: 50%;
   background: var(--inactivo);
+  box-shadow: 0 0 0 2px var(--superficie);
 }
 
 .simbolo-ruta {
+  width: 18px;
   height: 5px;
   border-radius: 3px;
   background: var(--ruta);
+  box-shadow: 0 0 0 1.5px var(--superficie);
+}
+
+.simbolo-ubicacion {
+  width: 10px;
+  height: 10px;
+  margin: 0 2px;
+  border-radius: 50%;
+  background: var(--agua);
+  box-shadow: 0 0 0 1.5px var(--superficie), 0 0 0 4px rgb(11 99 196 / 0.2);
 }
 
 .simbolo-colegio {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   margin: 0 3px;
   border-radius: 50%;
   border: 1px solid var(--superficie);
-  background: var(--ruta);
+  background: var(--evacuacion);
 }
 
 .leyenda .icono-reporte-pendiente {
-  width: 18px;
-  font-size: 11px;
-  padding-bottom: 1px;
+  width: 16px;
+  font-size: 9px;
+  padding-bottom: 0;
 }
 
 .leyenda .icono-evacuacion {
-  font-size: 12px;
+  font-size: 9px;
+  border-width: 1px;
+  border-radius: 4px;
   box-shadow: none;
 }
 
-/* ---------- Escritorio (768 px o más): mapa a pantalla completa y panel flotante ---------- */
+/* ---------- Escritorio (768 px o más): panel a la izquierda y mapa a la derecha ---------- */
 @media (min-width: 768px) {
+  /* El mapa ocupa toda la pantalla y el panel flota encima, a la izquierda, como una tarjeta */
   .contenido {
     position: relative;
-    display: block;
   }
 
   #mapa {
@@ -507,18 +1038,135 @@ body {
     position: absolute;
     top: 16px;
     left: 16px;
-    width: 384px;
+    width: 400px;
+    /* Tan alto como su contenido; si no cabe, hace scroll dentro de la tarjeta */
     max-height: calc(100% - 32px);
+    gap: 22px;
+    padding: 24px 28px;
     margin-top: 0;
-    padding: 20px;
     border-radius: var(--radio-panel);
+    box-shadow: 0 2px 6px rgb(20 33 43 / 0.12), 0 12px 32px rgb(20 33 43 / 0.18);
   }
 
   #panel::before {
     display: none; /* la barrita de "hoja" solo tiene sentido en el celular */
   }
 
+  /* La cabecera vuelve a ser parte del panel */
+  .cabecera {
+    position: static;
+    gap: 22px;
+  }
+
+  .encabezado {
+    height: auto;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .encabezado h1 {
+    font-size: 20px;
+    letter-spacing: -0.3px;
+  }
+
+  .boton-info {
+    display: none; /* en escritorio la leyenda está siempre a la vista */
+  }
+
+  /* El estado de la zona es una sola caja blanca con sombra suave: arriba los anegamientos, abajo la lluvia */
+  .estado-zona {
+    flex-direction: column;
+    gap: 6px;
+    padding: 12px 14px;
+    border: 1px solid #E3E9EE;
+    border-radius: var(--radio);
+    background: var(--superficie);
+    box-shadow: var(--sombra-suave);
+  }
+
+  .estado-anegados {
+    min-height: 0;
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    font-size: 15px;
+  }
+
+  .estado-anegados .insignia-gota {
+    width: 20px;
+    height: 20px;
+  }
+
+  .titulo-panel {
+    font-size: 28px;
+  }
+
   .leaflet-bottom {
     bottom: 0;
+  }
+
+  .leaflet-bottom .leaflet-control {
+    margin-bottom: 20px;
+  }
+
+  .leaflet-right .leaflet-control {
+    margin-right: 20px;
+  }
+
+  /* La leyenda empieza a la derecha del panel flotante (16 + 400 + 20 px), para que el panel no la tape */
+  .leaflet-left .leaflet-control {
+    margin-left: 436px;
+  }
+
+  /* La atribución va pegada abajo, sin el margen de los otros controles */
+  .leaflet-bottom .leaflet-control-attribution {
+    margin: 0;
+  }
+
+  /* Leyenda en una franja horizontal sobre el borde de abajo del mapa, como en el prototipo */
+  .leyenda {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 12px;
+    max-width: calc(100vw - 436px - 100px); /* entre el panel y los botones de zoom */
+    padding: 7px 14px;
+  }
+
+  .leyenda h2 {
+    margin: 0;
+  }
+
+  .leyenda ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px 10px;
+  }
+
+  .leyenda li {
+    gap: 5px;
+  }
+}
+
+/* ---------- Celular: con resultado en pantalla, el panel muestra solo lo esencial ---------- */
+@media (max-width: 767px) {
+  /* Con una ruta a la vista, la lista de anegamientos queda para después: la ruta es lo urgente */
+  #resultado:not([hidden]) ~ .lista-anegados {
+    display: none;
+  }
+
+  /* El espacio de arriba del panel lo ocupa la barrita de la hoja */
+  #panel {
+    padding-top: 22px;
+  }
+
+  /* Primero la tarjeta con el tiempo, que es lo que cabe en la hoja; después "Desde / Hasta" y Nueva ruta */
+  #resultado .resumen-viaje {
+    order: 1;
+  }
+
+  #resultado > .boton {
+    order: 2;
   }
 }

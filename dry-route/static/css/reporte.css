@@ -23,22 +23,22 @@
 /* La lista de tipos y la descripción, iguales a los campos de origen y destino (.campo input en app.css) */
 #select-tipo-reporte,
 #input-descripcion-reporte {
-  min-height: 48px;
-  padding: 0 18px;
-  border: 1px solid transparent;
-  border-radius: 24px;
+  height: 52px;
+  padding: 0 16px;
+  border: 1.5px solid var(--borde);
+  border-radius: var(--radio);
   font: inherit;
-  font-size: 15px;
+  font-size: 16px;
   color: var(--texto);
-  background: var(--superficie-suave);
+  background: var(--superficie);
+  box-shadow: var(--sombra-suave);
 }
 
 #select-tipo-reporte:focus,
 #input-descripcion-reporte:focus {
   outline: none;
-  background: var(--superficie);
   border-color: var(--agua);
-  box-shadow: 0 0 0 1px var(--agua);
+  box-shadow: 0 0 0 1px var(--agua), var(--sombra-suave);
 }
 
 #input-descripcion-reporte::placeholder {
@@ -61,7 +61,7 @@
 }
 
 /* ---------- Marcador del lugar del problema ---------- */
-/* Círculo ámbar con "!": distinto del círculo azul (origen) y de la bandera verde (destino) */
+/* Círculo ámbar con "!": distinto del círculo azul (origen) y de la bandera (destino) */
 .icono-lugar-reporte {
   display: flex;
   align-items: center;
