@@ -1,10 +1,14 @@
 import json
+from datetime import timedelta
 
+from django.db.models import Max
 from django.http import JsonResponse
 from django.shortcuts import render
+from django.utils import timezone
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.decorators.http import require_POST
 
+from .alertas import FUENTE_OPEN_METEO, MINUTOS_VIGENCIA_DATOS, alertas_vigentes
 from .models import PuntoAnegado, PuntoEvacuacion, Reporte
 from .reportes import (REPORTES_REQUERIDOS, confirmaciones_por_punto, desactivar_puntos_vencidos, registrar_reporte,
                        reportes_pendientes, ya_reporto)
@@ -22,7 +26,8 @@ def api_puntos(request):
     """GET /api/puntos/: los puntos que el mapa dibuja al abrirse (docs/API.md)."""
     desactivar_puntos_vencidos()
     confirmaciones = confirmaciones_por_punto()
-    anegados = list(PuntoAnegado.objects.values("id", "nombre", "tipo", "activo", "fuente", "lat", "lon"))
+    anegados = list(PuntoAnegado.objects.values("id", "nombre", "tipo", "activo", "fuente", "lat", "lon",
+                                                "activado_por_lluvia", "lluvia_mm"))
     for punto in anegados:
         punto["confirmaciones"] = confirmaciones.get(punto["id"], 0)
     return JsonResponse({
@@ -30,6 +35,32 @@ def api_puntos(request):
         "anegados": anegados,
         "evacuacion": list(PuntoEvacuacion.objects.values("id", "nombre", "tipo", "lat", "lon")),
         "reportes_pendientes": reportes_pendientes(),
+    })
+
+
+def hora_local(fecha):
+    return None if fecha is None else timezone.localtime(fecha).isoformat(timespec="seconds")
+
+
+def api_alertas(request):
+    """GET /api/alertas/: el estado de la lluvia para la franja del mapa (docs/API.md, D14)."""
+    pasos = PuntoAnegado.objects.filter(tipo="paso_bajo_nivel")
+    ultima = pasos.aggregate(actualizado=Max("actualizado"), lluvia=Max("lluvia_mm"))
+    actualizado = ultima["actualizado"]
+    # Si el comando dejó de correr hace más de 30 minutos, la franja avisa que los datos no están al día
+    al_dia = actualizado is not None and timezone.now() - actualizado <= timedelta(minutes=MINUTOS_VIGENCIA_DATOS)
+    return JsonResponse({
+        "vigentes": [
+            {"id": a.id, "titulo": a.titulo, "nivel": a.nivel, "descripcion": a.descripcion, "fuente": a.fuente,
+             "creada": hora_local(a.creada), "vigente_hasta": hora_local(a.vigente_hasta)}
+            for a in alertas_vigentes()
+        ],
+        "actualizado": hora_local(actualizado),
+        "al_dia": al_dia,
+        "fuente": FUENTE_OPEN_METEO,
+        "lluvia_max_mm": ultima["lluvia"],
+        "puntos": list(pasos.filter(activo=True, activado_por_lluvia=True)
+                       .values("id", "nombre", "lat", "lon", "lluvia_mm")),
     })
 
 

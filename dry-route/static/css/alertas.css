@@ -1,0 +1,72 @@
+/* Franja de lluvia de alertas.js (F3, DECISIONES D14). Usa los tokens de app.css (docs/DISENO.md).
+   Va arriba del panel: es lo primero que se lee. El nivel se nota por el color, el ícono y el texto. */
+
+.franja-lluvia {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  background: var(--superficie-suave);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--texto);
+}
+
+.franja-icono {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  font-size: 14px;
+  color: var(--superficie);
+  background: var(--texto-suave);
+}
+
+/* Sin alertas: tranquilo, con el visto en verde */
+.franja-normal .franja-icono {
+  background: var(--ruta);
+}
+
+/* Aviso: se espera lluvia fuerte, pero todavía no se corta ninguna ruta */
+.franja-aviso {
+  background: var(--alerta-fondo);
+  border-color: var(--alerta-borde);
+}
+
+.franja-aviso .franja-icono {
+  background: var(--alerta-borde);
+  color: var(--texto);
+}
+
+/* Alerta: llueve sobre el umbral y hay pasos bajo nivel encendidos */
+.franja-alerta {
+  background: var(--peligro-fondo);
+  border-color: var(--peligro);
+}
+
+.franja-alerta .franja-icono {
+  background: var(--peligro);
+}
+
+/* Alarma: lluvia muy fuerte. Fondo rojo lleno, para que no pase desapercibida */
+.franja-alarma {
+  background: var(--peligro);
+  border-color: var(--peligro);
+  color: var(--superficie);
+}
+
+.franja-alarma .franja-icono {
+  background: var(--superficie);
+  color: var(--peligro);
+}
+
+/* Sin datos al día: texto normal, sin negrita, para no parecer una alerta */
+.franja-sin-datos {
+  font-weight: 400;
+}

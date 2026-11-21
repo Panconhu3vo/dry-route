@@ -114,20 +114,32 @@ def tramos_cerca_de(punto):
     return tramos_cerca_de_coordenadas(punto.lat, punto.lon)
 
 
+@cache
+def tramos_por_celda():
+    """{celda: [tramos que pasan cerca de ella]}. Se arma una sola vez, la primera vez que se usa.
+    Cada tramo se anota en todas las celdas que toca el rectángulo que lo encierra, agrandado en
+    MARGEN_GRADOS (~130 m). Así, si un punto queda a menos de 100 m del tramo, el tramo está anotado
+    en la celda del punto, y basta con revisar esa celda en vez de los 156 mil tramos de Santiago (D14)."""
+    grafo = cargar_grafo()
+    celdas = defaultdict(list)
+    for u, v in grafo.edges:
+        a, b = grafo.nodes[u], grafo.nodes[v]
+        fila_min, columna_min = celda_de(min(a["lat"], b["lat"]) - MARGEN_GRADOS, min(a["lon"], b["lon"]) - MARGEN_GRADOS)
+        fila_max, columna_max = celda_de(max(a["lat"], b["lat"]) + MARGEN_GRADOS, max(a["lon"], b["lon"]) + MARGEN_GRADOS)
+        for fila in range(fila_min, fila_max + 1):
+            for columna in range(columna_min, columna_max + 1):
+                celdas[(fila, columna)].append((u, v))
+    return celdas
+
+
 # Las calles no se mueven: para un mismo lugar el resultado es siempre el mismo, así que se guarda
 @lru_cache(maxsize=10_000)
 def tramos_cerca_de_coordenadas(lat, lon):
     grafo = cargar_grafo()
     lugar = SimpleNamespace(lat=lat, lon=lon)  # distancia_a_tramo_m espera algo con .lat y .lon
     cercanos = set()
-    for u, v in grafo.edges:
-        a, b = grafo.nodes[u], grafo.nodes[v]
-        # Filtro rápido: si el punto queda fuera del rectángulo que encierra al tramo (más un margen),
-        # el tramo no puede pasar a menos de 100 m y no vale la pena hacer la cuenta completa.
-        if not (min(a["lat"], b["lat"]) - MARGEN_GRADOS <= lat <= max(a["lat"], b["lat"]) + MARGEN_GRADOS
-                and min(a["lon"], b["lon"]) - MARGEN_GRADOS <= lon <= max(a["lon"], b["lon"]) + MARGEN_GRADOS):
-            continue
-        if distancia_a_tramo_m(lugar, a, b) < RADIO_BLOQUEO_M:
+    for u, v in tramos_por_celda().get(celda_de(lat, lon), []):
+        if distancia_a_tramo_m(lugar, grafo.nodes[u], grafo.nodes[v]) < RADIO_BLOQUEO_M:
             cercanos.add(frozenset((u, v)))
     return frozenset(cercanos)
 
@@ -153,7 +165,10 @@ def esta_en_zona(lat, lon):
 
 
 def cerca_de_anegado(lat, lon, anegados_activos):
-    return any(distancia_m(lat, lon, p.lat, p.lon) < RADIO_BLOQUEO_M for p in anegados_activos)
+    # Primero una resta, que es rápida: solo si el punto está a menos de MARGEN_GRADOS se hace la cuenta
+    # completa. Importa cuando llueve fuerte y hay muchos puntos activos contra miles de puntos de evacuación.
+    return any(abs(p.lat - lat) < MARGEN_GRADOS and abs(p.lon - lon) < MARGEN_GRADOS
+               and distancia_m(lat, lon, p.lat, p.lon) < RADIO_BLOQUEO_M for p in anegados_activos)
 
 
 def calcular_ruta(origen, destino, anegados_activos, puntos_evacuacion):

@@ -1,12 +1,17 @@
+import json
 from datetime import timedelta
-from io import StringIO
+from io import BytesIO, StringIO
+from unittest.mock import patch
+from urllib.error import URLError
+from urllib.parse import parse_qs, urlsplit
 
 from django.contrib.auth import get_user_model
 from django.core.management import call_command
 from django.test import Client, TestCase
 from django.utils import timezone
 
-from .models import PuntoAnegado, Reporte
+from .alertas import actualizar_puntos
+from .models import Alerta, PuntoAnegado, Reporte
 from .reportes import HORAS_VIGENCIA_REPORTE
 from .ruteo import RADIO_BLOQUEO_M, ZONA, distancia_a_tramo_m, distancia_m
 
@@ -290,3 +295,138 @@ class VencimientoYDemo(TestCase):
         call_command("preparar_demo", stdout=StringIO())
         call_command("preparar_demo", stdout=StringIO())
         self.assertEqual(PuntoAnegado.objects.filter(osm_id__startswith="simulacion/usm-").count(), 2)
+
+
+def open_meteo_falso(mm_por_hora):
+    """Reemplaza a urlopen en las pruebas: responde como Open-Meteo, con la misma lluvia en todas las
+    coordenadas pedidas. Así las pruebas no dependen de internet ni de si hoy llueve en Santiago."""
+    def urlopen_falso(url, timeout):
+        cantidad = len(parse_qs(urlsplit(url).query)["latitude"][0].split(","))
+        respuestas = [{"location_id": i, "current": {"precipitation": mm_por_hora / 4},  # 15 minutos
+                       "hourly": {"precipitation": [mm_por_hora] * 3}} for i in range(cantidad)]
+        # Con una sola coordenada, Open-Meteo devuelve un objeto y no una lista
+        return BytesIO(json.dumps(respuestas if cantidad > 1 else respuestas[0]).encode())
+    return urlopen_falso
+
+
+class AlertasDeLluvia(TestCase):
+    """La lluvia enciende y apaga sola los pasos bajo nivel (DECISIONES D14). Umbral por defecto: 4 mm/h."""
+
+    def setUp(self):
+        # Dos pasos en celdas distintas de la zona y uno que una persona encendió a mano en el admin
+        self.paso_sur = PuntoAnegado.objects.create(osm_id="prueba/sur", nombre="Paso sur", lat=-33.55, lon=-70.65)
+        self.paso_norte = PuntoAnegado.objects.create(osm_id="prueba/norte", nombre="Paso norte", lat=-33.40, lon=-70.55)
+        self.paso_a_mano = PuntoAnegado.objects.create(osm_id="prueba/mano", nombre="Paso a mano",
+                                                       lat=-33.45, lon=-70.70, activo=True)
+
+    def llover(self, mm_por_hora):
+        with patch("rutas.alertas.urlopen", side_effect=open_meteo_falso(mm_por_hora)) as urlopen:
+            resumen = actualizar_puntos()
+        for punto in (self.paso_sur, self.paso_norte, self.paso_a_mano):
+            punto.refresh_from_db()
+        return resumen, urlopen
+
+    def test_lluvia_sobre_el_umbral_enciende_los_pasos_con_una_sola_consulta(self):
+        _, urlopen = self.llover(6)
+
+        self.assertTrue(self.paso_sur.activo)
+        self.assertTrue(self.paso_sur.activado_por_lluvia)
+        self.assertEqual(self.paso_sur.lluvia_mm, 6)
+        self.assertTrue(self.paso_norte.activo)
+        self.assertEqual(urlopen.call_count, 1)  # una petición para toda la zona, no una por paso
+        alerta = Alerta.objects.get(activa=True)
+        self.assertEqual(alerta.nivel, "alerta")
+        self.assertIn("3 pasos bajo nivel", alerta.titulo)
+
+    def test_lluvia_bajo_el_umbral_apaga_lo_que_encendio_la_lluvia_y_cierra_la_alerta(self):
+        self.llover(6)
+        self.llover(1)
+
+        self.assertFalse(self.paso_sur.activo)
+        self.assertFalse(self.paso_sur.activado_por_lluvia)
+        self.assertEqual(self.paso_sur.lluvia_mm, 1)
+        self.assertFalse(Alerta.objects.filter(activa=True).exists())
+
+    def test_la_lluvia_no_apaga_un_paso_encendido_a_mano(self):
+        self.llover(6)
+        self.llover(0)
+
+        self.assertTrue(self.paso_a_mano.activo)
+        self.assertFalse(self.paso_a_mano.activado_por_lluvia)
+
+    def test_la_lluvia_no_apaga_un_lugar_que_confirmaron_dos_vecinos(self):
+        self.llover(6)
+        for sesion in ("persona-1", "persona-2"):
+            Reporte.objects.create(tipo="anegamiento", lat=self.paso_sur.lat, lon=self.paso_sur.lon, sesion=sesion,
+                                   estado_verificacion="confirmado", punto=self.paso_sur)
+        self.llover(0)
+
+        self.assertTrue(self.paso_sur.activo)
+        self.assertFalse(self.paso_norte.activo)
+
+    def test_si_open_meteo_falla_queda_el_ultimo_estado(self):
+        self.llover(6)
+        with patch("rutas.alertas.urlopen", side_effect=URLError("sin internet")):
+            with self.assertLogs("rutas.alertas", level="WARNING"):
+                resumen = actualizar_puntos()
+
+        self.assertIsNone(resumen)
+        self.paso_sur.refresh_from_db()
+        self.assertTrue(self.paso_sur.activo)
+        self.assertEqual(self.paso_sur.lluvia_mm, 6)
+
+    def test_mucha_lluvia_es_alarma(self):
+        self.llover(8)  # el doble del umbral
+        self.assertEqual(Alerta.objects.get(activa=True).nivel, "alarma")
+
+    def test_simular_no_usa_internet(self):
+        with patch("rutas.alertas.urlopen") as urlopen:
+            call_command("actualizar_alertas", "--simular", "10", stdout=StringIO())
+
+        urlopen.assert_not_called()
+        self.paso_sur.refresh_from_db()
+        self.assertTrue(self.paso_sur.activo)
+
+    def test_simular_cerca_moja_solo_ese_sector(self):
+        call_command("actualizar_alertas", "--simular", "10", "--cerca", f"{self.paso_sur.lat},{self.paso_sur.lon}",
+                     stdout=StringIO())
+
+        self.paso_sur.refresh_from_db()
+        self.paso_norte.refresh_from_db()
+        self.assertTrue(self.paso_sur.activo)
+        self.assertFalse(self.paso_norte.activo)
+        self.assertEqual(self.paso_norte.lluvia_mm, 0)
+
+    def test_api_alertas_tiene_la_forma_de_docs_api(self):
+        self.llover(6)
+        datos = self.client.get("/api/alertas/").json()
+
+        self.assertEqual(set(datos), {"vigentes", "actualizado", "al_dia", "fuente", "lluvia_max_mm", "puntos"})
+        self.assertTrue(datos["al_dia"])
+        self.assertEqual(datos["fuente"], "Open-Meteo")
+        self.assertEqual(datos["lluvia_max_mm"], 6)
+        self.assertEqual(set(datos["vigentes"][0]),
+                         {"id", "titulo", "nivel", "descripcion", "fuente", "creada", "vigente_hasta"})
+        # Solo los que encendió la lluvia: el paso encendido a mano no aparece
+        self.assertEqual({p["nombre"] for p in datos["puntos"]}, {"Paso sur", "Paso norte"})
+        self.assertEqual(set(datos["puntos"][0]), {"id", "nombre", "lat", "lon", "lluvia_mm"})
+
+    def test_api_alertas_avisa_si_los_datos_no_estan_al_dia(self):
+        self.llover(6)
+        PuntoAnegado.objects.update(actualizado=timezone.now() - timedelta(hours=1))
+        Alerta.objects.update(vigente_hasta=timezone.now() - timedelta(minutes=30))
+
+        datos = self.client.get("/api/alertas/").json()
+
+        self.assertFalse(datos["al_dia"])
+        self.assertEqual(datos["vigentes"], [])
+
+    def test_preparar_demo_borra_la_lluvia_y_las_alertas(self):
+        call_command("cargar_datos", stdout=StringIO())
+        self.llover(6)
+
+        call_command("preparar_demo", stdout=StringIO())
+
+        self.assertFalse(Alerta.objects.exists())
+        self.assertFalse(PuntoAnegado.objects.filter(activado_por_lluvia=True).exists())
+        self.assertFalse(PuntoAnegado.objects.filter(lluvia_mm__isnull=False).exists())

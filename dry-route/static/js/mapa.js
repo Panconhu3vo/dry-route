@@ -131,7 +131,7 @@ function dibujarPuntos(datos) {
         fillOpacity: 0.9,
         weight: 1
       })
-        .bindPopup(textoPopup("Punto de riesgo (sin anegamiento)", punto.nombre))
+        .bindPopup(textoPopup("Punto de riesgo (sin anegamiento)", punto.nombre + textoLluvia(punto)))
         .addTo(capaAnegados);
     }
   }
@@ -173,13 +173,25 @@ function dibujarPuntos(datos) {
   mostrarSegunZoom();
 }
 
-// Los anegados que activaron los vecinos dicen qué problema reportaron y cuántos lo confirmaron.
+// ". Lluvia: 7,2 mm/h" si ya se consultó la lluvia sobre el punto (F3); si no, nada.
+function textoLluvia(punto) {
+  if (punto.lluvia_mm === null || punto.lluvia_mm === undefined) {
+    return "";
+  }
+  return ". Lluvia: " + String(punto.lluvia_mm).replace(".", ",") + " mm/h";
+}
+
+// Los anegados que activaron los vecinos dicen qué problema reportaron y cuántos lo confirmaron,
+// y los que encendió la lluvia dicen cuánto llueve ahí (F3).
 function popupAnegado(punto) {
   if (punto.fuente === "Reportes ciudadanos") {
     const tipo = NOMBRE_TIPO_REPORTE[punto.tipo] || "Problema reportado";
     return textoPopup("Anegado ahora (reporte ciudadano)", tipo + ". " + punto.confirmaciones + " confirmaciones.");
   }
-  return textoPopup("Anegado ahora", punto.nombre);
+  if (punto.activado_por_lluvia) {
+    return textoPopup("Anegado ahora (alerta de lluvia)", punto.nombre + textoLluvia(punto));
+  }
+  return textoPopup("Anegado ahora", punto.nombre + textoLluvia(punto));
 }
 
 function mostrarSegunZoom() {

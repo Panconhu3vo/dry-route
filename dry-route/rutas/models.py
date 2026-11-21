@@ -15,6 +15,11 @@ class PuntoAnegado(models.Model):
     fuente = models.CharField(max_length=50, default="OpenStreetMap")
     # True si lo encendieron dos reportes: se apaga solo cuando vencen. Lo encendido a mano nunca vence (D11)
     activado_por_reportes = models.BooleanField("activado por reportes", default=False)
+    # True si lo encendió la lluvia: se apaga solo cuando la lluvia baja del umbral (D14)
+    activado_por_lluvia = models.BooleanField("activado por lluvia", default=False)
+    # Última lluvia medida sobre el punto, en mm por hora, y cuándo se midió. Vacíos si nunca se consultó
+    lluvia_mm = models.FloatField("lluvia (mm/h)", null=True, blank=True)
+    actualizado = models.DateTimeField("lluvia actualizada", null=True, blank=True)
 
     class Meta:
         verbose_name = "punto anegado"
@@ -76,3 +81,31 @@ class Reporte(models.Model):
 
     def __str__(self):
         return f"{self.get_tipo_display()} ({self.get_estado_verificacion_display()})"
+
+
+class Alerta(models.Model):
+    """Alerta de lluvia para la zona (F3). La abre y la cierra sola el comando actualizar_alertas (D14)."""
+
+    # Los mismos tres niveles que usa la Dirección Meteorológica de Chile, de menor a mayor
+    NIVELES = [
+        ("aviso", "Aviso"),
+        ("alerta", "Alerta"),
+        ("alarma", "Alarma"),
+    ]
+
+    titulo = models.CharField("título", max_length=200)
+    nivel = models.CharField(max_length=10, choices=NIVELES)
+    descripcion = models.CharField("descripción", max_length=300, blank=True)
+    fuente = models.CharField(max_length=50, default="Open-Meteo")
+    creada = models.DateTimeField(auto_now_add=True)
+    # Si el comando deja de correr, la alerta deja de mostrarse sola a esta hora: no queda una alerta vieja
+    vigente_hasta = models.DateTimeField("vigente hasta")
+    activa = models.BooleanField(default=True)
+
+    class Meta:
+        verbose_name = "alerta"
+        verbose_name_plural = "alertas"
+        ordering = ["-creada"]
+
+    def __str__(self):
+        return f"{self.get_nivel_display()}: {self.titulo}"

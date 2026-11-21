@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand, CommandError
 
-from rutas.models import PuntoAnegado, Reporte
+from rutas.models import Alerta, PuntoAnegado, Reporte
 from rutas.reportes import FUENTE_REPORTES
 
 # El paso del guion de la demo: Avenida Departamental / Gran Avenida (docs/ENTREGA-FINAL.md)
@@ -19,8 +19,8 @@ FUENTE_SIMULACION = "Simulación para la demo"
 
 
 class Command(BaseCommand):
-    help = ("Deja el escenario de la demo: sin reportes, solo el paso Departamental / Gran Avenida anegado "
-            "y los anegamientos simulados de la universidad listos pero apagados.")
+    help = ("Deja el escenario de la demo: sin reportes ni alertas, solo el paso Departamental / Gran Avenida "
+            "anegado y los anegamientos simulados de la universidad listos pero apagados.")
 
     def handle(self, *args, **options):
         if not PuntoAnegado.objects.filter(osm_id=PASO_DE_LA_DEMO).exists():
@@ -29,7 +29,10 @@ class Command(BaseCommand):
         reportes_borrados, _ = Reporte.objects.all().delete()
         # Los puntos que crearon los reportes desaparecen; los de OpenStreetMap solo se apagan
         puntos_borrados, _ = PuntoAnegado.objects.filter(fuente=FUENTE_REPORTES).delete()
-        PuntoAnegado.objects.update(activo=False, activado_por_reportes=False)
+        # También se borra la lluvia de pruebas anteriores: la demo parte sin alertas ni datos de lluvia viejos
+        Alerta.objects.all().delete()
+        PuntoAnegado.objects.update(activo=False, activado_por_reportes=False, activado_por_lluvia=False,
+                                    lluvia_mm=None, actualizado=None)
         PuntoAnegado.objects.filter(osm_id=PASO_DE_LA_DEMO).update(activo=True)
 
         for simulacion in SIMULACIONES_UNIVERSIDAD:
@@ -42,5 +45,6 @@ class Command(BaseCommand):
         self.stdout.write(self.style.SUCCESS(
             f"Escenario de la demo listo: {reportes_borrados} reportes y {puntos_borrados} puntos de reportes borrados. "
             "Solo queda anegado el paso Departamental / Gran Avenida. "
-            "Los anegamientos simulados de la USM están listos en el admin, apagados."
+            "Los anegamientos simulados de la USM están listos en el admin, apagados. "
+            "Sin alertas ni datos de lluvia: corre python manage.py actualizar_alertas para traer la lluvia real."
         ))

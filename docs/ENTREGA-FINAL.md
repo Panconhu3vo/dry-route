@@ -48,6 +48,15 @@ Reparto propuesto; el equipo lo confirma en T23.
 
 **Para el paso de la universidad:** el origen se marca **sobre los edificios del campus**, a menos de 100 m del centro, que es donde queda la zona anegada. Si presentan en Vitacura, usen *Anegamiento simulado: USM campus Vitacura* y una ruta hacia el oriente por Av. Santa María. Los dos puntos los deja listos (apagados) `preparar_demo`.
 
+**Paso opcional: alertas de lluvia (F3).** Antes de empezar, después de `preparar_demo`, correr una vez `python manage.py actualizar_alertas` (lluvia real; la franja dice "Sin alertas de lluvia en la zona"). En la demo:
+
+1. Calcular una ruta desde el campus San Joaquín hacia el sur, por ejemplo hasta Avenida Departamental con Vicuña Mackenna.
+2. En otra terminal: `python manage.py actualizar_alertas --simular 10 --cerca -33.4911,-70.6190`.
+3. En hasta 15 segundos: círculos rojos en los 2 pasos bajo nivel de Vicuña Mackenna con Benito Rebolledo, "Ruta recalculada" y la ruta los rodea. En hasta 1 minuto, la franja de arriba se pone roja: *"Lluvia 10 mm/h · 2 pasos bajo nivel con riesgo · simulación"*.
+4. Cerrar con `python manage.py actualizar_alertas --simular 0`: los pasos se apagan solos.
+
+Mensaje clave: nadie tocó el admin; la lluvia encendió los puntos. Con lluvia real se usa `actualizar_alertas --cada 10`.
+
 **Si falla algo en vivo:** mostrar el video de respaldo y explicar qué ocurrió. Probar internet antes, porque el mapa y la búsqueda de direcciones lo necesitan.
 
 ## Relato técnico (propuesta)
@@ -57,7 +66,7 @@ Reparto propuesto; el equipo lo confirma en T23.
 - Se agrega `PuntoEvacuacion`, necesario para el caso sin ruta.
 - `Reporte` actualiza a `PuntoAnegado`, como en el E2, y ahora **dos reportes de personas distintas lo activan**.
 - `Vía` son las aristas de `grafo.json`, y `Consulta` y `Ruta` se calculan en cada petición. **No se guardan** porque la app se usa sin registro y lo que debe persistir son los reportes (DECISIONES D12).
-- `Alerta` no se implementó (F3 diferida).
+- `Alerta` se agregó después de la entrega del video (F3, DECISIONES D14). La abre y la cierra sola el comando `actualizar_alertas`; no tiene relación con otras tablas, porque los puntos los enciende la lluvia y no la alerta.
 
 **Caso de prueba.** Caso 1 del Entregable III:
 
@@ -85,6 +94,10 @@ Mismo recorrido de la demo, sin pausas: ruta segura (45 s), caso sin ruta (30 s)
 | ¿Qué pasa si estoy dentro de la zona anegada? | Se ignora el destino y se guía al punto de evacuación seguro más cercano, con la salida que pasa por menos agua |
 | ¿Cómo verificaron que funciona? | Pruebas automáticas, pruebas con 5 usuarios y escenarios simulados |
 | ¿Qué zona cubre la app y por qué no todo Chile? | Todo el Gran Santiago (unos 830 km²). Partimos con una zona acotada para probar el algoritmo (R3) y la ampliamos por fases (primero el sector sur, después toda la ciudad), midiendo que cada ruta siguiera respondiendo en menos de 1 segundo (D3) |
+| ¿Cómo se actualizan solas las alertas? | Un comando consulta Open-Meteo cada 10 minutos. Donde llueve 4 mm/h o más se encienden los pasos bajo nivel, y se apagan cuando baja. La ruta los evita igual que a cualquier punto anegado (D14) |
+| ¿Por qué 4 mm/h? | Es lluvia moderada y un valor inicial, sin calibrar. Se cambia con `--umbral`; para calibrarlo habría que comparar con anegamientos reales |
+| ¿Qué pasa si Open-Meteo falla o no hay internet? | No se cambia nada: queda el último estado y se avisa en la consola. Si pasan 30 minutos sin datos, la franja dice "Datos de lluvia no disponibles" |
+| ¿Por qué no consultar cada paso bajo nivel por separado? | El modelo de lluvia tiene unos 10 km de resolución: 16 puntos (una cuadrícula de 4 × 4) dan la misma información en una sola petición |
 | ¿Cómo usaron la IA y cómo validaron lo que entregó? | Con Claude Code, trabajando por tareas; cada integrante revisa, prueba y documenta su parte en `explicaciones/` |
 
 ## Resultados de las pruebas con usuarios (T19)

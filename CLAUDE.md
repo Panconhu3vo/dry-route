@@ -7,11 +7,11 @@ Los integrantes son estudiantes que **recién están aprendiendo Django**. Claud
 
 ## Lo urgente
 
-**Entrega final (P4, 20%): todo terminado y subido el domingo 15 de noviembre de 2026.** Hasta el lunes 16 hay que subir al Aula un video de respaldo de máximo 3 minutos y el archivo de la presentación. La presentación en vivo (13 minutos) es entre el 16 y el 30 de noviembre, según el paralelo.
+**Presentación en vivo (13 minutos): entre el 16 y el 30 de noviembre de 2026, según el paralelo.**
 Pauta resumida, guion y banco de preguntas: [docs/ENTREGA-FINAL.md](docs/ENTREGA-FINAL.md). Plan día a día: [docs/TAREAS.md](docs/TAREAS.md).
 
-La funcionalidad corazón está implementada. Lo que falta es la segunda funcionalidad, el **reporte colaborativo (F2)**, y preparar la defensa. Las alertas (F3) quedan fuera (DECISIONES D10).
-**El código se congela el viernes 13 a las 23:00.** Después de esa hora, si alguien pide algo que no sea corregir un error que impida la demo, recuérdale esta decisión y pídele que lo consulte con Juan.
+Están implementadas la funcionalidad corazón y el **reporte colaborativo (F2)**. El 20-11 el profesor permitió seguir mejorando el proyecto y se agregaron las **alertas de lluvia automáticas (F3, DECISIONES D14)**.
+**El código se congela el sábado 21 de noviembre.** Después, si alguien pide algo que no sea corregir un error que impida la demo, recuérdale esta decisión y pídele que lo consulte con Juan.
 
 ## Equipo
 
@@ -31,6 +31,7 @@ El detalle y las razones de cada decisión están en [docs/DECISIONES.md](docs/D
 - **Ruteo:** NetworkX sobre un **grafo de calles precalculado** (`dry-route/data/grafo.json`). En tiempo de ejecución no se descarga nada.
 - **Datos:** se extraen automáticamente de OpenStreetMap con `scripts/generar_datos.py` (OSMnx). Los pasos bajo nivel son los puntos de riesgo; hospitales, bomberos, Carabineros y colegios son los puntos de evacuación. Los puntos se cargan a la base de datos, y en el admin de Django se marca cuáles están **anegados ahora** (`activo=True`).
 - **Reportes colaborativos:** un reporte no bloquea rutas por sí solo. Dos reportes de personas distintas a menos de 100 m activan un `PuntoAnegado`, y `ruteo.py` lo evita sin cambios (DECISIONES D11).
+- **Alertas de lluvia (F3):** `python manage.py actualizar_alertas --cada 10` consulta Open-Meteo y enciende o apaga solos los pasos bajo nivel según la lluvia (umbral 4 mm/h, sin calibrar). Lógica en `rutas/alertas.py`; la franja del mapa en `static/js/alertas.js` (DECISIONES D14).
 - **Zona:** todo el Gran Santiago, definida en `dry-route/data/zona.json`. Se genera con `python scripts/generar_datos.py <zona>` (DECISIONES D3).
 - **Frontend:** plantillas Django, Leaflet 1.9.4 y JavaScript plano. **Sin Node, sin React, sin compiladores.**
 - **Búsqueda de direcciones:** Nominatim (OSM), llamado desde el navegador. No se usa Google: su API de rutas no permite evitar puntos arbitrarios.
@@ -47,10 +48,10 @@ dry-route/                  ← raíz del repo (aquí están README, CLAUDE.md, 
 ├── scripts/generar_datos.py   OSM → dry-route/data/*.json
 └── dry-route/              ← proyecto Django (aquí está manage.py)
     ├── backend/            ← settings.py, urls.py (configuración del proyecto)
-    ├── rutas/              ← models, admin, views, urls, ruteo.py, tests.py,
-    │                          management/commands/cargar_datos.py
+    ├── rutas/              ← models, admin, views, urls, ruteo.py, reportes.py, alertas.py, tests.py,
+    │                          management/commands/ (cargar_datos, preparar_demo, actualizar_alertas)
     ├── templates/          ← base.html, rutas/mapa.html
-    ├── static/             ← css/ (app, reporte, avisos), js/ (mapa, entrada, resultado, reporte)
+    ├── static/             ← css/ (app, reporte, avisos, alertas), js/ (mapa, entrada, resultado, reporte, alertas)
     └── data/               ← zona.json, grafo.json, puntos_anegados.json, puntos_evacuacion.json
 ```
 
@@ -68,6 +69,7 @@ python manage.py migrate
 python manage.py cargar_datos      # carga los puntos a la base de datos
 python manage.py preparar_demo     # borra reportes, deja anegado el paso de la demo y crea apagados los anegamientos simulados de la USM
 python manage.py runserver         # http://127.0.0.1:8000
+python manage.py actualizar_alertas --cada 10   # en otra terminal: alertas de lluvia (--simular 10 para probar sin lluvia)
 python manage.py test rutas        # pruebas
 python manage.py check             # correr antes de cada commit
 ```
@@ -99,5 +101,5 @@ Los documentos originales (PDF y DOCX) están en `.claude/context-docs/`.
 
 ## Fuera de alcance (por ahora)
 
-Alertas vigentes (F3), buses en tiempo real, clasificación por tipo de catástrofe, notificaciones push o SMS, login, despliegue público y sensores propios.
-El repo de alertas **MeteoPrecisa** (`../open-meteo-precisa-chile`, FastAPI aparte) no se integra en la entrega final.
+Buses en tiempo real, clasificación por tipo de catástrofe, notificaciones push o SMS, login, despliegue público y sensores propios.
+El repo de alertas **MeteoPrecisa** (`../open-meteo-precisa-chile`, FastAPI aparte) no se integra: las alertas usan Open-Meteo directo (D14).

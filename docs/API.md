@@ -12,7 +12,7 @@ Todas las coordenadas van en formato **`[lat, lon]`**, en grados decimales (WGS8
 | URL | Vista | Plantilla |
 |---|---|---|
 | `GET /` | `rutas.views.mapa` | `templates/rutas/mapa.html` |
-| `GET /admin/` | admin de Django | marcar puntos anegados (`activo`) |
+| `GET /admin/` | admin de Django | marcar puntos anegados (`activo`) y ver las alertas de lluvia |
 
 ---
 
@@ -74,6 +74,55 @@ Devuelve los puntos que se dibujan al abrir el mapa y los límites de la zona cu
 
 - `anegados[].fuente`: `"OpenStreetMap"` o `"Reportes ciudadanos"`. `anegados[].confirmaciones` es `0` si el punto no tiene reportes.
 - `reportes_pendientes`: reportes vigentes que aún no se confirman. **No bloquean rutas.**
+
+**Claves nuevas para las alertas de lluvia (F3)** (se agregan a cada elemento de `anegados`):
+
+```json
+{ "id": 1, "activado_por_lluvia": true, "lluvia_mm": 7.2 }
+```
+
+- `anegados[].activado_por_lluvia`: `true` si el punto lo encendió la lluvia (se apaga solo cuando la lluvia baja del umbral).
+- `anegados[].lluvia_mm`: última lluvia medida sobre el punto, en mm por hora. `null` si nunca se consultó.
+
+---
+
+## `GET /api/alertas/`
+
+Estado de la lluvia en la zona, para la franja de arriba del panel. Lo escribe el comando `python manage.py actualizar_alertas` (DECISIONES D14). El navegador lo vuelve a pedir cada 60 segundos.
+
+**Respuesta 200**
+
+```json
+{
+  "vigentes": [
+    {
+      "id": 3,
+      "titulo": "Lluvia 7 mm/h · 3 pasos bajo nivel con riesgo",
+      "nivel": "alerta",
+      "descripcion": "Las rutas evitan los pasos bajo nivel donde llueve 4 mm/h o más.",
+      "fuente": "Open-Meteo",
+      "creada": "2026-11-20T20:30:00-03:00",
+      "vigente_hasta": "2026-11-20T21:15:00-03:00"
+    }
+  ],
+  "actualizado": "2026-11-20T20:45:00-03:00",
+  "al_dia": true,
+  "fuente": "Open-Meteo",
+  "lluvia_max_mm": 7.2,
+  "puntos": [
+    { "id": 1, "nombre": "Paso bajo nivel Gran Avenida / Departamental", "lat": -33.5019, "lon": -70.6526, "lluvia_mm": 7.2 }
+  ]
+}
+```
+
+- `vigentes`: alertas activas y no vencidas, de la más nueva a la más antigua. Puede venir vacía.
+- `vigentes[].nivel`: `aviso` (se espera lluvia sobre el umbral en las próximas horas; no se corta ninguna ruta) | `alerta` (llueve sobre el umbral) | `alarma` (llueve el doble del umbral o más).
+- `vigentes[].fuente`: `"Open-Meteo"`, `"Simulación"` (comando con `--simular`) u otra, si alguien la creó en el admin.
+- `actualizado`: la última vez que se midió la lluvia. `null` si nunca se consultó.
+- `al_dia`: `false` si la última medición tiene más de 30 minutos (o no hay ninguna). El front muestra *"Datos de lluvia no disponibles. Mostrando el último estado."*
+- `fuente`: la fuente configurada para la lluvia real.
+- `lluvia_max_mm`: la mayor lluvia medida ahora sobre un paso bajo nivel, en mm por hora. `null` si nunca se consultó.
+- `puntos`: los pasos bajo nivel que la lluvia tiene encendidos ahora.
 
 ---
 
@@ -219,3 +268,13 @@ Funciones nuevas para el reporte colaborativo:
 | `entrada.js` | `DryRoute.calcularRuta()`: repite el cálculo con el origen y destino actuales | `mostrarResultado`, `mostrarError` |
 | `reporte.js` | `DryRoute.modoReporte` (`true` mientras se elige el lugar; `entrada.js` ignora esos clics) | `recargarPuntos` |
 | `resultado.js` | `DryRoute.alRecargarPuntos(datos)`: si cambiaron los anegados activos y hay ruta, recalcula y avisa | `calcularRuta` |
+
+Alertas de lluvia (F3). `alertas.js` se carga después de `reporte.js`:
+
+| Archivo | Define | Usa |
+|---|---|---|
+| `alertas.js` | Llena la franja `#alerta-lluvia` con `GET /api/alertas/` cada 60 s y agrega la atribución de Open-Meteo al mapa | `DryRoute.mapa` |
+
+| id | Elemento |
+|---|---|
+| `alerta-lluvia` | franja de lluvia arriba del panel (`aria-live="polite"`) |

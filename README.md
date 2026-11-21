@@ -38,6 +38,22 @@ Abre http://127.0.0.1:8000.
 2. Vuelve a http://127.0.0.1:8000, elige el origen y el destino (con búsqueda o con un clic en el mapa) y presiona **Calcular ruta**.
 3. Los casos de prueba del Entregable III están en [docs/ENTREGABLE-3.md](docs/ENTREGABLE-3.md).
 
+## Alertas de lluvia
+
+Las alertas se actualizan solas mientras corre este comando en **otra terminal** (con el entorno virtual activado y dentro de `dry-route/`):
+
+```powershell
+python manage.py actualizar_alertas --cada 10     # consulta Open-Meteo cada 10 minutos, hasta Ctrl + C
+```
+
+Los pasos bajo nivel donde llueve 4 mm/h o más se encienden solos, y se apagan cuando la lluvia baja (ver [DECISIONES D14](docs/DECISIONES.md)). Para probarlo sin lluvia real:
+
+```powershell
+python manage.py actualizar_alertas --simular 10                            # 10 mm/h en toda la zona, sin internet
+python manage.py actualizar_alertas --simular 10 --cerca -33.4911,-70.6190  # solo a menos de 2 km de la USM San Joaquín
+python manage.py actualizar_alertas --simular 0                             # termina la lluvia simulada
+```
+
 Los datos (grafo de calles, pasos bajo nivel y puntos de evacuación) ya vienen en `dry-route/data/`, extraídos de © OpenStreetMap contributors. Para regenerarlos: `pip install -r requirements-datos.txt` y luego `python scripts/generar_datos.py santiago` (zonas disponibles: `demo`, `sur` y `santiago`).
 
 ## Documentación
@@ -54,5 +70,5 @@ Los datos (grafo de calles, pasos bajo nivel y puntos de evacuación) ya vienen 
 
 ## Fuentes
 
-- Repositorio de alertas meteorológicas (se usará para la funcionalidad 3): [github.com/elpabloultron/open-meteo-precisa-chile](https://github.com/elpabloultron/open-meteo-precisa-chile)
 - Datos de calles: [OpenStreetMap](https://www.openstreetmap.org/copyright). Búsqueda de direcciones: [Nominatim](https://nominatim.org/).
+- Datos de lluvia: [Open-Meteo](https://open-meteo.com/) (licencia CC BY 4.0).

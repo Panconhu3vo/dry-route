@@ -56,6 +56,7 @@ Teselas: OpenStreetMap estándar, pasadas a grises con un filtro CSS solo en la 
 3. **Ruta segura:** tarjeta con el título "Ruta segura" en `--ruta-texto`, `4,2 km · 17 min` y "Evita 2 puntos anegados". La ruta se dibuja y el mapa se ajusta a ella.
 4. **Sin ruta segura:** tarjeta con borde `--peligro` y el título "No hay ruta segura a tu destino", más el nombre y la distancia del punto de evacuación. Se dibuja la ruta hacia ese punto.
 5. *(Después del viernes)* Recalcular la ruta ante nuevos reportes.
+6. **Franja de lluvia** (`#alerta-lluvia`, F3), arriba del panel. Ícono, color y texto según el nivel: ✓ gris con visto verde ("Sin alertas de lluvia en la zona · actualizado 20:45"), ☁ ámbar (aviso), ⚠ rojo suave (alerta) y ⚠ rojo lleno con texto blanco (alarma). Sin datos al día: "?" y texto sin negrita.
 
 **Aviso permanente** (`#aviso`), con fondo `--alerta-fondo` y borde `--alerta-borde`:
 > Ruta referencial. Sigue las indicaciones de las autoridades. Emergencias: 131 SAMU · 132 Bomberos · 133 Carabineros.

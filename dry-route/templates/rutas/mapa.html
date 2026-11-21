@@ -5,6 +5,7 @@
 <!-- Cada integrante es dueño de sus estilos: así no chocamos todos en app.css -->
 <link rel="stylesheet" href="{% static 'css/reporte.css' %}">  <!-- Cristóbal -->
 <link rel="stylesheet" href="{% static 'css/avisos.css' %}">   <!-- Yusu -->
+<link rel="stylesheet" href="{% static 'css/alertas.css' %}">  <!-- Alertas de lluvia (F3) -->
 {% endblock %}
 
 {% block contenido %}
@@ -25,6 +26,10 @@
   <div id="mapa" aria-label="Mapa de la zona con puntos anegados"></div>
 
   <section id="panel">
+    <!-- Franja de lluvia (F3): alertas.js la llena y la actualiza cada minuto. aria-live: los lectores de
+         pantalla la leen cuando cambia, sin interrumpir -->
+    <p id="alerta-lluvia" class="franja-lluvia" aria-live="polite">Consultando la lluvia…</p>
+
     <p id="aviso" role="note">
       <strong>Ruta referencial.</strong> Sigue las indicaciones de las autoridades.
       Emergencias: 131 SAMU · 132 Bomberos · 133 Carabineros.
@@ -104,4 +109,5 @@
 <script src="{% static 'js/resultado.js' %}"></script>  <!-- Yusu -->
 <script src="{% static 'js/entrada.js' %}"></script>    <!-- Cristóbal -->
 <script src="{% static 'js/reporte.js' %}"></script>    <!-- Cristóbal -->
+<script src="{% static 'js/alertas.js' %}"></script>    <!-- Alertas de lluvia (F3) -->
 {% endblock %}

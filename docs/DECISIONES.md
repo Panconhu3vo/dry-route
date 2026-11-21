@@ -81,6 +81,7 @@ Fecha de este registro: 28 de octubre de 2026.
 
 - **Decisión:** la entrega final incluye la funcionalidad corazón y el reporte colaborativo (F2). Las alertas (F3) quedan fuera.
 - **Por qué:** la pauta exige una segunda funcionalidad con persistencia o API. El reporte guarda datos propios y cambia las rutas. MeteoPrecisa obligaría a levantar otro servicio en la demo, y su lista de alertas venía vacía al revisarla.
+- **Cambio posterior (20-11):** el profesor permitió seguir mejorando el proyecto antes de la presentación en vivo, y se agregaron las alertas de lluvia sin MeteoPrecisa (ver D14).
 
 ## D11. Un lugar se confirma con 2 reportes de personas distintas
 
@@ -94,7 +95,7 @@ Fecha de este registro: 28 de octubre de 2026.
 
 ## D12. Qué se guarda en la base de datos
 
-- **Se guardan:** `PuntoAnegado`, `PuntoEvacuacion` y `Reporte`.
+- **Se guardan:** `PuntoAnegado`, `PuntoEvacuacion`, `Reporte` y, desde D14, `Alerta`.
 - **No se guardan:** `Consulta` y `Ruta` (se calculan en cada petición) ni `Vía` (son las aristas de `grafo.json`).
 - **Por qué:** la app se usa sin registro y lo que necesita persistir para otras personas son los reportes. Este cambio respecto del ER del E2 se explica en la presentación.
 
@@ -102,3 +103,21 @@ Fecha de este registro: 28 de octubre de 2026.
 
 - La pauta no exige publicar la app en internet. El tiempo se destina a la segunda funcionalidad, las pruebas y la defensa.
 
+## D14. Alertas de lluvia automáticas con Open-Meteo (F3)
+
+- **Decisión:** el comando `python manage.py actualizar_alertas --cada 10` pregunta cada 10 minutos a [Open-Meteo](https://open-meteo.com/) cuánto llueve sobre la zona. Los pasos bajo nivel donde llueve **4 mm/h o más** se encienden solos (`activo=True`, `activado_por_lluvia=True`) y se apagan solos cuando la lluvia baja. Como `ruteo.py` ya evita todo `PuntoAnegado` activo, el algoritmo no cambia.
+- **Por qué Open-Meteo:** es gratis para uso no comercial, no pide clave y se consulta con la biblioteca estándar de Python (`urllib`), así que no hay dependencias nuevas. Pide citar la fuente (licencia CC BY 4.0): va en la esquina del mapa. MeteoPrecisa sigue fuera (D10) porque obligaría a levantar otro servicio.
+- **Una consulta para toda la zona:** se divide la zona en 4 × 4 celdas y se pregunta por el centro de cada una en una sola petición. Los modelos que cubren Santiago tienen unos 10 km de resolución, así que preguntar por cada uno de los 185 pasos daría casi los mismos números. Open-Meteo devuelve las coordenadas de su propia grilla, por eso las respuestas se emparejan por `location_id` y no por coordenadas.
+- **Qué se mide:** `current=precipitation` es la lluvia de los últimos 15 minutos; por 4 da mm por hora. `hourly` con `forecast_hours=3` da las próximas horas y solo sirve para el nivel `aviso`: un pronóstico no corta rutas.
+- **Umbral:** 4 mm/h, **sin calibrar**. Es lluvia moderada en la clasificación usual (2,5 a 7,6 mm/h). Se cambia con `--umbral`. Desde el doble (8 mm/h, lluvia fuerte) la alerta pasa a `alarma`. Los niveles `aviso`, `alerta` y `alarma` son los de la Dirección Meteorológica de Chile.
+- **Quién manda sobre un punto:**
+  - La lluvia solo enciende puntos que estaban **apagados**, y solo apaga los que **ella encendió**.
+  - Lo encendido a mano en el admin o por dos reportes no se toca.
+  - Si dos vecinos confirmaron un lugar, la lluvia no lo apaga aunque pare: el agua puede seguir ahí.
+  - Si alguien cambia "anegado ahora" en el admin, se quitan las marcas de reportes y de lluvia.
+  - **Limitación:** si una persona apaga a mano un paso mientras sigue lloviendo sobre el umbral, la siguiente actualización lo vuelve a encender.
+- **Si Open-Meteo falla:** no se cambia nada y se avisa en la consola. Los datos valen 30 minutos: si el comando deja de correr, la alerta se cierra sola y la franja del mapa dice *"Datos de lluvia no disponibles. Mostrando el último estado."*
+- **Solo pasos bajo nivel:** la lluvia no toca los puntos creados por reportes (un árbol caído no depende de la lluvia) ni las simulaciones de la USM.
+- **Modelo `Alerta`:** `titulo`, `nivel`, `descripcion`, `fuente`, `creada`, `vigente_hasta` y `activa`. Queda a lo más una alerta automática abierta. Si cambia el nivel, se cierra la anterior y se abre otra, así el admin guarda la historia.
+- **Simulación para la demo:** `--simular 10` hace como si lloviera 10 mm/h sin usar internet, y `--cerca LAT,LON` limita la lluvia a 2 km de ese lugar. Con `--simular 0` termina.
+- **Rendimiento:** encender los 185 pasos a la vez hacía que la primera ruta tardara unos 70 s, porque cada punto revisaba los 156 mil tramos de la ciudad. Ahora los tramos se ordenan en la misma cuadrícula de 500 m que las esquinas (`tramos_por_celda`) y tarda 1 s, con resultados idénticos en los 185 pasos.

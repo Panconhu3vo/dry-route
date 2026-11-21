@@ -7,4 +7,5 @@ urlpatterns = [
     path("api/puntos/", views.api_puntos, name="api_puntos"),
     path("api/ruta/", views.api_ruta, name="api_ruta"),
     path("api/reportes/", views.api_reportes, name="api_reportes"),
+    path("api/alertas/", views.api_alertas, name="api_alertas"),
 ]
