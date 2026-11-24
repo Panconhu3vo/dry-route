@@ -13,6 +13,8 @@ Proyecto del ramo Proyecto Inicial: Equipo 13 "1101" (P207). Integrantes: Juan Y
 
 ## Cómo ejecutarla (localhost)
 
+> **¿Presentan en otro computador?** Sigan la guía paso a paso, con solución de problemas: [docs/PRESENTACION-OTRO-PC.md](docs/PRESENTACION-OTRO-PC.md).
+
 En PowerShell, desde la carpeta donde quieras el proyecto:
 
 ```powershell
@@ -62,6 +64,7 @@ Los datos (grafo de calles, pasos bajo nivel y puntos de evacuación) ya vienen 
 | -------------------------------------------------------------- | --------------------------------------------------- |
 | [docs/TAREAS.md](docs/TAREAS.md)                               | Plan día a día hasta la entrega final               |
 | [docs/ENTREGA-FINAL.md](docs/ENTREGA-FINAL.md)                 | Pauta, guion de la demo y banco de preguntas        |
+| [docs/PRESENTACION-OTRO-PC.md](docs/PRESENTACION-OTRO-PC.md)   | Levantar la app en otro PC para la presentación     |
 | [docs/TAREAS-POR-INTEGRANTE.md](docs/TAREAS-POR-INTEGRANTE.md) | Qué le toca a cada uno y cómo trabajar con Claude   |
 | [docs/API.md](docs/API.md)                                     | Contrato entre frontend y backend                   |
 | [docs/DECISIONES.md](docs/DECISIONES.md)                       | Decisiones técnicas y sus razones                   |
